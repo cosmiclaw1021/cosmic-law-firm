@@ -17,12 +17,12 @@ const fadeInUp = {
   transition: { duration: 0.6 },
 };
 
-const HERO_BACKGROUND = '/NanoBanana/music-producer-lawyer-studio.png';
-const HERO_SIDE_IMAGE = '/NanoBanana/Writer-lawer-library-papers.png';
-const SERVICES_IMAGE = '/NanoBanana/Lawyer-contract-notes.png';
+const HERO_BACKGROUND = '/NanoBanana/Background_screens_2.png';
+const SERVICES_IMAGE = '/NanoBanana/Background_screens_3.png';
 
 const HomeDesktop: React.FC = () => {
   const { t, i18n } = useTranslation();
+  const isKo = i18n.language?.startsWith('ko');
 
   return (
     <>
@@ -51,7 +51,7 @@ const HomeDesktop: React.FC = () => {
         </div>
 
         <div className="relative z-20 max-w-[1280px] mx-auto px-10 py-12">
-          <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_360px] items-center">
+          <div className="flex items-center">
             <motion.div
               initial={{ opacity: 0, y: 18 }}
               animate={{ opacity: 1, y: 0 }}
@@ -81,18 +81,6 @@ const HomeDesktop: React.FC = () => {
                 </ButtonLink>
               </div>
             </motion.div>
-
-            <motion.figure
-              initial={{ opacity: 0, y: 18 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.1 }}
-              className="group relative overflow-hidden rounded-[32px] border border-white/10 bg-slate-900/70 shadow-2xl"
-            >
-              <div className="relative h-[360px] w-full">
-                <Image src={HERO_SIDE_IMAGE} alt={t('accessibility.alt.homeHeroSideImage')} fill className="object-cover" />
-              </div>
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-900/20 to-transparent" />
-            </motion.figure>
           </div>
         </div>
       </SectionWithStars>
@@ -125,18 +113,10 @@ const HomeDesktop: React.FC = () => {
                     </div>
                     <div>
                       <h3 className="text-lg font-black tracking-tight text-slate-900 dark:text-white">
-                        {i18n.language?.startsWith('ko') 
-                          ? area.titleKo 
-                          : i18n.language?.startsWith('zh') 
-                            ? area.titleZh 
-                            : area.title}
+                        {isKo ? area.titleKo : area.title}
                       </h3>
                       <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed mt-1">
-                        {i18n.language?.startsWith('ko') 
-                          ? area.focusKo 
-                          : i18n.language?.startsWith('zh') 
-                            ? area.focusZh 
-                            : area.focus}
+                        {isKo ? area.focusKo : area.focus}
                       </p>
                     </div>
                   </article>

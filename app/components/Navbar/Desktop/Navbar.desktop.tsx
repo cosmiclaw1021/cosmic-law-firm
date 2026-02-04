@@ -20,8 +20,10 @@ const NavbarDesktop: React.FC = () => {
 
   const servicesRef = useRef<HTMLDivElement>(null);
   const aboutRef = useRef<HTMLDivElement>(null);
+  const [bodyElement, setBodyElement] = useState<HTMLElement | null>(null);
 
   useEffect(() => {
+    setBodyElement(document.body);
     const handleClickOutside = (event: MouseEvent) => {
       if (servicesRef.current && !servicesRef.current.contains(event.target as Node)) {
         setIsServicesOpen(false);
@@ -51,7 +53,8 @@ const NavbarDesktop: React.FC = () => {
       className="fixed top-0 left-0 right-0 z-50 border-b border-white/10 bg-primary/95 backdrop-blur-md transition-colors duration-300 hidden lg:block text-white"
       aria-label={t('accessibility.aria.desktopNavSection')}
       overflow="visible"
-      settings={{ density: 0.5, scrollRange: 520 }}
+      settings={{ density: 0.15, scrollRange: 520 }}
+      trigger={bodyElement}
     >
       <header className="relative z-20">
         <div className="max-w-[1280px] mx-auto px-6 sm:px-8 lg:px-10">

@@ -20,6 +20,7 @@ interface ParallaxStarsProps {
   settings: SectionStarsSettings;
   reducedMotion: boolean;
   className?: string;
+  trigger?: HTMLElement | null;
 }
 
 const toPx = (value?: number) => (typeof value === "number" ? `${value}px` : undefined);
@@ -30,7 +31,7 @@ const buildLayerStars = (layer: DepthLayer, density: number) => {
   return allStars.slice(0, Math.max(0, count));
 };
 
-const ParallaxStars = ({ sectionRef, settings, reducedMotion, className = "" }: ParallaxStarsProps) => {
+const ParallaxStars = ({ sectionRef, settings, reducedMotion, className = "", trigger }: ParallaxStarsProps) => {
   const farLayerRef = useRef<HTMLDivElement>(null);
   const midLayerRef = useRef<HTMLDivElement>(null);
   const nearLayerRef = useRef<HTMLDivElement>(null);
@@ -59,9 +60,13 @@ const ParallaxStars = ({ sectionRef, settings, reducedMotion, className = "" }: 
     }
 
     let cleanupFn: (() => void) | undefined;
+    let observer: ResizeObserver | undefined;
 
     // Use a small timeout to ensure refs are fully populated and layout is stable
     const timer = setTimeout(() => {
+      const currentSection = sectionRef.current;
+      if (!currentSection) return;
+
       const motionLayers = layerStars
         .map((layer) => {
           const ref =
@@ -82,16 +87,30 @@ const ParallaxStars = ({ sectionRef, settings, reducedMotion, className = "" }: 
       }
 
       cleanupFn = createParallaxMotion({
-        section: sectionRef.current!,
+        section: currentSection,
         layers: motionLayers,
         scrollRange: settings.scrollRange,
+        trigger: trigger || undefined,
       });
-    }, 50);
+
+      // Refresh ScrollTrigger when section size changes (e.g. images loading)
+      if (typeof ResizeObserver !== "undefined") {
+        observer = new ResizeObserver(() => {
+          import("gsap/ScrollTrigger").then(({ ScrollTrigger }) => {
+            ScrollTrigger.refresh();
+          });
+        });
+        observer.observe(currentSection);
+      }
+    }, 100);
 
     return () => {
       clearTimeout(timer);
       if (cleanupFn) {
         cleanupFn();
+      }
+      if (observer) {
+        observer.disconnect();
       }
     };
   }, [shouldAnimate, sectionRef, layerStars, settings.scrollRange]);
@@ -129,7 +148,7 @@ const ParallaxStars = ({ sectionRef, settings, reducedMotion, className = "" }: 
         const layerConfig = parallaxStarsConfig.layers[layer.layer];
 
         return (
-          <div key={layer.layer} ref={ref} className="absolute inset-0">
+          <div key={layer.layer} ref={ref} className="absolute inset-0" style={{ willChange: "transform" }}>
             {layer.stars.map((star) => (
               <svg
                 key={star.id}

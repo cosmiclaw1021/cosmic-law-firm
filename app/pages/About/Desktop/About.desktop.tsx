@@ -62,17 +62,12 @@ const AboutDesktop: React.FC = () => {
             className="lg:w-1/2 flex justify-center"
           >
             <div className="relative w-full max-w-md aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl border border-slate-200 dark:border-slate-800">
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent z-10" />
               <div
                 className="w-full h-full bg-center bg-cover bg-no-repeat bg-slate-200 dark:bg-slate-800"
-                style={{ backgroundImage: "url('/NanoBanana/korean-lawyer-artist-no-icon.png')" }}
+                style={{ backgroundImage: "url('/NanoBanana/Background_screens_4.png')" }}
                 role="img"
                 aria-label={t('about.hero.imageLabel')}
               />
-              <div className="absolute bottom-6 left-6 z-20 text-white">
-                <p className="font-bold text-lg leading-tight">{t('team.members.jean.title')}</p>
-                <p className="text-sm opacity-90">{t('team.members.jean.location')}</p>
-              </div>
             </div>
           </motion.div>
         </div>

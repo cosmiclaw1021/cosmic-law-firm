@@ -75,7 +75,10 @@ const TeamMemberDetail: React.FC<TeamMemberDetailProps> = ({ member, lng }) => {
   const tagline = t(`${detailKey}.tagline`, { defaultValue: '' });
 
   return (
-    <SectionWithStars className="w-full bg-background-light dark:bg-background-dark min-h-viewport" settings={{ density: 0.5 }}>
+    <SectionWithStars
+      className="w-full bg-background-light dark:bg-background-dark min-h-viewport non-hero-page-gap"
+      settings={{ density: 0.5 }}
+    >
       <div className="relative z-10 mx-auto max-w-6xl px-4 pt-6 pb-12 sm:px-6 lg:px-8 lg:pt-10 lg:pb-20">
         
         {/* Header - Always on top */}

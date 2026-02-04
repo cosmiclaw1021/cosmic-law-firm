@@ -5,13 +5,11 @@ import InsightClientPage from '@/components/InsightClientPage';
 const titles: Record<string, string> = {
   en: 'Rights & Publicity Basics | Insides',
   ko: '퍼블리시티 권리 기초 | 인사이드',
-  'zh-Hans': '权利与公开权基础 | 洞见',
 };
 
 const descriptions: Record<string, string> = {
   en: 'Rights of publicity, NIL, and how AI deepfakes are tightening the scrutiny around likeness.',
   ko: '퍼블리시티 권리, NIL, 인공지능 딥페이크가 초상 사용을 어떻게 재정의하는지 정리.',
-  'zh-Hans': '公开权、NIL 以及 AI 深度伪造如何加强对肖像权的审查。',
 };
 
 export async function generateMetadata({ params }: { params: Promise<{ lng: string }> }): Promise<Metadata> {

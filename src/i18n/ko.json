@@ -363,7 +363,7 @@
         "title": "엔터테인먼트 전반을 아우르는 법률 파트너",
         "description": "트랜잭션의 정밀함과 소송 경험을 함께 바탕으로, 계약은 분쟁을 염두에 두고 작성하고 분쟁은 비즈니스 목표를 중심으로 해결합니다.",
         "cta": "로펌에 문의하기",
-        "imageLabel": "변호사 인물 사진 (플레이스홀더)"
+        "imageLabel": "추상적인 디지털 화면 배경"
       },
       "sections": {
         "experience": {
@@ -574,12 +574,10 @@
       },
       "katherine": {
         "location": "로스앤젤레스, CA",
-        "title": "어소시에이트 · 엔터테인먼트 법",
-        "specialty": "상세 프로필 곧 업데이트 예정",
-        "description": "Katherine Jung 변호사가 팀에 합류했습니다. 그녀의 경력과 업무 상세 내용은 현재 정리 중이며 곧 공유될 예정입니다.",
-        "education": [
-          "학력 정보는 곧 업데이트됩니다."
-        ],
+        "title": "사무관리자 · 접수 담당",
+        "specialty": "사무관리자 · 접수 담당",
+        "description": "사무관리자 · 접수 담당",
+        "education": [],
         "imageAlt": "Katherine Jung의 초상"
       },
       "john": {
@@ -633,14 +631,10 @@
         "creative": "Jean은 'Tigers From the Sun' 이야기를 실현하고 영상 엔터테인먼트 분야에서 Cosmic Law Firm의 발자취를 확장하기 위해 계속해서 기회를 모색하고 있습니다."
       },
       "katherine": {
-        "tagline": "어소시에이트 · 엔터테인먼트 법",
-        "biography": [
-          "Katherine Jung 변호사가 팀에 합합류했습니다. 그녀의 경력과 업무 상세 내용은 현재 정리 중이며 곧 공유될 예정입니다."
-        ],
+        "tagline": "사무관리자 · 접수 담당",
+        "biography": [],
         "memberships": [],
-        "practiceAreas": [
-          "Katherine의 주요 업무 분야에 대한 상세 내용은 곧 공개될 예정입니다."
-        ],
+        "practiceAreas": [],
         "creative": ""
       },
       "john": {
@@ -715,7 +709,7 @@
     "aria": {
       "logoAlt": "{{name}} 로고",
       "heroIntro": "히어로 소개 섹션",
-      "homeHeroBackground": "스튜디오에서 협업 중인 음악 프로듀서와 엔터테인먼트 변호사",
+      "homeHeroBackground": "추상적인 디지털 화면과 패턴",
       "homeCtaSection": "문의 안내",
       "desktopNavSection": "데스크톱 내비게이션 섹션",
       "mainNavigation": "주요 내비게이션",
@@ -727,8 +721,8 @@
       "footerLegalNav": "법적 고지"
     },
     "alt": {
-      "homeHeroSideImage": "도서관에서 함께 메모를 검토하는 작가와 변호사",
-      "contractNotesDesk": "책상에서 계약 메모를 검토하는 변호사"
+      "homeHeroSideImage": "",
+      "contractNotesDesk": "추상적인 디지털 인터페이스 패턴"
     }
   },
   "accessibilityPage": {

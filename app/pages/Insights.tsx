@@ -54,7 +54,6 @@ const Insights: React.FC<{ lng: string }> = ({ lng }) => {
   const seoTitles: Record<string, string> = {
     en: `Insights | ${SITE.name}`,
     ko: `인사이트 | ${SITE.name}`,
-    'zh-Hans': `洞见 | ${SITE.name}`
   };
 
   return (

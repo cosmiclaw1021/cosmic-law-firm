@@ -8,13 +8,11 @@ export async function generateMetadata({ params }: { params: Promise<{ lng: stri
   const titles: Record<string, string> = {
     en: `Our Philosophy | ${SITE.name}`,
     ko: `경영 철학 | ${SITE.name}`,
-    'zh-Hans': `我们的理念 | ${SITE.name}`
   };
   
   const descriptions: Record<string, string> = {
     en: "Learn about our approach to entertainment law—clarity, courage, and partnership.",
     ko: "명확함, 용기, 그리고 파트너십—Cosmic Law Firm의 엔터테인먼트 법률 자문 철학을 소개합니다.",
-    'zh-Hans': "了解我们的娱乐法律服务理念——清晰、勇气与伙伴关系。"
   };
 
   return {
@@ -30,7 +28,6 @@ export async function generateMetadata({ params }: { params: Promise<{ lng: stri
       languages: {
         'en': '/en/message',
         'ko': '/ko/message',
-        'zh-Hans': '/zh-Hans/message',
       },
     },
   };

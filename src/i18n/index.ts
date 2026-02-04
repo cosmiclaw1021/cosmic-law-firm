@@ -8,10 +8,7 @@ import enTranslation from './en.json';
 import enReviews from './en.reviews.json';
 import koTranslation from './ko.json';
 import koReviews from './ko.reviews.json';
-import zhHansTranslation from './zh-Hans.json';
-import zhHansReviews from './zh-Hans.reviews.json';
-
-export const SUPPORTED_LANGUAGES = ['en', 'ko', 'zh-Hans'] as const;
+export const SUPPORTED_LANGUAGES = ['en', 'ko'] as const;
 export type SupportedLanguage = (typeof SUPPORTED_LANGUAGES)[number];
 
 const isServer = typeof window === 'undefined';
@@ -20,7 +17,6 @@ export function normalizeLanguage(lng: string | undefined | null): SupportedLang
   const value = (lng || '').trim();
   if (!value) return 'en';
   if (value.toLowerCase().startsWith('ko')) return 'ko';
-  if (value.toLowerCase() === 'zh-hans' || value.toLowerCase().startsWith('zh')) return 'zh-Hans';
   return 'en';
 }
 
@@ -44,7 +40,6 @@ i18nInstance.init({
   resources: {
     en: { translation: enTranslation, reviews: enReviews },
     ko: { translation: koTranslation, reviews: koReviews },
-    'zh-Hans': { translation: zhHansTranslation, reviews: zhHansReviews },
   },
   react: {
     useSuspense: false,

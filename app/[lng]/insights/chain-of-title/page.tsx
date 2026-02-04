@@ -5,13 +5,11 @@ import InsightClientPage from '@/components/InsightClientPage';
 const titles: Record<string, string> = {
   en: 'Chain of Title | Insides',
   ko: '체인오브타이틀 | 인사이드',
-  'zh-Hans': '权利链整理 | 洞见',
 };
 
 const descriptions: Record<string, string> = {
   en: 'Clean paper trails, option letters, and releases that let investors and distributors say yes.',
   ko: '투자자와 배급사가 승인할 수 있도록 모든 계약과 양도, 릴리스 증빙을 정리하는 요약.',
-  'zh-Hans': '清晰的文件追踪、选择权信函和授权书，让投资者和发行商点头。',
 };
 
 export async function generateMetadata({ params }: { params: Promise<{ lng: string }> }): Promise<Metadata> {

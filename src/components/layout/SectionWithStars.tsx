@@ -12,9 +12,10 @@ interface SectionWithStarsProps extends HTMLAttributes<HTMLElement> {
   className?: string;
   overflow?: "hidden" | "visible";
   children: ReactNode;
+  trigger?: HTMLElement | null;
 }
 
-const SectionWithStars = ({ settings, className = "", overflow = "hidden", children, ...rest }: SectionWithStarsProps) => {
+const SectionWithStars = ({ settings, className = "", overflow = "hidden", children, trigger, ...rest }: SectionWithStarsProps) => {
   const sectionRef = useRef<HTMLElement>(null);
   const prefersReducedMotion = useReducedMotion();
 
@@ -41,7 +42,7 @@ const SectionWithStars = ({ settings, className = "", overflow = "hidden", child
 
   return (
     <section ref={sectionRef} className={`${positionClass} ${overflowClass} ${className}`} {...rest}>
-      <ParallaxStars sectionRef={sectionRef} settings={mergedSettings} reducedMotion={prefersReducedMotion} />
+      <ParallaxStars sectionRef={sectionRef} settings={mergedSettings} reducedMotion={prefersReducedMotion} trigger={trigger} />
       {children}
     </section>
   );

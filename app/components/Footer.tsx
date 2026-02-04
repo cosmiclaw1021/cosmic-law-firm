@@ -24,6 +24,7 @@ const fadeInUp = {
 const Footer: React.FC = () => {
   const { t, i18n } = useTranslation();
   const { isMobile } = useViewport();
+  const isKo = i18n.language?.startsWith('ko');
   
   const currentFadeInUp = isMobile ? {
     initial: { opacity: 1, y: 0 },
@@ -138,11 +139,7 @@ const Footer: React.FC = () => {
                       size="sm"
                       className="w-full justify-center sm:justify-start gap-3 px-4 py-2.5 text-xs font-semibold text-center sm:text-left"
                     >
-                      {i18n.language?.startsWith('ko') 
-                        ? area.shortTitleKo 
-                        : i18n.language?.startsWith('zh') 
-                          ? area.shortTitleZh 
-                          : area.shortTitle}
+                      {isKo ? area.shortTitleKo : area.shortTitle}
                     </ButtonLink>
                   ))}
                 </div>

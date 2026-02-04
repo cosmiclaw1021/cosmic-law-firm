@@ -63,14 +63,10 @@ const AboutMobile: React.FC = () => {
         >
           <div
             className="h-72 bg-center bg-cover bg-no-repeat bg-slate-200 dark:bg-slate-800"
-            style={{ backgroundImage: "url('/NanoBanana/korean-lawyer-artist-no-icon.png')" }}
+            style={{ backgroundImage: "url('/NanoBanana/Background_screens_4.png')" }}
             role="img"
             aria-label={t('about.hero.imageLabel')}
           />
-          <div className="p-5 bg-white dark:bg-slate-900">
-            <p className="text-slate-900 dark:text-white font-black">{t('team.members.jean.title')}</p>
-            <p className="text-slate-500 dark:text-slate-400 text-sm mt-1">{t('team.members.jean.location')}</p>
-          </div>
         </motion.div>
 
         <motion.div variants={fadeInUp} initial="initial" whileInView="whileInView" viewport={{ once: true }} className="relative z-10 mt-12 space-y-10">

@@ -22,8 +22,8 @@ export async function generateMetadata({
     };
   }
 
-  const localizedTitle = lng === 'ko' ? area.titleKo : lng === 'zh-Hans' ? area.titleZh : area.title;
-  const localizedDescription = lng === 'ko' ? area.summaryKo : lng === 'zh-Hans' ? area.summaryZh : area.summary;
+  const localizedTitle = lng === 'ko' ? area.titleKo : area.title;
+  const localizedDescription = lng === 'ko' ? area.summaryKo ?? area.summary : area.summary;
 
   return {
     title: localizedTitle,
@@ -38,7 +38,6 @@ export async function generateMetadata({
       languages: {
         'en': `/en/services/${area.slug}`,
         'ko': `/ko/services/${area.slug}`,
-        'zh-Hans': `/zh-Hans/services/${area.slug}`,
       },
     },
   };

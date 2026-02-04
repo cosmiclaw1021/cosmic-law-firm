@@ -86,13 +86,12 @@ const PracticeAreaPage: React.FC<PracticeAreaPageProps> = ({ lng, slug }) => {
 
   const currentLang = i18n.language || lng || 'en';
   const isKo = currentLang.startsWith('ko');
-  const isZh = currentLang.startsWith('zh');
 
-  const title = isKo ? area.titleKo : isZh ? area.titleZh : area.title;
-  const focus = isKo ? area.focusKo : isZh ? area.focusZh : area.focus;
-  const overview = isKo ? area.overviewKo : isZh ? area.overviewZh : area.overview;
-  const summary = isKo ? area.summaryKo ?? area.summary : isZh ? area.summaryZh ?? area.summary : area.summary;
-  const services = isKo ? area.servicesKo ?? area.services : isZh ? area.servicesZh ?? area.services : area.services;
+  const title = isKo ? area.titleKo : area.title;
+  const focus = isKo ? area.focusKo : area.focus;
+  const overview = isKo ? area.overviewKo : area.overview;
+  const summary = isKo ? area.summaryKo ?? area.summary : area.summary;
+  const services = isKo ? area.servicesKo ?? area.services : area.services;
 
   return (
     <>

@@ -4,13 +4,13 @@ export type PracticeArea = {
   slug: string;
   title: string;
   titleKo: string;
-  titleZh: string;
+  titleZh?: string;
   shortTitle: string;
   shortTitleKo: string;
-  shortTitleZh: string;
+  shortTitleZh?: string;
   focus: string;
   focusKo: string;
-  focusZh: string;
+  focusZh?: string;
   summary: string;
   summaryKo?: string;
   summaryZh?: string;
@@ -98,128 +98,6 @@ export const practiceAreas: PracticeArea[] = [
       '音乐',
       '戏剧与舞台',
       '电子游戏与新媒体',
-    ],
-  },
-  {
-    slug: 'copyright-infringement',
-    title: 'Copyright Infringement',
-    titleKo: '저작권 침해',
-    titleZh: '著作权侵权',
-    shortTitle: 'Copyright',
-    shortTitleKo: '저작권',
-    shortTitleZh: '著作权',
-    focus: 'Enforcement, defense, counseling, and licensing disputes.',
-    focusKo: '권리 행사·방어·자문·라이선스 분쟁',
-    focusZh: '权利主张、防御、咨询与许可争议。',
-    summary:
-      'We help clients protect creative works, enforce rights against infringement, and reduce risk through clear guidance and strategic action.',
-    summaryKo:
-      '창작물을 보호하고 침해에 대응하며, 명확한 자문과 전략적 실행으로 리스크를 줄입니다.',
-    summaryZh:
-      '我们帮助客户保护作品、对侵权采取行动，并通过清晰指引与策略降低风险。',
-    icon: 'copyright',
-    overview: [
-      'Copyright safeguards a wide range of creative expressions, including visual arts, music, architectural designs, source code, software, literary works, and sculptures.',
-      'Our copyright lawyers focus on two main objectives: pursuing legal action against those who infringe on our clients’ copyrights and assisting clients in avoiding copyright infringement.',
-      'In the digital age, we counsel on DMCA issues, fair use, licensing, and disputes so clients can move quickly while staying protected.',
-    ],
-    overviewKo: [
-      '저작권은 미술, 음악, 건축, 소프트웨어, 문학 등 다양한 창작물을 보호합니다.',
-      '저희는 권리 침해에 대한 적극적 대응과, 침해 위험을 줄이기 위한 사전 자문에 집중합니다.',
-      '디지털 시대의 DMCA, 공정이용, 라이선스, 분쟁을 실무 중심으로 지원합니다.',
-    ],
-    overviewZh: [
-      '版权保护广泛的创意表达，包括视觉艺术、音乐、建筑设计、源代码、软件、文学作品和雕塑。',
-      '我们的版权律师专注于两个主要目标：对侵犯客户版权的行为采取法律行动，并协助客户避免侵犯他人版权。',
-      '在数字时代，我们就 DMCA 问题、合理使用、许可和争议提供建议，以便客户在保持受保护的同时快速行动。',
-    ],
-    services: [
-      'Copyright registration strategy and filings',
-      'Infringement enforcement and defense',
-      'Licensing and contract disputes',
-      'DMCA takedown and counter-notice strategy',
-      'Fair use and clearance guidance',
-      'Chain-of-title and ownership analysis',
-      'Remedies strategy (injunctions, damages, fees)',
-      'Portfolio counseling for creators and businesses',
-    ],
-    servicesKo: [
-      '저작권 등록 전략 및 신청',
-      '침해 대응(권리 행사) 및 방어',
-      '라이선스 및 계약 분쟁',
-      'DMCA 삭제요청 및 이의제기(반박 통지) 전략',
-      '공정이용 및 클리어런스(사용 허가) 자문',
-      '권리 연쇄(체인 오브 타이틀) 및 소유권 분석',
-      '구제수단 전략(가처분, 손해배상, 비용)',
-      '크리에이터·기업을 위한 포트폴리오 자문',
-    ],
-    servicesZh: [
-      '著作权登记/注册策略与申请',
-      '侵权维权与抗辩',
-      '许可与合同争议',
-      'DMCA 下架与反通知策略',
-      '合理使用与清权/授权审查建议',
-      '权属链与所有权分析',
-      '救济策略（禁令、损害赔偿、费用）',
-      '面向创作者与企业的作品/资产组合咨询',
-    ],
-  },
-  {
-    slug: 'trademark-law',
-    title: 'Trademark Law',
-    titleKo: '상표법',
-    titleZh: '商标法',
-    shortTitle: 'Trademark',
-    shortTitleKo: '상표',
-    shortTitleZh: '商标',
-    focus: 'Brand protection for names, titles, and logos.',
-    focusKo: '이름·타이틀·로고 등 브랜드 보호',
-    focusZh: '名称、标题和徽标的品牌保护。',
-    summary:
-      'We help clients clear, register, license, and enforce trademarks so brands can grow with confidence.',
-    summaryKo:
-      '상표 검색부터 등록·라이선스·권리행사까지 지원해 브랜드가 안심하고 성장하도록 돕습니다.',
-    summaryZh:
-      '我们协助客户进行商标检索、注册、许可与维权，让品牌更安心地成长。',
-    icon: 'verified',
-    overview: [
-      'Trademarks protect the brands audiences recognize—names, titles, logos, and other identifiers used in commerce.',
-      'We guide clients through clearance, registration, and enforcement so brand investments remain protectable and enforceable.',
-    ],
-    overviewKo: [
-      '상표는 이름, 타이틀, 로고 등 시장에서 식별되는 브랜드 요소를 보호합니다.',
-      '저희는 검색·출원·등록·라이선스·분쟁 대응까지 브랜드 보호 전 과정을 지원합니다.',
-    ],
-    overviewZh: [
-      '商标保护观众认可的品牌——名称、标题、徽标和商业中使用的其他标识。',
-      '我们指导客户进行查询、注册和主张权利，确保品牌投资保持受保护且可执行。',
-    ],
-    services: [
-      'Trademark clearance searches and risk counseling',
-      'Trademark applications and prosecution',
-      'Portfolio strategy and renewals',
-      'Licensing and brand deal terms',
-      'Oppositions, cancellations, and enforcement',
-      'Infringement and unfair competition disputes',
-      'Online enforcement and takedown strategy',
-    ],
-    servicesKo: [
-      '상표 선행조사 및 리스크 자문',
-      '상표 출원 및 심사 대응',
-      '포트폴리오 전략 및 갱신',
-      '라이선스 및 브랜드 딜 조건',
-      '이의신청·취소심판·권리행사',
-      '침해 및 부정경쟁 분쟁',
-      '온라인 권리행사 및 삭제요청 전략',
-    ],
-    servicesZh: [
-      '商标检索与风险评估咨询',
-      '商标申请与审查答复',
-      '组合策略与续展',
-      '许可与品牌合作条款',
-      '异议、无效/撤销与维权',
-      '侵权与不正当竞争纠纷',
-      '线上维权与下架策略',
     ],
   },
   {

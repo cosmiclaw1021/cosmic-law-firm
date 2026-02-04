@@ -8,7 +8,6 @@ export async function generateMetadata({ params }: { params: Promise<{ lng: stri
   const titles: Record<string, string> = {
     en: `Privacy Policy | ${SITE.name}`,
     ko: `개인정보 처리방침 | ${SITE.name}`,
-    'zh-Hans': `隐私政策 | ${SITE.name}`
   };
 
   return {
@@ -22,7 +21,6 @@ export async function generateMetadata({ params }: { params: Promise<{ lng: stri
       languages: {
         'en': '/en/privacy',
         'ko': '/ko/privacy',
-        'zh-Hans': '/zh-Hans/privacy',
       },
     },
   };

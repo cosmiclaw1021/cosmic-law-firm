@@ -1,5 +1,6 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
+import Image from 'next/image';
 import ButtonLink from '@/components/ui/ButtonLink';
 import Link from '@/components/ui/Link';
 import { motion } from 'framer-motion';
@@ -27,7 +28,6 @@ const ServicesDesktop: React.FC = () => {
   const { t, i18n } = useTranslation();
   const lng = i18n.language || 'en';
   const isKo = i18n.language?.startsWith('ko');
-  const isZh = i18n.language?.startsWith('zh');
   const processSteps = ['step1', 'step2', 'step3'] as const;
 
   return (
@@ -42,14 +42,19 @@ const ServicesDesktop: React.FC = () => {
             initial={{ opacity: 0, scale: 1.03 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.9 }}
-            className="flex min-h-[320px] flex-col gap-6 rounded-xl items-center justify-center p-8 shadow-sm relative overflow-hidden bg-cover bg-center bg-no-repeat"
-            style={{
-              backgroundImage:
-                "linear-gradient(rgba(0, 0, 0, 0.45) 0%, rgba(0, 0, 0, 0.8) 100%), url('/NanoBanana/Lawyer-contract-notes.png')",
-            }}
+            className="flex min-h-[320px] flex-col gap-6 rounded-xl items-center justify-center p-8 shadow-sm relative overflow-hidden bg-slate-900"
             role="img"
             aria-label={t('accessibility.alt.contractNotesDesk')}
           >
+            <Image
+              src="/NanoBanana/Background_screens_3.png"
+              alt=""
+              fill
+              priority
+              className="object-cover"
+              sizes="(max-width: 1280px) 100vw, 1280px"
+            />
+            <div className="absolute inset-0 bg-gradient-to-b from-black/45 to-black/80" />
             <div className="flex flex-col gap-3 text-center max-w-[860px] z-10">
               <div className="inline-flex items-center justify-center gap-2 px-3 py-1 rounded-full bg-white/10 text-white/90 text-[11px] font-black uppercase tracking-[0.3em] w-fit mx-auto">
                 <Icon name="gavel" className="size-4" />
@@ -115,10 +120,10 @@ const ServicesDesktop: React.FC = () => {
                   </div>
                   <div className="flex flex-col gap-2 flex-1">
                     <h3 className="text-[#0d141b] dark:text-white text-xl font-black leading-tight tracking-tight">
-                      {isKo ? area.titleKo : isZh ? area.titleZh : area.title}
+                      {isKo ? area.titleKo : area.title}
                     </h3>
                     <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed font-medium">
-                      {isKo ? area.focusKo : isZh ? area.focusZh : area.focus}
+                      {isKo ? area.focusKo : area.focus}
                     </p>
                   </div>
                   <div className="inline-flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.25em] text-primary transition-colors duration-200 group-hover:text-secondary dark:text-secondary">
@@ -150,7 +155,7 @@ const ServicesDesktop: React.FC = () => {
             viewport={{ once: true, amount: 0.05 }}
             className="grid grid-cols-3 gap-8 relative"
           >
-            <div className="absolute top-6 left-[16%] right-[16%] h-0.5 bg-slate-200 dark:bg-slate-700 -z-10"></div>
+            <div className="absolute top-6 left-[16%] right-[16%] h-0.5 bg-slate-200 dark:bg-slate-700 z-0"></div>
             {processSteps.map((stepKey, idx) => (
               <motion.div
                 key={stepKey}

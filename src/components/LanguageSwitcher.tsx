@@ -11,7 +11,6 @@ type LanguageOption = { code: SupportedLanguage; label: string; fullLabel: strin
 const OPTIONS: readonly LanguageOption[] = [
   { code: 'en', label: 'EN', fullLabel: 'English' },
   { code: 'ko', label: '한국어', fullLabel: '한국어' },
-  { code: 'zh-Hans', label: '中文', fullLabel: '中文' },
 ];
 
 interface LanguageSwitcherProps {
@@ -112,4 +111,3 @@ export default function LanguageSwitcher({ variant = 'segmented', className = ''
     </div>
   );
 }
-

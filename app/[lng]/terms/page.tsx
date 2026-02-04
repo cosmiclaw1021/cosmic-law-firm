@@ -8,7 +8,6 @@ export async function generateMetadata({ params }: { params: Promise<{ lng: stri
   const titles: Record<string, string> = {
     en: `Terms of Service | ${SITE.name}`,
     ko: `이용약관 | ${SITE.name}`,
-    'zh-Hans': `服务条款 | ${SITE.name}`
   };
 
   return {
@@ -22,7 +21,6 @@ export async function generateMetadata({ params }: { params: Promise<{ lng: stri
       languages: {
         'en': '/en/terms',
         'ko': '/ko/terms',
-        'zh-Hans': '/zh-Hans/terms',
       },
     },
   };

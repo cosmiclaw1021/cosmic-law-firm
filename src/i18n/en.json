@@ -385,12 +385,12 @@
       "title": "Full-spectrum entertainment counsel",
       "description": "Transactional precision backed by real litigation experience—so deals are drafted with disputes in mind, and disputes are handled with business objectives front and center.",
       "cta": "Contact the firm",
-      "imageLabel": "Portrait of an attorney (placeholder image)"
+      "imageLabel": "Abstract digital screen background"
     },
     "sections": {
       "experience": {
         "title": "Our Experience",
-        "body": "We have extensive experience in both transactional and litigation matters, ranging from drafting, negotiating, and reviewing complex contracts and corporate documents, copyright and trademark registration and disputes, and litigating multimillion dollar jury trials. We strongly believe that the key to our success comes from this wide spectrum of experience. For example, because we have successfully litigated multiple breach of contract cases on both sides, we know what the key sticking points and traps are when drafting or reviewing contracts and advising clients, and vice-versa. This experience has proven invaluable and is a key trait that most transactional-only law firms cannot offer. Our clients also have the peace of mind that even for transactional matters, we have the litigation expertise to vigorously fight any disputes that may occur in the future both informally and in court."
+        "body": "We have extensive experience in both transactional and litigation matters, ranging from drafting, negotiating, and reviewing complex contracts and corporate documents, intellectual property and licensing matters, and litigating multimillion dollar jury trials. We strongly believe that the key to our success comes from this wide spectrum of experience. For example, because we have successfully litigated multiple breach of contract cases on both sides, we know what the key sticking points and traps are when drafting or reviewing contracts and advising clients, and vice-versa. This experience has proven invaluable and is a key trait that most transactional-only law firms cannot offer. Our clients also have the peace of mind that even for transactional matters, we have the litigation expertise to vigorously fight any disputes that may occur in the future both informally and in court."
       },
       "clientCentered": {
         "title": "Client-Centered Practice",
@@ -548,10 +548,10 @@
       },
       "katherine": {
         "location": "Los Angeles, CA",
-        "title": "Associate · Entertainment Law",
-        "specialty": "Placeholder biography coming soon",
-        "description": "Katherine Jung is joining the team; her experience and practice details are being finalized and will be shared shortly.",
-        "education": ["Education details coming soon."],
+        "title": "Office Manager / Intake Specialist",
+        "specialty": "Office Manager / Intake Specialist",
+        "description": "Office Manager / Intake Specialist",
+        "education": [],
         "imageAlt": "Portrait of Katherine Jung"
       },
       "john": {
@@ -568,7 +568,7 @@
       "heath": {
         "location": "Los Angeles, CA",
         "title": "Counsel · Entertainment & IP",
-        "specialty": "Entertainment litigation · trademark & copyright defense · development counsel",
+        "specialty": "Entertainment litigation · IP defense · development counsel",
         "description": "Entertainment and intellectual property attorney raised in Hollywood with a music industry background who now steers litigation and IP strategy while co-producing new stories like \"Tigers From the Sun\".",
         "education": [
           "Whittier Law School, J.D.",
@@ -605,14 +605,10 @@
         "creative": "Jean continues to seize opportunities to bring the \"Tigers From the Sun\" story to life and to expand Cosmic Law Firm's footprint in filmed entertainment."
       },
       "katherine": {
-        "tagline": "Associate · Entertainment Law",
-        "biography": [
-          "Katherine Jung is joining the firm; her experience and practice details are being finalized and will be shared shortly."
-        ],
+        "tagline": "Office Manager / Intake Specialist",
+        "biography": [],
         "memberships": [],
-        "practiceAreas": [
-          "Details about Katherine's practice focus will be shared soon."
-        ],
+        "practiceAreas": [],
         "creative": ""
       },
       "john": {
@@ -622,7 +618,7 @@
           "Mr. Robertson received his Juris Doctorate from the nationally ranked Boalt Hall School of Law at the University of California, Berkeley, and was Assistant Editor and an author of the California Law Review at Boalt. Prior to attending law school, Mr. Robertson completed his undergraduate studies at the University of California, Los Angeles, where he graduated with Departmental Highest Honors.",
           "Mr. Robertson served as a Deputy City Attorney for Los Angeles, as well as an Assistant United States Attorney for the Central District of California in the Criminal Division of the United States Department of Justice.",
           "After leaving government service, Mr. Robertson joined the civil litigation and insurance defense law firm of Lewis, D'Amato, Brisbois and Bisgaard in Los Angeles, California as a civil litigator where he specialized in defending lawyers in civil malpractice suits. Subsequent to his employment at the Lewis, D'Amato, Brisbois, and Bisgaard firm, Mr. Robertson started his own private practice in 1982, and has remained in private practice since.",
-          "Mr. Robertson continues a civil litigation practice, including representation in breach of contract cases, fraud cases, civil malpractice suits, and professional liability matters, among others. Mr. Robertson also practices in, among other areas, the area of white-collar criminal defense, both in state and federal courts, where his cases have included multi-million dollar frauds, organized crime and racketeering cases, criminal immigration cases, customs smuggling cases, criminal copyright cases and criminal trademark infringement cases, computer software counterfeiting cases, wire and mail fraud cases, money laundering cases, criminal tax cases, health care fraud cases, and real estate/fraud mortgage cases, among others.",
+          "Mr. Robertson continues a civil litigation practice, including representation in breach of contract cases, fraud cases, civil malpractice suits, and professional liability matters, among others. Mr. Robertson also practices in, among other areas, the area of white-collar criminal defense, both in state and federal courts, where his cases have included multi-million dollar frauds, organized crime and racketeering cases, criminal immigration cases, customs smuggling cases, criminal intellectual property infringement cases, computer software counterfeiting cases, wire and mail fraud cases, money laundering cases, criminal tax cases, health care fraud cases, and real estate/fraud mortgage cases, among others.",
           "Mr. Robertson has been active in several state bar associations, has served as Of Counsel and advisor to a number of attorney colleagues and law offices and was formerly a member of the Executive Committee of the Criminal Law Section of the State Bar of California, where he was Chairperson of the Federal Courts Subcommittee. Mr. Robertson also teaches courses on the law and analysis of contracts and contract issues for a program established by Federal District Court Judge to prepare lawyer candidates to pass the California Bar Exam."
         ],
         "memberships": [
@@ -642,7 +638,7 @@
         "tagline": "Counsel · Entertainment & Intellectual Property",
         "biography": [
           "John Heath is an attorney at Cosmic Law Firm with a specialty in entertainment and intellectual property.",
-          "After working in the record industry and attaining success in the music industry himself as a recording artist, Mr. Heath went on to attain a Masters Degree in Mass Communication at San Jose State and Juris Doctor at Whittier Law School, with a certificate in intellectual property. In addition to civil litigation, John D. Heath has a background in entertainment litigation, trademark and copyright pre-litigation, intellectual property, and entertainment transactional law.",
+          "After working in the record industry and attaining success in the music industry himself as a recording artist, Mr. Heath went on to attain a Masters Degree in Mass Communication at San Jose State and Juris Doctor at Whittier Law School, with a certificate in intellectual property. In addition to civil litigation, John D. Heath has a background in entertainment litigation, intellectual property pre-litigation, and entertainment transactional law.",
           "Heath understands the entertainment business and content creation in a meaningful way. This is not surprising, as Heath was raised in the vortex of Hollywood. His father was a successful and prolific television writer and his mother is a premier entertainment attorney who represented virtually every major studio during her nearly forty year career. Additionally, his step-father is a well-respected Israeli-American director.",
           "But Heath adds music and much more to the family tree, having obtained a recording deal with a prominent independent label almost straight out of college. Heath is currently in the process of developing other movies and television series, but none with more passion than his commitment to \"Tigers From the Sun.\"",
           "Heath instantly was drawn to the fascinating story of \"Tigers From the Sun\" and its real life protagonist, Claire Lee Chennault, whose determination and unwillingness to accept the paradigms of the day made him a hero for the ages. Heath is thrilled with the idea of bringing the yet untold tale of Chennault to life as a feature film and eager to work with his colleague, the very talented Jean Kwon of Cosmic Law Firm, as a co-executive producer."
@@ -650,7 +646,7 @@
         "memberships": [],
         "practiceAreas": [
           "Entertainment and intellectual property litigation",
-          "Trademark and copyright pre-litigation and dispute prevention",
+          "Intellectual property pre-litigation and dispute prevention",
           "Entertainment transactional counseling for development and production partners"
         ],
         "creative": "John Heath continues to co-executive produce \"Tigers From the Sun\" while leading IP and entertainment litigation for Cosmic Law Firm."
@@ -687,7 +683,7 @@
     "aria": {
       "logoAlt": "{{name}} logo",
       "heroIntro": "Hero introduction",
-      "homeHeroBackground": "Music producer and entertainment lawyer collaborating inside a studio",
+      "homeHeroBackground": "Abstract digital screens and patterns",
       "homeCtaSection": "Call to action",
       "desktopNavSection": "Desktop navigation section",
       "mainNavigation": "Main navigation",
@@ -699,8 +695,8 @@
       "footerLegalNav": "Legal"
     },
     "alt": {
-      "homeHeroSideImage": "Writer and lawyer reviewing notes in a library",
-      "contractNotesDesk": "Attorney reviewing contract notes on a desk"
+      "homeHeroSideImage": "",
+      "contractNotesDesk": "Abstract digital interface patterns"
     }
   },
   "accessibilityPage": {

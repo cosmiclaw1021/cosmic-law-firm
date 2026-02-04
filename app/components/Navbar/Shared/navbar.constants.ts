@@ -4,13 +4,10 @@ import { practiceAreas } from '@/lib/practice-areas';
 export const useNavbarConstants = () => {
   const { t, i18n } = useTranslation();
   const lng = i18n.language || 'en';
+  const isKo = i18n.language?.startsWith('ko');
 
   const practiceAreaLinks = practiceAreas.map((area) => ({
-    name: i18n.language?.startsWith('ko') 
-      ? area.titleKo 
-      : i18n.language?.startsWith('zh') 
-        ? area.titleZh 
-        : area.title,
+    name: isKo ? area.titleKo : area.title,
     path: `/${lng}/services/${area.slug}`,
   }));
 

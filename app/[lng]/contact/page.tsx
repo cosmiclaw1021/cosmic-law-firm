@@ -9,13 +9,11 @@ export async function generateMetadata({ params }: { params: Promise<{ lng: stri
   const titles: Record<string, string> = {
     en: `Contact Us | ${SITE.name}`,
     ko: `문의하기 | ${SITE.name}`,
-    'zh-Hans': `联系我们 | ${SITE.name}`
   };
   
   const descriptions: Record<string, string> = {
     en: "Contact Cosmic Law Firm in Los Angeles for entertainment, media, and personal injury legal services.",
     ko: "로스앤젤레스에 위치한 Cosmic Law Firm에 엔터테인먼트, 미디어, 개인상해 법률 서비스를 문의하세요.",
-    'zh-Hans': "联系位于洛杉矶的 Cosmic Law Firm，获取娱乐、媒体和人身伤害法律服务。"
   };
 
   return {
@@ -31,7 +29,6 @@ export async function generateMetadata({ params }: { params: Promise<{ lng: stri
       languages: {
         'en': '/en/contact',
         'ko': '/ko/contact',
-        'zh-Hans': '/zh-Hans/contact',
       },
     },
   };

@@ -17,10 +17,11 @@ const fadeInUp = {
   transition: { duration: 0 },
 };
 
-const HERO_BACKGROUND = '/NanoBanana/music-producer-lawyer-studio.png';
+const HERO_BACKGROUND = '/NanoBanana/Background_screens_2.png';
 
 const HomeMobile: React.FC = () => {
   const { t, i18n } = useTranslation();
+  const isKo = i18n.language?.startsWith('ko');
 
   return (
     <MotionConfig reducedMotion="always">
@@ -132,18 +133,10 @@ const HomeMobile: React.FC = () => {
                   </div>
                   <div className="min-w-0">
                     <h3 className="text-slate-900 dark:text-white text-lg font-black leading-tight tracking-tight">
-                      {i18n.language?.startsWith('ko') 
-                        ? area.shortTitleKo 
-                        : i18n.language?.startsWith('zh') 
-                          ? area.shortTitleZh 
-                          : area.shortTitle}
+                      {isKo ? area.shortTitleKo : area.shortTitle}
                     </h3>
                     <p className="text-slate-600 dark:text-slate-400 text-[0.75rem] leading-relaxed font-medium mt-1">
-                      {i18n.language?.startsWith('ko') 
-                        ? area.focusKo 
-                        : i18n.language?.startsWith('zh') 
-                          ? area.focusZh 
-                          : area.focus}
+                      {isKo ? area.focusKo : area.focus}
                     </p>
                   </div>
                 </div>

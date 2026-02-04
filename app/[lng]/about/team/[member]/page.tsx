@@ -33,7 +33,6 @@ export async function generateMetadata({ params }: { params: Promise<{ lng: stri
       languages: {
         'en': `/en/about/team/${member.slug}`,
         'ko': `/ko/about/team/${member.slug}`,
-        'zh-Hans': `/zh-Hans/about/team/${member.slug}`,
       },
     },
   };

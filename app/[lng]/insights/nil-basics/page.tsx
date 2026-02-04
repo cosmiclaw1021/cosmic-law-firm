@@ -5,13 +5,11 @@ import InsightClientPage from '@/components/InsightClientPage';
 const titles: Record<string, string> = {
   en: 'NIL Basics | Insides',
   ko: 'NIL 기초 | 인사이드',
-  'zh-Hans': 'NIL 基础知识 | 洞见',
 };
 
 const descriptions: Record<string, string> = {
   en: 'Quick recap of the NCAA changes, the House settlement, and the new clearinghouse.',
   ko: 'NIL 정착을 위한 NCAA 변경사항, 하원 합의, 클리어링하우스 개요.',
-  'zh-Hans': 'NCAA 变化、众议院合解案以及新清算中心的快速简报。',
 };
 
 export async function generateMetadata({ params }: { params: Promise<{ lng: string }> }): Promise<Metadata> {
@@ -32,7 +30,6 @@ export async function generateMetadata({ params }: { params: Promise<{ lng: stri
       languages: {
         'en': '/en/insights/nil-basics',
         'ko': '/ko/insights/nil-basics',
-        'zh-Hans': '/zh-Hans/insights/nil-basics',
       },
     },
   };

@@ -1,5 +1,6 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
+import Image from 'next/image';
 import ButtonLink from '@/components/ui/ButtonLink';
 import Link from '@/components/ui/Link';
 import { motion, MotionConfig } from 'framer-motion';
@@ -26,6 +27,7 @@ const MotionButtonLink = motion(ButtonLink);
 const ServicesMobile: React.FC = () => {
   const { t, i18n } = useTranslation();
   const lng = i18n.language || 'en';
+  const isKo = i18n.language?.startsWith('ko');
   const processSteps = ['step1', 'step2', 'step3'] as const;
 
   return (
@@ -34,14 +36,19 @@ const ServicesMobile: React.FC = () => {
       <SectionWithStars className="hero-header-gap w-full bg-background-light dark:bg-background-dark flex justify-center overflow-hidden" settings={{ density: 0.44 }}>
         <div className="relative z-10 w-full px-0 py-0">
           <div
-            className="flex min-h-[260px] sm:min-h-[300px] flex-col gap-3 items-center justify-start p-4 pt-6 pb-6 sm:py-8 shadow-sm relative overflow-hidden bg-cover bg-center bg-no-repeat"
-            style={{
-              backgroundImage:
-                "linear-gradient(rgba(0, 0, 0, 0.45) 0%, rgba(0, 0, 0, 0.8) 100%), url('/NanoBanana/Lawyer-contract-notes.png')",
-            }}
+            className="flex min-h-[260px] sm:min-h-[300px] flex-col gap-3 items-center justify-start p-4 pt-6 pb-6 sm:py-8 shadow-sm relative overflow-hidden bg-slate-900"
             role="img"
             aria-label={t('accessibility.alt.contractNotesDesk')}
           >
+            <Image
+              src="/NanoBanana/Background_screens_3.png"
+              alt=""
+              fill
+              priority
+              className="object-cover"
+              sizes="100vw"
+            />
+            <div className="absolute inset-0 bg-gradient-to-b from-black/45 to-black/80" />
             <div className="flex flex-col gap-3 text-center z-10">
             <div className="inline-flex items-center justify-center gap-2 px-3 py-1 rounded-full bg-white/10 text-white/90 text-[10px] font-black uppercase tracking-[0.3em] w-fit mx-auto">
               <Icon name="gavel" className="size-3.5" />
@@ -109,18 +116,10 @@ const ServicesMobile: React.FC = () => {
                   </div>
                   <div className="min-w-0">
                     <h3 className="text-[#0d141b] dark:text-white text-lg font-black leading-tight tracking-tight">
-                      {i18n.language?.startsWith('ko') 
-                        ? area.shortTitleKo 
-                        : i18n.language?.startsWith('zh') 
-                          ? area.shortTitleZh 
-                          : area.shortTitle}
+                      {isKo ? area.shortTitleKo : area.shortTitle}
                     </h3>
                     <p className="text-slate-600 dark:text-slate-400 text-xs leading-relaxed font-medium mt-1">
-                      {i18n.language?.startsWith('ko') 
-                        ? area.focusKo 
-                        : i18n.language?.startsWith('zh') 
-                          ? area.focusZh 
-                          : area.focus}
+                      {isKo ? area.focusKo : area.focus}
                     </p>
                   </div>
                 </div>

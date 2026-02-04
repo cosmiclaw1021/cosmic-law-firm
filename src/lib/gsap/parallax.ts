@@ -15,7 +15,14 @@ const getScrollRange = (section: HTMLElement, override?: number) => {
     return Math.max(1, override ?? 0);
   }
 
+  // For fixed elements, we often want a larger scroll range than just their height
+  const isFixed = window.getComputedStyle(section).position === "fixed";
   const measuredHeight = override ?? section.offsetHeight;
+  
+  if (isFixed && !override) {
+    return Math.max(measuredHeight, window.innerHeight * 1.5);
+  }
+
   const fallback = Math.max(1, measuredHeight || window.innerHeight);
   return fallback;
 };
@@ -29,16 +36,18 @@ export interface ParallaxMotionOptions {
   section: HTMLElement;
   layers: LayerAnimationDefinition[];
   scrollRange?: number;
+  trigger?: HTMLElement;
 }
 
 export const createParallaxMotion = (options: ParallaxMotionOptions) => {
-  const { section, layers, scrollRange } = options;
-  const cleanupTweens: gsap.core.Tween[] = [];
-
-  if (!section) {
+  const { section, layers, scrollRange, trigger } = options;
+  
+  if (!section || typeof window === "undefined") {
     return () => {};
   }
 
+  const cleanupTweens: gsap.core.Tween[] = [];
+  const isFixed = window.getComputedStyle(section).position === "fixed";
   const rangeResolver = () => getScrollRange(section, scrollRange);
 
   layers.forEach((layer) => {
@@ -52,9 +61,9 @@ export const createParallaxMotion = (options: ParallaxMotionOptions) => {
       x: layer.config.horizontalDrift ?? 0,
       ease: "none",
       scrollTrigger: {
-        trigger: section,
-        start: "top bottom",
-        end: () => `+=${rangeResolver()}`,
+        trigger: trigger || section,
+        start: isFixed ? "top top" : "top bottom",
+        end: () => isFixed ? "max" : `+=${rangeResolver() + window.innerHeight}`,
         scrub: true,
         invalidateOnRefresh: true,
       },
@@ -65,7 +74,9 @@ export const createParallaxMotion = (options: ParallaxMotionOptions) => {
 
   return () => {
     cleanupTweens.forEach((tween) => {
-      tween.scrollTrigger?.kill();
+      if (tween.scrollTrigger) {
+        tween.scrollTrigger.kill();
+      }
       tween.kill();
     });
   };

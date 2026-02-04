@@ -4,7 +4,7 @@ import { practiceAreas } from './lib/practice-areas';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = SITE.url;
-  const languages = ['en', 'ko', 'zh-Hans'];
+  const languages = ['en', 'ko'];
   
   const staticPaths = [
     '',

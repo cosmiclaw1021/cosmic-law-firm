@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 const QUERY = "(prefers-reduced-motion: reduce)";
 
 export const useReducedMotion = () => {
-  const [prefersReducedMotion, setPrefersReducedMotion] = useState(true);
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
 
   useEffect(() => {
     if (typeof window === "undefined") {

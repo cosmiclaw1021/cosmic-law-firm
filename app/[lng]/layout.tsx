@@ -27,7 +27,6 @@ export async function generateMetadata({ params }: { params: Promise<{ lng: stri
   const subNames: Record<string, string> = {
     en: 'Entertainment, Media & Personal Injury Law',
     ko: '엔터테인먼트, 미디어 & 개인상해법',
-    'zh-Hans': '娱乐、媒体与人身伤害法律'
   };
   const nameSub = subNames[lng] || subNames.en;
 
@@ -43,7 +42,6 @@ export async function generateMetadata({ params }: { params: Promise<{ lng: stri
       languages: {
         'en': '/en',
         'ko': '/ko',
-        'zh-Hans': '/zh-Hans',
         'x-default': '/en',
       },
     },
@@ -67,7 +65,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lng: stri
 }
 
 export async function generateStaticParams() {
-  return [{ lng: 'en' }, { lng: 'ko' }, { lng: 'zh-Hans' }];
+  return [{ lng: 'en' }, { lng: 'ko' }];
 }
 
 export default async function RootLayout({
@@ -91,9 +89,7 @@ export default async function RootLayout({
     "description":
       lng === 'ko'
         ? "크리에이터와 미디어 기업을 위한 엔터테인먼트 로펌—계약, 지식재산권, 탤런트 딜, 배급, 분쟁."
-        : lng === 'zh-Hans'
-          ? "为创作者、制片方与媒体公司提供娱乐法律服务——合同、知识产权、艺人交易、发行与争议解决。"
-          : "Entertainment law for creators, studios, and media companies—contracts, IP, talent deals, distribution, and disputes.",
+        : "Entertainment law for creators, studios, and media companies—contracts, IP, talent deals, distribution, and disputes.",
     "telephone": SITE.phoneTel ? `+1-${SITE.phoneTel}` : undefined,
     "email": SITE.email,
   };

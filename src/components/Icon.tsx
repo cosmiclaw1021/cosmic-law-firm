@@ -10,7 +10,6 @@ import {
   ChevronRight,
   MessageSquare,
   Clapperboard,
-  Copyright,
   Gavel,
   Heart,
   Info,
@@ -42,7 +41,6 @@ export type IconName =
   | "check_circle"
   | "chevron_right"
   | "close"
-  | "copyright"
   | "dark_mode"
   | "desktop_windows"
   | "east"
@@ -76,7 +74,6 @@ const ICON_MAP: Record<IconName, ComponentType<LucideProps>> = {
   check_circle: CheckCircle,
   chevron_right: ChevronRight,
   close: X,
-  copyright: Copyright,
   dark_mode: Moon,
   desktop_windows: Monitor,
   error: AlertCircle,
