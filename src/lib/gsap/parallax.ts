@@ -5,15 +5,10 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import type { RefObject } from "react";
 import type { ParallaxLayerMeta } from "@src/config/parallaxStars.config";
 
-let pluginsRegistered = false;
-
-const ensurePlugins = () => {
-  if (pluginsRegistered) {
-    return;
-  }
+// Register ScrollTrigger immediately at the top level
+if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
-  pluginsRegistered = true;
-};
+}
 
 const getScrollRange = (section: HTMLElement, override?: number) => {
   if (typeof window === "undefined") {
@@ -37,7 +32,6 @@ export interface ParallaxMotionOptions {
 }
 
 export const createParallaxMotion = (options: ParallaxMotionOptions) => {
-  ensurePlugins();
   const { section, layers, scrollRange } = options;
   const cleanupTweens: gsap.core.Tween[] = [];
 

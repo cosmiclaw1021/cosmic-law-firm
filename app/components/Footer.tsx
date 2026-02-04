@@ -12,6 +12,7 @@ import { SITE } from '../lib/site';
 import { practiceAreas } from '../lib/practice-areas';
 import Icon, { type IconName } from '@src/components/Icon';
 import { FEATURES } from '@src/config/features';
+import { useViewport } from '../hooks/useViewport';
 
 const fadeInUp = {
   initial: { opacity: 0, y: 24 },
@@ -22,6 +23,15 @@ const fadeInUp = {
 
 const Footer: React.FC = () => {
   const { t, i18n } = useTranslation();
+  const { isMobile } = useViewport();
+  
+  const currentFadeInUp = isMobile ? {
+    initial: { opacity: 1, y: 0 },
+    whileInView: { opacity: 1, y: 0 },
+    viewport: { once: true },
+    transition: { duration: 0 },
+  } : fadeInUp;
+
   const quickLinks = [
     { label: t('nav.home'), href: '/' },
     { label: t('nav.servicesLabel'), href: '/services' },
@@ -53,7 +63,7 @@ const Footer: React.FC = () => {
       settings={{ density: 0.55, scrollRange: 520 }}
     >
       <motion.footer 
-        variants={fadeInUp}
+        variants={currentFadeInUp}
         initial="initial"
         whileInView="whileInView"
         viewport={{ once: true }}
@@ -195,9 +205,21 @@ const Footer: React.FC = () => {
                 <Link to="/privacy" className="text-white/90 hover:text-secondary">{t('footer.privacyPolicy')}</Link>
                 <Link to="/terms" className="text-white/90 hover:text-secondary">{t('footer.termsOfService')}</Link>
               </nav>
-              <p className="text-center md:text-left">
-                © 2026 {t('common.companyName')}. {t('footer.rights')}
-              </p>
+              <div className="flex flex-col items-center md:items-start space-y-2">
+                <p className="text-center md:text-left">
+                  © 2026 {t('common.companyName')}. {t('footer.rights')}
+                </p>
+                <p className="text-center md:text-left text-[10px] opacity-60 normal-case tracking-normal">
+                  web services by{' '}
+                  <Link 
+                    href="https://studio.filmclusive.com" 
+                    external 
+                    className="hover:text-secondary underline underline-offset-4"
+                  >
+                    Filmclusive Studio
+                  </Link>
+                </p>
+              </div>
             </div>
             <div className="flex items-center justify-center md:justify-start">
               <div className="overflow-hidden rounded-full">

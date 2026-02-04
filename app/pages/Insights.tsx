@@ -9,6 +9,7 @@ import { SITE } from '@/lib/site';
 import { useTranslation } from 'react-i18next';
 import Icon from '@src/components/Icon';
 import SectionWithStars from '@src/components/layout/SectionWithStars';
+import { useViewport } from '../hooks/useViewport';
 
 const fadeInUp = {
   initial: { opacity: 0, y: 24 },
@@ -35,6 +36,20 @@ const topics = [
 
 const Insights: React.FC<{ lng: string }> = ({ lng }) => {
   const { t } = useTranslation();
+  const { isMobile } = useViewport();
+
+  const currentFadeInUp = isMobile ? {
+    initial: { opacity: 1, y: 0 },
+    whileInView: { opacity: 1, y: 0 },
+    viewport: { once: true },
+    transition: { duration: 0 },
+  } : fadeInUp;
+
+  const currentStagger = isMobile ? {
+    initial: {},
+    whileInView: { transition: { staggerChildren: 0 } },
+    viewport: { once: true },
+  } : staggerContainer;
   
   const seoTitles: Record<string, string> = {
     en: `Insights | ${SITE.name}`,
@@ -48,7 +63,7 @@ const Insights: React.FC<{ lng: string }> = ({ lng }) => {
 
       <SectionWithStars className="bg-slate-50 dark:bg-slate-900/50 border-b border-slate-100 dark:border-slate-800" settings={{ density: 0.44 }}>
         <motion.div 
-          variants={fadeInUp}
+          variants={currentFadeInUp}
           initial="initial"
           whileInView="whileInView"
           viewport={{ once: true }}
@@ -68,7 +83,7 @@ const Insights: React.FC<{ lng: string }> = ({ lng }) => {
 
       <SectionWithStars className="py-12 bg-white dark:bg-[#020712]" settings={{ density: 0.5 }}>
         <motion.div 
-          variants={fadeInUp}
+          variants={currentFadeInUp}
           initial="initial"
           whileInView="whileInView"
           viewport={{ once: true }}
@@ -76,7 +91,7 @@ const Insights: React.FC<{ lng: string }> = ({ lng }) => {
         >
           <div className="rounded-3xl border border-slate-100 dark:border-slate-800 bg-white/70 dark:bg-slate-900/60 overflow-hidden shadow-sm">
             <motion.ol 
-              variants={staggerContainer}
+              variants={currentStagger}
               initial="initial"
               whileInView="whileInView"
               viewport={{ once: true }}
@@ -88,7 +103,7 @@ const Insights: React.FC<{ lng: string }> = ({ lng }) => {
                 const summary = t(`insights.topics.${topic.slug}.summary`);
                 const localizedTag = t(`insights.topics.${topic.slug}.tag`);
                 return (
-                  <motion.li key={topic.slug} variants={fadeInUp}>
+                  <motion.li key={topic.slug} variants={currentFadeInUp}>
                     <Link
                       to={`/insights/${topic.slug}`}
                       className="group block px-6 py-6 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/60 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-slate-900"
@@ -116,7 +131,7 @@ const Insights: React.FC<{ lng: string }> = ({ lng }) => {
 
       <SectionWithStars className="py-12 bg-white dark:bg-[#020712]" settings={{ density: 0.47 }}>
         <motion.div 
-          variants={fadeInUp}
+          variants={currentFadeInUp}
           initial="initial"
           whileInView="whileInView"
           viewport={{ once: true }}

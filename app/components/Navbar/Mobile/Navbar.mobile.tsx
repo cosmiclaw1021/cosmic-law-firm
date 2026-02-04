@@ -118,10 +118,10 @@ const NavbarMobile: React.FC = () => {
           <motion.div
             id="mobile-menu"
             ref={menuRef}
-            initial={{ opacity: 0, height: 0 }}
+            initial={{ opacity: 1, height: 'auto' }}
             animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.25, ease: 'easeInOut' }}
+            exit={{ opacity: 1, height: 0 }}
+            transition={{ duration: 0 }}
             className="relative z-20 border-t border-white/10 bg-primary overflow-hidden"
           >
             <div className="p-6 overflow-y-auto max-h-[calc(100svh-var(--header-height))] pb-[calc(1.5rem+env(safe-area-inset-bottom))]">

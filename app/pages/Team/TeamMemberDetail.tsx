@@ -9,6 +9,7 @@ import Link from '@/components/ui/Link';
 import { TeamMember } from './team.constants';
 import Icon from '@src/components/Icon';
 import SectionWithStars from '@src/components/layout/SectionWithStars';
+import { useViewport } from '../hooks/useViewport';
 
 const fadeInUp = {
   initial: { opacity: 0, y: 24 },
@@ -30,6 +31,20 @@ type TeamMemberDetailProps = {
 
 const TeamMemberDetail: React.FC<TeamMemberDetailProps> = ({ member, lng }) => {
   const { t, i18n } = useTranslation();
+  const { isMobile } = useViewport();
+
+  const currentFadeInUp = isMobile ? {
+    initial: { opacity: 1, y: 0 },
+    whileInView: { opacity: 1, y: 0 },
+    viewport: { once: true },
+    transition: { duration: 0 },
+  } : fadeInUp;
+
+  const currentStagger = isMobile ? {
+    initial: {},
+    whileInView: { transition: { staggerChildren: 0 } },
+    viewport: { once: true },
+  } : staggerContainer;
 
   React.useEffect(() => {
     if (lng && i18n.language !== lng) {
@@ -65,7 +80,7 @@ const TeamMemberDetail: React.FC<TeamMemberDetailProps> = ({ member, lng }) => {
         
         {/* Header - Always on top */}
         <motion.div 
-          variants={fadeInUp}
+          variants={currentFadeInUp}
           initial="initial"
           whileInView="whileInView"
           viewport={{ once: true }}
@@ -89,7 +104,7 @@ const TeamMemberDetail: React.FC<TeamMemberDetailProps> = ({ member, lng }) => {
           <div className="flex flex-col lg:flex-row gap-12 lg:items-start">
             {/* Main Content Area */}
             <motion.div 
-              variants={fadeInUp}
+              variants={currentFadeInUp}
               initial="initial"
               whileInView="whileInView"
               viewport={{ once: true }}
@@ -150,7 +165,7 @@ const TeamMemberDetail: React.FC<TeamMemberDetailProps> = ({ member, lng }) => {
             <div className="w-full lg:w-80 shrink-0 space-y-8">
               {/* Desktop Image */}
               <motion.div 
-                variants={fadeInUp}
+                variants={currentFadeInUp}
                 initial="initial"
                 whileInView="whileInView"
                 viewport={{ once: true }}
@@ -167,14 +182,14 @@ const TeamMemberDetail: React.FC<TeamMemberDetailProps> = ({ member, lng }) => {
 
               {/* Structured Info Cards */}
               <motion.div 
-                variants={staggerContainer}
+                variants={currentStagger}
                 initial="initial"
                 whileInView="whileInView"
                 viewport={{ once: true }}
                 className="grid gap-6 sm:grid-cols-2 lg:grid-cols-1"
               >
                 {/* Education */}
-                <motion.div variants={fadeInUp} className="rounded-3xl border border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-slate-900/40 p-8 backdrop-blur-sm">
+                <motion.div variants={currentFadeInUp} className="rounded-3xl border border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-slate-900/40 p-8 backdrop-blur-sm">
                   <p className="text-[0.65rem] font-black uppercase tracking-[0.3em] text-slate-500 dark:text-slate-400 mb-4">
                     {t('team.detail.educationHeading')}
                   </p>
@@ -190,7 +205,7 @@ const TeamMemberDetail: React.FC<TeamMemberDetailProps> = ({ member, lng }) => {
 
                 {/* Practice Areas */}
                 {practiceAreas.length > 0 && (
-                  <motion.div variants={fadeInUp} className="rounded-3xl border border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-slate-900/40 p-8 backdrop-blur-sm">
+                  <motion.div variants={currentFadeInUp} className="rounded-3xl border border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-slate-900/40 p-8 backdrop-blur-sm">
                     <p className="text-[0.65rem] font-black uppercase tracking-[0.3em] text-slate-500 dark:text-slate-400 mb-4">
                       {t('team.detail.expertiseHeading')}
                     </p>
@@ -207,7 +222,7 @@ const TeamMemberDetail: React.FC<TeamMemberDetailProps> = ({ member, lng }) => {
 
                 {/* Memberships */}
                 {memberships.length > 0 && (
-                  <motion.div variants={fadeInUp} className="rounded-3xl border border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-slate-900/40 p-8 backdrop-blur-sm">
+                  <motion.div variants={currentFadeInUp} className="rounded-3xl border border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-slate-900/40 p-8 backdrop-blur-sm">
                     <p className="text-[0.65rem] font-black uppercase tracking-[0.3em] text-slate-500 dark:text-slate-400 mb-4">
                       {t('team.detail.affiliationsHeading')}
                     </p>
@@ -224,7 +239,7 @@ const TeamMemberDetail: React.FC<TeamMemberDetailProps> = ({ member, lng }) => {
 
                 {/* Creative Focus */}
                 {creative && (
-                  <motion.div variants={fadeInUp} className="rounded-3xl border border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-slate-900/40 p-8 backdrop-blur-sm sm:col-span-2 lg:col-span-1">
+                  <motion.div variants={currentFadeInUp} className="rounded-3xl border border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-slate-900/40 p-8 backdrop-blur-sm sm:col-span-2 lg:col-span-1">
                     <p className="text-[0.65rem] font-black uppercase tracking-[0.3em] text-slate-500 dark:text-slate-400 mb-4">
                       {t('team.detail.creativeFocusHeading')}
                     </p>

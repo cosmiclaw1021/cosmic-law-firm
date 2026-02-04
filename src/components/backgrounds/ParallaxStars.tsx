@@ -5,7 +5,6 @@ import type { RefObject } from "react";
 import type { SectionStarsSettings, DepthLayer } from "@src/config/parallaxStars.config";
 import { parallaxStarsConfig, DEFAULT_SECTION_STARS_SETTINGS, LAYER_ORDER } from "@src/config/parallaxStars.config";
 import { createParallaxMotion } from "@src/lib/gsap/parallax";
-import { useMinWidth } from "@src/hooks/useMediaQuery";
 
 const STAR_SHAPE_ID = "parallax-star-point";
 
@@ -36,8 +35,7 @@ const ParallaxStars = ({ sectionRef, settings, reducedMotion, className = "" }: 
   const midLayerRef = useRef<HTMLDivElement>(null);
   const nearLayerRef = useRef<HTMLDivElement>(null);
 
-  const isWideViewport = useMinWidth(768);
-  const shouldAnimate = isWideViewport && !reducedMotion;
+  const shouldAnimate = !reducedMotion;
 
   const density = clampDensity(settings.density);
   const enabledLayers = useMemo(() => {
@@ -56,39 +54,46 @@ const ParallaxStars = ({ sectionRef, settings, reducedMotion, className = "" }: 
   }, [enabledLayers, density]);
 
   useEffect(() => {
-    if (!shouldAnimate) {
-      return;
-    }
-    if (!sectionRef.current) {
+    if (!shouldAnimate || !sectionRef.current || layerStars.length === 0) {
       return;
     }
 
-    const motionLayers = layerStars
-      .map((layer) => {
-        const ref =
-          layer.layer === "far"
-            ? farLayerRef
-            : layer.layer === "mid"
-            ? midLayerRef
-            : nearLayerRef;
-        return {
-          ref,
-          config: parallaxStarsConfig.layers[layer.layer],
-        };
-      })
-      .filter((entry) => entry.ref.current !== null);
+    let cleanupFn: (() => void) | undefined;
 
-    if (motionLayers.length === 0) {
-      return;
-    }
+    // Use a small timeout to ensure refs are fully populated and layout is stable
+    const timer = setTimeout(() => {
+      const motionLayers = layerStars
+        .map((layer) => {
+          const ref =
+            layer.layer === "far"
+              ? farLayerRef
+              : layer.layer === "mid"
+              ? midLayerRef
+              : nearLayerRef;
+          return {
+            ref,
+            config: parallaxStarsConfig.layers[layer.layer],
+          };
+        })
+        .filter((entry) => entry.ref.current !== null);
 
-    const cleanup = createParallaxMotion({
-      section: sectionRef.current,
-      layers: motionLayers,
-      scrollRange: settings.scrollRange,
-    });
+      if (motionLayers.length === 0) {
+        return;
+      }
 
-    return cleanup;
+      cleanupFn = createParallaxMotion({
+        section: sectionRef.current!,
+        layers: motionLayers,
+        scrollRange: settings.scrollRange,
+      });
+    }, 50);
+
+    return () => {
+      clearTimeout(timer);
+      if (cleanupFn) {
+        cleanupFn();
+      }
+    };
   }, [shouldAnimate, sectionRef, layerStars, settings.scrollRange]);
 
   const containerStyle = {

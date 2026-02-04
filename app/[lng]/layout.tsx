@@ -127,7 +127,7 @@ export default async function RootLayout({
         <RegionLayout>
           <I18nProvider lng={lng}>
             <div className="relative flex flex-col min-h-screen overflow-x-hidden">
-              <ClientLayout>
+              <ClientLayout initialIsMobile={initialIsMobile}>
                 <SkipToContent />
                 <Navbar key={`nav-${lng}`} initialIsMobile={initialIsMobile} />
                 <main 

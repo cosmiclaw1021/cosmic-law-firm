@@ -6,6 +6,7 @@ import Link from '@/components/ui/Link';
 import { useTranslation } from 'react-i18next';
 import Icon from '@src/components/Icon';
 import ProcessedText from './ProcessedText';
+import { useViewport } from '../hooks/useViewport';
 
 const fadeInUp = {
   initial: { opacity: 0, y: 16 },
@@ -40,6 +41,20 @@ export default function InsightClientPage({
   sections
 }: InsightClientPageProps) {
   const { t, i18n } = useTranslation();
+  const { isMobile } = useViewport();
+
+  const currentFadeInUp = isMobile ? {
+    initial: { opacity: 1, y: 0 },
+    whileInView: { opacity: 1, y: 0 },
+    viewport: { once: true, amount: 0.05 },
+    transition: { duration: 0 },
+  } : fadeInUp;
+
+  const currentStagger = isMobile ? {
+    initial: {},
+    whileInView: { transition: { staggerChildren: 0 } },
+    viewport: { once: true, amount: 0.05 },
+  } : staggerContainer;
 
   React.useEffect(() => {
     if (lng && i18n.language !== lng) {
@@ -55,9 +70,9 @@ export default function InsightClientPage({
     <div className="py-4 lg:py-6 bg-slate-50 dark:bg-slate-900 min-h-viewport text-slate-900 dark:text-white">
       <div className="max-w-5xl mx-auto px-6 sm:px-8 space-y-8">
         <motion.div 
-          initial={{ opacity: 0, y: 16 }}
+          initial={isMobile ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
+          transition={isMobile ? { duration: 0 } : { duration: 0.5 }}
           className="space-y-8"
         >
           <div className="text-sm uppercase tracking-[0.3em] text-primary dark:text-primary-light">
@@ -81,7 +96,7 @@ export default function InsightClientPage({
           sections.map((section, sIdx) => (
             <motion.section 
               key={sIdx} 
-              variants={fadeInUp}
+              variants={currentFadeInUp}
               initial="initial"
               whileInView="whileInView"
               viewport={{ once: true }}
@@ -89,9 +104,9 @@ export default function InsightClientPage({
             >
               <h3 className="text-xl font-black">{t(section.titleKey)}</h3>
               {section.type === 'cards' ? (
-                <motion.div variants={staggerContainer} className="space-y-5">
+                <motion.div variants={currentStagger} className="space-y-5">
                   {(t(section.itemsKey, { returnObjects: true, defaultValue: [] }) as Array<{ title: string; body: string }>).map((item, idx) => (
-                    <motion.article key={idx} variants={fadeInUp} className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/40 p-6 shadow-sm">
+                    <motion.article key={idx} variants={currentFadeInUp} className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/40 p-6 shadow-sm">
                       <h2 className="text-xl font-black">{item.title}</h2>
                       <div className="mt-2 text-sm text-slate-600 dark:text-slate-300 leading-relaxed font-medium">
                         <ProcessedText text={item.body} />
@@ -116,14 +131,14 @@ export default function InsightClientPage({
         ) : (
           <>
             <motion.section 
-              variants={staggerContainer}
+              variants={currentStagger}
               initial="initial"
               whileInView="whileInView"
               viewport={{ once: true }}
               className="space-y-5"
             >
               {items.map((item, idx) => (
-                <motion.article key={idx} variants={fadeInUp} className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/40 p-6 shadow-sm">
+                <motion.article key={idx} variants={currentFadeInUp} className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/40 p-6 shadow-sm">
                   <h2 className="text-xl font-black">{item.title}</h2>
                   <div className="mt-2 text-sm text-slate-600 dark:text-slate-300 leading-relaxed font-medium">
                     <ProcessedText text={item.body} />
@@ -134,7 +149,7 @@ export default function InsightClientPage({
 
             {actionItems.length > 0 && (
               <motion.section 
-                variants={fadeInUp}
+                variants={currentFadeInUp}
                 initial="initial"
                 whileInView="whileInView"
                 viewport={{ once: true }}
@@ -157,7 +172,7 @@ export default function InsightClientPage({
         )}
 
         <motion.section 
-          variants={fadeInUp}
+          variants={currentFadeInUp}
           initial="initial"
           whileInView="whileInView"
           viewport={{ once: true }}

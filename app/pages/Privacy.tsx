@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import SEO from '@/components/SEO';
 import { SITE } from '@/lib/site';
 import { useTranslation } from 'react-i18next';
+import { useViewport } from '../hooks/useViewport';
 
 const fadeInUp = {
   initial: { opacity: 0, y: 24 },
@@ -15,6 +16,14 @@ const fadeInUp = {
 
 const Privacy: React.FC = () => {
   const { t } = useTranslation();
+  const { isMobile } = useViewport();
+
+  const currentFadeInUp = isMobile ? {
+    initial: { opacity: 1, y: 0 },
+    whileInView: { opacity: 1, y: 0 },
+    viewport: { once: true },
+    transition: { duration: 0 },
+  } : fadeInUp;
 
   return (
     <>
@@ -23,7 +32,7 @@ const Privacy: React.FC = () => {
         description={t('seo.privacy.description', { siteName: SITE.name })}
       />
       <motion.div 
-        variants={fadeInUp}
+        variants={currentFadeInUp}
         initial="initial"
         whileInView="whileInView"
         viewport={{ once: true }}

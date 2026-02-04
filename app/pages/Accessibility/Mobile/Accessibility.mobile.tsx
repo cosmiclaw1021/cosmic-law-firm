@@ -6,11 +6,10 @@ import { SITE } from '../../../lib/site';
 import { FEATURES } from '@src/config/features';
 
 const fadeInUp = {
-  // iOS Safari can flicker when animating translated text during scroll.
-  initial: { opacity: 0 },
+  initial: { opacity: 1 },
   whileInView: { opacity: 1 },
   viewport: { once: true },
-  transition: { duration: 0.5 },
+  transition: { duration: 0 },
 };
 
 const AccessibilityMobile: React.FC = () => {

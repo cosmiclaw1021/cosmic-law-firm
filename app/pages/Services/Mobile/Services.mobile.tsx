@@ -9,16 +9,15 @@ import Icon from '@src/components/Icon';
 import SectionWithStars from '@src/components/layout/SectionWithStars';
 
 const fadeInUp = {
-  // On iOS Safari, scroll + transformed text (translateY) can flicker. Prefer opacity-only on mobile.
-  initial: { opacity: 0 },
+  initial: { opacity: 1 },
   whileInView: { opacity: 1 },
   viewport: { once: true, amount: 0.05 },
-  transition: { duration: 0.5 },
+  transition: { duration: 0 },
 };
 
 const staggerContainer = {
   initial: {},
-  whileInView: { transition: { staggerChildren: 0.06 } },
+  whileInView: { transition: { staggerChildren: 0 } },
   viewport: { once: true, amount: 0.05 },
 };
 
@@ -49,26 +48,26 @@ const ServicesMobile: React.FC = () => {
               {t('servicesPage.hero.badge')}
             </div>
             <motion.h1
-              initial={{ opacity: 0 }}
+              initial={{ opacity: 1 }}
               animate={{ opacity: 1 }}
-              transition={{ duration: 0.7 }}
+              transition={{ duration: 0 }}
               className="text-white text-3xl font-black leading-tight tracking-tight drop-shadow-md uppercase"
             >
               {t('servicesPage.hero.title')}
             </motion.h1>
             <motion.p
-                initial={{ opacity: 0 }}
+                initial={{ opacity: 1 }}
                 animate={{ opacity: 1 }}
-                transition={{ delay: 0.15, duration: 0.7 }}
+                transition={{ duration: 0 }}
                 className="text-slate-100 text-sm font-medium leading-relaxed mt-1 drop-shadow-sm"
               >
                 {t('servicesPage.hero.subtitle')}
               </motion.p>
             </div>
               <MotionButtonLink
-                initial={{ opacity: 0, scale: 0.97 }}
+                initial={{ opacity: 1, scale: 1 }}
                 animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 0.35, duration: 0.5 }}
+                transition={{ duration: 0 }}
                 href="#practice-areas"
                 tone="light"
                 className="z-10 flex w-full cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-6 bg-secondary hover:bg-secondary/90 transition-colors text-slate-900 text-base font-bold shadow-lg uppercase tracking-widest focus:ring-2 focus:ring-secondary/40 focus:ring-offset-2 focus:ring-offset-black"

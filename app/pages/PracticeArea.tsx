@@ -9,6 +9,7 @@ import { getPracticeAreaBySlug } from '@/lib/practice-areas';
 import { SITE } from '@/lib/site';
 import Icon from '@src/components/Icon';
 import SectionWithStars from '@src/components/layout/SectionWithStars';
+import { useViewport } from '../hooks/useViewport';
 
 const fadeInUp = {
   initial: { opacity: 0, y: 16 },
@@ -30,6 +31,20 @@ type PracticeAreaPageProps = {
 
 const PracticeAreaPage: React.FC<PracticeAreaPageProps> = ({ lng, slug }) => {
   const { t, i18n } = useTranslation();
+  const { isMobile } = useViewport();
+
+  const currentFadeInUp = isMobile ? {
+    initial: { opacity: 1, y: 0 },
+    whileInView: { opacity: 1, y: 0 },
+    viewport: { once: true, amount: 0.05 },
+    transition: { duration: 0 },
+  } : fadeInUp;
+
+  const currentStagger = isMobile ? {
+    initial: {},
+    whileInView: { transition: { staggerChildren: 0 } },
+    viewport: { once: true, amount: 0.05 },
+  } : staggerContainer;
 
   useEffect(() => {
     if (lng && i18n.language !== lng) {
@@ -44,7 +59,7 @@ const PracticeAreaPage: React.FC<PracticeAreaPageProps> = ({ lng, slug }) => {
       <SectionWithStars className="max-w-[960px] mx-auto px-6 sm:px-8 py-16" settings={{ density: 0.44 }}>
         <SEO title={t('seo.practiceAreaNotFound.title')} description={t('seo.practiceAreaNotFound.description')} />
         <motion.div 
-          variants={fadeInUp}
+          variants={currentFadeInUp}
           initial="initial"
           whileInView="whileInView"
           viewport={{ once: true }}
@@ -87,9 +102,9 @@ const PracticeAreaPage: React.FC<PracticeAreaPageProps> = ({ lng, slug }) => {
       <SectionWithStars className="hero-header-gap w-full bg-background-light dark:bg-background-dark border-b border-secondary/40 dark:border-white/10" settings={{ density: 0.47 }}>
         <div className="relative z-10 max-w-[1280px] mx-auto px-6 sm:px-8 lg:px-10 py-12">
           <motion.div 
-            initial={{ opacity: 0, y: 24 }}
+            initial={isMobile ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+            transition={isMobile ? { duration: 0 } : { duration: 0.6 }}
             className="flex flex-col gap-4 max-w-3xl"
           >
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-slate-900 dark:text-primary-light text-xs font-black uppercase tracking-widest w-fit">
@@ -128,7 +143,7 @@ const PracticeAreaPage: React.FC<PracticeAreaPageProps> = ({ lng, slug }) => {
         <div className="relative z-10 max-w-[1280px] mx-auto px-6 sm:px-8 lg:px-10 py-12">
           {overview?.length ? (
             <motion.div 
-              variants={fadeInUp}
+              variants={currentFadeInUp}
               initial="initial"
               whileInView="whileInView"
               viewport={{ once: true, amount: 0.05 }}
@@ -146,7 +161,7 @@ const PracticeAreaPage: React.FC<PracticeAreaPageProps> = ({ lng, slug }) => {
           ) : null}
 
           <motion.div 
-            variants={fadeInUp}
+            variants={currentFadeInUp}
             initial="initial"
             whileInView="whileInView"
             viewport={{ once: true, amount: 0.05 }}
@@ -161,7 +176,7 @@ const PracticeAreaPage: React.FC<PracticeAreaPageProps> = ({ lng, slug }) => {
           </motion.div>
 
           <motion.div 
-            variants={staggerContainer}
+            variants={currentStagger}
             initial="initial"
             whileInView="whileInView"
             viewport={{ once: true, amount: 0.05 }}
@@ -170,7 +185,7 @@ const PracticeAreaPage: React.FC<PracticeAreaPageProps> = ({ lng, slug }) => {
             {services.map((service) => (
               <motion.div
                 key={service}
-                variants={fadeInUp}
+                variants={currentFadeInUp}
                 className="flex gap-3 p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800"
               >
                 <Icon name="check_circle" className="text-slate-900 dark:text-primary-light size-5 shrink-0" />
@@ -182,7 +197,7 @@ const PracticeAreaPage: React.FC<PracticeAreaPageProps> = ({ lng, slug }) => {
           </motion.div>
 
           <motion.div 
-            variants={fadeInUp}
+            variants={currentFadeInUp}
             initial="initial"
             whileInView="whileInView"
             viewport={{ once: true, amount: 0.05 }}

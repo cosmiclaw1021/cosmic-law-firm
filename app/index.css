@@ -94,6 +94,17 @@
     padding-top: calc(var(--header-height) + env(safe-area-inset-top) + 2rem);
   }
 
+  /* Global Disable Animations Utility (e.g., for mobile flickering issues) */
+  .disable-animations,
+  .disable-animations *,
+  .disable-animations ::before,
+  .disable-animations ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
   /* Reduced Motion */
   @media (prefers-reduced-motion: reduce) {
     *, ::before, ::after {

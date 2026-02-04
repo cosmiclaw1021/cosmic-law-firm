@@ -7,16 +7,15 @@ import Icon from '@src/components/Icon';
 import SectionWithStars from '@src/components/layout/SectionWithStars';
 
 const fadeInUp = {
-  // iOS Safari can flicker when animating translated text during scroll.
-  initial: { opacity: 0 },
+  initial: { opacity: 1 },
   whileInView: { opacity: 1 },
   viewport: { once: true },
-  transition: { duration: 0.5 },
+  transition: { duration: 0 },
 };
 
 const staggerContainer = {
   initial: {},
-  whileInView: { transition: { staggerChildren: 0.05 } },
+  whileInView: { transition: { staggerChildren: 0 } },
   viewport: { once: true },
 };
 
@@ -28,9 +27,9 @@ const ReviewsMobile: React.FC = () => {
       <>
       <SectionWithStars className="hero-header-gap w-full bg-white dark:bg-slate-900 py-10 px-4 border-b border-slate-100 dark:border-slate-800 overflow-hidden" settings={{ density: 0.44 }}>
         <motion.div
-          initial={{ opacity: 0 }}
+          initial={{ opacity: 1 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0 }}
           className="relative z-10 max-w-[960px] mx-auto text-center flex flex-col gap-3"
         >
           <div className="inline-flex items-center justify-center gap-2 px-3 py-1 rounded-full bg-yellow-50 dark:bg-yellow-900/20 w-fit mx-auto">

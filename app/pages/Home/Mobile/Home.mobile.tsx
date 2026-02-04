@@ -11,11 +11,10 @@ import SectionWithStars from '@src/components/layout/SectionWithStars';
 import Icon from '@src/components/Icon';
 
 const fadeInUp = {
-  // On iOS Safari, scroll + transformed text (translateY) can flicker. Prefer opacity-only on mobile.
-  initial: { opacity: 0 },
+  initial: { opacity: 1 },
   whileInView: { opacity: 1 },
   viewport: { once: true },
-  transition: { duration: 0.5 },
+  transition: { duration: 0 },
 };
 
 const HERO_BACKGROUND = '/NanoBanana/music-producer-lawyer-studio.png';
@@ -57,26 +56,26 @@ const HomeMobile: React.FC = () => {
             </span>
           </div>
           <motion.h1
-            initial={{ opacity: 0 }}
+            initial={{ opacity: 1 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 0.15, duration: 0.7 }}
+            transition={{ duration: 0 }}
             className="text-4xl font-black tracking-tight text-white leading-[1.05] mb-5 uppercase"
           >
             {t('home.hero.title')}
           </motion.h1>
           <motion.p
-            initial={{ opacity: 0 }}
+            initial={{ opacity: 1 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 0.3, duration: 0.7 }}
+            transition={{ duration: 0 }}
             className="text-lg text-white/90 mb-8 leading-relaxed font-medium"
           >
             {t('home.hero.description')}
           </motion.p>
 
           <motion.div
-            initial={{ opacity: 0 }}
+            initial={{ opacity: 1 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 0.45, duration: 0.7 }}
+            transition={{ duration: 0 }}
             className="flex flex-col gap-4"
           >
             <ButtonLink
