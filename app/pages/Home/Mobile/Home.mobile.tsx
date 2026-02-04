@@ -97,7 +97,13 @@ const HomeMobile: React.FC = () => {
 
       <SectionWithStars className="py-12 bg-background-light dark:bg-background-dark" aria-labelledby="services-heading" settings={{ density: 0.4 }}>
         <div className="relative z-10 max-w-[1280px] mx-auto px-6">
-          <motion.div variants={fadeInUp} initial="initial" whileInView="whileInView" className="max-w-2xl">
+          <motion.div
+            variants={fadeInUp}
+            initial="initial"
+            whileInView="whileInView"
+            viewport={{ once: true, amount: 0.12 }}
+            className="max-w-2xl"
+          >
             <span className="text-[0.65rem] font-black tracking-[0.45em] uppercase text-slate-500 dark:text-slate-400">
               {t('home.hero.badge')}
             </span>

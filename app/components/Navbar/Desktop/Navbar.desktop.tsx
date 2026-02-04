@@ -192,7 +192,7 @@ const NavbarDesktop: React.FC = () => {
             </nav>
 
             <div className="flex items-center gap-4 shrink-0">
-              <LanguageToggle />
+              <LanguageToggle className="w-fit" />
               <Link
                 to={`/${lng}/contact`}
             className="flex items-center justify-center h-11 px-6 rounded-xl bg-secondary hover:bg-secondary/90 text-primary text-sm font-bold shadow-md hover:shadow-lg transition-all hover:-translate-y-0.5 active:translate-y-0 focus:ring-2 focus:ring-secondary/40 focus:ring-offset-2 focus:ring-offset-primary"

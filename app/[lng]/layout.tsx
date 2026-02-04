@@ -10,6 +10,7 @@ import I18nProvider from '../components/I18nProvider';
 import { SITE } from '../lib/site';
 import RegionLayout from '@src/components/Layout';
 import { geistSans, geistMono } from '../fonts';
+import { getInitialIsMobileFromHeaders } from '../lib/get-initial-is-mobile';
 
 export const viewport: Viewport = {
   width: 'device-width',
@@ -77,6 +78,7 @@ export default async function RootLayout({
   params: Promise<{ lng: string }>;
 }) {
   const { lng } = await params;
+  const initialIsMobile = await getInitialIsMobileFromHeaders();
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -125,7 +127,7 @@ export default async function RootLayout({
             <div className="relative flex flex-col min-h-screen overflow-x-hidden">
               <ClientLayout>
                 <SkipToContent />
-                <Navbar key={`nav-${lng}`} />
+                <Navbar key={`nav-${lng}`} initialIsMobile={initialIsMobile} />
                 <main 
                   id="main-content" 
                   tabIndex={-1} 

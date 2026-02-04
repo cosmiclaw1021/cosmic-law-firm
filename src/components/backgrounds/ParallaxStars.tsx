@@ -5,6 +5,7 @@ import type { RefObject } from "react";
 import type { SectionStarsSettings, DepthLayer } from "@src/config/parallaxStars.config";
 import { parallaxStarsConfig, DEFAULT_SECTION_STARS_SETTINGS, LAYER_ORDER } from "@src/config/parallaxStars.config";
 import { createParallaxMotion } from "@src/lib/gsap/parallax";
+import { useMinWidth } from "@src/hooks/useMediaQuery";
 
 const STAR_SHAPE_ID = "parallax-star-point";
 
@@ -35,6 +36,9 @@ const ParallaxStars = ({ sectionRef, settings, reducedMotion, className = "" }: 
   const midLayerRef = useRef<HTMLDivElement>(null);
   const nearLayerRef = useRef<HTMLDivElement>(null);
 
+  const isWideViewport = useMinWidth(768);
+  const shouldAnimate = isWideViewport && !reducedMotion;
+
   const density = clampDensity(settings.density);
   const enabledLayers = useMemo(() => {
     const preferred = settings.enabledLayers ?? DEFAULT_SECTION_STARS_SETTINGS.enabledLayers ?? LAYER_ORDER;
@@ -52,7 +56,7 @@ const ParallaxStars = ({ sectionRef, settings, reducedMotion, className = "" }: 
   }, [enabledLayers, density]);
 
   useEffect(() => {
-    if (reducedMotion) {
+    if (!shouldAnimate) {
       return;
     }
     if (!sectionRef.current) {
@@ -85,7 +89,7 @@ const ParallaxStars = ({ sectionRef, settings, reducedMotion, className = "" }: 
     });
 
     return cleanup;
-  }, [reducedMotion, sectionRef, layerStars, settings.scrollRange]);
+  }, [shouldAnimate, sectionRef, layerStars, settings.scrollRange]);
 
   const containerStyle = {
     top: toPx(settings.verticalOffset?.top) ?? "0px",

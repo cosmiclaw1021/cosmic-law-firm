@@ -11,7 +11,7 @@ import { useNavbarLogic } from '../Shared/navbar.hooks';
 import { useNavbarConstants } from '../Shared/navbar.constants';
 import { SITE } from '@/lib/site';
 import { AnimatePresence, motion } from 'framer-motion';
-import { useRouter } from 'next/navigation';
+import { useRouter, usePathname } from 'next/navigation';
 import { useFocusTrap } from '@/lib/accessibility/useFocusManagement';
 import Icon from '@src/components/Icon';
 
@@ -26,6 +26,11 @@ const NavbarMobile: React.FC = () => {
   const router = useRouter();
 
   const menuRef = useFocusTrap(isMobileMenuOpen);
+  const pathname = usePathname();
+
+  useEffect(() => {
+    closeMenu();
+  }, [pathname]);
 
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
@@ -90,18 +95,17 @@ const NavbarMobile: React.FC = () => {
               </div>
             </Link>
 
-            <div className="flex items-center gap-2">
-              <LanguageToggle variant="dropdown" />
-            <button
-              className="p-2 text-white/90 hover:text-white focus:ring-2 focus:ring-secondary/40 rounded-lg"
-              onClick={toggleMenu}
-              aria-expanded={isMobileMenuOpen}
-              aria-controls="mobile-menu"
-              aria-label={isMobileMenuOpen ? t('nav.menuClose') : t('nav.menuOpen')}
-            >
-              <Icon name={isMobileMenuOpen ? 'close' : 'menu'} className="size-7" />
-            </button>
-          </div>
+            <div className="flex items-center">
+              <button
+                className="p-2 text-white/90 hover:text-white focus:ring-2 focus:ring-secondary/40 rounded-lg"
+                onClick={toggleMenu}
+                aria-expanded={isMobileMenuOpen}
+                aria-controls="mobile-menu"
+                aria-label={isMobileMenuOpen ? t('nav.menuClose') : t('nav.menuOpen')}
+              >
+                <Icon name={isMobileMenuOpen ? 'close' : 'menu'} className="size-7" />
+              </button>
+            </div>
         </div>
       </div>
       </div>
@@ -115,10 +119,14 @@ const NavbarMobile: React.FC = () => {
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.25, ease: 'easeInOut' }}
-            className="border-t border-white/10 bg-primary overflow-hidden"
+            className="relative z-20 border-t border-white/10 bg-primary overflow-hidden"
           >
-            <div className="p-6 overflow-y-auto max-h-[calc(100dvh-var(--nav-height-mobile))] pb-[calc(1.5rem+env(safe-area-inset-bottom))]">
+            <div className="p-6 overflow-y-auto max-h-[calc(100dvh-var(--header-height))] pb-[calc(1.5rem+env(safe-area-inset-bottom))]">
               <nav className="flex flex-col space-y-6" aria-label={t('accessibility.aria.mobileNavigation')}>
+                <div className="pb-2">
+                  <LanguageToggle variant="segmented" className="w-full" />
+                </div>
+
                 <Link
                   to={`/${lng}/`}
                   onClick={closeMenu}
@@ -141,7 +149,6 @@ const NavbarMobile: React.FC = () => {
                       <Link
                         key={link.path}
                         to={link.path}
-                        onClick={closeMenu}
                         className={getMobileNavButtonClass(link.path, 'sm')}
                       >
                         {link.name}
@@ -157,7 +164,6 @@ const NavbarMobile: React.FC = () => {
                       <Link
                         key={link.path}
                         to={link.path}
-                        onClick={closeMenu}
                         className={getMobileNavButtonClass(link.path, 'sm')}
                       >
                         {link.name}

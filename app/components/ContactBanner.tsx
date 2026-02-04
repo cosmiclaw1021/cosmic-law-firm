@@ -37,7 +37,7 @@ const ContactBanner: React.FC<ContactBannerProps> = ({ lng }) => {
             <span>{SITE.email}</span>
           </Link>
           <div className="hidden sm:block h-3 w-px bg-white/10" aria-hidden="true" />
-          <LanguageToggle />
+          <LanguageToggle className="w-fit" />
         </div>
       </div>
     </div>

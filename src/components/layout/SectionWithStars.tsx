@@ -34,9 +34,11 @@ const SectionWithStars = ({ settings, className = "", overflow = "hidden", child
   }, [settings]);
 
   const overflowClass = overflow === "visible" ? "overflow-visible" : "overflow-hidden";
+  const isPositioned = /relative|absolute|fixed|sticky/.test(className);
+  const positionClass = isPositioned ? "" : "relative";
 
   return (
-    <section ref={sectionRef} className={`relative ${overflowClass} ${className}`} {...rest}>
+    <section ref={sectionRef} className={`${positionClass} ${overflowClass} ${className}`} {...rest}>
       <ParallaxStars sectionRef={sectionRef} settings={mergedSettings} reducedMotion={prefersReducedMotion} />
       {children}
     </section>
