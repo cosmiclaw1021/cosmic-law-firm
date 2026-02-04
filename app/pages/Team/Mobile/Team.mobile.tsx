@@ -39,7 +39,7 @@ const TeamMobile: React.FC = () => {
               key={member.id}
               href={`/about/team/${member.slug}`}
               className="block focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
-              aria-label={`${member.name} profile`}
+              aria-label={t('team.links.profileAria', { name: member.name })}
             >
               <article className="flex flex-row flex-wrap items-start gap-4 rounded-3xl border border-slate-200 dark:border-slate-800 bg-white/70 dark:bg-slate-900/60 p-4 sm:p-6 shadow-sm transition-shadow hover:shadow-lg">
                 <div className="flex-1 min-w-0 space-y-2">

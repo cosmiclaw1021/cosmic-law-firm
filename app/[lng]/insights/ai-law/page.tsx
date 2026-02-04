@@ -2,15 +2,18 @@ import type { Metadata } from 'next';
 import Link from '@/components/ui/Link';
 import { SITE } from '@/lib/site';
 import Icon from '@src/components/Icon';
+import ProcessedText from '@/components/ProcessedText';
 
 const titles: Record<string, string> = {
   en: 'What’s in AI Law | Insides',
   ko: 'AI 법률 현황 | 인사이드',
+  'zh-Hans': 'AI 监管 | 洞见',
 };
 
 const descriptions: Record<string, string> = {
   en: 'Federal executive orders, state bills, and the EU AI Act that are shaping the legal landscape.',
   ko: '연방 행정명령, 주 법안, EU AI 법안이 법적 환경을 어떻게 구성하는지 정리.',
+  'zh-Hans': '联邦行政命令、州法案和欧盟 AI 法案正在重塑法律格局。',
 };
 
 export async function generateMetadata({ params }: { params: Promise<{ lng: string }> }): Promise<Metadata> {
@@ -25,6 +28,14 @@ export async function generateMetadata({ params }: { params: Promise<{ lng: stri
       title,
       description,
       url: `${SITE.url}/${lng}/insights/ai-law`,
+    },
+    alternates: {
+      canonical: `/${lng}/insights/ai-law`,
+      languages: {
+        'en': '/en/insights/ai-law',
+        'ko': '/ko/insights/ai-law',
+        'zh-Hans': '/zh-Hans/insights/ai-law',
+      },
     },
   };
 }
@@ -55,6 +66,8 @@ const timeline = [
 const actionItems = [
   'Create an AI policy map that documents which federal/state laws apply to each deliverable, so you can coordinate compliance and reduce contradictory notice obligations. citeturn2search0turn3search58',
   'Update talent releases to anticipate wider jurisdictional requirements (e.g., California biometrics law, Texas protection for children). citeturn3search58turn3search57',
+  'Include a procedural review section that requires the vendor to document datasets, human oversight, and mitigation plans. citeturn5news48',
+  'Draft a fallback clause requiring the vendor to pull down any unauthorized synthetic likeness upon notice. citeturn3news49',
   'Track EU and federal reporting duties so you can file systematic risk assessments before deployment. citeturn2search1turn2search4',
 ];
 

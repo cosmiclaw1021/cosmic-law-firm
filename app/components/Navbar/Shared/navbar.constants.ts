@@ -6,7 +6,11 @@ export const useNavbarConstants = () => {
   const lng = i18n.language || 'en';
 
   const practiceAreaLinks = practiceAreas.map((area) => ({
-    name: area.title,
+    name: i18n.language?.startsWith('ko') 
+      ? area.titleKo 
+      : i18n.language?.startsWith('zh') 
+        ? area.titleZh 
+        : area.title,
     path: `/${lng}/services/${area.slug}`,
   }));
 

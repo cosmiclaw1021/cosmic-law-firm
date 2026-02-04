@@ -20,7 +20,6 @@ const Footer: React.FC = () => {
     { label: t('nav.insights'), href: '/insights' },
     { label: t('nav.about'), href: '/about' },
     { label: t('nav.ourApproach'), href: '/message' },
-    { label: t('nav.testimonials'), href: '/reviews' },
     { label: t('nav.contact'), href: '/contact' },
   ];
 
@@ -41,16 +40,17 @@ const Footer: React.FC = () => {
 
   return (
     <SectionWithStars
-      className="bg-primary text-white border-t border-white/10 pt-12 pb-10 w-full transition-colors duration-300 pb-safe"
-      aria-label="Site footer"
+      className="bg-primary text-white border-t border-white/10 pt-16 pb-40 w-full transition-colors duration-300 pb-safe"
+      aria-label={t('accessibility.aria.siteFooter')}
       settings={{ density: 0.55, scrollRange: 520 }}
     >
-      <footer className="relative z-20 w-full">
+      <footer className="relative z-20 w-full mb-12">
         <div className="max-w-[1280px] mx-auto px-6 sm:px-8 lg:px-10">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-10">
-            <div className="sm:col-span-2 lg:col-span-4 space-y-5">
-              <div className="flex items-center gap-3">
-                <div className="w-14 h-14 rounded-2xl border border-white/15 bg-white/10 flex items-center justify-center overflow-hidden">
+          <div className="flex flex-col gap-12 lg:gap-16">
+            {/* Header Section: Logo and Taglines in a stacked layout */}
+            <div className="flex flex-col gap-8">
+              <div className="flex items-center gap-4">
+                <div className="w-14 h-14 rounded-2xl border border-white/15 bg-white/10 flex items-center justify-center overflow-hidden shrink-0">
                   <Image
                     src="/Cosmic_Logos-02.png"
                     alt={`${SITE.name} logo`}
@@ -62,112 +62,122 @@ const Footer: React.FC = () => {
                   />
                 </div>
                 <div className="flex flex-col">
-                  <p className="text-lg font-black tracking-tight text-white uppercase leading-none text-left">
+                  <p className="text-xl font-black tracking-tight text-white uppercase leading-none text-left">
                     <span className="text-secondary">{SITE.name.split(' ')[0]}</span>{' '}
                     <span>{SITE.name.split(' ').slice(1).join(' ')}</span>
                   </p>
-                  <p className="text-[10px] font-bold text-white/90 uppercase tracking-[0.18em] mt-1 text-left">
+                  <p className="text-[10px] font-bold text-white/90 uppercase tracking-[0.18em] mt-1.5 text-left">
                     {SITE.nameSub}
                   </p>
                 </div>
               </div>
 
-              <p className="mt-4 text-white/90 text-sm leading-relaxed max-w-md text-left">
-                {t('footer.description')}
-              </p>
+              <div className="max-w-3xl">
+                <p className="text-sm md:text-base font-bold uppercase tracking-[0.2em] text-white/90 leading-relaxed">
+                  {t('footer.tagline')}
+                </p>
+              </div>
             </div>
 
-            <nav className="lg:col-span-2" aria-label="Footer quick links">
-              <h4 className="text-sm font-bold uppercase tracking-widest text-secondary mb-5 text-left">
-                {t('footer.quickLinks')}
-              </h4>
-              <div className="grid gap-2">
-                {quickLinks.map((quickLink) => (
-                  <ButtonLink
-                    key={quickLink.label}
-                    href={quickLink.href}
-                    tone="light"
-                    size="sm"
-                    className="w-full justify-start gap-3 px-4 py-2.5 text-xs font-semibold text-left"
-                  >
-                    {quickLink.label}
-                  </ButtonLink>
-                ))}
-              </div>
-            </nav>
+            <div className="w-full h-px bg-white/10" />
 
-            <nav className="lg:col-span-3" aria-label="Footer practice areas">
-              <h4 className="text-sm font-bold uppercase tracking-widest text-secondary mb-5 text-left">
-                {t('nav.practiceAreas')}
-              </h4>
-              <div className="grid gap-2">
-                {practiceAreas.map((area) => (
-                  <ButtonLink
-                    key={area.slug}
-                    href={`/services/${area.slug}`}
-                    tone="light"
-                    size="sm"
-                    className="w-full justify-start gap-3 px-4 py-2.5 text-xs font-semibold text-left"
-                  >
-                    {i18n.language?.startsWith('ko') 
-                      ? area.shortTitleKo 
-                      : i18n.language?.startsWith('zh') 
-                        ? area.shortTitleZh 
-                        : area.shortTitle}
-                  </ButtonLink>
-                ))}
-              </div>
-            </nav>
+            {/* Links and Contact Section */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 lg:gap-10">
+              <nav aria-label={t('accessibility.aria.footerQuickLinks')}>
+                <h4 className="text-sm font-bold uppercase tracking-widest text-secondary mb-6 text-left">
+                  {t('footer.quickLinks')}
+                </h4>
+                <div className="grid gap-2.5">
+                  {quickLinks.map((quickLink) => (
+                    <ButtonLink
+                      key={quickLink.label}
+                      href={quickLink.href}
+                      tone="light"
+                      size="sm"
+                      className="w-full justify-start gap-3 px-4 py-2.5 text-xs font-semibold text-left"
+                    >
+                      {quickLink.label}
+                    </ButtonLink>
+                  ))}
+                </div>
+              </nav>
 
-            <div className="lg:col-span-3 space-y-3">
-              <h4 className="text-sm font-bold uppercase tracking-widest text-secondary mb-5 text-left">
-                {t('footer.contactInfo')}
-              </h4>
-              <div className="grid gap-3">
-                {contactActions.map((action) => (
+              <nav aria-label={t('accessibility.aria.footerPracticeAreas')}>
+                <h4 className="text-sm font-bold uppercase tracking-widest text-secondary mb-6 text-left">
+                  {t('nav.practiceAreas')}
+                </h4>
+                <div className="grid gap-2.5">
+                  {practiceAreas.map((area) => (
+                    <ButtonLink
+                      key={area.slug}
+                      href={`/services/${area.slug}`}
+                      tone="light"
+                      size="sm"
+                      className="w-full justify-start gap-3 px-4 py-2.5 text-xs font-semibold text-left"
+                    >
+                      {i18n.language?.startsWith('ko') 
+                        ? area.shortTitleKo 
+                        : i18n.language?.startsWith('zh') 
+                          ? area.shortTitleZh 
+                          : area.shortTitle}
+                    </ButtonLink>
+                  ))}
+                </div>
+              </nav>
+
+              <div className="space-y-6">
+                <h4 className="text-sm font-bold uppercase tracking-widest text-secondary mb-6 text-left">
+                  {t('footer.contactInfo')}
+                </h4>
+                <div className="grid gap-3">
+                  {contactActions.map((action) => (
+                    <ButtonLink
+                      key={action.label}
+                      href={action.href}
+                      tone="light"
+                      size="md"
+                      className={`w-full justify-start gap-3 px-4 py-3 text-left ${action.className}`}
+                    >
+                      <Icon name={action.icon} className="text-primary size-5 flex-shrink-0" />
+                      <span className="whitespace-normal break-all">{action.label}</span>
+                    </ButtonLink>
+                  ))}
+                  {FEATURES.googleMaps ? (
+                    <ButtonLink
+                      href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(SITE.addressQuery)}`}
+                      tone="light"
+                      size="md"
+                      className="w-full justify-start gap-3 px-4 py-3 text-left text-[11px] font-bold uppercase tracking-tight"
+                    >
+                      <Icon name="location_on" className="text-primary size-5 flex-shrink-0" />
+                      <span className="whitespace-normal">{SITE.addressShort}</span>
+                    </ButtonLink>
+                  ) : (
+                    <div className="w-full inline-flex items-center justify-start gap-3 px-4 py-3 rounded-lg bg-secondary text-primary shadow-sm border border-secondary/60 text-[11px] font-bold uppercase tracking-tight">
+                      <Icon name="location_on" className="text-primary size-5 flex-shrink-0" />
+                      <span className="whitespace-normal">{SITE.addressShort}</span>
+                    </div>
+                  )}
                   <ButtonLink
-                    key={action.label}
-                    href={action.href}
-                    tone="light"
+                    href="/contact"
+                    tone="dark"
                     size="md"
-                    className={`w-full justify-start gap-3 px-4 py-3 text-left ${action.className}`}
+                    className="w-full justify-start gap-3 px-4 py-3 uppercase tracking-[0.2em] mt-2"
                   >
-                    <Icon name={action.icon} className="text-primary size-5 flex-shrink-0" />
-                    <span className="truncate">{action.label}</span>
+                    <Icon name="chat" className="size-[18px]" />
+                    {t('nav.contact')}
                   </ButtonLink>
-                ))}
-                {FEATURES.googleMaps ? (
-                  <ButtonLink
-                    href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(SITE.addressQuery)}`}
-                    tone="light"
-                    size="md"
-                    className="w-full justify-start gap-3 px-4 py-3 text-left text-[11px] font-bold uppercase tracking-tight"
-                  >
-                    <Icon name="location_on" className="text-primary size-5 flex-shrink-0" />
-                    <span className="truncate">{SITE.addressShort}</span>
-                  </ButtonLink>
-                ) : (
-                  <div className="w-full inline-flex items-center justify-start gap-3 px-4 py-3 rounded-lg bg-secondary text-primary shadow-sm border border-secondary/60 text-[11px] font-bold uppercase tracking-tight">
-                    <Icon name="location_on" className="text-primary size-5 flex-shrink-0" />
-                    <span className="truncate">{SITE.addressShort}</span>
-                  </div>
-                )}
-                <ButtonLink
-                  href="/contact"
-                  tone="dark"
-                  size="md"
-                  className="w-full justify-start gap-3 px-4 py-3 uppercase tracking-[0.2em] mt-2"
-                >
-                  <Icon name="chat" className="size-[18px]" />
-                  {t('nav.contact')}
-                </ButtonLink>
+                </div>
               </div>
             </div>
           </div>
 
-          <div className="border-t border-white/10 mt-10 pt-8 flex flex-col gap-8 text-[11px] font-medium text-white/80 tracking-wider uppercase md:flex-row md:items-end md:justify-between">
+          <div className="border-t border-white/10 mt-16 pt-8 flex flex-col gap-8 text-[11px] font-medium text-white/80 tracking-wider uppercase md:flex-row md:items-end md:justify-between">
             <div className="space-y-6">
-              <nav className="flex flex-wrap items-center justify-start gap-x-8 gap-y-4" aria-label="Legal">
+              <nav
+                className="flex flex-wrap items-center justify-start gap-x-8 gap-y-4"
+                aria-label={t('accessibility.aria.footerLegalNav')}
+              >
                 <Link to="/accessibility" className="text-white/90 hover:text-secondary">{t('footer.accessibility')}</Link>
                 <Link to="/privacy" className="text-white/90 hover:text-secondary">{t('footer.privacyPolicy')}</Link>
                 <Link to="/terms" className="text-white/90 hover:text-secondary">{t('footer.termsOfService')}</Link>

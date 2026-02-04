@@ -28,7 +28,7 @@ const PracticeAreaPage: React.FC<PracticeAreaPageProps> = ({ lng, slug }) => {
   if (!area) {
     return (
       <SectionWithStars className="max-w-[960px] mx-auto px-6 sm:px-8 py-16" settings={{ density: 0.44 }}>
-        <SEO title="Practice Area" description="Practice area not found." />
+        <SEO title={t('seo.practiceAreaNotFound.title')} description={t('seo.practiceAreaNotFound.description')} />
         <div className="relative z-10">
           <h1 className="text-3xl font-black tracking-tight text-slate-900 dark:text-white uppercase">
             {t('notFound.title')}
@@ -56,10 +56,12 @@ const PracticeAreaPage: React.FC<PracticeAreaPageProps> = ({ lng, slug }) => {
   const title = isKo ? area.titleKo : isZh ? area.titleZh : area.title;
   const focus = isKo ? area.focusKo : isZh ? area.focusZh : area.focus;
   const overview = isKo ? area.overviewKo : isZh ? area.overviewZh : area.overview;
+  const summary = isKo ? area.summaryKo ?? area.summary : isZh ? area.summaryZh ?? area.summary : area.summary;
+  const services = isKo ? area.servicesKo ?? area.services : isZh ? area.servicesZh ?? area.services : area.services;
 
   return (
     <>
-      <SEO title={title} description={area.summary} />
+      <SEO title={title} description={summary} />
 
       {/* Hero */}
       <SectionWithStars className="w-full bg-background-light dark:bg-background-dark border-b border-secondary/40 dark:border-white/10" settings={{ density: 0.47 }}>
@@ -76,7 +78,7 @@ const PracticeAreaPage: React.FC<PracticeAreaPageProps> = ({ lng, slug }) => {
               {focus}
             </p>
             <p className="text-slate-600 dark:text-slate-400 leading-relaxed">
-              {area.summary}
+              {summary}
             </p>
             <div className="flex flex-col sm:flex-row gap-3 pt-2">
               <Link
@@ -122,7 +124,7 @@ const PracticeAreaPage: React.FC<PracticeAreaPageProps> = ({ lng, slug }) => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8">
-            {area.services.map((service) => (
+            {services.map((service) => (
               <div
                 key={service}
                 className="flex gap-3 p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800"
@@ -150,7 +152,7 @@ const PracticeAreaPage: React.FC<PracticeAreaPageProps> = ({ lng, slug }) => {
                 {t('common.contactCompany', { name: SITE.name.split(' ')[0] })}
               </Link>
               <a
-                href={`mailto:${SITE.email}?subject=${encodeURIComponent(`${title} inquiry`)}`}
+                href={`mailto:${SITE.email}?subject=${encodeURIComponent(t('practiceArea.emailSubject', { title }))}`}
                 className="inline-flex items-center justify-center h-12 px-6 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white font-bold hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors"
               >
                 {t('contact.labels.email')}

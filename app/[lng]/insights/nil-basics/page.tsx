@@ -6,11 +6,13 @@ import Icon from '@src/components/Icon';
 const titles: Record<string, string> = {
   en: 'NIL Basics | Insides',
   ko: 'NIL 기초 | 인사이드',
+  'zh-Hans': 'NIL 基础 | 洞见',
 };
 
 const descriptions: Record<string, string> = {
   en: 'Quick recap of the NCAA changes, the House settlement, and the new clearinghouse.',
   ko: 'NIL 정착을 위한 NCAA 변경사항, 하원 합의, 클리어링하우스 개요.',
+  'zh-Hans': '了解运动员姓名、影像和肖像权（NIL）法律。',
 };
 
 export async function generateMetadata({ params }: { params: Promise<{ lng: string }> }): Promise<Metadata> {
@@ -25,6 +27,14 @@ export async function generateMetadata({ params }: { params: Promise<{ lng: stri
       title,
       description,
       url: `${SITE.url}/${lng}/insights/nil-basics`,
+    },
+    alternates: {
+      canonical: `/${lng}/insights/nil-basics`,
+      languages: {
+        'en': '/en/insights/nil-basics',
+        'ko': '/ko/insights/nil-basics',
+        'zh-Hans': '/zh-Hans/insights/nil-basics',
+      },
     },
   };
 }

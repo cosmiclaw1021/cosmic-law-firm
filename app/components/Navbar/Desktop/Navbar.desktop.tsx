@@ -49,7 +49,7 @@ const NavbarDesktop: React.FC = () => {
   return (
     <SectionWithStars
       className="fixed top-0 left-0 right-0 z-50 border-b border-white/10 bg-primary/95 backdrop-blur-md transition-colors duration-300 hidden lg:block text-white"
-      aria-label="Desktop navigation section"
+      aria-label={t('accessibility.aria.desktopNavSection')}
       overflow="visible"
       settings={{ density: 0.5, scrollRange: 520 }}
     >
@@ -79,7 +79,7 @@ const NavbarDesktop: React.FC = () => {
               </div>
             </Link>
 
-            <nav className="flex items-center gap-2" aria-label="Main navigation">
+            <nav className="flex items-center gap-2" aria-label={t('accessibility.aria.mainNavigation')}>
               <Link to={`/${lng}/`} className={navLinkClass(`/${lng}/`)}>
                 {t('nav.home')}
               </Link>
@@ -189,10 +189,6 @@ const NavbarDesktop: React.FC = () => {
                 )}
                 </AnimatePresence>
               </div>
-
-              <Link to={`/${lng}/reviews`} className={navLinkClass(`/${lng}/reviews`)}>
-                {t('nav.testimonials')}
-              </Link>
             </nav>
 
             <div className="flex items-center gap-4 shrink-0">

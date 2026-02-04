@@ -2,15 +2,18 @@ import type { Metadata } from 'next';
 import Link from '@/components/ui/Link';
 import { SITE } from '@/lib/site';
 import Icon from '@src/components/Icon';
+import ProcessedText from '@/components/ProcessedText';
 
 const titles: Record<string, string> = {
   en: 'AI Contracts | Insides',
   ko: 'AI 계약 | 인사이드',
+  'zh-Hans': 'AI 合同 | 洞见',
 };
 
 const descriptions: Record<string, string> = {
   en: 'Clause map for indemnities, data rights, and audit controls when AI vendors touch your IP.',
   ko: 'AI 공급업체가 지식재산에 다가올 때 다뤄야 할 면책, 데이터 권리, 감사 제어에 대한 조항 가이드.',
+  'zh-Hans': '当 AI 供应商触及您的知识产权时，关于补偿、数据权利和审计控制的条款指南。',
 };
 
 export async function generateMetadata({ params }: { params: Promise<{ lng: string }> }): Promise<Metadata> {
@@ -25,6 +28,14 @@ export async function generateMetadata({ params }: { params: Promise<{ lng: stri
       title,
       description,
       url: `${SITE.url}/${lng}/insights/ai-contracts`,
+    },
+    alternates: {
+      canonical: `/${lng}/insights/ai-contracts`,
+      languages: {
+        'en': '/en/insights/ai-contracts',
+        'ko': '/ko/insights/ai-contracts',
+        'zh-Hans': '/zh-Hans/insights/ai-contracts',
+      },
     },
   };
 }
@@ -55,6 +66,8 @@ const items = [
 const actionItems = [
   'Publish a vendor questionnaire that tracks datasets, red-team findings, and usage history for each piece of work. citeturn4search0',
   'Document human-in-the-loop checkpoints in the contract so the developer cannot claim the model is fully autonomous during audits. citeturn4search4',
+  'Include a procedural review section that requires the vendor to document datasets, human oversight, and mitigation plans. citeturn5news48',
+  'Draft a fallback clause requiring the vendor to pull down any unauthorized synthetic likeness upon notice. citeturn3news49',
   'Build a takedown remedy tied to the general AI policy (white paper) so you can quickly remove unauthorized synthetic likeness. citeturn3news49',
 ];
 
@@ -90,7 +103,9 @@ export default async function Page({ params }: { params: Promise<{ lng: string }
           {items.map((item) => (
             <article key={item.title} className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/40 p-6">
               <h2 className="text-xl font-black text-slate-900 dark:text-white">{item.title}</h2>
-              <p className="mt-2 text-sm text-slate-600 dark:text-slate-300 leading-relaxed">{item.body}</p>
+              <p className="mt-2 text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                <ProcessedText text={item.body} />
+              </p>
             </article>
           ))}
         </section>
@@ -99,7 +114,9 @@ export default async function Page({ params }: { params: Promise<{ lng: string }
           <h3 className="text-xl font-black text-slate-900 dark:text-white">{isKo ? '즉시 실행 항목' : 'Action items'}</h3>
           <ul className="space-y-2 list-disc list-inside text-sm text-slate-600 dark:text-slate-300">
             {actionItems.map((item) => (
-              <li key={item}>{item}</li>
+              <li key={item}>
+                <ProcessedText text={item} />
+              </li>
             ))}
           </ul>
         </section>

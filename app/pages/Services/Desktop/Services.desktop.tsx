@@ -48,7 +48,7 @@ const ServicesDesktop: React.FC = () => {
                 "linear-gradient(rgba(0, 0, 0, 0.45) 0%, rgba(0, 0, 0, 0.8) 100%), url('/NanoBanana/Lawyer-contract-notes.png')",
             }}
             role="img"
-            aria-label="Attorney reviewing contract notes on a desk"
+            aria-label={t('accessibility.alt.contractNotesDesk')}
           >
             <div className="flex flex-col gap-3 text-center max-w-[860px] z-10">
               <div className="inline-flex items-center justify-center gap-2 px-3 py-1 rounded-full bg-white/10 text-white/90 text-[11px] font-black uppercase tracking-[0.3em] w-fit mx-auto">

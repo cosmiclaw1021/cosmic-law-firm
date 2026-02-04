@@ -6,11 +6,13 @@ import Icon from '@src/components/Icon';
 const titles: Record<string, string> = {
   en: 'Chain of Title | Insides',
   ko: '체인오브타이틀 | 인사이드',
+  'zh-Hans': '权利链 | 洞见',
 };
 
 const descriptions: Record<string, string> = {
   en: 'Clean paper trails, option letters, and releases that let investors and distributors say yes.',
   ko: '투자자와 배급사가 승인할 수 있도록 모든 계약과 양도, 릴리스 증빙을 정리하는 요약.',
+  'zh-Hans': '如何通过清晰的权利链确保持续的项目开发与发行。',
 };
 
 export async function generateMetadata({ params }: { params: Promise<{ lng: string }> }): Promise<Metadata> {
@@ -25,6 +27,14 @@ export async function generateMetadata({ params }: { params: Promise<{ lng: stri
       title,
       description,
       url: `${SITE.url}/${lng}/insights/chain-of-title`,
+    },
+    alternates: {
+      canonical: `/${lng}/insights/chain-of-title`,
+      languages: {
+        'en': '/en/insights/chain-of-title',
+        'ko': '/ko/insights/chain-of-title',
+        'zh-Hans': '/zh-Hans/insights/chain-of-title',
+      },
     },
   };
 }

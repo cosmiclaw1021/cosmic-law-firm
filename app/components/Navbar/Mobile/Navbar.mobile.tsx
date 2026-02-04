@@ -60,7 +60,7 @@ const NavbarMobile: React.FC = () => {
   return (
     <SectionWithStars
       className="fixed top-0 left-0 right-0 z-50 w-full border-b border-white/10 bg-primary/95 backdrop-blur-md transition-colors duration-300 lg:hidden text-white pt-safe"
-      aria-label="Mobile navigation section"
+      aria-label={t('accessibility.aria.mobileNavSection')}
       overflow="visible"
       settings={{ density: 0.5, scrollRange: 480 }}
     >
@@ -118,7 +118,7 @@ const NavbarMobile: React.FC = () => {
             className="border-t border-white/10 bg-primary overflow-hidden"
           >
             <div className="p-6 overflow-y-auto max-h-[calc(100dvh-64px)] pb-[calc(1.5rem+env(safe-area-inset-bottom))]">
-              <nav className="flex flex-col space-y-6" aria-label="Mobile navigation">
+              <nav className="flex flex-col space-y-6" aria-label={t('accessibility.aria.mobileNavigation')}>
                 <Link
                   to={`/${lng}/`}
                   onClick={closeMenu}
@@ -165,14 +165,6 @@ const NavbarMobile: React.FC = () => {
                     ))}
                   </div>
                 </div>
-
-                <Link
-                  to={`/${lng}/reviews`}
-                  onClick={closeMenu}
-                  className={getMobileNavButtonClass(`/${lng}/reviews`, 'lg')}
-                >
-                  {t('nav.testimonials')}
-                </Link>
 
                 <div className="pt-6 border-t border-white/10 flex flex-col gap-4">
                   <div className="flex flex-col gap-3">

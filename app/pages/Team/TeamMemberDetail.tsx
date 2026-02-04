@@ -10,10 +10,18 @@ import Icon from '@src/components/Icon';
 
 type TeamMemberDetailProps = {
   member: TeamMember;
+  lng?: string;
 };
 
-const TeamMemberDetail: React.FC<TeamMemberDetailProps> = ({ member }) => {
-  const { t } = useTranslation();
+const TeamMemberDetail: React.FC<TeamMemberDetailProps> = ({ member, lng }) => {
+  const { t, i18n } = useTranslation();
+
+  React.useEffect(() => {
+    if (lng && i18n.language !== lng) {
+      i18n.changeLanguage(lng);
+    }
+  }, [lng, i18n]);
+
   const detailKey = member.detailKey;
   
   // Use the correct keys from team.details (which we just moved)
@@ -129,7 +137,7 @@ const TeamMemberDetail: React.FC<TeamMemberDetailProps> = ({ member }) => {
                 {/* Education */}
                 <div className="rounded-3xl border border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-slate-900/40 p-8 backdrop-blur-sm">
                   <p className="text-[0.65rem] font-black uppercase tracking-[0.3em] text-slate-500 dark:text-slate-400 mb-4">
-                    Education
+                    {t('team.detail.educationHeading')}
                   </p>
                   <ul className="space-y-3 text-sm leading-snug text-slate-700 dark:text-slate-200">
                     {education.map((item, idx) => (
@@ -145,7 +153,7 @@ const TeamMemberDetail: React.FC<TeamMemberDetailProps> = ({ member }) => {
                 {practiceAreas.length > 0 && (
                   <div className="rounded-3xl border border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-slate-900/40 p-8 backdrop-blur-sm">
                     <p className="text-[0.65rem] font-black uppercase tracking-[0.3em] text-slate-500 dark:text-slate-400 mb-4">
-                      Expertise
+                      {t('team.detail.expertiseHeading')}
                     </p>
                     <ul className="space-y-3 text-sm leading-snug text-slate-700 dark:text-slate-200">
                       {practiceAreas.map((area, idx) => (
@@ -162,7 +170,7 @@ const TeamMemberDetail: React.FC<TeamMemberDetailProps> = ({ member }) => {
                 {memberships.length > 0 && (
                   <div className="rounded-3xl border border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-slate-900/40 p-8 backdrop-blur-sm">
                     <p className="text-[0.65rem] font-black uppercase tracking-[0.3em] text-slate-500 dark:text-slate-400 mb-4">
-                      Affiliations
+                      {t('team.detail.affiliationsHeading')}
                     </p>
                     <ul className="space-y-3 text-sm leading-snug text-slate-700 dark:text-slate-200">
                       {memberships.map((item, idx) => (
@@ -179,7 +187,7 @@ const TeamMemberDetail: React.FC<TeamMemberDetailProps> = ({ member }) => {
                 {creative && (
                   <div className="rounded-3xl border border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-slate-900/40 p-8 backdrop-blur-sm sm:col-span-2 lg:col-span-1">
                     <p className="text-[0.65rem] font-black uppercase tracking-[0.3em] text-slate-500 dark:text-slate-400 mb-4">
-                      Creative Focus
+                      {t('team.detail.creativeFocusHeading')}
                     </p>
                     <p className="text-sm leading-relaxed text-slate-700 dark:text-slate-200 italic font-medium">
                       "{creative}"

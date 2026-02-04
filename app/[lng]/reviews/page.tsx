@@ -1,19 +1,20 @@
 import type { Metadata } from 'next';
 import Reviews from '../../pages/Reviews';
-import { getInitialIsMobileFromHeaders } from '../../lib/get-initial-is-mobile';
 import { SITE } from '../../lib/site';
 
 export async function generateMetadata({ params }: { params: Promise<{ lng: string }> }): Promise<Metadata> {
   const { lng } = await params;
   
   const titles: Record<string, string> = {
-    en: `Testimonials | ${SITE.name}`,
-    ko: `추천사 | ${SITE.name}`
+    en: `Client Reviews | ${SITE.name}`,
+    ko: `고객 후기 | ${SITE.name}`,
+    'zh-Hans': `客户评价 | ${SITE.name}`
   };
   
   const descriptions: Record<string, string> = {
-    en: "Client testimonials and feedback on our approach to entertainment and IP matters.",
-    ko: "엔터테인먼트 및 지식재산권 업무에 대한 클라이언트 피드백."
+    en: "What our clients say about Cosmic Law Firm's entertainment and litigation services.",
+    ko: "Cosmic Law Firm의 엔터테인먼트 및 소송 서비스에 대한 고객들의 평가를 확인하세요.",
+    'zh-Hans': "了解客户对 Cosmic Law Firm 娱乐与诉讼服务的评价。"
   };
 
   return {
@@ -24,12 +25,17 @@ export async function generateMetadata({ params }: { params: Promise<{ lng: stri
       description: descriptions[lng] || descriptions.en,
       url: `${SITE.url}/${lng}/reviews`,
     },
+    alternates: {
+      canonical: `/${lng}/reviews`,
+      languages: {
+        'en': '/en/reviews',
+        'ko': '/ko/reviews',
+        'zh-Hans': '/zh-Hans/reviews',
+      },
+    },
   };
 }
 
-export default async function Page({ params }: { params: Promise<{ lng: string }> }) {
-  const { lng } = await params;
-  const initialIsMobile = await getInitialIsMobileFromHeaders();
-
-  return <Reviews lng={lng} initialIsMobile={initialIsMobile} />;
+export default async function Page() {
+  return <Reviews />;
 }

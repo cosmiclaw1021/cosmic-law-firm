@@ -8,31 +8,38 @@
     "topics": {
       "contract-red-flags": {
         "title": "Contract red flags",
-        "summary": "Spot hidden assignment, payment, and audit traps before you sign."
+        "summary": "Spot hidden assignment, payment, and audit traps before you sign.",
+        "tag": "Checklist"
       },
       "chain-of-title": {
         "title": "Chain of title",
-        "summary": "Keep the paper trail clean so financing, distribution, and licensing close on schedule."
+        "summary": "Keep the paper trail clean so financing, distribution, and licensing close on schedule.",
+        "tag": "Due diligence"
       },
       "ai-in-entertainment": {
         "title": "AI in entertainment",
-        "summary": "Where AI is already tugging at rights, safety, and production budgets."
+        "summary": "Where AI is already tugging at rights, safety, and production budgets.",
+        "tag": "Trends"
       },
       "ai-contracts": {
         "title": "AI contracts",
-        "summary": "Clauses for training data, liability, and disclosure."
+        "summary": "Clauses for training data, liability, and disclosure.",
+        "tag": "Best practices"
       },
       "ai-law": {
         "title": "AI regulation",
-        "summary": "The regulatory sprint shaping federal, state, and international guardrails."
+        "summary": "The regulatory sprint shaping federal, state, and international guardrails.",
+        "tag": "Policy"
       },
       "nil-basics": {
         "title": "NIL basics",
-        "summary": "How recent settlements and caps change athlete activation."
+        "summary": "How recent settlements and caps change athlete activation.",
+        "tag": "Sports"
       },
       "publicity-basics": {
         "title": "Rights & publicity",
-        "summary": "Managing name, image, and likeness in the trades and the courtroom."
+        "summary": "Managing name, image, and likeness in the trades and the courtroom.",
+        "tag": "Rights"
       }
     },
     "cta": {
@@ -40,12 +47,238 @@
       "description": "Tell us what you’re wrestling with and we’ll point you to the key issues.",
       "button": "Contact the team",
       "linkText": "Read inside"
+    },
+    "common": {
+      "backToInsides": "Back to Insides",
+      "actionItems": "Action items",
+      "references": "References",
+      "processNotes": "Process notes",
+      "riskSnapshot": "Risk snapshot",
+      "furtherReading": "Further reading"
+    },
+    "pages": {
+      "aiContracts": {
+        "badge": "Insides · AI Contracts",
+        "title": "AI Contract Checklist",
+        "description": "AI vendors blur data rights, indemnity, and compliance, so the contracts need explicit clauses for training materials, discovery, and human oversight before you deploy the output.",
+        "items": [
+          {
+            "title": "Data sourcing & training rights",
+            "body": "Given recent settlements over training data, it is essential to require vendors to warrant that no unauthorized proprietary or personal data is in the models and that they will document every dataset used for your deliverables."
+          },
+          {
+            "title": "Indemnity & liability",
+            "body": "Insist on indemnities that cover IP infringement, regulatory fines, and misuse of likeness; cap liabilities only when the counterparty can prove a robust risk transfer strategy."
+          },
+          {
+            "title": "Transparency & audit",
+            "body": "Ask for audit rights over training data, red-teaming outputs, and the logs showing when human review kicked in—without this you can never prove compliance or fulfill disclosure obligations to talent unions."
+          },
+          {
+            "title": "Operational guardrails",
+            "body": "Include a mitigation plan that flags misuses (e.g., recreated likenesses, biased outputs) and anchors the vendor’s obligation to pause deployment until humans clear the content."
+          }
+        ],
+        "actionItems": [
+          "Publish a vendor questionnaire that tracks datasets, red-team findings, and usage history for each piece of work.",
+          "Document human-in-the-loop checkpoints in the contract so the developer cannot claim the model is fully autonomous during audits.",
+          "Build a takedown remedy tied to the general AI policy so you can quickly remove unauthorized synthetic likeness."
+        ]
+      },
+      "aiInEntertainment": {
+        "badge": "Insides · AI",
+        "title": "AI in Entertainment",
+        "description": "AI is already reshaping production, publicity, and talent rights. Here is a quick look at where the technology is live, how regulators and unions are responding, and what you should lock into your process.",
+        "snapshots": [
+          {
+            "title": "Digital replica consent is now non-negotiable",
+            "body": "Most new SAG-AFTRA agreements require companies to get clear consent and compensation for digital replicas, commercials, and interactive characters before using AI avatars or likenesses, so talent teams lock in the scope of use up front."
+          },
+          {
+            "title": "Interactive media and games have AI guardrails",
+            "body": "The 2023 interactive media addendum projects into episodic series and games, requiring disclosure when synthetic voices or faces replace an actor and ensuring performers can audit how the material is generated."
+          },
+          {
+            "title": "Studios are investing heavily in AI tooling",
+            "body": "Deals show studios are adopting generative systems for everything from storyboarding to casting data, which increases the appetite for clear data rights and compliance."
+          }
+        ],
+        "riskPoints": [
+          {
+            "title": "Deepfakes are crossing national lines",
+            "body": "Courts and new bills are reacting to unauthorized deepfakes of public figures, so entertainment teams should create a robust takedown and litigation strategy before AI usage spikes."
+          },
+          {
+            "title": "Politicians keep updating publicity laws",
+            "body": "As states pass new publicity legislation and Congress debates national guardrails, brands must treat name/image/likeness as a moving target, especially when AI can reproduce famous voices or avatars without permission."
+          }
+        ],
+        "actionItems": [
+          "Label every deliverable that uses AI-generated visuals or audio so the creative team can track inputs and rights holders.",
+          "Include a procedural review section that requires the vendor to document datasets, human oversight, and mitigation plans.",
+          "Draft a fallback clause requiring the vendor to pull down any unauthorized synthetic likeness upon notice."
+        ]
+      },
+      "aiLaw": {
+        "badge": "Insides · AI Law",
+        "title": "What’s in AI Law",
+        "description": "Stay on top of the executive orders, state bills, and EU directives that are redefining accountability, transparency, and takedowns for AI-driven creative work.",
+        "timeline": [
+          {
+            "title": "Federal AI blueprint",
+            "body": "The White House issued a new executive order aligning AI oversight across agencies, tied to the national AI R&D roadmap and giving NIST more weight for risk-based standards while urging agencies to curb conflicting state laws."
+          },
+          {
+            "title": "EU AI Act enforcement",
+            "body": "The EU AI Act will begin supervision in 2026 with fines up to 7% of worldwide turnover for prohibited systems, and it forces providers to document training data, maintain technical documentation, and run post-launch monitoring."
+          },
+          {
+            "title": "State and publicity laws",
+            "body": "California’s SB-53 and Texas’ SB-20 join proposed federal NO FAKES bills that all require prompt notice and takedowns when likeness or deepfakes stray outside the licensed use."
+          },
+          {
+            "title": "Congressional disclosure pushes",
+            "body": "The Generative AI Copyright Disclosure Act would require creators to label AI-assisted works and detail the datasets used, while similar proposals add transparency requirements for training data provenance."
+          }
+        ],
+        "actionItems": [
+          "Create an AI policy map that documents which federal/state laws apply to each deliverable, so you can coordinate compliance and reduce contradictory notice obligations.",
+          "Update talent releases to anticipate wider jurisdictional requirements (e.g., California biometrics law, Texas protection for children).",
+          "Track EU and federal reporting duties so you can file systematic risk assessments before deployment."
+        ]
+      },
+      "chainOfTitle": {
+        "badge": "Insides · Chain of Title",
+        "title": "Chain of Title Digest",
+        "description": "Financiers, insurers, and distributors won’t underwrite a deal until they see a clean chain of title from creator to release. Use this digest to keep the paperwork straight and avoid last-minute surprises.",
+        "highlights": [
+          {
+            "title": "Why chain of title matters",
+            "body": "Distributors, financiers, and insurers look for an unbroken trail from the underlying writer, creator, or rights holder through every option, assignment, and release before funding a project."
+          },
+          {
+            "title": "Option and assignment clarity",
+            "body": "A stack of option letters or assignments that lack release language or are not properly dated can derail the chain; during diligence you need to confirm each has been properly exercised and expressly assigned."
+          }
+        ],
+        "docs": [
+          "Original writer and director agreements with express ownership and deliverable descriptions.",
+          "Option or first-look letters attached with evidence of exercise, notice, and payment.",
+          "Any joint-venture or co-production agreements that allocate IP ownership.",
+          "Releases from third parties whose contributions touch the final product (e.g., stock footage, likenesses)."
+        ],
+        "diligenceSteps": [
+          "Map all prior rights holders, even if the agreement has not yet closed, and confirm releases before calling the project “cleared.”",
+          "Match every payment or notice in the stack with the paperwork; missing invoices or unsigned releases are red flags.",
+          "Track the territory and media rights on each document; lenders will only finance the media they can insure or distribute.",
+          "Document each transfer in a title memorandum so future deals can be closed without re-walking the same chain."
+        ]
+      },
+      "contractRedFlags": {
+        "badge": "Insides · Contracts",
+        "title": "Contract Red Flags",
+        "description": "A single clause can lock away royalties, rights, or future leverage. Use the snapshots below to flag the terms that need fixing before you sign.",
+        "redFlags": [
+          {
+            "title": "Perpetual, worldwide grants",
+            "body": "Clauses that assign or license rights “in perpetuity,” “worldwide,” or “in all media now known or hereafter devised” leave creators without room to re-license or renegotiate future formats, so push for narrowing the term and territory."
+          },
+          {
+            "title": "Work-for-hire without clarity",
+            "body": "When the contract recites a work-for-hire or assignment but the project elements are undefined, confirm the expressed consideration, whether residuals are owed, and the treatment of future derivatives."
+          },
+          {
+            "title": "Undefined deliverables and payment",
+            "body": "Vague statements about “content” or deliverables that omit payment timing invite scope creep; insist on concrete milestones, payment dates, and a revision budget."
+          },
+          {
+            "title": "No audit or termination protections",
+            "body": "Agreements that deny audit or terminate only “for cause” trap creators even when the company sits on inaccurate accounting; ask for audit access and a defined cure period."
+          },
+          {
+            "title": "Blanket exclusivity or warranty promises",
+            "body": "Broad warranties about infringement or exclusivity should be scoped to the creator’s actual control and limited to the agreed deliverables so the artist is not on the hook for unknown third-party rights."
+          }
+        ],
+        "checklist": [
+          "Get all underlying assignments or licenses in writing so the lead contract can cite clean chain-of-title pages.",
+          "Demand a defined audit clause with a reasonable notice period and caps on audit burdens.",
+          "Clarify exit rights: at a minimum, negotiate a short cure period and a termination-for-convenience fall-back.",
+          "Make sure all territories, media, and timeframes are enumerated; if not, treat them as limited to the initial campaign."
+        ]
+      },
+      "nilBasics": {
+        "badge": "Insides · NIL",
+        "title": "NIL Basics",
+        "description": "The House settlement, NCAA policy tweaks, and the new clearinghouse are rewriting how deals are filed, disclosed, and taxed.",
+        "updates": [
+          {
+            "title": "House settlement clears the clouds",
+            "body": "The House settlement with NIL companies and athletes over $20.5 million of deferred compensation requires a neutral clearinghouse and clearer disclosures before deals over $600 can be booked, making NIL deals easier to audit."
+          },
+          {
+            "title": "NCAA pairs back recruiting limits",
+            "body": "NCAA policy now lets schools encourage recruits to pursue NIL deals earlier, while still requiring schools to monitor the deals for academic impacts and conflicts."
+          }
+        ],
+        "processItems": [
+          "Register every deal, endorsement, or appearance with NIL Go so the clearinghouse can confirm compliance and the 1099 thresholds.",
+          "Keep a central file on each athlete’s adviser and contracts so that schools can prove compliance and allow quick pause if a misstep is flagged.",
+          "Watch the high school and junior college rules that now require disclosure of prominent NIL deals before a player transfers."
+        ],
+        "actionItems": [
+          "Have marketing and compliance teams coordinate documents to keep the deal, payment schedule, and deliverables aligned with NCAA guidance.",
+          "Stipulate financial reporting requirements (e.g., $600 threshold) for every athlete so the school can file accurate 1099s."
+        ]
+      },
+      "publicityBasics": {
+        "badge": "Insides · Rights & Publicity",
+        "title": "Rights & Publicity Basics",
+        "description": "Name, image, and likeness rights are under greater scrutiny as AI can reproduce likenesses instantly. Keep this short guide handy when drafting releases and NIL deals.",
+        "definitions": [
+          {
+            "title": "Rights of publicity 101",
+            "body": "The right of publicity lets individuals control commercial use of their name, image, voice, or likeness, and the doctrine is state-based so obligations, damages, and permissible uses vary significantly."
+          },
+          {
+            "title": "NIL and publicity overlap",
+            "body": "NIL programs and publicity rights intersect because athletes are selling their name, image, or likeness; a clean release must outline the level of control the school or brand retains, and the school must keep the disclosures ready for NCAA review."
+          }
+        ],
+        "aiRisks": [
+          {
+            "title": "Deepfake litigation is global",
+            "body": "Courts in other jurisdictions are already ordering takedowns of unauthorized AI films, while various nations are crafting laws that explicitly shield individuals from synthetic likenesses."
+          },
+          {
+            "title": "Federal bills raise the stakes",
+            "body": "The NO FAKES Act and Take It Down Act would force platforms to accept takedown notices for synthetic content that violates publicity rights, and content owners can use the same takedown language in their commercial agreements."
+          }
+        ],
+        "reminders": [
+          "Document exactly which rights are licensed (name, voice, live performances, avatar, AI replicas) and the permitted use cases.",
+          "Link NIL deal terms to the publicity release so you can audit for NCAA headlines and avoid unauthorized derivative content.",
+          "Add a takedown promise that mirrors state/federal law, covering AI-generated content and deepfakes beyond the contract term."
+        ]
+      }
     }
   },
   "seo": {
     "home": {
       "title": "Entertainment Law | Cosmic Law Firm",
       "description": "Entertainment law for creators, studios, and media companies—contracts, IP, talent deals, distribution, and disputes."
+    },
+    "terms": {
+      "title": "Terms of Service | {{siteName}}",
+      "description": "Terms of service for {{siteName}}."
+    },
+    "privacy": {
+      "title": "Privacy Policy | {{siteName}}",
+      "description": "Privacy policy for {{siteName}}."
+    },
+    "practiceAreaNotFound": {
+      "title": "Practice Area",
+      "description": "Practice area not found."
     }
   },
   "home": {
@@ -83,6 +316,7 @@
     "menuClose": "Close menu"
   },
   "footer": {
+    "tagline": "Entertainment and media law for creators — Transactional counsel and litigation where it counts.",
     "description": "Entertainment & media law for creators and companies—transactional counsel and litigation when it counts.",
     "quickLinks": "Quick Links",
     "about": "About",
@@ -96,6 +330,25 @@
     "termsOfService": "Terms of Service",
     "accessibility": "Accessibility",
     "emailLabel": "Email"
+  },
+  "legal": {
+    "contact": {
+      "heading": "Contact Cosmic Law Firm",
+      "phoneLabel": "Phone:",
+      "emailLabel": "Email:",
+      "addressLabel": "Address:"
+    }
+  },
+  "termsPage": {
+    "title": "Terms of Service",
+    "placeholder": "This page is a placeholder. Add website terms (no legal advice, acceptable use, IP notices, and disclaimers) before publishing."
+  },
+  "privacyPage": {
+    "title": "Privacy Policy",
+    "placeholder": "This page is a placeholder. Add your firm’s privacy policy (analytics, contact form handling, and any third-party services) before publishing."
+  },
+  "practiceArea": {
+    "emailSubject": "{{title}} inquiry"
   },
   "common": {
     "location": "Los Angeles, CA",
@@ -241,6 +494,7 @@
       "description": "Share a few details and we’ll follow up to schedule a consultation.",
       "labels": {
         "name": "Full Name",
+        "email": "Email",
         "phone": "Phone Number",
         "message": "How can we help?"
       },
@@ -388,7 +642,14 @@
       }
     },
     "links": {
-      "backToTeam": "Back to team"
+      "backToTeam": "Back to team",
+      "profileAria": "{{name}} profile"
+    },
+    "detail": {
+      "educationHeading": "Education",
+      "expertiseHeading": "Expertise",
+      "affiliationsHeading": "Affiliations",
+      "creativeFocusHeading": "Creative Focus"
     },
     "cta": {
       "title": "Need counsel with production and trial chops?",
@@ -407,7 +668,24 @@
     "opensInNewWindow": "(opens in a new window)",
     "closeModal": "Close modal",
     "dismissNotification": "Dismiss notification",
-    "skipToContent": "Skip to content"
+    "skipToContent": "Skip to content",
+    "aria": {
+      "heroIntro": "Hero introduction",
+      "homeHeroBackground": "Music producer and entertainment lawyer collaborating inside a studio",
+      "homeCtaSection": "Call to action",
+      "desktopNavSection": "Desktop navigation section",
+      "mainNavigation": "Main navigation",
+      "mobileNavSection": "Mobile navigation section",
+      "mobileNavigation": "Mobile navigation",
+      "siteFooter": "Site footer",
+      "footerQuickLinks": "Footer quick links",
+      "footerPracticeAreas": "Footer practice areas",
+      "footerLegalNav": "Legal"
+    },
+    "alt": {
+      "homeHeroSideImage": "Writer and lawyer reviewing notes in a library",
+      "contractNotesDesk": "Attorney reviewing contract notes on a desk"
+    }
   },
   "accessibilityPage": {
     "title": "Accessibility Statement",

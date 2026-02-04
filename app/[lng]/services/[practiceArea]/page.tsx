@@ -22,13 +22,24 @@ export async function generateMetadata({
     };
   }
 
+  const localizedTitle = lng === 'ko' ? area.titleKo : lng === 'zh-Hans' ? area.titleZh : area.title;
+  const localizedDescription = lng === 'ko' ? area.summaryKo : lng === 'zh-Hans' ? area.summaryZh : area.summary;
+
   return {
-    title: `${area.title} | ${SITE.name}`,
-    description: area.summary,
+    title: localizedTitle,
+    description: localizedDescription || area.summary,
     openGraph: {
-      title: `${area.title} | ${SITE.name}`,
-      description: area.summary,
+      title: localizedTitle,
+      description: localizedDescription || area.summary,
       url: `${SITE.url}/${lng}/services/${area.slug}`,
+    },
+    alternates: {
+      canonical: `/${lng}/services/${area.slug}`,
+      languages: {
+        'en': `/en/services/${area.slug}`,
+        'ko': `/ko/services/${area.slug}`,
+        'zh-Hans': `/zh-Hans/services/${area.slug}`,
+      },
     },
   };
 }

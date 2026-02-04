@@ -28,11 +28,14 @@ import {
   Star,
   Sun,
   X,
+  Film,
+  Scale,
 } from "lucide-react";
 
 export type IconName =
   | "arrow_back"
   | "arrow_forward"
+  | "balance"
   | "call"
   | "chat"
   | "check"
@@ -53,6 +56,7 @@ export type IconName =
   | "mail"
   | "medical_services"
   | "menu"
+  | "movie"
   | "star"
   | "sync"
   | "theaters"
@@ -65,6 +69,7 @@ const ICON_MAP: Record<IconName, ComponentType<LucideProps>> = {
   west: ArrowLeft,
   arrow_forward: ArrowRight,
   east: ArrowRight,
+  balance: Scale,
   call: Phone,
   chat: MessageCircle,
   check: Check,
@@ -84,6 +89,7 @@ const ICON_MAP: Record<IconName, ComponentType<LucideProps>> = {
   mail: Mail,
   medical_services: Cross,
   menu: Menu,
+  movie: Film,
   star: Star,
   sync: RefreshCw,
   theaters: Clapperboard,

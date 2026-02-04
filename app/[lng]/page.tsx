@@ -38,6 +38,14 @@ export async function generateMetadata({ params }: { params: Promise<{ lng: stri
       description: descriptions[lng] || descriptions.en,
       url: `${SITE.url}/${lng}`,
     },
+    alternates: {
+      canonical: `/${lng}`,
+      languages: {
+        'en': '/en',
+        'ko': '/ko',
+        'zh-Hans': '/zh-Hans',
+      },
+    },
   };
 }
 

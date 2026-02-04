@@ -6,11 +6,13 @@ import Icon from '@src/components/Icon';
 const titles: Record<string, string> = {
   en: 'Contract Red Flags | Insides',
   ko: '계약 위험 신호 | 인사이드',
+  'zh-Hans': '合同红旗条款 | 洞见',
 };
 
 const descriptions: Record<string, string> = {
   en: 'Checklist of the clauses and deliverables that typically leave creators out of future revenue or control.',
   ko: '크리에이터가 후속 수익이나 통제를 잃지 않도록 점검해야 할 핵심 조항 목록.',
+  'zh-Hans': '在签字前识别隐藏的权利转让和风险条款。',
 };
 
 export async function generateMetadata({ params }: { params: Promise<{ lng: string }> }): Promise<Metadata> {
@@ -25,6 +27,14 @@ export async function generateMetadata({ params }: { params: Promise<{ lng: stri
       title,
       description,
       url: `${SITE.url}/${lng}/insights/contract-red-flags`,
+    },
+    alternates: {
+      canonical: `/${lng}/insights/contract-red-flags`,
+      languages: {
+        'en': '/en/insights/contract-red-flags',
+        'ko': '/ko/insights/contract-red-flags',
+        'zh-Hans': '/zh-Hans/insights/contract-red-flags',
+      },
     },
   };
 }

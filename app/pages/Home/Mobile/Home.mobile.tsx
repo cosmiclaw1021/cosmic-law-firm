@@ -20,7 +20,6 @@ const HERO_BACKGROUND = '/NanoBanana/music-producer-lawyer-studio.png';
 
 const HomeMobile: React.FC = () => {
   const { t, i18n } = useTranslation();
-  const isKo = i18n.language?.startsWith('ko');
 
   return (
     <>
@@ -31,7 +30,7 @@ const HomeMobile: React.FC = () => {
 
       <SectionWithStars
         className="relative bg-slate-950 text-white -mt-[68px] pt-0 sm:-mt-[96px] sm:pt-0 min-h-viewport flex flex-col justify-center"
-        aria-label="Hero introduction"
+        aria-label={t('accessibility.aria.heroIntro')}
         settings={{ density: 0.5, scrollRange: 720 }}
       >
         <div className="absolute inset-0 z-10">
@@ -39,7 +38,7 @@ const HomeMobile: React.FC = () => {
             className="absolute inset-0 bg-cover bg-center"
             style={{ backgroundImage: `url('${HERO_BACKGROUND}')` }}
             role="img"
-            aria-label="Music producer and entertainment lawyer collaborating inside a studio"
+            aria-label={t('accessibility.aria.homeHeroBackground')}
           />
           <div className="absolute inset-0 bg-gradient-to-b from-slate-950/60 via-slate-950/40 to-black/70 backdrop-blur-[1px]" />
           <div className="absolute left-[10%] top-4 h-[260px] w-[260px] rounded-full bg-primary/30 blur-[160px]" aria-hidden="true" />
@@ -156,7 +155,7 @@ const HomeMobile: React.FC = () => {
 
       <SectionWithStars
         className="py-12 bg-background-light dark:bg-background-dark"
-        aria-label="Call to action"
+        aria-label={t('accessibility.aria.homeCtaSection')}
         settings={{ density: 0.45, scrollRange: 420 }}
       >
         <div className="relative z-20 max-w-[1280px] mx-auto px-6">

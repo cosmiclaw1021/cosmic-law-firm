@@ -12,11 +12,15 @@ export type PracticeArea = {
   focusKo: string;
   focusZh: string;
   summary: string;
+  summaryKo?: string;
+  summaryZh?: string;
   icon: IconName;
   overview?: string[];
   overviewKo?: string[];
   overviewZh?: string[];
   services: string[];
+  servicesKo?: string[];
+  servicesZh?: string[];
 };
 
 export const practiceAreas: PracticeArea[] = [
@@ -33,6 +37,10 @@ export const practiceAreas: PracticeArea[] = [
     focusZh: '娱乐行业的交易与诉讼法律顾问。',
     summary:
       'Full-spectrum entertainment counsel—from contracts and negotiations to disputes—built for creators, studios, and media businesses.',
+    summaryKo:
+      '계약·협상부터 분쟁까지, 크리에이터·스튜디오·미디어 비즈니스를 위한 엔터테인먼트 전 영역 법률 자문을 제공합니다.',
+    summaryZh:
+      '面向创作者、制片方与媒体企业的全流程娱乐法律服务——从合同谈判到争议处理。',
     icon: 'theaters',
     overview: [
       'Cosmic Law Firm’s entertainment and media law practice covers both transactional and litigation matters for clients.',
@@ -61,6 +69,36 @@ export const practiceAreas: PracticeArea[] = [
       'Theatre',
       'Video Games and New Media',
     ],
+    servicesKo: [
+      '지식재산권 소송',
+      '명예훼손 및 사생활(프라이버시)권 소송',
+      '자금조달·수익분배·회계 관련 소송',
+      '독립영화·TV 연맹(IFTA) 중재',
+      '캘리포니아 노동위원회 절차',
+      '계약 작성 및 협상',
+      '지식재산권 라이선스 및 자문',
+      '영화·TV 제작',
+      '영화 투자·자금조달',
+      '아티스트(탤런트) 대리',
+      '음악',
+      '공연·연극',
+      '게임 및 뉴미디어',
+    ],
+    servicesZh: [
+      '知识产权诉讼',
+      '名誉侵权与隐私权诉讼',
+      '融资、分成与会计相关诉讼',
+      '独立电影与电视联盟（IFTA）仲裁',
+      '加州劳动委员会程序',
+      '合同起草与谈判',
+      '知识产权许可与咨询',
+      '电影与电视制作',
+      '电影融资',
+      '艺人/人才代理',
+      '音乐',
+      '戏剧与舞台',
+      '电子游戏与新媒体',
+    ],
   },
   {
     slug: 'copyright-infringement',
@@ -75,6 +113,10 @@ export const practiceAreas: PracticeArea[] = [
     focusZh: '权利主张、防御、咨询与许可争议。',
     summary:
       'We help clients protect creative works, enforce rights against infringement, and reduce risk through clear guidance and strategic action.',
+    summaryKo:
+      '창작물을 보호하고 침해에 대응하며, 명확한 자문과 전략적 실행으로 리스크를 줄입니다.',
+    summaryZh:
+      '我们帮助客户保护作品、对侵权采取行动，并通过清晰指引与策略降低风险。',
     icon: 'copyright',
     overview: [
       'Copyright safeguards a wide range of creative expressions, including visual arts, music, architectural designs, source code, software, literary works, and sculptures.',
@@ -101,6 +143,26 @@ export const practiceAreas: PracticeArea[] = [
       'Remedies strategy (injunctions, damages, fees)',
       'Portfolio counseling for creators and businesses',
     ],
+    servicesKo: [
+      '저작권 등록 전략 및 신청',
+      '침해 대응(권리 행사) 및 방어',
+      '라이선스 및 계약 분쟁',
+      'DMCA 삭제요청 및 이의제기(반박 통지) 전략',
+      '공정이용 및 클리어런스(사용 허가) 자문',
+      '권리 연쇄(체인 오브 타이틀) 및 소유권 분석',
+      '구제수단 전략(가처분, 손해배상, 비용)',
+      '크리에이터·기업을 위한 포트폴리오 자문',
+    ],
+    servicesZh: [
+      '著作权登记/注册策略与申请',
+      '侵权维权与抗辩',
+      '许可与合同争议',
+      'DMCA 下架与反通知策略',
+      '合理使用与清权/授权审查建议',
+      '权属链与所有权分析',
+      '救济策略（禁令、损害赔偿、费用）',
+      '面向创作者与企业的作品/资产组合咨询',
+    ],
   },
   {
     slug: 'trademark-law',
@@ -115,6 +177,10 @@ export const practiceAreas: PracticeArea[] = [
     focusZh: '名称、标题和徽标的品牌保护。',
     summary:
       'We help clients clear, register, license, and enforce trademarks so brands can grow with confidence.',
+    summaryKo:
+      '상표 검색부터 등록·라이선스·권리행사까지 지원해 브랜드가 안심하고 성장하도록 돕습니다.',
+    summaryZh:
+      '我们协助客户进行商标检索、注册、许可与维权，让品牌更安心地成长。',
     icon: 'verified',
     overview: [
       'Trademarks protect the brands audiences recognize—names, titles, logos, and other identifiers used in commerce.',
@@ -137,6 +203,24 @@ export const practiceAreas: PracticeArea[] = [
       'Infringement and unfair competition disputes',
       'Online enforcement and takedown strategy',
     ],
+    servicesKo: [
+      '상표 선행조사 및 리스크 자문',
+      '상표 출원 및 심사 대응',
+      '포트폴리오 전략 및 갱신',
+      '라이선스 및 브랜드 딜 조건',
+      '이의신청·취소심판·권리행사',
+      '침해 및 부정경쟁 분쟁',
+      '온라인 권리행사 및 삭제요청 전략',
+    ],
+    servicesZh: [
+      '商标检索与风险评估咨询',
+      '商标申请与审查答复',
+      '组合策略与续展',
+      '许可与品牌合作条款',
+      '异议、无效/撤销与维权',
+      '侵权与不正当竞争纠纷',
+      '线上维权与下架策略',
+    ],
   },
   {
     slug: 'personal-injury-law',
@@ -151,6 +235,10 @@ export const practiceAreas: PracticeArea[] = [
     focusZh: '为事故、过失和不安全条件的受害者提供以康复为中心的咨询。',
     summary:
       'We represent individuals who suffered physical or emotional harm, securing compensation for medical care, lost income, and future needs after crashes, defective products, medical errors, and other preventable incidents.',
+    summaryKo:
+      '교통사고, 제품 결함, 의료 과실 등 예방 가능한 사건으로 신체·정신적 피해를 입은 분들을 대리해 치료비, 소득 손실, 향후 필요 비용에 대한 보상을 확보합니다.',
+    summaryZh:
+      '我们代理因交通事故、缺陷产品、医疗失误等可预防事件遭受身心伤害的当事人，争取医疗费用、误工损失及未来需求的赔偿。',
     icon: 'medical_services',
     overview: [
       'Personal injury law covers a wide spectrum of accidents, from vehicle collisions and wrongful death matters to product defects, premises liability, and medical malpractice.',
@@ -173,6 +261,26 @@ export const practiceAreas: PracticeArea[] = [
       'Workplace third-party claims and construction-site incidents',
       'Wrongful death and family support settlements',
       'Insurance bad-faith, underpayment, and settlement negotiation',
+    ],
+    servicesKo: [
+      '자동차·오토바이 사고 소송',
+      '중대 상해 청구(뇌, 척수, 화상, 절단)',
+      '시설/장소 책임(미끄럼·낙상, 보안 과실, 수영장 등)',
+      '제조물책임 및 결함 장비/리콜',
+      '의료 과실 및 진단 지연 사건',
+      '직장 제3자 청구 및 건설현장 사고',
+      '사망(불법행위) 및 유족 부양 합의',
+      '보험사의 악의적 처리, 과소지급 및 합의 협상',
+    ],
+    servicesZh: [
+      '汽车与摩托车事故诉讼',
+      '严重伤害索赔（脑、脊髓、烧伤、截肢）',
+      '场所责任（滑倒摔倒、安保过失、泳池等）',
+      '产品责任与缺陷设备/召回',
+      '医疗过失与延误诊断',
+      '职场第三方索赔与工地事故',
+      '非正常死亡与家属扶养/抚慰金和解',
+      '保险恶意、少赔/拒赔与和解谈判',
     ],
   },
 ];

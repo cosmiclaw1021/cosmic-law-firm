@@ -6,11 +6,13 @@ import Icon from '@src/components/Icon';
 const titles: Record<string, string> = {
   en: 'AI in Entertainment | Insides',
   ko: '엔터테인먼트 AI | 인사이드',
+  'zh-Hans': '娱乐行业的 AI | 洞见',
 };
 
 const descriptions: Record<string, string> = {
   en: 'How AI, digital replicas, and policy shifts are reshaping rights, production, and publicity.',
   ko: 'AI와 디지털 복제, 정책 변화가 권리, 제작, 퍼블리시티를 어떻게 바꾸는지 정리.',
+  'zh-Hans': 'AI 正在重塑权利边界、安全和制作流程。',
 };
 
 export async function generateMetadata({ params }: { params: Promise<{ lng: string }> }): Promise<Metadata> {
@@ -25,6 +27,14 @@ export async function generateMetadata({ params }: { params: Promise<{ lng: stri
       title,
       description,
       url: `${SITE.url}/${lng}/insights/ai-in-entertainment`,
+    },
+    alternates: {
+      canonical: `/${lng}/insights/ai-in-entertainment`,
+      languages: {
+        'en': '/en/insights/ai-in-entertainment',
+        'ko': '/ko/insights/ai-in-entertainment',
+        'zh-Hans': '/zh-Hans/insights/ai-in-entertainment',
+      },
     },
   };
 }

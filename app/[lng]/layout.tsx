@@ -18,27 +18,44 @@ export const viewport: Viewport = {
   viewportFit: 'cover',
 };
 
-export const metadata: Metadata = {
-  title: `${SITE.name} | ${SITE.nameSub}`,
-  description: "Entertainment law for creators, studios, and media companies—contracts, IP, talent deals, distribution, and disputes.",
-  metadataBase: new URL(SITE.url),
-  openGraph: {
-    type: "website",
-    url: SITE.url,
-    title: `${SITE.name} | ${SITE.nameSub}`,
+export async function generateMetadata({ params }: { params: Promise<{ lng: string }> }): Promise<Metadata> {
+  const { lng } = await params;
+  const baseUrl = SITE.url;
+
+  return {
+    title: {
+      template: `%s | ${SITE.name}`,
+      default: `${SITE.name} | ${SITE.nameSub}`,
+    },
     description: "Entertainment law for creators, studios, and media companies—contracts, IP, talent deals, distribution, and disputes.",
-    images: ["/Cosmic_Logos-02.png"],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: `${SITE.name} | ${SITE.nameSub}`,
-    description: "Entertainment law for creators, studios, and media companies—contracts, IP, talent deals, distribution, and disputes.",
-    images: ["/Cosmic_Logos-02.png"],
-  },
-  icons: {
-    icon: '/Cosmic_Logos-02.png',
-  },
-};
+    metadataBase: new URL(baseUrl),
+    alternates: {
+      canonical: `/${lng}`,
+      languages: {
+        'en': '/en',
+        'ko': '/ko',
+        'zh-Hans': '/zh-Hans',
+        'x-default': '/en',
+      },
+    },
+    openGraph: {
+      type: "website",
+      url: `${baseUrl}/${lng}`,
+      title: `${SITE.name} | ${SITE.nameSub}`,
+      description: "Entertainment law for creators, studios, and media companies—contracts, IP, talent deals, distribution, and disputes.",
+      images: ["/Cosmic_Logos-02.png"],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${SITE.name} | ${SITE.nameSub}`,
+      description: "Entertainment law for creators, studios, and media companies—contracts, IP, talent deals, distribution, and disputes.",
+      images: ["/Cosmic_Logos-02.png"],
+    },
+    icons: {
+      icon: '/Cosmic_Logos-02.png',
+    },
+  };
+}
 
 export async function generateStaticParams() {
   return [{ lng: 'en' }, { lng: 'ko' }, { lng: 'zh-Hans' }];

@@ -23,7 +23,6 @@ const SERVICES_IMAGE = '/NanoBanana/Lawyer-contract-notes.png';
 
 const HomeDesktop: React.FC = () => {
   const { t, i18n } = useTranslation();
-  const isKo = i18n.language?.startsWith('ko');
 
   return (
     <>
@@ -34,7 +33,7 @@ const HomeDesktop: React.FC = () => {
 
       <SectionWithStars
         className="hero-header-gap relative overflow-hidden bg-slate-950 text-white"
-        aria-label="Hero introduction"
+        aria-label={t('accessibility.aria.heroIntro')}
         settings={{ density: 0.52, scrollRange: 920 }}
       >
         <div className="absolute inset-0 z-10">
@@ -42,7 +41,7 @@ const HomeDesktop: React.FC = () => {
             className="absolute inset-0 bg-cover bg-center"
             style={{ backgroundImage: `url('${HERO_BACKGROUND}')` }}
             role="img"
-            aria-label="Music producer and entertainment lawyer collaborating inside a studio"
+            aria-label={t('accessibility.aria.homeHeroBackground')}
           />
           <div className="absolute inset-0 bg-gradient-to-br from-slate-950/90 via-slate-950/70 to-black/90" />
           <div className="absolute -left-32 top-8 h-[420px] w-[420px] rounded-full bg-primary/30 blur-[180px]" aria-hidden="true" />
@@ -88,7 +87,7 @@ const HomeDesktop: React.FC = () => {
               className="group relative overflow-hidden rounded-[32px] border border-white/10 bg-slate-900/70 shadow-2xl"
             >
               <div className="relative h-[360px] w-full">
-                <Image src={HERO_SIDE_IMAGE} alt="Writer and lawyer reviewing notes in a library" fill className="object-cover" />
+                <Image src={HERO_SIDE_IMAGE} alt={t('accessibility.alt.homeHeroSideImage')} fill className="object-cover" />
               </div>
               <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-900/20 to-transparent" />
             </motion.figure>
@@ -118,10 +117,18 @@ const HomeDesktop: React.FC = () => {
                     </div>
                     <div>
                       <h3 className="text-lg font-black tracking-tight text-slate-900 dark:text-white">
-                        {isKo ? area.titleKo : area.title}
+                        {i18n.language?.startsWith('ko') 
+                          ? area.titleKo 
+                          : i18n.language?.startsWith('zh') 
+                            ? area.titleZh 
+                            : area.title}
                       </h3>
                       <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed mt-1">
-                        {isKo ? area.focusKo : area.focus}
+                        {i18n.language?.startsWith('ko') 
+                          ? area.focusKo 
+                          : i18n.language?.startsWith('zh') 
+                            ? area.focusZh 
+                            : area.focus}
                       </p>
                     </div>
                   </article>
@@ -143,7 +150,7 @@ const HomeDesktop: React.FC = () => {
               <div className="relative h-full w-full">
                 <Image
                   src={SERVICES_IMAGE}
-                  alt="Attorney reviewing contract notes on a desk"
+                  alt={t('accessibility.alt.contractNotesDesk')}
                   width={360}
                   height={540}
                   className="h-full w-full object-cover"

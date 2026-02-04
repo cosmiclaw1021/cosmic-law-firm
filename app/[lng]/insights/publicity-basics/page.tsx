@@ -6,11 +6,13 @@ import Icon from '@src/components/Icon';
 const titles: Record<string, string> = {
   en: 'Rights & Publicity Basics | Insides',
   ko: '퍼블리시티 권리 기초 | 인사이드',
+  'zh-Hans': '公开权基础 | 洞见',
 };
 
 const descriptions: Record<string, string> = {
   en: 'Rights of publicity, NIL, and how AI deepfakes are tightening the scrutiny around likeness.',
   ko: '퍼블리시티 권리, NIL, 인공지능 딥페이크가 초상 사용을 어떻게 재정의하는지 정리.',
+  'zh-Hans': '管理姓名、影像和肖像权的基础法律知识。',
 };
 
 export async function generateMetadata({ params }: { params: Promise<{ lng: string }> }): Promise<Metadata> {
@@ -25,6 +27,14 @@ export async function generateMetadata({ params }: { params: Promise<{ lng: stri
       title,
       description,
       url: `${SITE.url}/${lng}/insights/publicity-basics`,
+    },
+    alternates: {
+      canonical: `/${lng}/insights/publicity-basics`,
+      languages: {
+        'en': '/en/insights/publicity-basics',
+        'ko': '/ko/insights/publicity-basics',
+        'zh-Hans': '/zh-Hans/insights/publicity-basics',
+      },
     },
   };
 }

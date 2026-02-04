@@ -46,7 +46,7 @@ const TeamDesktop: React.FC = () => {
               key={member.id}
               href={`/about/team/${member.slug}`}
               className="block focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
-              aria-label={`${member.name} profile`}
+              aria-label={t('team.links.profileAria', { name: member.name })}
             >
               <article className="flex flex-row flex-wrap items-start gap-6 rounded-[28px] border border-slate-200 dark:border-slate-800 bg-white/70 dark:bg-slate-900/60 p-6 sm:p-8 shadow-sm transition-shadow hover:shadow-xl">
                 <div className="flex-1 min-w-0 space-y-3">
