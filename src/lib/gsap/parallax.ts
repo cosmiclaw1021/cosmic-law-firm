@@ -20,7 +20,7 @@ const getScrollRange = (section: HTMLElement, override?: number) => {
     return Math.max(1, override ?? 0);
   }
 
-  const measuredHeight = override ?? section.getBoundingClientRect().height;
+  const measuredHeight = override ?? section.offsetHeight;
   const fallback = Math.max(1, measuredHeight || window.innerHeight);
   return fallback;
 };

@@ -9,6 +9,7 @@ import PageTransition from '../components/PageTransition';
 import I18nProvider from '../components/I18nProvider';
 import { SITE } from '../lib/site';
 import RegionLayout from '@src/components/Layout';
+import { geistSans, geistMono } from '../fonts';
 
 export const viewport: Viewport = {
   width: 'device-width',
@@ -22,10 +23,17 @@ export async function generateMetadata({ params }: { params: Promise<{ lng: stri
   const { lng } = await params;
   const baseUrl = SITE.url;
 
+  const subNames: Record<string, string> = {
+    en: 'Entertainment, Media & Personal Injury Law',
+    ko: '엔터테인먼트, 미디어 & 개인상해법',
+    'zh-Hans': '娱乐、媒体与人身伤害法律'
+  };
+  const nameSub = subNames[lng] || subNames.en;
+
   return {
     title: {
       template: `%s | ${SITE.name}`,
-      default: `${SITE.name} | ${SITE.nameSub}`,
+      default: `${SITE.name} | ${nameSub}`,
     },
     description: "Entertainment law for creators, studios, and media companies—contracts, IP, talent deals, distribution, and disputes.",
     metadataBase: new URL(baseUrl),
@@ -41,13 +49,13 @@ export async function generateMetadata({ params }: { params: Promise<{ lng: stri
     openGraph: {
       type: "website",
       url: `${baseUrl}/${lng}`,
-      title: `${SITE.name} | ${SITE.nameSub}`,
+      title: `${SITE.name} | ${nameSub}`,
       description: "Entertainment law for creators, studios, and media companies—contracts, IP, talent deals, distribution, and disputes.",
       images: ["/Cosmic_Logos-02.png"],
     },
     twitter: {
       card: "summary_large_image",
-      title: `${SITE.name} | ${SITE.nameSub}`,
+      title: `${SITE.name} | ${nameSub}`,
       description: "Entertainment law for creators, studios, and media companies—contracts, IP, talent deals, distribution, and disputes.",
       images: ["/Cosmic_Logos-02.png"],
     },
@@ -89,7 +97,11 @@ export default async function RootLayout({
   };
 
   return (
-    <html lang={lng} className="scroll-pt-[104px]" suppressHydrationWarning>
+    <html 
+      lang={lng} 
+      className={`scroll-pt-[104px] ${geistSans.variable} ${geistMono.variable}`} 
+      suppressHydrationWarning
+    >
       <head>
         <script dangerouslySetInnerHTML={{ __html: `
           (function() {
@@ -113,17 +125,17 @@ export default async function RootLayout({
             <div className="relative flex flex-col min-h-screen overflow-x-hidden">
               <ClientLayout>
                 <SkipToContent />
-                <Navbar />
+                <Navbar key={`nav-${lng}`} />
                 <main 
                   id="main-content" 
                   tabIndex={-1} 
-                  className="flex-grow w-full flex flex-col outline-none pt-[calc(68px+env(safe-area-inset-top))] sm:pt-[calc(96px+env(safe-area-inset-top))] lg:pt-[96px]"
+                  className="flex-grow w-full flex flex-col outline-none"
                 >
                   <PageTransition>
                     {children}
                   </PageTransition>
                 </main>
-                <Footer />
+                <Footer key={`footer-${lng}`} />
               </ClientLayout>
             </div>
           </I18nProvider>

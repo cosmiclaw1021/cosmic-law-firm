@@ -107,7 +107,13 @@ const AboutDesktop: React.FC = () => {
       </SectionWithStars>
 
       <SectionWithStars className="w-full bg-primary text-white py-16 px-10 overflow-hidden" settings={{ density: 0.47 }}>
-        <div className="relative z-10 max-w-4xl mx-auto text-center flex flex-col items-center gap-6">
+        <motion.div 
+          variants={fadeInUp}
+          initial="initial"
+          whileInView="whileInView"
+          viewport={{ once: true }}
+          className="relative z-10 max-w-4xl mx-auto text-center flex flex-col items-center gap-6"
+        >
           <h2 className="text-4xl font-black uppercase tracking-tight">{t('about.cta.title')}</h2>
           <p className="text-white/90 text-lg max-w-2xl">
             {t('about.cta.description')}
@@ -119,7 +125,7 @@ const AboutDesktop: React.FC = () => {
               >
                 {t('about.cta.button')}
               </ButtonLink>
-        </div>
+        </motion.div>
       </SectionWithStars>
     </>
   );

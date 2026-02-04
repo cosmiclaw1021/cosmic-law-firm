@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect } from 'react';
+import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import Link from '@/components/ui/Link';
 import SEO from '@/components/SEO';
@@ -8,6 +9,19 @@ import { getPracticeAreaBySlug } from '@/lib/practice-areas';
 import { SITE } from '@/lib/site';
 import Icon from '@src/components/Icon';
 import SectionWithStars from '@src/components/layout/SectionWithStars';
+
+const fadeInUp = {
+  initial: { opacity: 0, y: 24 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true },
+  transition: { duration: 0.6 },
+};
+
+const staggerContainer = {
+  initial: {},
+  whileInView: { transition: { staggerChildren: 0.05 } },
+  viewport: { once: true },
+};
 
 type PracticeAreaPageProps = {
   lng?: string;
@@ -29,7 +43,13 @@ const PracticeAreaPage: React.FC<PracticeAreaPageProps> = ({ lng, slug }) => {
     return (
       <SectionWithStars className="max-w-[960px] mx-auto px-6 sm:px-8 py-16" settings={{ density: 0.44 }}>
         <SEO title={t('seo.practiceAreaNotFound.title')} description={t('seo.practiceAreaNotFound.description')} />
-        <div className="relative z-10">
+        <motion.div 
+          variants={fadeInUp}
+          initial="initial"
+          whileInView="whileInView"
+          viewport={{ once: true }}
+          className="relative z-10"
+        >
           <h1 className="text-3xl font-black tracking-tight text-slate-900 dark:text-white uppercase">
             {t('notFound.title')}
           </h1>
@@ -44,7 +64,7 @@ const PracticeAreaPage: React.FC<PracticeAreaPageProps> = ({ lng, slug }) => {
               {t('notFound.cta')}
             </Link>
           </div>
-        </div>
+        </motion.div>
       </SectionWithStars>
     );
   }
@@ -64,9 +84,15 @@ const PracticeAreaPage: React.FC<PracticeAreaPageProps> = ({ lng, slug }) => {
       <SEO title={title} description={summary} />
 
       {/* Hero */}
-      <SectionWithStars className="w-full bg-background-light dark:bg-background-dark border-b border-secondary/40 dark:border-white/10" settings={{ density: 0.47 }}>
+      <SectionWithStars className="hero-header-gap w-full bg-background-light dark:bg-background-dark border-b border-secondary/40 dark:border-white/10" settings={{ density: 0.47 }}>
         <div className="relative z-10 max-w-[1280px] mx-auto px-6 sm:px-8 lg:px-10 py-12">
-          <div className="flex flex-col gap-4 max-w-3xl">
+          <motion.div 
+            variants={fadeInUp}
+            initial="initial"
+            whileInView="whileInView"
+            viewport={{ once: true }}
+            className="flex flex-col gap-4 max-w-3xl"
+          >
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-slate-900 dark:text-primary-light text-xs font-black uppercase tracking-widest w-fit">
               <Icon name={area.icon} className="size-4" />
               {t('common.practiceAreaLabel')}
@@ -94,7 +120,7 @@ const PracticeAreaPage: React.FC<PracticeAreaPageProps> = ({ lng, slug }) => {
                 {t('nav.viewAllPracticeAreas')}
               </Link>
             </div>
-          </div>
+          </motion.div>
         </div>
       </SectionWithStars>
 
@@ -102,7 +128,13 @@ const PracticeAreaPage: React.FC<PracticeAreaPageProps> = ({ lng, slug }) => {
       <SectionWithStars className="w-full" settings={{ density: 0.5 }}>
         <div className="relative z-10 max-w-[1280px] mx-auto px-6 sm:px-8 lg:px-10 py-12">
           {overview?.length ? (
-            <div className="max-w-3xl">
+            <motion.div 
+              variants={fadeInUp}
+              initial="initial"
+              whileInView="whileInView"
+              viewport={{ once: true }}
+              className="max-w-3xl"
+            >
               <h2 className="text-2xl font-black tracking-tight text-slate-900 dark:text-white">
                 {t('common.overview')}
               </h2>
@@ -111,33 +143,52 @@ const PracticeAreaPage: React.FC<PracticeAreaPageProps> = ({ lng, slug }) => {
                   <p key={paragraph}>{paragraph}</p>
                 ))}
               </div>
-            </div>
+            </motion.div>
           ) : null}
 
-          <div className="flex flex-col gap-2 max-w-3xl mt-12">
+          <motion.div 
+            variants={fadeInUp}
+            initial="initial"
+            whileInView="whileInView"
+            viewport={{ once: true }}
+            className="flex flex-col gap-2 max-w-3xl mt-12"
+          >
             <h2 className="text-2xl font-black tracking-tight text-slate-900 dark:text-white">
               {t('common.whatWeHandle')}
             </h2>
             <p className="text-slate-600 dark:text-slate-400">
               {t('common.typicalMatters', { title: title.toLowerCase() })}
             </p>
-          </div>
+          </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8">
+          <motion.div 
+            variants={staggerContainer}
+            initial="initial"
+            whileInView="whileInView"
+            viewport={{ once: true }}
+            className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8"
+          >
             {services.map((service) => (
-              <div
+              <motion.div
                 key={service}
+                variants={fadeInUp}
                 className="flex gap-3 p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800"
               >
                 <Icon name="check_circle" className="text-slate-900 dark:text-primary-light size-5 shrink-0" />
                 <p className="text-slate-700 dark:text-slate-300 font-medium leading-relaxed">
                   {service}
                 </p>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
 
-          <div className="mt-12 rounded-2xl border border-secondary/40 dark:border-white/10 bg-secondary/25 dark:bg-white/5 p-6 sm:p-8">
+          <motion.div 
+            variants={fadeInUp}
+            initial="initial"
+            whileInView="whileInView"
+            viewport={{ once: true }}
+            className="mt-12 rounded-2xl border border-secondary/40 dark:border-white/10 bg-secondary/25 dark:bg-white/5 p-6 sm:p-8"
+          >
             <h3 className="text-lg font-black tracking-tight text-slate-900 dark:text-white">
               {t('common.nextStep')}
             </h3>
@@ -158,7 +209,7 @@ const PracticeAreaPage: React.FC<PracticeAreaPageProps> = ({ lng, slug }) => {
                 {t('contact.labels.email')}
               </a>
             </div>
-          </div>
+          </motion.div>
         </div>
       </SectionWithStars>
     </>

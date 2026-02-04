@@ -11,6 +11,13 @@ import Map from '@src/components/Map';
 import { FEATURES } from '@src/config/features';
 import SectionWithStars from '@src/components/layout/SectionWithStars';
 
+const fadeInUp = {
+  initial: { opacity: 0, y: 24 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true },
+  transition: { duration: 0.6 },
+};
+
 const ContactDesktop: React.FC = () => {
   const { t } = useTranslation();
   const { isSubmitted, isLoading, error, handleSubmit, resetForm } = useContactForm();
@@ -21,44 +28,28 @@ const ContactDesktop: React.FC = () => {
       <div className="relative z-10 w-full max-w-[1280px] mx-auto px-8 py-12 overflow-hidden">
         {/* Page Heading */}
         <motion.div 
+          variants={fadeInUp}
           initial="initial"
-          animate="animate"
-          variants={{
-            animate: {
-              transition: {
-                staggerChildren: 0.1
-              }
-            }
-          }}
+          whileInView="whileInView"
+          viewport={{ once: true }}
           className="flex flex-col gap-3 mb-10"
         >
-          <motion.h1 
-            variants={{
-              initial: { opacity: 0, y: 20 },
-              animate: { opacity: 1, y: 0, transition: { duration: 0.6 } }
-            }}
-            className="text-text-main dark:text-white text-5xl font-black leading-tight tracking-tight uppercase"
-          >
+          <h1 className="text-text-main dark:text-white text-5xl font-black leading-tight tracking-tight uppercase">
             {t('contactPage.hero.title')}
-          </motion.h1>
-          <motion.p 
-            variants={{
-              initial: { opacity: 0, y: 20 },
-              animate: { opacity: 1, y: 0, transition: { duration: 0.6 } }
-            }}
-            className="text-text-secondary dark:text-slate-400 text-lg font-medium leading-relaxed max-w-2xl"
-          >
+          </h1>
+          <p className="text-text-secondary dark:text-slate-400 text-lg font-medium leading-relaxed max-w-2xl">
             {t('contactPage.hero.description')}
-          </motion.p>
+          </p>
         </motion.div>
 
         {/* Main Content Grid */}
         <div className="grid grid-cols-12 gap-12">
           {/* Left Column: Details */}
           <motion.div 
-            initial={{ opacity: 0, x: -30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.2, duration: 0.6 }}
+            variants={fadeInUp}
+            initial="initial"
+            whileInView="whileInView"
+            viewport={{ once: true }}
             className="col-span-5 flex flex-col gap-8"
           >
             {/* Location & Contact Info */}
@@ -151,9 +142,10 @@ const ContactDesktop: React.FC = () => {
 
           {/* Right Column: Map & Form */}
           <motion.div 
-            initial={{ opacity: 0, x: 30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.2, duration: 0.6 }}
+            variants={fadeInUp}
+            initial="initial"
+            whileInView="whileInView"
+            viewport={{ once: true }}
             className="col-span-7 flex flex-col gap-8 h-full"
           >
             {/* Map Embed */}

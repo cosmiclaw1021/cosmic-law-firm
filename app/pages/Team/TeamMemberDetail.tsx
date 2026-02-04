@@ -2,11 +2,26 @@
 
 import Image from 'next/image';
 import React from 'react';
+import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import ButtonLink from '@/components/ui/ButtonLink';
 import Link from '@/components/ui/Link';
 import { TeamMember } from './team.constants';
 import Icon from '@src/components/Icon';
+import SectionWithStars from '@src/components/layout/SectionWithStars';
+
+const fadeInUp = {
+  initial: { opacity: 0, y: 24 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true },
+  transition: { duration: 0.6 },
+};
+
+const staggerContainer = {
+  initial: {},
+  whileInView: { transition: { staggerChildren: 0.1 } },
+  viewport: { once: true },
+};
 
 type TeamMemberDetailProps = {
   member: TeamMember;
@@ -45,11 +60,17 @@ const TeamMemberDetail: React.FC<TeamMemberDetailProps> = ({ member, lng }) => {
   const tagline = t(`${detailKey}.tagline`, { defaultValue: '' });
 
   return (
-    <section className="w-full bg-background-light dark:bg-background-dark min-h-viewport">
-      <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:px-8 lg:py-20">
+    <SectionWithStars className="w-full bg-background-light dark:bg-background-dark min-h-viewport" settings={{ density: 0.5 }}>
+      <div className="relative z-10 mx-auto max-w-6xl px-4 pt-6 pb-12 sm:px-6 lg:px-8 lg:pt-10 lg:pb-20">
         
         {/* Header - Always on top */}
-        <div className="mb-10 space-y-4 lg:mb-16">
+        <motion.div 
+          variants={fadeInUp}
+          initial="initial"
+          whileInView="whileInView"
+          viewport={{ once: true }}
+          className="mb-8 space-y-2 lg:mb-12"
+        >
           {tagline && (
             <p className="text-xs uppercase tracking-[0.4em] text-slate-500 dark:text-slate-400 font-semibold">
               {tagline}
@@ -61,13 +82,19 @@ const TeamMemberDetail: React.FC<TeamMemberDetailProps> = ({ member, lng }) => {
           <p className="text-sm sm:text-base font-black uppercase tracking-[0.3em] text-primary dark:text-primary-light">
             {t(member.titleKey)}
           </p>
-        </div>
+        </motion.div>
 
         {/* Layout Container */}
         <div className="relative">
           <div className="flex flex-col lg:flex-row gap-12 lg:items-start">
             {/* Main Content Area */}
-            <div className="flex-1">
+            <motion.div 
+              variants={fadeInUp}
+              initial="initial"
+              whileInView="whileInView"
+              viewport={{ once: true }}
+              className="flex-1"
+            >
               {/* Mobile Profile Image - Floated for wrap-around effect */}
               <div className="lg:hidden float-right ml-6 mb-4 w-[45%] max-w-[200px] aspect-[3/4] relative rounded-2xl overflow-hidden shadow-2xl border border-slate-200 dark:border-slate-800 z-10">
                 <Image
@@ -117,12 +144,18 @@ const TeamMemberDetail: React.FC<TeamMemberDetailProps> = ({ member, lng }) => {
                   </Link>
                 </div>
               </div>
-            </div>
+            </motion.div>
 
             {/* Sidebar / Desktop Image & Details */}
             <div className="w-full lg:w-80 shrink-0 space-y-8">
               {/* Desktop Image */}
-              <div className="hidden lg:block relative aspect-[3/4] w-full overflow-hidden rounded-[32px] shadow-2xl border border-slate-200 dark:border-slate-800">
+              <motion.div 
+                variants={fadeInUp}
+                initial="initial"
+                whileInView="whileInView"
+                viewport={{ once: true }}
+                className="hidden lg:block relative aspect-[3/4] w-full overflow-hidden rounded-[32px] shadow-2xl border border-slate-200 dark:border-slate-800"
+              >
                 <Image
                   src={member.imageSrc}
                   alt={t(member.imageAltKey)}
@@ -130,12 +163,18 @@ const TeamMemberDetail: React.FC<TeamMemberDetailProps> = ({ member, lng }) => {
                   sizes="320px"
                   className="object-cover"
                 />
-              </div>
+              </motion.div>
 
               {/* Structured Info Cards */}
-              <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-1">
+              <motion.div 
+                variants={staggerContainer}
+                initial="initial"
+                whileInView="whileInView"
+                viewport={{ once: true }}
+                className="grid gap-6 sm:grid-cols-2 lg:grid-cols-1"
+              >
                 {/* Education */}
-                <div className="rounded-3xl border border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-slate-900/40 p-8 backdrop-blur-sm">
+                <motion.div variants={fadeInUp} className="rounded-3xl border border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-slate-900/40 p-8 backdrop-blur-sm">
                   <p className="text-[0.65rem] font-black uppercase tracking-[0.3em] text-slate-500 dark:text-slate-400 mb-4">
                     {t('team.detail.educationHeading')}
                   </p>
@@ -147,11 +186,11 @@ const TeamMemberDetail: React.FC<TeamMemberDetailProps> = ({ member, lng }) => {
                       </li>
                     ))}
                   </ul>
-                </div>
+                </motion.div>
 
                 {/* Practice Areas */}
                 {practiceAreas.length > 0 && (
-                  <div className="rounded-3xl border border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-slate-900/40 p-8 backdrop-blur-sm">
+                  <motion.div variants={fadeInUp} className="rounded-3xl border border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-slate-900/40 p-8 backdrop-blur-sm">
                     <p className="text-[0.65rem] font-black uppercase tracking-[0.3em] text-slate-500 dark:text-slate-400 mb-4">
                       {t('team.detail.expertiseHeading')}
                     </p>
@@ -163,12 +202,12 @@ const TeamMemberDetail: React.FC<TeamMemberDetailProps> = ({ member, lng }) => {
                         </li>
                       ))}
                     </ul>
-                  </div>
+                  </motion.div>
                 )}
 
                 {/* Memberships */}
                 {memberships.length > 0 && (
-                  <div className="rounded-3xl border border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-slate-900/40 p-8 backdrop-blur-sm">
+                  <motion.div variants={fadeInUp} className="rounded-3xl border border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-slate-900/40 p-8 backdrop-blur-sm">
                     <p className="text-[0.65rem] font-black uppercase tracking-[0.3em] text-slate-500 dark:text-slate-400 mb-4">
                       {t('team.detail.affiliationsHeading')}
                     </p>
@@ -180,26 +219,26 @@ const TeamMemberDetail: React.FC<TeamMemberDetailProps> = ({ member, lng }) => {
                         </li>
                       ))}
                     </ul>
-                  </div>
+                  </motion.div>
                 )}
 
                 {/* Creative Focus */}
                 {creative && (
-                  <div className="rounded-3xl border border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-slate-900/40 p-8 backdrop-blur-sm sm:col-span-2 lg:col-span-1">
+                  <motion.div variants={fadeInUp} className="rounded-3xl border border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-slate-900/40 p-8 backdrop-blur-sm sm:col-span-2 lg:col-span-1">
                     <p className="text-[0.65rem] font-black uppercase tracking-[0.3em] text-slate-500 dark:text-slate-400 mb-4">
                       {t('team.detail.creativeFocusHeading')}
                     </p>
                     <p className="text-sm leading-relaxed text-slate-700 dark:text-slate-200 italic font-medium">
                       "{creative}"
                     </p>
-                  </div>
+                  </motion.div>
                 )}
-              </div>
+              </motion.div>
             </div>
           </div>
         </div>
       </div>
-    </section>
+    </SectionWithStars>
   );
 };
 

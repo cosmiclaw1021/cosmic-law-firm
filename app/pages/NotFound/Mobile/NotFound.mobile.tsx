@@ -8,7 +8,7 @@ const NotFoundMobile: React.FC = () => {
   const { t } = useTranslation();
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-[60vh] text-center px-6">
+    <div className="non-hero-page-gap flex flex-col items-center justify-center min-h-[60vh] text-center px-6">
       <SEO 
         title={t('notFound.title')}
         description={t('notFound.description')}

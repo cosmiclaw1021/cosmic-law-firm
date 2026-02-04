@@ -2,28 +2,16 @@
 
 import { motion, AnimatePresence } from 'framer-motion';
 import { usePathname } from 'next/navigation';
-import React, { useEffect, useState, useRef } from 'react';
+import React from 'react';
 
 export default function PageTransition({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
-  const [isMounted, setIsMounted] = useState(false);
-  const isFirstMount = useRef(true);
-
-  useEffect(() => {
-    setIsMounted(true);
-    // After the first render completes, future mounts are not the "first"
-    isFirstMount.current = false;
-  }, []);
-
-  if (!isMounted) {
-    return <div className="flex flex-col flex-grow w-full">{children}</div>;
-  }
 
   return (
-    <AnimatePresence mode="wait">
+    <AnimatePresence mode="wait" initial={false}>
       <motion.div
         key={pathname}
-        initial={isFirstMount.current ? false : { opacity: 0, y: 10 }}
+        initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ 
           duration: 0.4, 

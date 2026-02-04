@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import ButtonLink from '@/components/ui/ButtonLink';
 import Link from '@/components/ui/Link';
 import SEO from '@/components/SEO';
@@ -7,6 +8,19 @@ import { teamMembers } from '../team.constants';
 import Image from 'next/image';
 import Icon from '@src/components/Icon';
 import SectionWithStars from '@src/components/layout/SectionWithStars';
+
+const fadeInUp = {
+  initial: { opacity: 0, y: 24 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true },
+  transition: { duration: 0.6 },
+};
+
+const staggerContainer = {
+  initial: {},
+  whileInView: { transition: { staggerChildren: 0.1 } },
+  viewport: { once: true },
+};
 
 const TeamDesktop: React.FC = () => {
   const { t } = useTranslation();
@@ -17,7 +31,13 @@ const TeamDesktop: React.FC = () => {
 
       <SectionWithStars className="w-full bg-background-light dark:bg-background-dark overflow-hidden" settings={{ density: 0.47 }}>
         <div className="relative z-10 max-w-[1280px] mx-auto px-10 py-20">
-          <div className="flex flex-col gap-6 max-w-3xl">
+          <motion.div 
+            variants={fadeInUp}
+            initial="initial"
+            whileInView="whileInView"
+            viewport={{ once: true }}
+            className="flex flex-col gap-6 max-w-3xl"
+          >
             <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-slate-900 dark:text-primary-light text-[11px] font-black uppercase tracking-[0.3em] w-fit">
               {t('team.hero.badge')}
             </span>
@@ -35,49 +55,62 @@ const TeamDesktop: React.FC = () => {
               {t('team.hero.cta')}
               <Icon name="mail" className="size-4" />
             </ButtonLink>
-          </div>
+          </motion.div>
         </div>
       </SectionWithStars>
 
       <SectionWithStars className="w-full bg-background-light dark:bg-background-dark py-20" settings={{ density: 0.5 }}>
-        <div className="relative z-10 max-w-[960px] mx-auto px-6 space-y-6">
+        <motion.div 
+          variants={staggerContainer}
+          initial="initial"
+          whileInView="whileInView"
+          viewport={{ once: true }}
+          className="relative z-10 max-w-[960px] mx-auto px-6 space-y-6"
+        >
           {teamMembers.map((member) => (
-            <Link
-              key={member.id}
-              href={`/about/team/${member.slug}`}
-              className="block focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
-              aria-label={t('team.links.profileAria', { name: member.name })}
-            >
-              <article className="flex flex-row flex-wrap items-start gap-6 rounded-[28px] border border-slate-200 dark:border-slate-800 bg-white/70 dark:bg-slate-900/60 p-6 sm:p-8 shadow-sm transition-shadow hover:shadow-xl">
-                <div className="flex-1 min-w-0 space-y-3">
-                  <p className="text-[0.6rem] uppercase tracking-[0.4em] text-slate-400 dark:text-slate-300">
-                    {t(member.locationKey)}
-                  </p>
-                  <h3 className="text-2xl font-black text-slate-900 dark:text-white uppercase tracking-tight">{member.name}</h3>
-                  <p className="text-sm font-black text-slate-900 dark:text-primary-light uppercase tracking-[0.3em]">
-                    {t(member.titleKey)}
-                  </p>
-                  <p className="text-sm text-slate-500 dark:text-slate-400 leading-relaxed font-medium">
-                    {t(member.specialtyKey)}
-                  </p>
-                </div>
-                <div className="relative shrink-0 w-[150px] h-[260px] rounded-2xl border border-slate-100 dark:border-slate-800 overflow-hidden shadow-sm">
-                  <Image
-                    src={member.imageSrc}
-                    alt={t(member.imageAltKey)}
-                    fill
-                    sizes="(max-width: 768px) 130px, 170px"
-                    className="object-cover"
-                  />
-                </div>
-              </article>
-            </Link>
+            <motion.div key={member.id} variants={fadeInUp}>
+              <Link
+                href={`/about/team/${member.slug}`}
+                className="block focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+                aria-label={t('team.links.profileAria', { name: member.name })}
+              >
+                <article className="flex flex-row flex-wrap items-start gap-6 rounded-[28px] border border-slate-200 dark:border-slate-800 bg-white/70 dark:bg-slate-900/60 p-6 sm:p-8 shadow-sm transition-shadow hover:shadow-xl">
+                  <div className="flex-1 min-w-0 space-y-3">
+                    <p className="text-[0.6rem] uppercase tracking-[0.4em] text-slate-400 dark:text-slate-300">
+                      {t(member.locationKey)}
+                    </p>
+                    <h3 className="text-2xl font-black text-slate-900 dark:text-white uppercase tracking-tight">{member.name}</h3>
+                    <p className="text-sm font-black text-slate-900 dark:text-primary-light uppercase tracking-[0.3em]">
+                      {t(member.titleKey)}
+                    </p>
+                    <p className="text-sm text-slate-500 dark:text-slate-400 leading-relaxed font-medium">
+                      {t(member.specialtyKey)}
+                    </p>
+                  </div>
+                  <div className="relative shrink-0 w-[150px] h-[260px] rounded-2xl border border-slate-100 dark:border-slate-800 overflow-hidden shadow-sm">
+                    <Image
+                      src={member.imageSrc}
+                      alt={t(member.imageAltKey)}
+                      fill
+                      sizes="(max-width: 768px) 130px, 170px"
+                      className="object-cover"
+                    />
+                  </div>
+                </article>
+              </Link>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </SectionWithStars>
 
       <SectionWithStars className="w-full bg-primary text-white py-16" settings={{ density: 0.47 }}>
-        <div className="relative z-10 max-w-[960px] mx-auto px-10 text-center">
+        <motion.div 
+          variants={fadeInUp}
+          initial="initial"
+          whileInView="whileInView"
+          viewport={{ once: true }}
+          className="relative z-10 max-w-[960px] mx-auto px-10 text-center"
+        >
           <h2 className="text-3xl font-black tracking-tight uppercase tracking-tight">{t('team.cta.title')}</h2>
           <p className="mt-4 text-lg text-white/90 leading-relaxed font-medium">{t('team.cta.description')}</p>
           <ButtonLink
@@ -87,7 +120,7 @@ const TeamDesktop: React.FC = () => {
           >
             {t('team.cta.button')}
           </ButtonLink>
-        </div>
+        </motion.div>
       </SectionWithStars>
     </>
   );

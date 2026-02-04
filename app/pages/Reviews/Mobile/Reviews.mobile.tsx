@@ -24,7 +24,7 @@ const ReviewsMobile: React.FC = () => {
 
   return (
     <>
-      <SectionWithStars className="w-full bg-white dark:bg-slate-900 py-10 px-4 border-b border-slate-100 dark:border-slate-800 overflow-hidden" settings={{ density: 0.44 }}>
+      <SectionWithStars className="hero-header-gap w-full bg-white dark:bg-slate-900 py-10 px-4 border-b border-slate-100 dark:border-slate-800 overflow-hidden" settings={{ density: 0.44 }}>
         <motion.div
           initial={{ opacity: 0, y: 18 }}
           animate={{ opacity: 1, y: 0 }}

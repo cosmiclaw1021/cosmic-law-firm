@@ -85,13 +85,13 @@ const NavbarMobile: React.FC = () => {
                   <span>{SITE.name.split(' ').slice(1).join(' ')}</span>
                 </span>
                 <span className="text-[8px] text-white/90 font-bold uppercase tracking-wider mt-0.5 leading-none">
-                  {SITE.nameSub}
+                  {t('common.companyNameSub')}
                 </span>
               </div>
             </Link>
 
             <div className="flex items-center gap-2">
-              <LanguageToggle />
+              <LanguageToggle variant="dropdown" />
             <button
               className="p-2 text-white/90 hover:text-white focus:ring-2 focus:ring-secondary/40 rounded-lg"
               onClick={toggleMenu}
@@ -117,7 +117,7 @@ const NavbarMobile: React.FC = () => {
             transition={{ duration: 0.25, ease: 'easeInOut' }}
             className="border-t border-white/10 bg-primary overflow-hidden"
           >
-            <div className="p-6 overflow-y-auto max-h-[calc(100dvh-64px)] pb-[calc(1.5rem+env(safe-area-inset-bottom))]">
+            <div className="p-6 overflow-y-auto max-h-[calc(100dvh-var(--nav-height-mobile))] pb-[calc(1.5rem+env(safe-area-inset-bottom))]">
               <nav className="flex flex-col space-y-6" aria-label={t('accessibility.aria.mobileNavigation')}>
                 <Link
                   to={`/${lng}/`}

@@ -27,7 +27,7 @@ const HomeDesktop: React.FC = () => {
   return (
     <>
       <SEO
-        title={t('seo.home.title', { defaultValue: `${SITE.name} | ${SITE.nameSub}` })}
+        title={t('seo.home.title', { defaultValue: `${SITE.name} | ${t('common.companyNameSub')}` })}
         description={t('seo.home.description')}
       />
 
@@ -37,11 +37,13 @@ const HomeDesktop: React.FC = () => {
         settings={{ density: 0.52, scrollRange: 920 }}
       >
         <div className="absolute inset-0 z-10">
-          <div
-            className="absolute inset-0 bg-cover bg-center"
-            style={{ backgroundImage: `url('${HERO_BACKGROUND}')` }}
-            role="img"
-            aria-label={t('accessibility.aria.homeHeroBackground')}
+          <Image
+            src={HERO_BACKGROUND}
+            alt={t('accessibility.aria.homeHeroBackground')}
+            fill
+            priority
+            className="object-cover"
+            sizes="100vw"
           />
           <div className="absolute inset-0 bg-gradient-to-br from-slate-950/90 via-slate-950/70 to-black/90" />
           <div className="absolute -left-32 top-8 h-[420px] w-[420px] rounded-full bg-primary/30 blur-[180px]" aria-hidden="true" />
@@ -97,7 +99,13 @@ const HomeDesktop: React.FC = () => {
 
       <SectionWithStars className="py-16 bg-background-light dark:bg-background-dark" aria-labelledby="services-heading" settings={{ density: 0.4 }}>
         <div className="max-w-[1280px] mx-auto px-10">
-          <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_360px] items-start">
+          <motion.div 
+            variants={fadeInUp}
+            initial="initial"
+            whileInView="whileInView"
+            viewport={{ once: true }}
+            className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_360px] items-start"
+          >
             <div className="relative z-10">
               <span className="text-xs font-black tracking-[0.4em] uppercase text-slate-500 dark:text-slate-400">
                 {t('home.hero.badge')}
@@ -157,7 +165,7 @@ const HomeDesktop: React.FC = () => {
                 />
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </SectionWithStars>
 
@@ -165,7 +173,13 @@ const HomeDesktop: React.FC = () => {
         className="py-16 bg-background-light dark:bg-background-dark border-t border-secondary/40 dark:border-white/10"
         settings={{ density: 0.45, scrollRange: 480 }}
       >
-        <div className="relative z-20 max-w-[1280px] mx-auto px-10">
+        <motion.div 
+          variants={fadeInUp}
+          initial="initial"
+          whileInView="whileInView"
+          viewport={{ once: true }}
+          className="relative z-20 max-w-[1280px] mx-auto px-10"
+        >
           <div className="rounded-2xl bg-secondary/35 dark:bg-white/5 border border-secondary/40 dark:border-white/10 p-12 flex items-center justify-between gap-10">
             <div className="max-w-2xl">
               <h2 className="text-3xl font-black tracking-tight text-slate-900 dark:text-white uppercase">{t('home.cta.title')}</h2>
@@ -180,7 +194,7 @@ const HomeDesktop: React.FC = () => {
               {t('home.cta.button')}
             </Link>
           </div>
-        </div>
+        </motion.div>
       </SectionWithStars>
     </>
   );

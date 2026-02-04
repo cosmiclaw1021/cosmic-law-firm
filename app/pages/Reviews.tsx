@@ -52,12 +52,7 @@ const Reviews: React.FC<{ lng?: string; initialIsMobile?: boolean }> = ({ lng, i
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <div className="block lg:hidden">
-        <ReviewsMobile />
-      </div>
-      <div className="hidden lg:block">
-        <ReviewsDesktop />
-      </div>
+      {isMobile ? <ReviewsMobile /> : <ReviewsDesktop />}
     </>
   );
 };

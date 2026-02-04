@@ -1,5 +1,3 @@
-@import "../src/styles/fonts.css";
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -13,6 +11,15 @@
     --color-accent: 250 55% 55%;
     --color-bg-light: 250 55% 97%;
     --color-bg-dark: 250 30% 10%;
+
+    /* Nav heights */
+    --header-height: 68px;
+  }
+
+  @media (min-width: 640px) {
+    :root {
+      --header-height: 96px;
+    }
   }
 
   /* Custom scrollbar */
@@ -74,15 +81,11 @@
     margin-bottom: env(safe-area-inset-bottom);
   }
   .hero-header-gap {
-    margin-top: calc(-64px - env(safe-area-inset-top));
-    padding-top: calc(64px + env(safe-area-inset-top));
+    padding-top: calc(var(--header-height) + env(safe-area-inset-top));
   }
 
-  @media (min-width: 640px) {
-    .hero-header-gap {
-      margin-top: calc(-80px - env(safe-area-inset-top));
-      padding-top: calc(80px + env(safe-area-inset-top));
-    }
+  .non-hero-page-gap {
+    padding-top: calc(var(--header-height) + env(safe-area-inset-top) + 2rem);
   }
 
   /* Reduced Motion */

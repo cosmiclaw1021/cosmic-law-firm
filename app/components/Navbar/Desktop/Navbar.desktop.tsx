@@ -74,7 +74,7 @@ const NavbarDesktop: React.FC = () => {
                   <span>{SITE.name.split(' ').slice(1).join(' ')}</span>
                 </span>
                 <span className="text-[10px] text-white/90 font-bold uppercase tracking-[0.12em] mt-1 leading-none">
-                  {SITE.nameSub}
+                  {t('common.companyNameSub')}
                 </span>
               </div>
             </Link>

@@ -3,18 +3,12 @@
 import React from 'react';
 import NavbarDesktop from './Navbar/Desktop/Navbar.desktop';
 import NavbarMobile from './Navbar/Mobile/Navbar.mobile';
+import { useViewport } from '../hooks/useViewport';
 
 const Navbar: React.FC = () => {
-  return (
-    <>
-      <div className="hidden lg:block">
-        <NavbarDesktop />
-      </div>
-      <div className="block lg:hidden">
-        <NavbarMobile />
-      </div>
-    </>
-  );
+  const { isMobile } = useViewport();
+
+  return isMobile ? <NavbarMobile /> : <NavbarDesktop />;
 };
 
 export default Navbar;

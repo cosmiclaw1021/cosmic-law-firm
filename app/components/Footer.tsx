@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Image from 'next/image';
+import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import Link from './ui/Link';
 import ButtonLink from './ui/ButtonLink';
@@ -11,6 +12,13 @@ import { SITE } from '../lib/site';
 import { practiceAreas } from '../lib/practice-areas';
 import Icon, { type IconName } from '@src/components/Icon';
 import { FEATURES } from '@src/config/features';
+
+const fadeInUp = {
+  initial: { opacity: 0, y: 24 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true },
+  transition: { duration: 0.6 },
+};
 
 const Footer: React.FC = () => {
   const { t, i18n } = useTranslation();
@@ -44,7 +52,12 @@ const Footer: React.FC = () => {
       aria-label={t('accessibility.aria.siteFooter')}
       settings={{ density: 0.55, scrollRange: 520 }}
     >
-      <footer className="relative z-20 w-full mb-12">
+      <motion.footer 
+        variants={fadeInUp}
+        initial="initial"
+        whileInView="whileInView"
+        viewport={{ once: true }}
+        className="relative z-20 w-full mb-12" >
         <div className="max-w-[1280px] mx-auto px-6 sm:px-8 lg:px-10">
           <div className="flex flex-col gap-12 lg:gap-16">
             {/* Header Section: Logo and Taglines in a stacked layout */}
@@ -67,7 +80,7 @@ const Footer: React.FC = () => {
                     <span>{SITE.name.split(' ').slice(1).join(' ')}</span>
                   </p>
                   <p className="text-[10px] font-bold text-white/90 uppercase tracking-[0.18em] mt-1.5 text-left">
-                    {SITE.nameSub}
+                    {t('common.companyNameSub')}
                   </p>
                 </div>
               </div>
@@ -193,7 +206,7 @@ const Footer: React.FC = () => {
             </div>
           </div>
         </div>
-      </footer>
+      </motion.footer>
     </SectionWithStars>
   );
 };

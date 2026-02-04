@@ -24,7 +24,7 @@ const ContactMobile: React.FC = () => {
   const mapHref = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(SITE.addressQuery)}`;
 
   return (
-    <SectionWithStars className="flex-grow w-full" settings={{ density: 0.47 }}>
+    <SectionWithStars className="hero-header-gap flex-grow w-full" settings={{ density: 0.47 }}>
       <div className="relative z-10 w-full px-4 py-8 overflow-hidden">
         {/* Page Heading */}
         <motion.div 

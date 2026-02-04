@@ -1,6 +1,7 @@
 "use client";
 
 import React from 'react';
+import { motion } from 'framer-motion';
 import SEO from '@/components/SEO';
 import Link from '@/components/ui/Link';
 import ButtonLink from '@/components/ui/ButtonLink';
@@ -8,6 +9,19 @@ import { SITE } from '@/lib/site';
 import { useTranslation } from 'react-i18next';
 import Icon from '@src/components/Icon';
 import SectionWithStars from '@src/components/layout/SectionWithStars';
+
+const fadeInUp = {
+  initial: { opacity: 0, y: 24 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true },
+  transition: { duration: 0.6 },
+};
+
+const staggerContainer = {
+  initial: {},
+  whileInView: { transition: { staggerChildren: 0.1 } },
+  viewport: { once: true },
+};
 
 const topics = [
   { slug: 'contract-red-flags', tag: 'Checklist', status: 'Live' },
@@ -21,16 +35,27 @@ const topics = [
 
 const Insights: React.FC<{ lng: string }> = ({ lng }) => {
   const { t } = useTranslation();
-  const isKo = lng === 'ko';
+  
+  const seoTitles: Record<string, string> = {
+    en: `Insights | ${SITE.name}`,
+    ko: `인사이트 | ${SITE.name}`,
+    'zh-Hans': `洞见 | ${SITE.name}`
+  };
 
   return (
-    <div className="pt-16 lg:pt-20">
-      <SEO title={isKo ? `인사이트 | ${SITE.name}` : `Insights | ${SITE.name}`} description={t('insights.hero.description')} />
+    <div className="pt-4 lg:pt-6">
+      <SEO title={seoTitles[lng] || seoTitles.en} description={t('insights.hero.description')} />
 
       <SectionWithStars className="bg-slate-50 dark:bg-slate-900/50 border-b border-slate-100 dark:border-slate-800" settings={{ density: 0.44 }}>
-        <div className="relative z-10 max-w-5xl mx-auto px-6 sm:px-8 lg:px-10 py-8">
+        <motion.div 
+          variants={fadeInUp}
+          initial="initial"
+          whileInView="whileInView"
+          viewport={{ once: true }}
+          className="relative z-10 max-w-5xl mx-auto px-6 sm:px-8 lg:px-10 py-8"
+        >
           <div className="space-y-3 text-center">
-            <span className="text-xs font-black tracking-[0.4em] uppercase text-primary">{t('insights.hero.badge')}</span>
+            <span className="text-xs font-black tracking-[0.4em] uppercase text-primary dark:text-primary-light">{t('insights.hero.badge')}</span>
             <h1 className="text-3xl md:text-4xl font-black text-slate-900 dark:text-white leading-tight uppercase tracking-tight">
               {t('insights.hero.title')}
             </h1>
@@ -38,25 +63,38 @@ const Insights: React.FC<{ lng: string }> = ({ lng }) => {
               {t('insights.hero.description')}
             </p>
           </div>
-        </div>
+        </motion.div>
       </SectionWithStars>
 
       <SectionWithStars className="py-12 bg-white dark:bg-[#020712]" settings={{ density: 0.5 }}>
-        <div className="relative z-10 max-w-6xl mx-auto px-6 sm:px-8">
+        <motion.div 
+          variants={fadeInUp}
+          initial="initial"
+          whileInView="whileInView"
+          viewport={{ once: true }}
+          className="relative z-10 max-w-6xl mx-auto px-6 sm:px-8"
+        >
           <div className="rounded-3xl border border-slate-100 dark:border-slate-800 bg-white/70 dark:bg-slate-900/60 overflow-hidden shadow-sm">
-            <ol role="list" className="divide-y divide-slate-200 dark:divide-slate-800">
+            <motion.ol 
+              variants={staggerContainer}
+              initial="initial"
+              whileInView="whileInView"
+              viewport={{ once: true }}
+              role="list" 
+              className="divide-y divide-slate-200 dark:divide-slate-800"
+            >
               {topics.map((topic) => {
                 const title = t(`insights.topics.${topic.slug}.title`);
                 const summary = t(`insights.topics.${topic.slug}.summary`);
+                const localizedTag = t(`insights.topics.${topic.slug}.tag`);
                 return (
-                  <li key={topic.slug}>
+                  <motion.li key={topic.slug} variants={fadeInUp}>
                     <Link
                       to={`/insights/${topic.slug}`}
                       className="group block px-6 py-6 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/60 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-slate-900"
                     >
-                      <div className="flex flex-wrap items-center gap-4 text-xs uppercase tracking-[0.3em] text-slate-400">
-                        <span>{topic.tag}</span>
-                        <span className="font-black text-slate-500 dark:text-slate-300">{topic.status}</span>
+                      <div className="flex items-center gap-4 text-xs uppercase tracking-[0.3em] text-slate-400">
+                        <span>{localizedTag}</span>
                       </div>
                       <div className="mt-3 flex items-center gap-3">
                         <h2 className="text-2xl font-black text-slate-900 dark:text-white leading-tight uppercase tracking-tight">{title}</h2>
@@ -68,16 +106,22 @@ const Insights: React.FC<{ lng: string }> = ({ lng }) => {
                         <Icon name="east" className="size-4" />
                       </span>
                     </Link>
-                  </li>
+                  </motion.li>
                 );
               })}
-            </ol>
+            </motion.ol>
           </div>
-        </div>
+        </motion.div>
       </SectionWithStars>
 
       <SectionWithStars className="py-12 bg-white dark:bg-[#020712]" settings={{ density: 0.47 }}>
-        <div className="relative z-10 max-w-6xl mx-auto px-6 sm:px-8">
+        <motion.div 
+          variants={fadeInUp}
+          initial="initial"
+          whileInView="whileInView"
+          viewport={{ once: true }}
+          className="relative z-10 max-w-6xl mx-auto px-6 sm:px-8"
+        >
           <div className="rounded-3xl bg-primary text-white p-8 text-center space-y-3 shadow-xl">
             <h2 className="text-3xl font-black uppercase tracking-tight">{t('insights.cta.title')}</h2>
             <p className="text-sm text-white/90 font-medium">{t('insights.cta.description')}</p>
@@ -89,7 +133,7 @@ const Insights: React.FC<{ lng: string }> = ({ lng }) => {
                 {t('insights.cta.button')}
               </ButtonLink>
           </div>
-        </div>
+        </motion.div>
       </SectionWithStars>
     </div>
   );

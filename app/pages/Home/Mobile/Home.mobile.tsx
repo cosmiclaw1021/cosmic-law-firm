@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import Link from '@/components/ui/Link';
+import Image from 'next/image';
 import SEO from '@/components/SEO';
 import { SITE } from '@/lib/site';
 import { practiceAreas } from '@/lib/practice-areas';
@@ -24,21 +25,23 @@ const HomeMobile: React.FC = () => {
   return (
     <>
       <SEO
-        title={t('seo.home.title', { defaultValue: `${SITE.name} | ${SITE.nameSub}` })}
+        title={t('seo.home.title', { defaultValue: `${SITE.name} | ${t('common.companyNameSub')}` })}
         description={t('seo.home.description')}
       />
 
       <SectionWithStars
-        className="relative bg-slate-950 text-white -mt-[68px] pt-0 sm:-mt-[96px] sm:pt-0 min-h-viewport flex flex-col justify-center"
+        className="hero-header-gap relative bg-slate-950 text-white min-h-viewport flex flex-col justify-center"
         aria-label={t('accessibility.aria.heroIntro')}
         settings={{ density: 0.5, scrollRange: 720 }}
       >
         <div className="absolute inset-0 z-10">
-          <div
-            className="absolute inset-0 bg-cover bg-center"
-            style={{ backgroundImage: `url('${HERO_BACKGROUND}')` }}
-            role="img"
-            aria-label={t('accessibility.aria.homeHeroBackground')}
+          <Image
+            src={HERO_BACKGROUND}
+            alt={t('accessibility.aria.homeHeroBackground')}
+            fill
+            priority
+            className="object-cover"
+            sizes="100vw"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-slate-950/60 via-slate-950/40 to-black/70 backdrop-blur-[1px]" />
           <div className="absolute left-[10%] top-4 h-[260px] w-[260px] rounded-full bg-primary/30 blur-[160px]" aria-hidden="true" />
@@ -158,7 +161,13 @@ const HomeMobile: React.FC = () => {
         aria-label={t('accessibility.aria.homeCtaSection')}
         settings={{ density: 0.45, scrollRange: 420 }}
       >
-        <div className="relative z-20 max-w-[1280px] mx-auto px-6">
+        <motion.div 
+          variants={fadeInUp}
+          initial="initial"
+          whileInView="whileInView"
+          viewport={{ once: true }}
+          className="relative z-20 max-w-[1280px] mx-auto px-6"
+        >
           <div className="rounded-2xl bg-secondary/35 dark:bg-white/5 border border-secondary/40 dark:border-white/10 p-10 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6">
             <div>
               <h2 className="text-3xl font-black tracking-tight text-slate-900 dark:text-white uppercase">
@@ -176,7 +185,7 @@ const HomeMobile: React.FC = () => {
               {t('home.cta.button')}
             </ButtonLink>
           </div>
-        </div>
+        </motion.div>
       </SectionWithStars>
     </>
   );

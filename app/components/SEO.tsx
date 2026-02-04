@@ -16,7 +16,7 @@ const SEO: React.FC<SEOProps> = ({ title, description, image, article }) => {
   const pathname = usePathname();
   const { t, i18n } = useTranslation();
   
-  const defaultTitle = t('seo.home.title') || `${SITE.name} | ${SITE.nameSub}`;
+  const defaultTitle = t('seo.home.title') || `${SITE.name} | ${t('common.companyNameSub')}`;
   const defaultDescription =
     t('seo.home.description') ||
     'Entertainment law for creators, studios, and media companies—contracts, IP, talent deals, distribution, and disputes.';
