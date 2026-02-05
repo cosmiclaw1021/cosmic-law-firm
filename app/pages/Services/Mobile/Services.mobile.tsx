@@ -68,31 +68,31 @@ const ServicesMobile: React.FC = () => {
 
           <div className="grid grid-cols-1 gap-4 mt-8">
             {practiceAreas.map((area) => (
-              <div
+              <Link
                 key={area.slug}
-                className="flex flex-col gap-4 rounded-[24px] border border-slate-100 dark:border-slate-800 bg-white dark:bg-slate-900/50 p-6 active:scale-[0.98] transition-transform"
+                to={`/${lng}/services/${area.slug}`}
+                className="group block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary/40 focus-visible:ring-offset-2 focus-visible:ring-offset-background-light dark:focus-visible:ring-offset-background-dark"
               >
-                <div className="flex items-start gap-4">
-                  <div className="size-12 rounded-xl bg-primary/10 shadow-lg shadow-primary/5 flex items-center justify-center text-primary dark:text-primary-light">
-                    <Icon name={area.icon} className="size-6" />
+                <article className="flex flex-col gap-4 rounded-[24px] border border-slate-100 dark:border-slate-800 bg-white dark:bg-slate-900/50 p-6 transition-transform hover:shadow-lg group-focus:shadow-lg group-hover:-translate-y-0.5 active:scale-[0.98]">
+                  <div className="flex items-start gap-4">
+                    <div className="size-12 rounded-xl bg-primary/10 shadow-lg shadow-primary/5 flex items-center justify-center text-primary dark:text-primary-light">
+                      <Icon name={area.icon} className="size-6" />
+                    </div>
+                    <div className="min-w-0">
+                      <h3 className="text-[#0d141b] dark:text-white text-lg font-black leading-tight tracking-tight">
+                        {isKo ? area.shortTitleKo : area.shortTitle}
+                      </h3>
+                      <p className="text-slate-600 dark:text-slate-400 text-xs leading-relaxed font-medium mt-1">
+                        {isKo ? area.focusKo : area.focus}
+                      </p>
+                    </div>
                   </div>
-                  <div className="min-w-0">
-                    <h3 className="text-[#0d141b] dark:text-white text-lg font-black leading-tight tracking-tight">
-                      {isKo ? area.shortTitleKo : area.shortTitle}
-                    </h3>
-                    <p className="text-slate-600 dark:text-slate-400 text-xs leading-relaxed font-medium mt-1">
-                      {isKo ? area.focusKo : area.focus}
-                    </p>
+                  <div className="inline-flex items-center gap-2 text-primary dark:text-primary-light font-black uppercase tracking-widest text-[10px]">
+                    {t('nav.viewServices')}
+                    <Icon name="arrow_forward" className="size-3" />
                   </div>
-                </div>
-                <Link
-                  to={`/${lng}/services/${area.slug}`}
-                  className="inline-flex items-center gap-2 text-primary dark:text-primary-light font-black uppercase tracking-widest text-[10px] active:underline"
-                >
-                  {t('nav.viewServices')}
-                  <Icon name="arrow_forward" className="size-3" />
-                </Link>
-              </div>
+                </article>
+              </Link>
             ))}
           </div>
         </div>

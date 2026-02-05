@@ -23,7 +23,7 @@ const HomeMobile: React.FC = () => {
       />
 
       <SectionWithStars
-        className="hero-header-gap hero-header-gap-tight relative bg-slate-950 text-white min-h-viewport flex flex-col justify-start"
+        className="hero-header-gap hero-header-gap-tight relative bg-slate-950 text-white min-h-0 flex flex-col justify-start"
         aria-label={t('accessibility.aria.heroIntro')}
         settings={{ density: 0.5, scrollRange: 720 }}
       >
@@ -41,7 +41,7 @@ const HomeMobile: React.FC = () => {
           <div className="absolute right-4 bottom-[-40px] h-[160px] w-[160px] rounded-full bg-white/5 blur-[80px]" aria-hidden="true" />
         </div>
 
-        <div className="relative z-20 px-6 pb-10 pt-12 max-w-[1280px] mx-auto sm:px-8 sm:pt-16 md:pt-20">
+        <div className="relative z-20 flex flex-col gap-6 px-6 pb-4 pt-12 max-w-[1280px] mx-auto sm:px-8 sm:pt-16 md:pt-20">
           <div className="inline-flex flex-wrap items-center gap-2 uppercase tracking-[0.35em] text-[10px] text-white/90 mb-4">
             <span className="inline-flex flex-wrap justify-center px-3 py-1 rounded-full bg-black/60 text-white font-black tracking-[0.35em] whitespace-normal max-w-[85vw]">
               {t('home.hero.badge')}
@@ -89,24 +89,27 @@ const HomeMobile: React.FC = () => {
 
           <div className="mt-6 space-y-4">
             {practiceAreas.slice(0, 6).map((area) => (
-              <article
+              <Link
                 key={area.slug}
-                className="flex flex-col gap-3 rounded-[28px] border border-secondary/40 dark:border-white/10 bg-white/70 dark:bg-white/5 shadow"
+                to={`/services/${area.slug}`}
+                className="group block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary/40 focus-visible:ring-offset-2 focus-visible:ring-offset-background-light dark:focus-visible:ring-offset-background-dark"
               >
-                <div className="flex items-center gap-3 px-4 py-3">
-                  <div className="size-12 rounded-xl bg-secondary/60 shadow-lg shadow-black/5 flex items-center justify-center text-primary">
-                    <Icon name={area.icon} className="size-6" />
+                <article className="flex flex-col gap-3 rounded-[28px] border border-secondary/40 dark:border-white/10 bg-white/70 dark:bg-white/5 shadow">
+                  <div className="flex items-center gap-3 px-4 py-3">
+                    <div className="size-12 rounded-xl bg-secondary/60 shadow-lg shadow-black/5 flex items-center justify-center text-primary">
+                      <Icon name={area.icon} className="size-6" />
+                    </div>
+                    <div className="min-w-0">
+                      <h3 className="text-slate-900 dark:text-white text-lg font-black leading-tight tracking-tight">
+                        {isKo ? area.shortTitleKo : area.shortTitle}
+                      </h3>
+                      <p className="text-slate-600 dark:text-slate-400 text-[0.75rem] leading-relaxed font-medium mt-1">
+                        {isKo ? area.focusKo : area.focus}
+                      </p>
+                    </div>
                   </div>
-                  <div className="min-w-0">
-                    <h3 className="text-slate-900 dark:text-white text-lg font-black leading-tight tracking-tight">
-                      {isKo ? area.shortTitleKo : area.shortTitle}
-                    </h3>
-                    <p className="text-slate-600 dark:text-slate-400 text-[0.75rem] leading-relaxed font-medium mt-1">
-                      {isKo ? area.focusKo : area.focus}
-                    </p>
-                  </div>
-                </div>
-              </article>
+                </article>
+              </Link>
             ))}
           </div>
 

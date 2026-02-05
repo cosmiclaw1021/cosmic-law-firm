@@ -18,9 +18,11 @@ import type { SectionStarsSettings } from '@src/config/parallaxStars.config';
 import { useIsIosSafari } from '@/hooks/useIsIosSafari';
 
 const MOBILE_NAV_SECTION_SETTINGS: SectionStarsSettings = {
-  enabledLayers: [],
-  density: 0,
+  enabledLayers: ["far"],
+  density: 0.2,
   scrollRange: 0,
+  staticOnly: true,
+  opacityScale: 3,
 };
 
 const NavbarMobile: React.FC = () => {
@@ -99,8 +101,8 @@ const NavbarMobile: React.FC = () => {
         : 'text-sm font-bold px-3 py-2 rounded-xl';
     const activeStyles =
       size === 'lg'
-        ? 'text-secondary bg-white/20 border border-white/30'
-        : 'text-secondary bg-white/15 border border-white/20';
+        ? 'text-white bg-secondary/30 border border-secondary/40 shadow-[0_8px_20px_rgba(149,160,184,0.35)]'
+        : 'text-white bg-secondary/25 border border-secondary/30';
     const inactiveStyles = 'text-white/90 bg-white/5 border border-white/10 hover:bg-white/15';
 
     return `${baseStyles} ${sizeStyles} ${isActivePath ? activeStyles : inactiveStyles}`;

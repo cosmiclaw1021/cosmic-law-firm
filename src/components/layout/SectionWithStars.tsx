@@ -37,6 +37,8 @@ const SectionWithStars = ({ settings, className = "", overflow = "hidden", child
     ...settings,
     enabledLayers,
     density: settings?.density ?? DEFAULT_SECTION_STARS_SETTINGS.density,
+    staticOnly: settings?.staticOnly ?? DEFAULT_SECTION_STARS_SETTINGS.staticOnly,
+    opacityScale: settings?.opacityScale ?? DEFAULT_SECTION_STARS_SETTINGS.opacityScale,
     verticalOffset,
   };
 

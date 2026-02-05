@@ -17,6 +17,8 @@ export interface SectionStarsSettings {
   enabledLayers?: DepthLayer[];
   density?: number;
   scrollRange?: number;
+  staticOnly?: boolean;
+  opacityScale?: number;
   verticalOffset?: VerticalOffsetBoundary;
 }
 
@@ -250,6 +252,8 @@ export const MAX_PARALLAX_STARS = parallaxStarsConfig.stars.length;
 export const DEFAULT_SECTION_STARS_SETTINGS: SectionStarsSettings = {
   enabledLayers: ["far", "mid", "near"],
   density: 0.45,
+  staticOnly: false,
+  opacityScale: 1,
   verticalOffset: { top: 0, bottom: 0 },
 };
 

@@ -73,7 +73,7 @@ const Footer: React.FC = () => {
         <div className="max-w-[1280px] mx-auto px-6 sm:px-8 lg:px-10">
           <div className="flex flex-col gap-12 lg:gap-16">
             {/* Header Section: Logo and Taglines in a stacked layout */}
-            <div className="flex flex-col items-center sm:items-start gap-8">
+            <div className="flex flex-col items-start gap-8">
               <div className="flex items-center gap-4">
                 <div className="w-14 h-14 rounded-2xl border border-white/15 bg-white/10 flex items-center justify-center overflow-hidden shrink-0">
                   <Image
@@ -87,18 +87,18 @@ const Footer: React.FC = () => {
                   />
                 </div>
                 <div className="flex flex-col">
-                  <p className="text-xl font-black tracking-tight text-white uppercase leading-none text-center sm:text-left">
+                  <p className="text-xl font-black tracking-tight text-white uppercase leading-none text-left">
                     <span className="text-secondary">{t('common.companyNamePart1')}</span>{' '}
                     <span>{t('common.companyNamePart2')}</span>
                   </p>
-                  <p className="text-[10px] font-bold text-white/90 uppercase tracking-[0.18em] mt-1.5 text-center sm:text-left">
+                  <p className="text-[10px] font-bold text-white/90 uppercase tracking-[0.18em] mt-1.5 text-left">
                     {t('common.companyNameSub')}
                   </p>
                 </div>
               </div>
 
               <div className="max-w-3xl">
-                <p className="text-sm md:text-base font-bold uppercase tracking-[0.2em] text-white/90 leading-relaxed text-center sm:text-left">
+                <p className="text-sm md:text-base font-bold uppercase tracking-[0.2em] text-white/90 leading-relaxed text-left">
                   {t('footer.tagline')}
                 </p>
               </div>

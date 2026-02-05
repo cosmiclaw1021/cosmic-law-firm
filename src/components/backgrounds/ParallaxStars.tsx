@@ -38,12 +38,13 @@ const ParallaxStars = ({ sectionRef, settings, reducedMotion, className = "", tr
   const midLayerRef = useRef<HTMLDivElement>(null);
   const nearLayerRef = useRef<HTMLDivElement>(null);
 
-  const shouldAnimate = !reducedMotion;
+  const shouldAnimate = !reducedMotion && !settings.staticOnly;
 
   const density = clampDensity(settings.density);
   const preferredLayers =
     settings.enabledLayers ?? DEFAULT_SECTION_STARS_SETTINGS.enabledLayers ?? LAYER_ORDER;
   const preferredLayersKey = preferredLayers.join(',');
+  const opacityScale = settings.opacityScale ?? DEFAULT_SECTION_STARS_SETTINGS.opacityScale ?? 1;
   const enabledLayers = useMemo(() => {
     const layers = preferredLayersKey ? preferredLayersKey.split(',') : [];
     const unique = Array.from(new Set(layers));
@@ -165,7 +166,7 @@ const ParallaxStars = ({ sectionRef, settings, reducedMotion, className = "", tr
                   left: `${star.x}%`,
                   top: `${star.y}%`,
                   transform: "translate(-50%, -50%)",
-                  opacity: star.opacity ?? layerConfig.opacity,
+                  opacity: (star.opacity ?? layerConfig.opacity) * 0.5 * opacityScale,
                 }}
               >
                 <use href={`#${STAR_SHAPE_ID}`} fill={layerConfig.color} />
