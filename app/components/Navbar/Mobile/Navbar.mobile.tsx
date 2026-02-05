@@ -15,6 +15,13 @@ import { AnimatePresence, motion, MotionConfig } from 'framer-motion';
 import { useRouter, usePathname } from 'next/navigation';
 import { useFocusTrap } from '@/lib/accessibility/useFocusManagement';
 import Icon from '@src/components/Icon';
+import type { SectionStarsSettings } from '@src/config/parallaxStars.config';
+
+const MOBILE_NAV_SECTION_SETTINGS: SectionStarsSettings = {
+  enabledLayers: [],
+  density: 0,
+  scrollRange: 0,
+};
 
 const NavbarMobile: React.FC = () => {
   const { t } = useTranslation();
@@ -71,7 +78,7 @@ const NavbarMobile: React.FC = () => {
       aria-label={t('accessibility.aria.mobileNavSection')}
       overflow="visible"
       // Keep the nav lightweight on mobile: no star layers or scroll motion.
-      settings={{ enabledLayers: [], density: 0, scrollRange: 0 }}
+      settings={MOBILE_NAV_SECTION_SETTINGS}
     >
       <div className="relative z-20">
         <div className="max-w-[1280px] mx-auto px-4 sm:px-6">

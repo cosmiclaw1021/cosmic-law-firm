@@ -1,10 +1,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import Button from '../../../components/ui/Button';
-import FormField from '../../../components/ui/FormField';
 import Link from '../../../components/ui/Link';
 import EmailLink from '../../../components/EmailLink';
-import { useContactForm } from '../Shared/contact.hooks';
 import { motion, MotionConfig } from 'framer-motion';
 import { SITE } from '../../../lib/site';
 import Icon from '@src/components/Icon';
@@ -21,7 +18,6 @@ const fadeInUp = {
 
 const ContactMobile: React.FC = () => {
   const { t } = useTranslation();
-  const { isSubmitted, isLoading, error, handleSubmit, resetForm } = useContactForm();
   const mapHref = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(SITE.addressQuery)}`;
 
   return (
@@ -49,94 +45,31 @@ const ContactMobile: React.FC = () => {
             whileInView="whileInView"
             viewport={{ once: true }}
             className="flex flex-col bg-white/70 dark:bg-white/5 rounded-xl shadow-sm border border-secondary/40 dark:border-white/10 overflow-hidden order-1"
-            aria-labelledby="form-title"
+            aria-labelledby="email-cta-title"
           >
             <div className="px-5 py-5 border-b border-slate-100 dark:border-slate-800">
-              <h2 id="form-title" className="text-text-main dark:text-white text-xl font-black leading-tight tracking-tight uppercase">{t('contactPage.form.title')}</h2>
-              <p className="text-text-secondary dark:text-slate-400 text-xs mt-1 font-medium">{t('contactPage.form.description')}</p>
+              <h2 id="email-cta-title" className="text-text-main dark:text-white text-xl font-black leading-tight tracking-tight uppercase">{t('contactPage.emailCta.title')}</h2>
+              <p className="text-text-secondary dark:text-slate-400 text-xs mt-1 font-medium">{t('contactPage.emailCta.description')}</p>
             </div>
-            <div className="p-5">
-              {isSubmitted ? (
-                <div 
-                  className="flex flex-col items-center justify-center min-h-[250px] text-center gap-4 animate-in fade-in duration-500"
-                  role="status"
-                >
-                  <div className="size-14 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center text-green-600 dark:text-green-400 mb-2">
-                    <Icon name="check" className="size-8" />
-                  </div>
-                  <h3 className="text-lg font-black text-slate-900 dark:text-white uppercase">{t('contactPage.form.success.title')}</h3>
-                  <p className="text-sm text-slate-600 dark:text-slate-400 max-w-xs font-medium">
-                    {t('contactPage.form.success.message')}
-                  </p>
-                  <Button 
-                    variant="ghost"
-                    onClick={resetForm}
-                    className="mt-4"
-                  >
-                    {t('contactPage.form.success.button')}
-                  </Button>
-                </div>
-              ) : (
-                <form className="flex flex-col gap-5" onSubmit={handleSubmit}>
-                  {error && (
-                    <div className="p-4 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg text-red-600 dark:text-red-400 text-sm font-bold">
-                      {error}
-                    </div>
-                  )}
-                  <FormField 
-                    label={t('contactPage.form.labels.name')} 
-                    name="name" 
-                    required
-                  >
-                    <input 
-                      className="w-full h-11 rounded-lg border border-slate-300 dark:border-slate-700 bg-background-light dark:bg-slate-800 px-4 text-sm text-text-main dark:text-white focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all placeholder:text-slate-400" 
-                      placeholder={t('contactPage.form.placeholders.name')} 
-                      type="text" 
-                      required
-                    />
-                  </FormField>
-                  <FormField 
-                    label={t('contactPage.form.labels.email')} 
-                    name="email" 
-                    required
-                  >
-                    <input 
-                      className="w-full h-11 rounded-lg border border-slate-300 dark:border-slate-700 bg-background-light dark:bg-slate-800 px-4 text-sm text-text-main dark:text-white focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all placeholder:text-slate-400" 
-                      placeholder="email@example.com" 
-                      type="email" 
-                      required
-                    />
-                  </FormField>
-                  <FormField 
-                    label={t('contactPage.form.labels.phone')} 
-                    name="phone"
-                  >
-                    <input 
-                      className="w-full h-11 rounded-lg border border-slate-300 dark:border-slate-700 bg-background-light dark:bg-slate-800 px-4 text-sm text-text-main dark:text-white focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all placeholder:text-slate-400" 
-                      placeholder={t('contactPage.form.placeholders.phone')} 
-                      type="tel" 
-                    />
-                  </FormField>
-                  <FormField 
-                    label={t('contactPage.form.labels.message')} 
-                    name="message" 
-                    required
-                  >
-                    <textarea 
-                      className="w-full rounded-lg border border-slate-300 dark:border-slate-700 bg-background-light dark:bg-slate-800 p-4 text-sm text-text-main dark:text-white focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all resize-none placeholder:text-slate-400" 
-                      placeholder={t('contactPage.form.placeholders.message')} 
-                      rows={4}
-                    ></textarea>
-                  </FormField>
-                  <Button 
-                    type="submit" 
-                    isLoading={isLoading}
-                    className="w-full shadow-md h-11 uppercase tracking-widest font-black"
-                  >
-                    {t('contactPage.form.submit')}
-                  </Button>
-                </form>
-              )}
+            <div className="p-5 space-y-3">
+              <EmailLink
+                asButton
+                email={SITE.email}
+                className="w-full flex items-center justify-center gap-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-secondary/20 text-slate-900 dark:text-white font-black uppercase tracking-[0.3em] px-4 py-3 hover:border-secondary hover:bg-secondary/30 transition-all focus:ring-2 focus:ring-secondary/50 focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-slate-900"
+              >
+                <Icon name="mail" className="size-4 text-primary" />
+                <span>{SITE.email}</span>
+              </EmailLink>
+              <Link
+                href={`tel:${SITE.phoneTel}`}
+                className="w-full flex items-center justify-center gap-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/30 text-slate-900 dark:text-white font-black uppercase tracking-[0.3em] px-4 py-3 hover:border-slate-400 hover:bg-slate-50 dark:hover:bg-slate-900 focus:ring-2 focus:ring-primary/50 focus:ring-offset-2"
+              >
+                <Icon name="call" className="size-4 text-secondary" />
+                <span>{SITE.phoneDisplay}</span>
+              </Link>
+              <p className="text-[10px] text-slate-500 dark:text-slate-400 uppercase tracking-[0.3em]">
+                {t('contactPage.details.email.responseTime')}
+              </p>
             </div>
           </motion.section>
 

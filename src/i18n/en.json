@@ -274,6 +274,10 @@
           }
         ]
       }
+    },
+    "emailCta": {
+      "title": "Email Cosmic Law Firm",
+      "description": "Pick the client you prefer so we can respond within two to five business days."
     }
   },
   "seo": {

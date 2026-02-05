@@ -21,19 +21,22 @@ export const useContactForm = () => {
     }
 
     try {
-      // In a real app, this would be a fetch to an API route or a Server Action
-      // const response = await fetch('/api/contact', {
-      //   method: 'POST',
-      //   body: JSON.stringify(data),
-      // });
-      // if (!response.ok) throw new Error('Failed to send message');
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        cache: 'no-store',
+        body: JSON.stringify(data),
+      });
 
-      // Simulate network delay
-      await new Promise(resolve => setTimeout(resolve, 1500));
-      
+      if (!response.ok) {
+        const body = await response.json().catch(() => ({}));
+        throw new Error(body?.error || 'Failed to send your message.');
+      }
+
       setIsSubmitted(true);
     } catch (err) {
-      setError('Something went wrong. Please try again later.');
+      const message = err instanceof Error ? err.message : 'Something went wrong. Please try again later.';
+      setError(message);
     } finally {
       setIsLoading(false);
     }

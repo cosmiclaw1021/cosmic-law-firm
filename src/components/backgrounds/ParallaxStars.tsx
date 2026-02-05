@@ -39,11 +39,13 @@ const ParallaxStars = ({ sectionRef, settings, reducedMotion, className = "", tr
   const shouldAnimate = !reducedMotion;
 
   const density = clampDensity(settings.density);
+  const settingsEnabledLayersKey = (settings.enabledLayers ?? DEFAULT_SECTION_STARS_SETTINGS.enabledLayers ?? LAYER_ORDER)
+    .join(',');
   const enabledLayers = useMemo(() => {
     const preferred = settings.enabledLayers ?? DEFAULT_SECTION_STARS_SETTINGS.enabledLayers ?? LAYER_ORDER;
     const unique = Array.from(new Set(preferred));
     return unique.filter((layer) => LAYER_ORDER.includes(layer));
-  }, [settings.enabledLayers]);
+  }, [settingsEnabledLayersKey]);
 
   const layerStars = useMemo(() => {
     return enabledLayers
