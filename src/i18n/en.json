@@ -293,6 +293,10 @@
       "title": "Privacy Policy | {{siteName}}",
       "description": "Privacy policy for {{siteName}}."
     },
+    "cookiePolicy": {
+      "title": "Cookie Policy | {{siteName}}",
+      "description": "Cookie usage and consent details for {{siteName}}."
+    },
     "practiceAreaNotFound": {
       "title": "Practice Area",
       "description": "Practice area not found."
@@ -345,6 +349,8 @@
     "rights": "All rights reserved.",
     "privacyPolicy": "Privacy Policy",
     "termsOfService": "Terms of Service",
+    "cookiePolicy": "Cookie Policy",
+    "cookiePreferences": "Cookie preferences",
     "accessibility": "Accessibility",
     "emailLabel": "Email"
   },
@@ -358,11 +364,77 @@
   },
   "termsPage": {
     "title": "Terms of Service",
-    "placeholder": "This page is a placeholder. Add website terms (no legal advice, acceptable use, IP notices, and disclaimers) before publishing."
+    "intro": "These terms govern your use of cosmiclawfirm.com and do not create an attorney-client relationship.",
+    "scopeHeading": "Scope",
+    "scopeBody": "The site provides general information about our services, practice areas, and insights. Nothing here should be construed as tailored legal advice.",
+    "contentHeading": "Permitted use",
+    "contentBody": "You may read, download, and print material for personal use. Unauthorized commercial redistribution, publication, or reproduction is prohibited.",
+    "disclaimerHeading": "Disclaimer & liability",
+    "disclaimerBody": "We make no warranties about the accuracy or completeness of content and are not responsible for any loss arising from your reliance on the site.",
+    "cookiesHeading": "Cookies and privacy",
+    "cookiesBody": "We use cookies only as described in the Cookie Policy and block analytics/marketing tools until you provide consent.",
+    "update": "Last updated February 5, 2026."
+  },
+  "cookiePolicyPage": {
+    "title": "Cookie Policy",
+    "intro": "This policy explains how we use cookies, locaux, and similar technologies on cosmiclawfirm.com.",
+    "categoriesHeading": "Cookie categories",
+    "categories": [
+      {
+        "name": "Essential cookies",
+        "description": "Power the site layout, theme preference, and language detector so the experience loads consistently."
+      },
+      {
+        "name": "Analytics cookies",
+        "description": "Google Analytics captures anonymized usage metrics once you opt into analytics cookies; those cookies expire after two years."
+      },
+      {
+        "name": "Marketing cookies",
+        "description": "Google Maps loads from maps.google.com only when you allow marketing cookies; those cookies help Google show the map."
+      }
+    ],
+    "consentHeading": "Consent and control",
+    "consentBody": "The banner requests permission before analytics or marketing scripts run. Reopen the cookie preferences link in the footer to update your choices at any time, or clear your browser data to restart the banner.",
+    "retentionHeading": "Retention and expiry",
+    "retentionList": [
+      "Google Analytics (_ga, _gid, _ga_*): 2 years.",
+      "Google Maps session cookie: session duration.",
+      "i18next language cookie: until you change languages or clear cookies.",
+      "Theme preference in localStorage: until you customize or clear storage."
+    ],
+    "thirdPartyHeading": "Third-party domains",
+    "thirdPartyList": [
+      "gtag.js and analytics.js from googletagmanager.com",
+      "maps.google.com for the embedded map",
+      "mail.google.com when Gmail links open in a new tab"
+    ],
+    "contactHeading": "Contact",
+    "contactBody": "Need help with cookies? Email us for additional detail."
   },
   "privacyPage": {
     "title": "Privacy Policy",
-    "placeholder": "This page is a placeholder. Add your firm’s privacy policy (analytics, contact form handling, and any third-party services) before publishing."
+    "intro": "Cosmic Law Firm collects and uses only the data needed to deliver the website, respond to inquiries, and meet legal requirements.",
+    "collectionHeading": "Information we collect",
+    "collectionBody": "Essential data always loads so the site works. Analytics and marketing cookies stay disabled until you explicitly allow them.",
+    "collectionList": [
+      "Google Analytics records anonymized usage metrics (pageviews, interactions) once you opt into analytics cookies; those cookies expire after two years.",
+      "Google Maps loads from maps.google.com when you opt into marketing cookies; the map may capture your IP address and interaction with the iframe.",
+      "The i18next detector sets an 'i18next' cookie so your selected language persists across visits.",
+      "The theme toggle stores your preferred mode (light/dark/system) in localStorage to avoid layout flashes."
+    ],
+    "useHeading": "How we use this data",
+    "useBody": "Analytics helps us understand traffic, page performance, and menu usage so we can keep the site fast. Marketing cookies power the Google Maps embed; no other advertising networks are active. Contact form submissions (name, email, message) stay on our serverless API so we can reply.",
+    "thirdPartyHeading": "Third-party partners",
+    "thirdPartyList": [
+      "Google Analytics (gtag.js) – Google LLC receives anonymized identifiers and event data.",
+      "Google Maps – the iframe loads from maps.google.com so Google may see your IP and movement while the map is active.",
+      "Email links open your default mail app or Gmail. No tracking data leaves the browser unless you accepted analytics cookies."
+    ],
+    "rightsHeading": "Your choices",
+    "rightsBody": "Accept only essential cookies or accept everything right from the banner. Use the footer’s cookie preferences link to revisit your selection anytime. Clearing browser storage resets the banner.",
+    "contactHeading": "Contact",
+    "contactBody": "Need more detail? Email us or call the number in the footer.",
+    "update": "Last updated February 5, 2026."
   },
   "practiceArea": {
     "emailSubject": "{{title}} inquiry"

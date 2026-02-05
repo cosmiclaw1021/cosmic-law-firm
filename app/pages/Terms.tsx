@@ -4,7 +4,6 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import SEO from '@/components/SEO';
 import { SITE } from '@/lib/site';
-import EmailLink from '@/components/EmailLink';
 import { useTranslation } from 'react-i18next';
 import { useViewport } from '../hooks/useViewport';
 
@@ -18,13 +17,14 @@ const fadeInUp = {
 const Terms: React.FC = () => {
   const { t } = useTranslation();
   const { isMobile } = useViewport();
-
-  const currentFadeInUp = isMobile ? {
-    initial: { opacity: 1, y: 0 },
-    whileInView: { opacity: 1, y: 0 },
-    viewport: { once: true },
-    transition: { duration: 0 },
-  } : fadeInUp;
+  const currentFadeInUp = isMobile
+    ? {
+        initial: { opacity: 1, y: 0 },
+        whileInView: { opacity: 1, y: 0 },
+        viewport: { once: true },
+        transition: { duration: 0 },
+      }
+    : fadeInUp;
 
   return (
     <>
@@ -32,52 +32,55 @@ const Terms: React.FC = () => {
         title={t('seo.terms.title', { siteName: SITE.name })}
         description={t('seo.terms.description', { siteName: SITE.name })}
       />
-      <motion.div 
+      <motion.div
         variants={currentFadeInUp}
         initial="initial"
         whileInView="whileInView"
         viewport={{ once: true }}
         className="non-hero-page-gap max-w-[960px] mx-auto px-6 sm:px-8 pb-16 space-y-10"
       >
-        <div>
-          <h1 className="text-4xl font-black tracking-tight text-slate-900 dark:text-white uppercase tracking-tight">
+        <div className="space-y-3">
+          <h1 className="text-4xl font-black tracking-tight text-slate-900 dark:text-white uppercase">
             {t('termsPage.title')}
           </h1>
-          <p className="mt-4 text-slate-600 dark:text-slate-400 leading-relaxed font-medium">
-            {t('termsPage.placeholder')}
+          <p className="text-slate-600 dark:text-slate-400 leading-relaxed font-medium">
+            {t('termsPage.intro')}
           </p>
         </div>
 
-        <section className="border-t border-slate-200 dark:border-slate-800 pt-8">
-          <h2 className="text-2xl font-bold text-slate-900 dark:text-white uppercase tracking-tight">
-            {t('legal.contact.heading')}
-          </h2>
-          <div className="mt-3 text-slate-600 dark:text-slate-300 space-y-1 text-sm font-medium">
-            <p>
-              {t('legal.contact.phoneLabel')}{' '}
-              <a href={`tel:${SITE.phoneTel}`} className="text-primary dark:text-primary-light hover:underline">
-                {SITE.phoneDisplay}
-              </a>
-            </p>
-            <p>
-              {t('legal.contact.emailLabel')}{' '}
-              <EmailLink email={SITE.email} className="text-primary dark:text-primary-light hover:underline">
-                {SITE.email}
-              </EmailLink>
-            </p>
-            <p>
-              {t('legal.contact.addressLabel')}{' '}
-              <a 
-                href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(SITE.addressQuery)}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-primary dark:text-primary-light hover:underline"
-              >
-                {SITE.addressShort}
-              </a>
-            </p>
-          </div>
-        </section>
+        <article className="space-y-6 border-t border-slate-200 dark:border-slate-800 pt-8 text-sm font-medium text-slate-700 dark:text-slate-200">
+          <section>
+            <h2 className="text-2xl font-bold text-slate-900 dark:text-white uppercase tracking-tight">
+              {t('termsPage.scopeHeading')}
+            </h2>
+            <p className="mt-3">{t('termsPage.scopeBody')}</p>
+          </section>
+
+          <section>
+            <h2 className="text-2xl font-bold text-slate-900 dark:text-white uppercase tracking-tight">
+              {t('termsPage.contentHeading')}
+            </h2>
+            <p className="mt-3">{t('termsPage.contentBody')}</p>
+          </section>
+
+          <section>
+            <h2 className="text-2xl font-bold text-slate-900 dark:text-white uppercase tracking-tight">
+              {t('termsPage.disclaimerHeading')}
+            </h2>
+            <p className="mt-3">{t('termsPage.disclaimerBody')}</p>
+          </section>
+
+          <section>
+            <h2 className="text-2xl font-bold text-slate-900 dark:text-white uppercase tracking-tight">
+              {t('termsPage.cookiesHeading')}
+            </h2>
+            <p className="mt-3">{t('termsPage.cookiesBody')}</p>
+          </section>
+        </article>
+
+        <p className="text-xs uppercase tracking-[0.3em] text-slate-500 dark:text-slate-400">
+          {t('termsPage.update')}
+        </p>
       </motion.div>
     </>
   );

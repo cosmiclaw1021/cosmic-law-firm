@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import React from 'react';
 import Image from 'next/image';
@@ -14,6 +14,7 @@ import { practiceAreas } from '../lib/practice-areas';
 import Icon, { type IconName } from '@src/components/Icon';
 import { FEATURES } from '@src/config/features';
 import { useViewport } from '../hooks/useViewport';
+import { useCookieConsent } from '@src/context/cookieConsent';
 
 const fadeInUp = {
   initial: { opacity: 0, y: 24 },
@@ -26,6 +27,7 @@ const Footer: React.FC = () => {
   const { t, i18n } = useTranslation();
   const { isMobile } = useViewport();
   const isKo = i18n.language?.startsWith('ko');
+  const { openBanner } = useCookieConsent();
   
   const currentFadeInUp = isMobile ? {
     initial: { opacity: 1, y: 0 },
@@ -216,7 +218,15 @@ const Footer: React.FC = () => {
                 <Link to="/accessibility" className="text-white/90 hover:text-secondary">{t('footer.accessibility')}</Link>
                 <Link to="/privacy" className="text-white/90 hover:text-secondary">{t('footer.privacyPolicy')}</Link>
                 <Link to="/terms" className="text-white/90 hover:text-secondary">{t('footer.termsOfService')}</Link>
-              </nav>
+                <Link to="/cookie-policy" className="text-white/90 hover:text-secondary">{t('footer.cookiePolicy')}</Link>
+                <button
+                  type="button"
+                  onClick={openBanner}
+                  className="text-white/90 hover:text-secondary uppercase tracking-[0.3em] text-[11px] font-semibold focus:outline-none focus:ring-2 focus:ring-white/30"
+                >
+                  {t('footer.cookiePreferences')}
+                </button>
+             </nav>
               <div className="flex flex-col items-center md:items-start space-y-2">
                 <p className="text-center md:text-left">
                   © 2026 {t('common.companyName')}. {t('footer.rights')}

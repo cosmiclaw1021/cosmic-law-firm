@@ -1,11 +1,28 @@
-import React from 'react';
+'use client';
+
+import React, { useEffect, useState } from 'react';
 import Script from 'next/script';
 import { FEATURES, GA_MEASUREMENT_ID } from '@src/config/features';
+import { useCookieConsent } from '@src/context/cookieConsent';
 
 export default function Layout({ children }: { children: React.ReactNode }) {
+  const { hasConsented } = useCookieConsent();
+  const [loadGa, setLoadGa] = useState(false);
+
+  const analyticsAllowed =
+    FEATURES.googleAnalytics &&
+    Boolean(GA_MEASUREMENT_ID) &&
+    hasConsented('analytics');
+
+  useEffect(() => {
+    if (analyticsAllowed && !loadGa) {
+      setLoadGa(true);
+    }
+  }, [analyticsAllowed, loadGa]);
+
   return (
     <>
-      {FEATURES.googleAnalytics && GA_MEASUREMENT_ID ? (
+      {loadGa && (
         <>
           <Script
             src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
@@ -20,9 +37,8 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             `}
           </Script>
         </>
-      ) : null}
+      )}
       {children}
     </>
   );
 }
-

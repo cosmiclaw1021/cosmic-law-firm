@@ -471,6 +471,10 @@
       "title": "개인정보처리방침 | {{siteName}}",
       "description": "{{siteName}} 개인정보처리방침입니다."
     },
+    "cookiePolicy": {
+      "title": "쿠키 정책 | {{siteName}}",
+      "description": "{{siteName}}의 쿠키 사용 및 동의 정보입니다."
+    },
     "practiceAreaNotFound": {
       "title": "업무 분야",
       "description": "업무 분야를 찾을 수 없습니다."
@@ -798,6 +802,8 @@
     "rights": "모든 권리 보유.",
     "privacyPolicy": "개인정보처리방침",
     "termsOfService": "이용약관",
+    "cookiePolicy": "쿠키 정책",
+    "cookiePreferences": "쿠키 설정",
     "accessibility": "접근성",
     "emailLabel": "이메일"
   },
@@ -830,11 +836,77 @@
   },
   "termsPage": {
     "title": "이용약관",
-    "placeholder": "이 페이지는 임시 페이지입니다. 게시 전 이용약관(법률 자문이 아님, 허용된 이용, 지식재산권 고지, 면책조항 등)을 추가해 주세요."
+    "intro": "이 이용약관은 cosmiclawfirm.com 사용을 안내하며, 변호사-의뢰인 관계를 만들지 않습니다.",
+    "scopeHeading": "적용 범위",
+    "scopeBody": "사이트는 서비스, 업무 분야, 인사이트에 대한 일반 정보를 제공하며, 개별적인 법률 자문은 아닙니다.",
+    "contentHeading": "이용 허용",
+    "contentBody": "개인적인 용도로 본 내용을 읽고 저장, 출력할 수 있으며, 상업적 재배포나 재공유는 허용되지 않습니다.",
+    "disclaimerHeading": "면책조항",
+    "disclaimerBody": "정보의 정확성이나 완전성을 보증하지 않으며, 사이트 이용으로 발생한 손해에 대해 책임지지 않습니다.",
+    "cookiesHeading": "쿠키 및 개인정보",
+    "cookiesBody": "쿠키는 쿠키 정책에서 설명한 방식으로만 활용하며, 동의 없이 분석/마케팅 도구를 실행하지 않습니다.",
+    "update": "최종 업데이트: 2026년 2월 5일."
+  },
+  "cookiePolicyPage": {
+    "title": "쿠키 정책",
+    "intro": "본 정책은 cosmiclawfirm.com에서 쿠키 및 유사 기술이 어떻게 활용되는지 설명합니다.",
+    "categoriesHeading": "쿠키 분류",
+    "categories": [
+      {
+        "name": "필수 쿠키",
+        "description": "사이트 레이아웃, 테마 설정, 언어 감지를 작동시켜 일관된 경험을 제공합니다."
+      },
+      {
+        "name": "분석 쿠키",
+        "description": "Google Analytics는 분석 쿠키 동의 시 익명화된 데이터를 수집하며 쿠키는 2년간 유지됩니다."
+      },
+      {
+        "name": "마케팅 쿠키",
+        "description": "Google Maps는 마케팅 쿠키를 허용할 때만 maps.google.com에서 로드되며, 지도를 표시합니다."
+      }
+    ],
+    "consentHeading": "동의 및 제어",
+    "consentBody": "배너는 분석이나 마케팅 스크립트를 실행하기 전에 동의를 요청합니다. 언제든지 하단 쿠키 설정 링크를 다시 열어 선택을 변경할 수 있으며 브라우저 데이터를 지우면 배너가 재표시됩니다.",
+    "retentionHeading": "보존 및 만료",
+    "retentionList": [
+      "Google Analytics (_ga, _gid, _ga_*): 2년.",
+      "Google Maps 세션 쿠키: 세션 종료 시 만료.",
+      "i18next 언어 쿠키: 언어 변경 또는 쿠키 삭제 시까지 유지.",
+      "localStorage에 저장된 테마: 직접 변경하거나 저장소를 지울 때까지 유지."
+    ],
+    "thirdPartyHeading": "제3자 도메인",
+    "thirdPartyList": [
+      "googletagmanager.com에서 제공하는 gtag.js 및 analytics.js",
+      "임베드된 지도의 maps.google.com",
+      "Gmail 링크가 새 탭에서 열릴 때 mail.google.com"
+    ],
+    "contactHeading": "문의",
+    "contactBody": "쿠키에 대한 도움이 필요하시면 이메일로 연락 주세요."
   },
   "privacyPage": {
     "title": "개인정보처리방침",
-    "placeholder": "이 페이지는 임시 페이지입니다. 게시 전 개인정보처리방침(분석 도구, 문의 폼 처리 방식, 제3자 서비스 등)을 추가해 주세요."
+    "intro": "Cosmic Law Firm은 사이트 제공, 문의 응답, 법적 의무 이행에 필요한 정보만 수집하고 사용합니다.",
+    "collectionHeading": "수집하는 정보",
+    "collectionBody": "사이트 기능을 위해 필수 데이터는 항상 로드되며, 분석 및 마케팅 쿠키는 명시적 동의가 있어야만 활성화됩니다.",
+    "collectionList": [
+      "Google Analytics는 분석 쿠키 동의 시 익명화된 방문 및 상호작용 데이터를 수집합니다. 쿠키는 최대 2년 동안 보관됩니다.",
+      "Google Maps는 마케팅 쿠키를 허용할 때 maps.google.com에서 로드되며, iframe 내 이동 및 IP를 기록할 수 있습니다.",
+      "i18next 감지기는 'i18next' 쿠키를 설정하여 선택한 언어를 유지합니다.",
+      "테마 선택은 localStorage에 저장되어 이전 설정이 유지되며, 언제든지 지울 수 있습니다."
+    ],
+    "useHeading": "데이터 활용 목적",
+    "useBody": "분석 데이터는 방문, 페이지 성능, 메뉴 사용 패턴을 이해하고 개선하는 데 쓰입니다. 마케팅 쿠키는 Google Maps에만 사용되며, 기타 광고 네트워크에는 공유하지 않습니다. 문의 폼 제출(이름, 이메일, 메시지)은 서버리스 API에서만 처리하여 답변 목적으로만 보관합니다.",
+    "thirdPartyHeading": "제3자 파트너",
+    "thirdPartyList": [
+      "Google Analytics(gtag.js) – Google LLC가 익명화된 식별자와 이벤트 데이터를 수신합니다.",
+      "Google Maps – iframe은 maps.google.com에서 로드되어 Google이 IP 및 지도 내 이동을 볼 수 있습니다.",
+      "이메일 링크는 기본 메일 앱 또는 Gmail을 새 탭에서 열지만, 분석 쿠키 동의가 없으면 추가 추적 정보는 전달되지 않습니다."
+    ],
+    "rightsHeading": "선택권",
+    "rightsBody": "배너에서 필수 쿠키만 허용하거나 전체 수락을 선택할 수 있습니다. 하단의 쿠키 설정 링크로 언제든지 설정을 변경할 수 있으며, 브라우저 저장소를 지우면 배너가 다시 나타납니다.",
+    "contactHeading": "문의",
+    "contactBody": "추가 정보가 필요하시면 이메일을 보내거나 하단 전화번호로 연락해 주세요.",
+    "update": "최종 업데이트: 2026년 2월 5일."
   },
   "practiceArea": {
     "emailSubject": "{{title}} 문의"

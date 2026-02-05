@@ -10,6 +10,8 @@ import I18nProvider from '../components/I18nProvider';
 import { EmailProvider } from '../components/EmailClientProvider';
 import { SITE } from '../lib/site';
 import RegionLayout from '@src/components/Layout';
+import { CookieConsentProvider } from '@src/context/cookieConsent';
+import CookieConsentBanner from '../components/CookieConsentBanner';
 import { geistSans, geistMono } from '../fonts';
 import { getInitialIsMobileFromHeaders } from '../lib/get-initial-is-mobile';
 
@@ -121,28 +123,31 @@ export default async function RootLayout({
         />
       </head>
       <body className="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display antialiased">
-        <RegionLayout>
-          <I18nProvider lng={lng}>
-            <EmailProvider>
-              <div className="relative flex flex-col min-h-screen overflow-x-hidden">
-                <ClientLayout initialIsMobile={initialIsMobile}>
-                  <SkipToContent />
-                  <Navbar key={`nav-${lng}`} initialIsMobile={initialIsMobile} />
-                  <main 
-                    id="main-content" 
-                    tabIndex={-1} 
-                    className="flex-grow w-full flex flex-col outline-none"
-                  >
-                    <PageTransition initialIsMobile={initialIsMobile}>
-                      {children}
-                    </PageTransition>
-                  </main>
-                  <Footer key={`footer-${lng}`} />
-                </ClientLayout>
-              </div>
-            </EmailProvider>
-          </I18nProvider>
-        </RegionLayout>
+        <CookieConsentProvider>
+          <RegionLayout>
+            <I18nProvider lng={lng}>
+              <EmailProvider>
+                <div className="relative flex flex-col min-h-screen overflow-x-hidden">
+                  <ClientLayout initialIsMobile={initialIsMobile}>
+                    <SkipToContent />
+                    <Navbar key={`nav-${lng}`} initialIsMobile={initialIsMobile} />
+                    <main 
+                      id="main-content" 
+                      tabIndex={-1} 
+                      className="flex-grow w-full flex flex-col outline-none"
+                    >
+                      <PageTransition initialIsMobile={initialIsMobile}>
+                        {children}
+                      </PageTransition>
+                    </main>
+                    <Footer key={`footer-${lng}`} />
+                  </ClientLayout>
+                </div>
+              </EmailProvider>
+            </I18nProvider>
+          </RegionLayout>
+          <CookieConsentBanner />
+        </CookieConsentProvider>
       </body>
     </html>
   );
