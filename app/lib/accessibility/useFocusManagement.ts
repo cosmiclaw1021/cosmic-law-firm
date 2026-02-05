@@ -1,11 +1,20 @@
 import { useEffect, useRef, useCallback, type RefObject } from 'react';
 import { A11Y_CONFIG } from './a11yConfig';
 
+type FocusTrapOptions = {
+  /**
+   * When true, focuses the first focusable element inside the trap on activation.
+   * This is desirable for modals but can cause jank on iOS for lightweight menus.
+   */
+  autoFocus?: boolean;
+};
+
 /**
  * Hook to trap focus within an element (e.g., for modals)
  */
-export const useFocusTrap = (isActive: boolean) => {
+export const useFocusTrap = (isActive: boolean, options?: FocusTrapOptions) => {
   const containerRef = useRef<HTMLDivElement>(null);
+  const autoFocus = options?.autoFocus ?? true;
 
   const handleKeyDown = useCallback((e: KeyboardEvent) => {
     if (!isActive || !containerRef.current || e.key !== 'Tab') return;
@@ -30,10 +39,11 @@ export const useFocusTrap = (isActive: boolean) => {
   useEffect(() => {
     if (isActive) {
       document.addEventListener('keydown', handleKeyDown);
-      // Optional: focus the first element when activated
-      const focusableElements = containerRef.current?.querySelectorAll(A11Y_CONFIG.FOCUSABLE_ELEMENTS);
-      if (focusableElements && focusableElements.length > 0) {
-        (focusableElements[0] as HTMLElement).focus();
+      if (autoFocus) {
+        const focusableElements = containerRef.current?.querySelectorAll(A11Y_CONFIG.FOCUSABLE_ELEMENTS);
+        if (focusableElements && focusableElements.length > 0) {
+          (focusableElements[0] as HTMLElement).focus();
+        }
       }
     } else {
       document.removeEventListener('keydown', handleKeyDown);
@@ -42,7 +52,7 @@ export const useFocusTrap = (isActive: boolean) => {
     return () => {
       document.removeEventListener('keydown', handleKeyDown);
     };
-  }, [isActive, handleKeyDown]);
+  }, [isActive, handleKeyDown, autoFocus]);
 
   return containerRef;
 };

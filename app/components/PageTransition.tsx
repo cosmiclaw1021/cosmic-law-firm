@@ -1,36 +1,34 @@
 'use client';
 
-import { motion } from 'framer-motion';
-import { usePathname } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
+import dynamic from 'next/dynamic';
 import { useViewport } from '../hooks/useViewport';
 
-export default function PageTransition({ children }: { children: React.ReactNode }) {
-  const pathname = usePathname();
-  const { isMobile } = useViewport();
-  const [hasHydrated, setHasHydrated] = useState(false);
+const PageTransitionMotion = dynamic(() => import('./PageTransition.motion'));
+
+export default function PageTransition({
+  children,
+  initialIsMobile,
+}: {
+  children: React.ReactNode;
+  initialIsMobile?: boolean;
+}) {
+  const { isMobile } = useViewport(initialIsMobile);
+  const [hasMounted, setHasMounted] = useState(false);
 
   useEffect(() => {
-    setHasHydrated(true);
+    setHasMounted(true);
   }, []);
 
-  return (
-    <motion.div
-      key={pathname}
-      initial={
-        hasHydrated
-          ? (isMobile ? { opacity: 1 } : { opacity: 0 })
-          : false
-      }
-      animate={{ opacity: 1 }}
-      transition={
-        hasHydrated
-          ? (isMobile ? { duration: 0 } : { duration: 0.3, ease: 'easeInOut' })
-          : { duration: 0 }
-      }
-      className="flex flex-col flex-grow w-full"
-    >
-      {children}
-    </motion.div>
-  );
+  if (isMobile) {
+    return <div className="flex flex-col flex-grow w-full">{children}</div>;
+  }
+
+  // Avoid rendering the motion wrapper until after mount to prevent hydration inconsistencies.
+  if (!hasMounted) {
+    return <div className="flex flex-col flex-grow w-full">{children}</div>;
+  }
+
+  return <PageTransitionMotion>{children}</PageTransitionMotion>;
 }
+

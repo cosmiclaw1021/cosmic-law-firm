@@ -2,36 +2,16 @@ import React from 'react';
 import Link from '@/components/ui/Link';
 import Modal from '@/components/ui/Modal';
 import { useReviewsLogic } from '../Shared/reviews.hooks';
-import { motion, MotionConfig } from 'framer-motion';
 import Icon from '@src/components/Icon';
 import SectionWithStars from '@src/components/layout/SectionWithStars';
-
-const fadeInUp = {
-  initial: { opacity: 1 },
-  whileInView: { opacity: 1 },
-  viewport: { once: true },
-  transition: { duration: 0 },
-};
-
-const staggerContainer = {
-  initial: {},
-  whileInView: { transition: { staggerChildren: 0 } },
-  viewport: { once: true },
-};
 
 const ReviewsMobile: React.FC = () => {
   const { t, reviews, selectedReview, openReview, closeReview } = useReviewsLogic();
 
   return (
-    <MotionConfig reducedMotion="always">
-      <>
+    <>
       <SectionWithStars className="hero-header-gap w-full bg-white dark:bg-slate-900 py-10 px-4 border-b border-slate-100 dark:border-slate-800 overflow-hidden" settings={{ density: 0.44 }}>
-        <motion.div
-          initial={{ opacity: 1 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0 }}
-          className="relative z-10 max-w-[960px] mx-auto text-center flex flex-col gap-3"
-        >
+        <div className="relative z-10 max-w-[960px] mx-auto text-center flex flex-col gap-3">
           <div className="inline-flex items-center justify-center gap-2 px-3 py-1 rounded-full bg-yellow-50 dark:bg-yellow-900/20 w-fit mx-auto">
             <Icon name="favorite" className="text-yellow-600 dark:text-yellow-500 size-4" />
             <span className="text-yellow-700 dark:text-yellow-400 text-[10px] font-bold uppercase tracking-wider">
@@ -44,23 +24,16 @@ const ReviewsMobile: React.FC = () => {
           <p className="text-slate-600 dark:text-slate-400 text-base font-medium leading-relaxed max-w-xl mx-auto">
             {t('hero.description', { ns: 'reviews' })}
           </p>
-        </motion.div>
+        </div>
       </SectionWithStars>
 
       <SectionWithStars className="w-full" settings={{ density: 0.5 }}>
         <div className="relative z-10 max-w-[960px] mx-auto px-4 py-10">
-          <motion.div
-            variants={staggerContainer}
-            initial="initial"
-            whileInView="whileInView"
-            viewport={{ once: true }}
-            className="grid grid-cols-1 gap-4"
-          >
+          <div className="grid grid-cols-1 gap-4">
             {reviews.map((review) => (
-              <motion.button
+              <button
                 key={review.id}
                 type="button"
-                variants={fadeInUp}
                 onClick={() => openReview(review)}
                 className="text-left w-full flex flex-col bg-white/70 dark:bg-slate-900/50 p-6 rounded-[24px] border border-slate-100 dark:border-slate-800 active:scale-[0.99] transition-transform shadow-sm"
               >
@@ -90,9 +63,9 @@ const ReviewsMobile: React.FC = () => {
                     {t('items.readMore', { ns: 'reviews' })}
                   </span>
                 </div>
-              </motion.button>
+              </button>
             ))}
-          </motion.div>
+          </div>
         </div>
       </SectionWithStars>
 
@@ -160,8 +133,7 @@ const ReviewsMobile: React.FC = () => {
           </div>
         </div>
       </SectionWithStars>
-      </>
-    </MotionConfig>
+    </>
   );
 };
 

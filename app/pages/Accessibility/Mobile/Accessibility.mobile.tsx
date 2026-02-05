@@ -1,17 +1,9 @@
 import React from 'react';
-import { motion, MotionConfig } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import SEO from '../../../components/SEO';
 import { SITE } from '../../../lib/site';
 import { FEATURES } from '@src/config/features';
 import EmailLink from '@/components/EmailLink';
-
-const fadeInUp = {
-  initial: { opacity: 1 },
-  whileInView: { opacity: 1 },
-  viewport: { once: true },
-  transition: { duration: 0 },
-};
 
 const AccessibilityMobile: React.FC = () => {
   const { t } = useTranslation();
@@ -36,19 +28,12 @@ const AccessibilityMobile: React.FC = () => {
   ];
 
   return (
-    <MotionConfig reducedMotion="always">
-      <div className="non-hero-page-gap bg-white dark:bg-[#0f172a] px-6 pb-12 min-h-viewport">
+    <div className="non-hero-page-gap bg-white dark:bg-[#0f172a] px-6 pb-12 min-h-viewport">
       <SEO 
         title={t('footer.accessibility')}
         description={t('accessibilityPage.intro')}
       />
-      <motion.div 
-        variants={fadeInUp}
-        initial="initial"
-        whileInView="whileInView"
-        viewport={{ once: true }}
-        className="max-w-3xl mx-auto"
-      >
+      <div className="max-w-3xl mx-auto">
         <h1 className="text-2xl font-bold text-slate-900 dark:text-white mb-8 uppercase tracking-tight">
           {t('accessibilityPage.title')}
         </h1>
@@ -144,9 +129,8 @@ const AccessibilityMobile: React.FC = () => {
             </div>
           </section>
         </div>
-      </motion.div>
+      </div>
     </div>
-    </MotionConfig>
   );
 };
 

@@ -32,7 +32,7 @@ const NavbarMobile: React.FC = () => {
   const closeMenu = () => setIsMobileMenuOpen(false);
   const scrollRestoreRef = useRef<{ scrollY: number } | null>(null);
 
-  const menuRef = useFocusTrap(isMobileMenuOpen);
+  const menuRef = useFocusTrap(isMobileMenuOpen, { autoFocus: false });
   const pathname = usePathname();
 
   useEffect(() => {
@@ -168,7 +168,12 @@ const NavbarMobile: React.FC = () => {
                 <LanguageToggle variant="segmented" className="w-full" />
               </div>
 
-              <Link to={`/${lng}/`} onClick={closeMenu} className={getMobileNavButtonClass(`/${lng}/`, 'lg')}>
+              <Link
+                to={`/${lng}/`}
+                onClick={closeMenu}
+                prefetch={false}
+                className={getMobileNavButtonClass(`/${lng}/`, 'lg')}
+              >
                 {t('nav.home')}
               </Link>
 
@@ -178,6 +183,7 @@ const NavbarMobile: React.FC = () => {
                   <Link
                     to={`/${lng}/services`}
                     onClick={closeMenu}
+                    prefetch={false}
                     className={getMobileNavButtonClass(`/${lng}/services`, 'sm')}
                   >
                     {t('nav.viewAllServices')}
@@ -187,6 +193,7 @@ const NavbarMobile: React.FC = () => {
                       key={link.path}
                       to={link.path}
                       onClick={closeMenu}
+                      prefetch={false}
                       className={getMobileNavButtonClass(link.path, 'sm')}
                     >
                       {link.name}
@@ -203,6 +210,7 @@ const NavbarMobile: React.FC = () => {
                       key={link.path}
                       to={link.path}
                       onClick={closeMenu}
+                      prefetch={false}
                       className={getMobileNavButtonClass(link.path, 'sm')}
                     >
                       {link.name}

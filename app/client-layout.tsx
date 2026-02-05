@@ -1,10 +1,11 @@
 'use client';
 
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { usePathname } from 'next/navigation';
 import { useTranslation } from 'react-i18next';
 import { useViewport } from './hooks/useViewport';
 import { MotionConfig } from 'framer-motion';
+import { ViewportProvider } from './hooks/ViewportContext';
 
 export default function ClientLayout({ 
   children,
@@ -13,7 +14,6 @@ export default function ClientLayout({
   children: React.ReactNode;
   initialIsMobile?: boolean;
 }) {
-  const mainRef = useRef<HTMLElement>(null);
   const pathname = usePathname();
   const { t } = useTranslation();
   const [announcement, setAnnouncement] = useState('');
@@ -33,18 +33,20 @@ export default function ClientLayout({
 
   return (
     <div className={isMobile ? 'disable-animations' : ''}>
-      <MotionConfig reducedMotion={isMobile ? 'always' : 'user'}>
-        {/* Route Announcement Region */}
-        <div 
-          className="sr-only" 
-          role="status" 
-          aria-live="polite" 
-          aria-atomic="true"
-        >
-          {announcement}
-        </div>
-        {children}
-      </MotionConfig>
+      <ViewportProvider value={{ isMobile }}>
+        <MotionConfig reducedMotion={isMobile ? 'always' : 'user'}>
+          {/* Route Announcement Region */}
+          <div 
+            className="sr-only" 
+            role="status" 
+            aria-live="polite" 
+            aria-atomic="true"
+          >
+            {announcement}
+          </div>
+          {children}
+        </MotionConfig>
+      </ViewportProvider>
     </div>
   );
 }

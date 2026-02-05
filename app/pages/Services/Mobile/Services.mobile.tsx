@@ -3,26 +3,10 @@ import { useTranslation } from 'react-i18next';
 import Image from 'next/image';
 import ButtonLink from '@/components/ui/ButtonLink';
 import Link from '@/components/ui/Link';
-import { motion, MotionConfig } from 'framer-motion';
 import { practiceAreas } from '@/lib/practice-areas';
 import { SITE } from '@/lib/site';
 import Icon from '@src/components/Icon';
 import SectionWithStars from '@src/components/layout/SectionWithStars';
-
-const fadeInUp = {
-  initial: { opacity: 1 },
-  whileInView: { opacity: 1 },
-  viewport: { once: true, amount: 0.05 },
-  transition: { duration: 0 },
-};
-
-const staggerContainer = {
-  initial: {},
-  whileInView: { transition: { staggerChildren: 0 } },
-  viewport: { once: true, amount: 0.05 },
-};
-
-const MotionButtonLink = motion(ButtonLink);
 
 const ServicesMobile: React.FC = () => {
   const { t, i18n } = useTranslation();
@@ -31,8 +15,7 @@ const ServicesMobile: React.FC = () => {
   const processSteps = ['step1', 'step2', 'step3'] as const;
 
   return (
-    <MotionConfig reducedMotion="always">
-      <>
+    <>
       <SectionWithStars className="hero-header-gap w-full bg-background-light dark:bg-background-dark flex justify-center overflow-hidden" settings={{ density: 0.44 }}>
         <div className="relative z-10 w-full px-0 py-0">
           <div
@@ -54,61 +37,40 @@ const ServicesMobile: React.FC = () => {
               <Icon name="gavel" className="size-3.5" />
               {t('servicesPage.hero.badge')}
             </div>
-            <motion.h1
-              initial={{ opacity: 1 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0 }}
-              className="text-white text-3xl font-black leading-tight tracking-tight drop-shadow-md uppercase"
-            >
+            <h1 className="text-white text-3xl font-black leading-tight tracking-tight drop-shadow-md uppercase">
               {t('servicesPage.hero.title')}
-            </motion.h1>
-            <motion.p
-                initial={{ opacity: 1 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0 }}
-                className="text-slate-100 text-sm font-medium leading-relaxed mt-1 drop-shadow-sm"
-              >
+            </h1>
+            <p className="text-slate-100 text-sm font-medium leading-relaxed mt-1 drop-shadow-sm">
                 {t('servicesPage.hero.subtitle')}
-              </motion.p>
+            </p>
             </div>
-              <MotionButtonLink
-                initial={{ opacity: 1, scale: 1 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0 }}
+              <ButtonLink
                 href="#practice-areas"
                 tone="light"
                 className="z-10 flex w-full cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-6 bg-secondary hover:bg-secondary/90 transition-colors text-slate-900 text-base font-bold shadow-lg uppercase tracking-widest focus:ring-2 focus:ring-secondary/40 focus:ring-offset-2 focus:ring-offset-black"
               >
                 <span className="truncate">{t('servicesPage.hero.cta')}</span>
-              </MotionButtonLink>
+              </ButtonLink>
           </div>
         </div>
       </SectionWithStars>
 
       <SectionWithStars id="practice-areas" className="w-full flex justify-center py-10 overflow-hidden" settings={{ density: 0.5 }}>
         <div className="relative z-10 w-full px-4">
-          <motion.div variants={fadeInUp} initial="initial" whileInView="whileInView" viewport={{ once: true, amount: 0.05 }}>
+          <div>
             <h2 className="text-[#0d141b] dark:text-white text-2xl font-black leading-tight uppercase">
               {t('servicesPage.specialties.title')}
             </h2>
             <p className="text-slate-600 dark:text-slate-300 text-base leading-relaxed font-medium mt-3">
               {t('servicesPage.specialties.description')}
             </p>
-          </motion.div>
+          </div>
 
-          <motion.div
-            variants={staggerContainer}
-            initial="initial"
-            whileInView="whileInView"
-            viewport={{ once: true, amount: 0.05 }}
-            className="grid grid-cols-1 gap-4 mt-8"
-          >
+          <div className="grid grid-cols-1 gap-4 mt-8">
             {practiceAreas.map((area) => (
-              <motion.div
+              <div
                 key={area.slug}
-                variants={fadeInUp}
-                whileTap={{ scale: 0.98 }}
-                className="flex flex-col gap-4 rounded-[24px] border border-slate-100 dark:border-slate-800 bg-white dark:bg-slate-900/50 p-6"
+                className="flex flex-col gap-4 rounded-[24px] border border-slate-100 dark:border-slate-800 bg-white dark:bg-slate-900/50 p-6 active:scale-[0.98] transition-transform"
               >
                 <div className="flex items-start gap-4">
                   <div className="size-12 rounded-xl bg-primary/10 shadow-lg shadow-primary/5 flex items-center justify-center text-primary dark:text-primary-light">
@@ -130,31 +92,21 @@ const ServicesMobile: React.FC = () => {
                   {t('nav.viewServices')}
                   <Icon name="arrow_forward" className="size-3" />
                 </Link>
-              </motion.div>
+              </div>
             ))}
-          </motion.div>
+          </div>
         </div>
       </SectionWithStars>
 
       <SectionWithStars className="w-full flex justify-center py-12 bg-slate-50 dark:bg-background-dark" settings={{ density: 0.41 }}>
         <div className="relative z-10 w-full px-4 flex flex-col">
-          <motion.h2
-            variants={fadeInUp}
-            initial="initial"
-            whileInView="whileInView"
-            viewport={{ once: true, amount: 0.05 }}
-            className="text-[#0d141b] dark:text-white text-2xl font-bold leading-tight tracking-tight mb-10 text-center"
-          >
+          <h2 className="text-[#0d141b] dark:text-white text-2xl font-bold leading-tight tracking-tight mb-10 text-center">
             {t('servicesPage.process.title')}
-          </motion.h2>
+          </h2>
           <div className="grid grid-cols-1 gap-8">
             {processSteps.map((stepKey, idx) => (
-              <motion.div
+              <div
                 key={stepKey}
-                variants={fadeInUp}
-                initial="initial"
-                whileInView="whileInView"
-                viewport={{ once: true, amount: 0.05 }}
                 className="flex flex-col items-center text-center gap-4"
               >
                 <div className="size-10 rounded-full bg-primary text-white flex items-center justify-center text-lg font-bold shadow-lg">
@@ -166,7 +118,7 @@ const ServicesMobile: React.FC = () => {
                 <p className="text-slate-600 dark:text-slate-400 text-xs">
                   {t(`servicesPage.process.${stepKey}.desc`)}
                 </p>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
@@ -197,7 +149,6 @@ const ServicesMobile: React.FC = () => {
         </div>
       </SectionWithStars>
     </>
-    </MotionConfig>
   );
 };
 

@@ -133,7 +133,7 @@ export default async function RootLayout({
                     tabIndex={-1} 
                     className="flex-grow w-full flex flex-col outline-none"
                   >
-                    <PageTransition>
+                    <PageTransition initialIsMobile={initialIsMobile}>
                       {children}
                     </PageTransition>
                   </main>

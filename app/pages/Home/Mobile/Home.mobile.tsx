@@ -1,5 +1,4 @@
 import React from 'react';
-import { motion, MotionConfig } from 'framer-motion';
 import Link from '@/components/ui/Link';
 import Image from 'next/image';
 import SEO from '@/components/SEO';
@@ -10,13 +9,6 @@ import ButtonLink from '@/components/ui/ButtonLink';
 import SectionWithStars from '@src/components/layout/SectionWithStars';
 import Icon from '@src/components/Icon';
 
-const fadeInUp = {
-  initial: { opacity: 1 },
-  whileInView: { opacity: 1 },
-  viewport: { once: true },
-  transition: { duration: 0 },
-};
-
 const HERO_BACKGROUND = '/NanoBanana/Background_screens_2.png';
 
 const HomeMobile: React.FC = () => {
@@ -24,8 +16,7 @@ const HomeMobile: React.FC = () => {
   const isKo = i18n.language?.startsWith('ko');
 
   return (
-    <MotionConfig reducedMotion="always">
-      <>
+    <>
       <SEO
         title={t('seo.home.title', { defaultValue: `${SITE.name} | ${t('common.companyNameSub')}` })}
         description={t('seo.home.description')}
@@ -56,29 +47,14 @@ const HomeMobile: React.FC = () => {
               {t('home.hero.badge')}
             </span>
           </div>
-          <motion.h1
-            initial={{ opacity: 1 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0 }}
-            className="text-4xl font-black tracking-tight text-white leading-[1.05] mb-5 uppercase"
-          >
+          <h1 className="text-4xl font-black tracking-tight text-white leading-[1.05] mb-5 uppercase">
             {t('home.hero.title')}
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 1 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0 }}
-            className="text-lg text-white/90 mb-8 leading-relaxed font-medium"
-          >
+          </h1>
+          <p className="text-lg text-white/90 mb-8 leading-relaxed font-medium">
             {t('home.hero.description')}
-          </motion.p>
+          </p>
 
-          <motion.div
-            initial={{ opacity: 1 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0 }}
-            className="flex flex-col gap-4"
-          >
+          <div className="flex flex-col gap-4">
             <ButtonLink
               href="/services"
               tone="dark"
@@ -93,19 +69,13 @@ const HomeMobile: React.FC = () => {
             >
               {t('home.hero.ctaSecondary')}
             </ButtonLink>
-          </motion.div>
+          </div>
         </div>
       </SectionWithStars>
 
       <SectionWithStars className="py-12 bg-background-light dark:bg-background-dark" aria-labelledby="services-heading" settings={{ density: 0.4 }}>
         <div className="relative z-10 max-w-[1280px] mx-auto px-6">
-          <motion.div
-            variants={fadeInUp}
-            initial="initial"
-            whileInView="whileInView"
-            viewport={{ once: true, amount: 0.12 }}
-            className="max-w-2xl"
-          >
+          <div className="max-w-2xl">
             <span className="text-[0.65rem] font-black tracking-[0.45em] uppercase text-slate-500 dark:text-slate-400">
               {t('home.hero.badge')}
             </span>
@@ -115,16 +85,12 @@ const HomeMobile: React.FC = () => {
             <p className="mt-2 text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
               {t('home.services.description')}
             </p>
-          </motion.div>
+          </div>
 
           <div className="mt-6 space-y-4">
             {practiceAreas.slice(0, 6).map((area) => (
-              <motion.article
+              <article
                 key={area.slug}
-                variants={fadeInUp}
-                initial="initial"
-                whileInView="whileInView"
-                viewport={{ once: true }}
                 className="flex flex-col gap-3 rounded-[28px] border border-secondary/40 dark:border-white/10 bg-white/70 dark:bg-white/5 shadow"
               >
                 <div className="flex items-center gap-3 px-4 py-3">
@@ -140,7 +106,7 @@ const HomeMobile: React.FC = () => {
                     </p>
                   </div>
                 </div>
-              </motion.article>
+              </article>
             ))}
           </div>
 
@@ -161,13 +127,7 @@ const HomeMobile: React.FC = () => {
         aria-label={t('accessibility.aria.homeCtaSection')}
         settings={{ density: 0.45, scrollRange: 420 }}
       >
-        <motion.div 
-          variants={fadeInUp}
-          initial="initial"
-          whileInView="whileInView"
-          viewport={{ once: true }}
-          className="relative z-20 max-w-[1280px] mx-auto px-6"
-        >
+        <div className="relative z-20 max-w-[1280px] mx-auto px-6">
           <div className="rounded-2xl bg-secondary/35 dark:bg-white/5 border border-secondary/40 dark:border-white/10 p-10 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6">
             <div>
               <h2 className="text-3xl font-black tracking-tight text-slate-900 dark:text-white uppercase">
@@ -185,10 +145,9 @@ const HomeMobile: React.FC = () => {
               {t('home.cta.button')}
             </ButtonLink>
           </div>
-        </motion.div>
+        </div>
         </SectionWithStars>
-      </>
-    </MotionConfig>
+    </>
   );
 };
 

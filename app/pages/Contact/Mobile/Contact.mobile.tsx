@@ -2,48 +2,30 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import Link from '../../../components/ui/Link';
 import EmailLink from '../../../components/EmailLink';
-import { motion, MotionConfig } from 'framer-motion';
 import { SITE } from '../../../lib/site';
 import Icon from '@src/components/Icon';
 import Map from '@src/components/Map';
 import { FEATURES } from '@src/config/features';
 import SectionWithStars from '@src/components/layout/SectionWithStars';
 
-const fadeInUp = {
-  initial: { opacity: 1 },
-  whileInView: { opacity: 1 },
-  viewport: { once: true },
-  transition: { duration: 0 }
-};
-
 const ContactMobile: React.FC = () => {
   const { t } = useTranslation();
   const mapHref = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(SITE.addressQuery)}`;
 
   return (
-    <MotionConfig reducedMotion="always">
-      <SectionWithStars className="hero-header-gap flex-grow w-full" settings={{ density: 0.47 }}>
+    <SectionWithStars className="hero-header-gap flex-grow w-full" settings={{ density: 0.47 }}>
       <div className="relative z-10 w-full px-4 py-8 overflow-hidden">
         {/* Page Heading */}
-        <motion.div 
-          initial={{ opacity: 1 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0 }}
-          className="flex flex-col gap-3 mb-8 text-center"
-        >
+        <div className="flex flex-col gap-3 mb-8 text-center">
           <h1 className="text-text-main dark:text-white text-3xl font-black leading-tight tracking-tight uppercase">{t('contactPage.hero.title')}</h1>
           <p className="text-text-secondary dark:text-slate-400 text-base font-medium leading-relaxed">
             {t('contactPage.hero.description')}
           </p>
-        </motion.div>
+        </div>
 
         <div className="flex flex-col gap-8">
           {/* Contact Form First on Mobile */}
-          <motion.section 
-            variants={fadeInUp}
-            initial="initial"
-            whileInView="whileInView"
-            viewport={{ once: true }}
+          <section
             className="flex flex-col bg-white/70 dark:bg-white/5 rounded-xl shadow-sm border border-secondary/40 dark:border-white/10 overflow-hidden order-1"
             aria-labelledby="email-cta-title"
           >
@@ -71,18 +53,12 @@ const ContactMobile: React.FC = () => {
                 {t('contactPage.details.email.responseTime')}
               </p>
             </div>
-          </motion.section>
+          </section>
 
           {/* Location & Details Second */}
           <div className="flex flex-col gap-6 order-2">
             {/* Info Card */}
-            <motion.div 
-              variants={fadeInUp}
-              initial="initial"
-              whileInView="whileInView"
-              viewport={{ once: true }}
-              className="flex flex-col bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800 overflow-hidden"
-            >
+            <div className="flex flex-col bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800 overflow-hidden">
               <div className="px-5 py-4 border-b border-slate-100 dark:border-slate-800">
                 <h2 className="text-text-main dark:text-white text-xl font-black leading-tight tracking-tight uppercase">{t('contactPage.details.title')}</h2>
               </div>
@@ -123,14 +99,10 @@ const ContactMobile: React.FC = () => {
                   <p className="text-[10px] text-slate-500 dark:text-slate-400 mt-1 font-medium">{t('contactPage.details.email.responseTime')}</p>
                 </div>
               </EmailLink>
-            </motion.div>
+            </div>
 
             {/* Hours Card */}
-            <motion.section 
-              variants={fadeInUp}
-              initial="initial"
-              whileInView="whileInView"
-              viewport={{ once: true }}
+            <section
               className="flex flex-col bg-white/70 dark:bg-white/5 rounded-xl shadow-sm border border-secondary/40 dark:border-white/10 overflow-hidden"
               aria-labelledby="hours-title"
             >
@@ -152,27 +124,20 @@ const ContactMobile: React.FC = () => {
                   ))}
                 </div>
               </div>
-            </motion.section>
+            </section>
 
             {/* Map Last */}
-            <motion.div 
-              variants={fadeInUp}
-              initial="initial"
-              whileInView="whileInView"
-              viewport={{ once: true }}
-              className="w-full h-[250px] bg-slate-200 dark:bg-slate-800 rounded-xl overflow-hidden shadow-sm relative"
-            >
+            <div className="w-full h-[250px] bg-slate-200 dark:bg-slate-800 rounded-xl overflow-hidden shadow-sm relative">
               <Map
                 addressQuery={SITE.addressQuery}
                 addressText={t('footer.address')}
                 className="w-full h-full"
               />
-            </motion.div>
+            </div>
           </div>
         </div>
       </div>
     </SectionWithStars>
-    </MotionConfig>
   );
 };
 

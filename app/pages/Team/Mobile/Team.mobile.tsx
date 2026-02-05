@@ -1,5 +1,4 @@
 import React from 'react';
-import { motion, MotionConfig } from 'framer-motion';
 import ButtonLink from '@/components/ui/ButtonLink';
 import Link from '@/components/ui/Link';
 import SEO from '@/components/SEO';
@@ -9,33 +8,14 @@ import Image from 'next/image';
 import Icon from '@src/components/Icon';
 import SectionWithStars from '@src/components/layout/SectionWithStars';
 
-const fadeInUp = {
-  initial: { opacity: 1 },
-  whileInView: { opacity: 1 },
-  viewport: { once: true, amount: 0.05 },
-  transition: { duration: 0 },
-};
-
-const staggerContainer = {
-  initial: {},
-  whileInView: { transition: { staggerChildren: 0 } },
-  viewport: { once: true, amount: 0.05 },
-};
-
 const TeamMobile: React.FC = () => {
   const { t } = useTranslation();
 
   return (
     <>
       <SEO title={t('team.hero.title')} description={t('team.hero.description')} />
-      <MotionConfig reducedMotion="always">
-        <SectionWithStars className="hero-header-gap px-6 py-12 bg-background-light dark:bg-background-dark overflow-hidden" settings={{ density: 0.47 }}>
-          <motion.div 
-            initial={{ opacity: 1 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0 }}
-            className="relative z-10"
-          >
+      <SectionWithStars className="hero-header-gap px-6 py-12 bg-background-light dark:bg-background-dark overflow-hidden" settings={{ density: 0.47 }}>
+          <div className="relative z-10">
             <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-slate-900 dark:text-primary-light text-[10px] font-black uppercase tracking-[0.3em] w-fit">
               {t('team.hero.badge')}
             </span>
@@ -49,19 +29,13 @@ const TeamMobile: React.FC = () => {
               {t('team.hero.cta')}
               <Icon name="mail" className="size-4" />
             </ButtonLink>
-          </motion.div>
+          </div>
         </SectionWithStars>
 
         <SectionWithStars className="px-4 py-10 bg-background-light dark:bg-background-dark overflow-hidden" settings={{ density: 0.5 }}>
-        <motion.div 
-          variants={staggerContainer}
-          initial="initial"
-          whileInView="whileInView"
-          viewport={{ once: true, amount: 0.05 }}
-          className="relative z-10 space-y-5"
-        >
+        <div className="relative z-10 space-y-5">
           {teamMembers.map((member) => (
-            <motion.div key={member.id} variants={fadeInUp}>
+            <div key={member.id}>
               <Link
                 href={`/about/team/${member.slug}`}
                 className="block focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
@@ -91,19 +65,13 @@ const TeamMobile: React.FC = () => {
                   </div>
                 </article>
               </Link>
-            </motion.div>
+            </div>
           ))}
-        </motion.div>
+        </div>
       </SectionWithStars>
 
         <SectionWithStars className="px-6 py-12 bg-primary text-white text-center" settings={{ density: 0.47 }}>
-          <motion.div 
-            variants={fadeInUp}
-            initial="initial"
-            whileInView="whileInView"
-            viewport={{ once: true, amount: 0.05 }}
-            className="relative z-10 space-y-3"
-          >
+          <div className="relative z-10 space-y-3">
           <h2 className="text-2xl font-black tracking-tight uppercase tracking-tight">{t('team.cta.title')}</h2>
           <p className="text-sm leading-relaxed text-white/90 font-medium">{t('team.cta.description')}</p>
           <ButtonLink
@@ -113,9 +81,8 @@ const TeamMobile: React.FC = () => {
           >
             {t('team.cta.button')}
           </ButtonLink>
-          </motion.div>
+          </div>
         </SectionWithStars>
-      </MotionConfig>
     </>
   );
 };
