@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import { useTranslation } from 'react-i18next';
 import Link from '@/components/ui/Link';
@@ -11,8 +11,7 @@ import EmailLink from '@/components/EmailLink';
 import { useNavbarLogic } from '../Shared/navbar.hooks';
 import { useNavbarConstants } from '../Shared/navbar.constants';
 import { SITE } from '@/lib/site';
-import { AnimatePresence, motion, MotionConfig } from 'framer-motion';
-import { useRouter, usePathname } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 import { useFocusTrap } from '@/lib/accessibility/useFocusManagement';
 import Icon from '@src/components/Icon';
 import type { SectionStarsSettings } from '@src/config/parallaxStars.config';
@@ -31,7 +30,7 @@ const NavbarMobile: React.FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const toggleMenu = () => setIsMobileMenuOpen((prev) => !prev);
   const closeMenu = () => setIsMobileMenuOpen(false);
-  const router = useRouter();
+  const scrollRestoreRef = useRef<{ scrollY: number } | null>(null);
 
   const menuRef = useFocusTrap(isMobileMenuOpen);
   const pathname = usePathname();
@@ -41,17 +40,52 @@ const NavbarMobile: React.FC = () => {
   }, [pathname]);
 
   useEffect(() => {
+    if (!isMobileMenuOpen) return;
+    if (typeof window === 'undefined') return;
+
+    const scrollY = window.scrollY || 0;
+    scrollRestoreRef.current = { scrollY };
+
+    const body = document.body;
+    const prev = {
+      position: body.style.position,
+      top: body.style.top,
+      left: body.style.left,
+      right: body.style.right,
+      width: body.style.width,
+      overflow: body.style.overflow,
+    };
+
+    body.style.position = 'fixed';
+    body.style.top = `-${scrollY}px`;
+    body.style.left = '0';
+    body.style.right = '0';
+    body.style.width = '100%';
+    body.style.overflow = 'hidden';
+
+    return () => {
+      body.style.position = prev.position;
+      body.style.top = prev.top;
+      body.style.left = prev.left;
+      body.style.right = prev.right;
+      body.style.width = prev.width;
+      body.style.overflow = prev.overflow;
+
+      const restore = scrollRestoreRef.current;
+      if (restore) {
+        window.scrollTo(0, restore.scrollY);
+      }
+      scrollRestoreRef.current = null;
+    };
+  }, [isMobileMenuOpen]);
+
+  useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'Escape') setIsMobileMenuOpen(false);
     };
     document.addEventListener('keydown', handleKeyDown);
     return () => document.removeEventListener('keydown', handleKeyDown);
   }, []);
-
-  const handleNavigation = (path: string) => {
-    closeMenu();
-    router.push(path);
-  };
 
   const getMobileNavButtonClass = (path: string, size: 'lg' | 'sm' = 'lg') => {
     const isActivePath = isActive(path);
@@ -71,8 +105,7 @@ const NavbarMobile: React.FC = () => {
   };
 
   return (
-    <MotionConfig reducedMotion="always">
-      <SectionWithStars
+    <SectionWithStars
       // iOS Safari + fixed + backdrop-filter tends to flicker/jank during scroll.
       className="fixed top-0 left-0 right-0 z-50 w-full border-b border-white/10 bg-primary/95 transition-colors duration-300 lg:hidden text-white pt-safe"
       aria-label={t('accessibility.aria.mobileNavSection')}
@@ -117,110 +150,103 @@ const NavbarMobile: React.FC = () => {
                 <Icon name={isMobileMenuOpen ? 'close' : 'menu'} className="size-7" />
               </button>
             </div>
+          </div>
         </div>
       </div>
-      </div>
 
-      <AnimatePresence>
-        {isMobileMenuOpen && (
-          <motion.div
-            id="mobile-menu"
-            ref={menuRef}
-            initial={{ opacity: 1, height: 'auto' }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 1, height: 0 }}
-            transition={{ duration: 0 }}
-            className="relative z-20 border-t border-white/10 bg-primary overflow-hidden"
-          >
-            <div className="p-6 overflow-y-auto max-h-[calc(100svh-var(--header-height))] pb-[calc(1.5rem+env(safe-area-inset-bottom))]">
-              <nav className="flex flex-col space-y-6" aria-label={t('accessibility.aria.mobileNavigation')}>
-                <div className="pb-2">
-                  <LanguageToggle variant="segmented" className="w-full" />
-                </div>
+      {isMobileMenuOpen && (
+        <div
+          id="mobile-menu"
+          ref={menuRef}
+          role="dialog"
+          aria-modal="true"
+          className="relative z-20 border-t border-white/10 bg-primary overflow-hidden"
+        >
+          <div className="p-6 mobile-menu-scroll pb-[calc(1.5rem+env(safe-area-inset-bottom))]">
+            <nav className="flex flex-col space-y-6" aria-label={t('accessibility.aria.mobileNavigation')}>
+              <div className="pb-2">
+                <LanguageToggle variant="segmented" className="w-full" />
+              </div>
 
-                <Link
-                  to={`/${lng}/`}
-                  onClick={closeMenu}
-                  className={getMobileNavButtonClass(`/${lng}/`, 'lg')}
-                >
-                  {t('nav.home')}
-                </Link>
+              <Link to={`/${lng}/`} onClick={closeMenu} className={getMobileNavButtonClass(`/${lng}/`, 'lg')}>
+                {t('nav.home')}
+              </Link>
 
-                <div className="flex flex-col space-y-3">
-                  <p className="text-xs font-black text-secondary uppercase tracking-[0.2em]">{t('nav.practiceAreas')}</p>
-                  <div className="flex flex-col space-y-3 pl-4 border-l-2 border-white/15">
-                    <Link
-                      to={`/${lng}/services`}
-                      onClick={closeMenu}
-                      className={getMobileNavButtonClass(`/${lng}/services`, 'sm')}
-                    >
-                      {t('nav.viewAllServices')}
-                    </Link>
-                    {practiceAreaLinks.map((link) => (
-                      <Link
-                        key={link.path}
-                        to={link.path}
-                        className={getMobileNavButtonClass(link.path, 'sm')}
-                      >
-                        {link.name}
-                      </Link>
-                    ))}
-                  </div>
-                </div>
-
-                <div className="flex flex-col space-y-3">
-                  <p className="text-xs font-black text-secondary uppercase tracking-[0.2em]">{t('nav.about')}</p>
-                  <div className="flex flex-col space-y-3 pl-4 border-l-2 border-white/15">
-                    {aboutLinks.map((link) => (
-                      <Link
-                        key={link.path}
-                        to={link.path}
-                        className={getMobileNavButtonClass(link.path, 'sm')}
-                      >
-                        {link.name}
-                      </Link>
-                    ))}
-                  </div>
-                </div>
-
-                <div className="pt-6 border-t border-white/10 flex flex-col gap-4">
-                  <div className="flex flex-col gap-3">
-                      <EmailLink
-                        email={SITE.email}
-                        onClick={toggleMenu}
-                        className="flex items-center gap-3 p-3 rounded-xl bg-white/10 text-white font-bold text-sm"
-                      >
-                        <Icon name="mail" className="text-secondary size-5" />
-                        <span className="truncate">{SITE.email}</span>
-                      </EmailLink>
-                      <Link
-                        href={`tel:${SITE.phoneTel}`}
-                        onClick={toggleMenu}
-                        className="flex items-center gap-3 p-3 rounded-xl bg-white/10 text-white font-bold text-sm"
-                      >
-                        <Icon name="call" className="text-secondary size-5" />
-                        <span>{SITE.phoneDisplay}</span>
-                      </Link>
-                    </div>
-
-                  <ButtonLink
-                    href={`/${lng}/contact`}
-                    tone="light"
-                    size="lg"
-                    className="w-full rounded-2xl h-14 text-base capitalize tracking-tight shadow-xl shadow-black/10 active:scale-[0.98] transition-transform focus:ring-offset-2 focus:ring-offset-primary"
+              <div className="flex flex-col space-y-3">
+                <p className="text-xs font-black text-secondary uppercase tracking-[0.2em]">{t('nav.practiceAreas')}</p>
+                <div className="flex flex-col space-y-3 pl-4 border-l-2 border-white/15">
+                  <Link
+                    to={`/${lng}/services`}
                     onClick={closeMenu}
+                    className={getMobileNavButtonClass(`/${lng}/services`, 'sm')}
+                  >
+                    {t('nav.viewAllServices')}
+                  </Link>
+                  {practiceAreaLinks.map((link) => (
+                    <Link
+                      key={link.path}
+                      to={link.path}
+                      onClick={closeMenu}
+                      className={getMobileNavButtonClass(link.path, 'sm')}
                     >
-                      <Icon name="mail" className="mr-2 size-5" />
-                      {t('nav.contact')}
-                    </ButtonLink>
-                  </div>
-              </nav>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-      </SectionWithStars>
-    </MotionConfig>
+                      {link.name}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+
+              <div className="flex flex-col space-y-3">
+                <p className="text-xs font-black text-secondary uppercase tracking-[0.2em]">{t('nav.about')}</p>
+                <div className="flex flex-col space-y-3 pl-4 border-l-2 border-white/15">
+                  {aboutLinks.map((link) => (
+                    <Link
+                      key={link.path}
+                      to={link.path}
+                      onClick={closeMenu}
+                      className={getMobileNavButtonClass(link.path, 'sm')}
+                    >
+                      {link.name}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+
+              <div className="pt-6 border-t border-white/10 flex flex-col gap-4">
+                <div className="flex flex-col gap-3">
+                  <EmailLink
+                    email={SITE.email}
+                    onClick={closeMenu}
+                    className="flex items-center gap-3 p-3 rounded-xl bg-white/10 text-white font-bold text-sm"
+                  >
+                    <Icon name="mail" className="text-secondary size-5" />
+                    <span className="truncate">{SITE.email}</span>
+                  </EmailLink>
+                  <Link
+                    href={`tel:${SITE.phoneTel}`}
+                    onClick={closeMenu}
+                    className="flex items-center gap-3 p-3 rounded-xl bg-white/10 text-white font-bold text-sm"
+                  >
+                    <Icon name="call" className="text-secondary size-5" />
+                    <span>{SITE.phoneDisplay}</span>
+                  </Link>
+                </div>
+
+                <ButtonLink
+                  href={`/${lng}/contact`}
+                  tone="light"
+                  size="lg"
+                  className="w-full rounded-2xl h-14 text-base capitalize tracking-tight shadow-xl shadow-black/10 active:scale-[0.98] transition-transform focus:ring-offset-2 focus:ring-offset-primary"
+                  onClick={closeMenu}
+                >
+                  <Icon name="mail" className="mr-2 size-5" />
+                  {t('nav.contact')}
+                </ButtonLink>
+              </div>
+            </nav>
+          </div>
+        </div>
+      )}
+    </SectionWithStars>
   );
 };
 

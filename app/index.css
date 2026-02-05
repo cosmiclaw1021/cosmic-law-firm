@@ -68,7 +68,7 @@
   }
 }
 
-@layer utilities {
+	@layer utilities {
   .pb-safe {
     padding-bottom: env(safe-area-inset-bottom);
   }
@@ -90,9 +90,18 @@
     padding-top: calc(var(--header-height) + env(safe-area-inset-top) - 18px);
   }
 
-  .non-hero-page-gap {
-    padding-top: calc(var(--header-height) + env(safe-area-inset-top) + 2rem);
-  }
+	  .non-hero-page-gap {
+	    padding-top: calc(var(--header-height) + env(safe-area-inset-top) + 2rem);
+	  }
+
+	  /* Mobile menu scroll container (iOS-safe viewport units with fallback) */
+	  .mobile-menu-scroll {
+	    overflow-y: auto;
+	    -webkit-overflow-scrolling: touch;
+	    overscroll-behavior: contain;
+	    max-height: calc(100vh - var(--header-height) - env(safe-area-inset-top));
+	    max-height: calc(100svh - var(--header-height) - env(safe-area-inset-top));
+	  }
 
   /* Global Disable Animations Utility (e.g., for mobile flickering issues) */
   .disable-animations,
@@ -103,7 +112,7 @@
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
-  }
+	}
 
   /* Reduced Motion */
   @media (prefers-reduced-motion: reduce) {
