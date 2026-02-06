@@ -613,7 +613,7 @@
       "jean": {
         "location": "Los Angeles, CA",
         "title": "Founder · Managing Partner",
-        "specialty": "Trials · entertainment production · multilingual counsel",
+        "specialty": "Trials · Entertainment Production · Multilingual Counsel",
         "description": "Jean Kwon is a trilingual trial attorney who has handled over 3,000 complex matters across commercial real estate, business, probate, family, labor, criminal, and civil litigation while also executive producing bold film projects such as \"Tigers From the Sun\".",
         "education": [
           "University of Southern California, Gould School of Law, Entertainment Law",
@@ -633,7 +633,7 @@
       "john": {
         "location": "Los Angeles, CA",
         "title": "Senior Counsel · Criminal & Civil Litigation",
-        "specialty": "Federal/state criminal defense · professional liability · white-collar fraud",
+        "specialty": "Federal/State Criminal Defense · Professional Liability · White-Collar Fraud",
         "description": "Former Assistant United States Attorney and civil litigator with over 30 years of experience defending complex fraud, immigration, customs, malpractice, and racketeering matters in both state and federal courts.",
         "education": [
           "University of California, Berkeley, J.D.",
@@ -641,16 +641,16 @@
         ],
         "imageAlt": "Portrait of John D. Robertson"
       },
-      "heath": {
+      "david": {
         "location": "Los Angeles, CA",
-        "title": "Counsel · Entertainment & IP",
-        "specialty": "Entertainment litigation · IP defense · development counsel",
-        "description": "Entertainment and intellectual property attorney raised in Hollywood with a music industry background who now steers litigation and IP strategy while co-producing new stories like \"Tigers From the Sun\".",
+        "title": "Counsel · Litigation & Regulatory Strategy",
+        "specialty": "Federal Litigation · Regulatory Compliance · Start-Up Advisory",
+        "description": "Litigation counsel with DOJ Fraud Section experience who guides founders and businesses through regulatory matters and complex disputes.",
         "education": [
-          "Whittier Law School, J.D.",
-          "San Jose State University, M.D. in Mass Communication"
+          "Columbia University, J.D.",
+          "University of California, Berkeley, B.A. in Political Science (high honors)"
         ],
-        "imageAlt": "Portrait of John Heath"
+        "imageAlt": "Portrait of David Kim"
       }
     },
     "details": {
@@ -710,22 +710,25 @@
         ],
         "creative": ""
       },
-      "heath": {
-        "tagline": "Counsel · Entertainment & Intellectual Property",
+      "david": {
+        "tagline": "Counsel · Federal litigation & regulatory advisory",
         "biography": [
-          "John Heath is an attorney at Cosmic Law Firm with a specialty in entertainment and intellectual property.",
-          "After working in the record industry and attaining success in the music industry himself as a recording artist, Mr. Heath went on to attain a Masters Degree in Mass Communication at San Jose State and Juris Doctor at Whittier Law School, with a certificate in intellectual property. In addition to civil litigation, John D. Heath has a background in entertainment litigation, intellectual property pre-litigation, and entertainment transactional law.",
-          "Heath understands the entertainment business and content creation in a meaningful way. This is not surprising, as Heath was raised in the vortex of Hollywood. His father was a successful and prolific television writer and his mother is a premier entertainment attorney who represented virtually every major studio during her nearly forty year career. Additionally, his step-father is a well-respected Israeli-American director.",
-          "But Heath adds music and much more to the family tree, having obtained a recording deal with a prominent independent label almost straight out of college. Heath is currently in the process of developing other movies and television series, but none with more passion than his commitment to \"Tigers From the Sun.\"",
-          "Heath instantly was drawn to the fascinating story of \"Tigers From the Sun\" and its real life protagonist, Claire Lee Chennault, whose determination and unwillingness to accept the paradigms of the day made him a hero for the ages. Heath is thrilled with the idea of bringing the yet untold tale of Chennault to life as a feature film and eager to work with his colleague, the very talented Jean Kwon of Cosmic Law Firm, as a co-executive producer."
+          "David J. Kim earned his Juris Doctor in 2014 from Columbia Law School as a Harlan Fiske Stone scholar and editor for the Columbia Human Rights Law Review. While in law school, he interned for the Department of Justice Fraud Section in Washington, D.C., and successfully argued for asylum at federal immigration court through the Immigrants' Rights Clinic.",
+          "He graduated with high honors from the University of California, Berkeley with a Bachelor of Arts in Political Science in 2009.",
+          "David was admitted to the New York State Bar in 2015 and to the California Bar in 2022, and he is also admitted to practice before the United States District Court for the Central District of California.",
+          "His experience spans extensive litigation practice, advising start-up app developers, and counseling businesses on regulatory considerations and requirements."
         ],
-        "memberships": [],
+        "memberships": [
+          "New York State Bar (admitted 2015)",
+          "State Bar of California (admitted 2022)",
+          "United States District Court, Central District of California"
+        ],
         "practiceAreas": [
-          "Entertainment and intellectual property litigation",
-          "Intellectual property pre-litigation and dispute prevention",
-          "Entertainment transactional counseling for development and production partners"
+          "Federal and state litigation",
+          "Regulatory, compliance, and licensing guidance for technology start-ups",
+          "Immigration and asylum advocacy informed by Human Rights Clinic work"
         ],
-        "creative": "John Heath continues to co-executive produce \"Tigers From the Sun\" while leading IP and entertainment litigation for Cosmic Law Firm."
+        "creative": ""
       }
     },
     "links": {

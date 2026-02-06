@@ -106,6 +106,10 @@ export default async function RootLayout({
       <head>
         {/* Prevent iOS Safari from auto-linking phone numbers/emails and mutating the DOM pre-hydration. */}
         <meta name="format-detection" content="telephone=no,date=no,address=no,email=no" />
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap"
+        />
         <script dangerouslySetInnerHTML={{ __html: `
           (function() {
             const saved = localStorage.getItem('theme') || 'system';
