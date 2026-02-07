@@ -1,15 +1,15 @@
 "use client";
 
-import React from 'react';
+import React, { useMemo, useState } from 'react';
 import { motion } from 'framer-motion';
 import SEO from '@/components/SEO';
 import Link from '@/components/ui/Link';
 import ButtonLink from '@/components/ui/ButtonLink';
 import { SITE } from '@/lib/site';
 import { useTranslation } from 'react-i18next';
-import Icon from '@src/components/Icon';
 import SectionWithStars from '@src/components/layout/SectionWithStars';
 import { useViewport } from '../hooks/useViewport';
+import { useRouter, useParams } from 'next/navigation';
 
 const fadeInUp = {
   initial: { opacity: 0, y: 24 },
@@ -18,11 +18,7 @@ const fadeInUp = {
   transition: { duration: 0.6 },
 };
 
-const staggerContainer = {
-  initial: {},
-  whileInView: { transition: { staggerChildren: 0.1 } },
-  viewport: { once: true },
-};
+const insightsTableHeadings = ['insight', 'type'];
 
 const topics = [
   { slug: 'contract-red-flags', tag: 'Checklist', status: 'Live' },
@@ -35,8 +31,12 @@ const topics = [
 ];
 
 const Insights: React.FC<{ lng: string }> = ({ lng }) => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const params = useParams();
   const { isMobile } = useViewport();
+  const router = useRouter();
+  const currentLng = (params?.lng as string) || i18n.language || 'en';
+  const buildPath = (slug: string) => `/${currentLng}/insights/${slug}`;
 
   const currentFadeInUp = isMobile ? {
     initial: { opacity: 1, y: 0 },
@@ -45,16 +45,36 @@ const Insights: React.FC<{ lng: string }> = ({ lng }) => {
     transition: { duration: 0 },
   } : fadeInUp;
 
-  const currentStagger = isMobile ? {
-    initial: {},
-    whileInView: { transition: { staggerChildren: 0 } },
-    viewport: { once: true },
-  } : staggerContainer;
-  
   const seoTitles: Record<string, string> = {
     en: `Insights | ${SITE.name}`,
     ko: `인사이트 | ${SITE.name}`,
   };
+
+  const [activeFilter, setActiveFilter] = useState('all');
+
+  const filterOptions = useMemo(() => {
+    const options = [
+      { value: 'all', label: t('insights.table.filterAll') },
+    ];
+    const seen = new Set<string>();
+    topics.forEach((topic) => {
+      if (!seen.has(topic.tag)) {
+        seen.add(topic.tag);
+        options.push({
+          value: topic.tag,
+          label: t(`insights.topics.${topic.slug}.tag`),
+        });
+      }
+    });
+    return options;
+  }, [t]);
+
+  const filteredTopics = activeFilter === 'all'
+    ? topics
+    : topics.filter((topic) => topic.tag === activeFilter);
+
+  const tableHeaders = (t('insights.table.headers', { returnObjects: true }) as Record<string, string>) || {};
+  const filterLabel = t('insights.table.filterLabel');
 
   return (
     <div className="pt-4 lg:pt-6">
@@ -89,41 +109,148 @@ const Insights: React.FC<{ lng: string }> = ({ lng }) => {
           className="relative z-10 max-w-6xl mx-auto px-6 sm:px-8"
         >
           <div className="rounded-3xl border border-slate-100 dark:border-slate-800 bg-white/70 dark:bg-slate-900/60 overflow-hidden shadow-sm">
-            <motion.ol 
-              variants={currentStagger}
-              initial="initial"
-              whileInView="whileInView"
-              viewport={{ once: true }}
-              role="list" 
-              className="divide-y divide-slate-200 dark:divide-slate-800"
-            >
-              {topics.map((topic) => {
+            <div className="px-6 py-5 border-b border-slate-100 dark:border-slate-800 bg-slate-50/60 dark:bg-slate-900/70">
+              <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+                <div>
+                  <p className="text-xs font-black uppercase tracking-[0.3em] text-slate-500 dark:text-slate-400">
+                    {t('insights.table.title')}
+                  </p>
+                  <p className="text-sm font-medium text-slate-600 dark:text-slate-300">
+                    {t('insights.table.description')}
+                  </p>
+                </div>
+                <div className="flex items-center gap-3">
+                  <label htmlFor="insights-filter" className="text-[0.625rem] font-black uppercase tracking-[0.3em] text-slate-500 dark:text-slate-400">
+                    {filterLabel}
+                  </label>
+                  <select
+                    id="insights-filter"
+                    value={activeFilter}
+                    onChange={(event) => setActiveFilter(event.target.value)}
+                    className="rounded-full border border-slate-300 bg-white px-3 py-1 text-xs font-black uppercase tracking-[0.3em] text-slate-700 transition focus:border-primary focus:ring-2 focus:ring-primary/25 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200"
+                  >
+                    {filterOptions.map((option) => (
+                      <option key={option.value} value={option.value} className="text-xs font-black uppercase tracking-[0.3em]">
+                        {option.label}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div className="overflow-x-auto">
+              <table className="hidden md:table w-full min-w-[48rem] text-left">
+                <thead className="text-xs font-black uppercase tracking-[0.4em] text-slate-500 dark:text-slate-400">
+                  <tr>
+                    <th className="px-6 py-4">{tableHeaders.insight || insightsTableHeadings[0]}</th>
+                    <th className="px-6 py-4">{tableHeaders.type || insightsTableHeadings[1]}</th>
+                    <th className="px-6 py-4" />
+                  </tr>
+                </thead>
+                <tbody>
+                {filteredTopics.map((topic) => {
+                  const title = t(`insights.topics.${topic.slug}.title`);
+                  const summary = t(`insights.topics.${topic.slug}.summary`);
+                  const localizedTag = t(`insights.topics.${topic.slug}.tag`);
+                  const targetPath = buildPath(topic.slug);
+                  const handleRowActivate = () => router.push(targetPath);
+                  return (
+                    <tr
+                      key={topic.slug}
+                      role="link"
+                      tabIndex={0}
+                      className="border-t border-slate-100 dark:border-slate-800 cursor-pointer focus-within:bg-slate-50 dark:focus-within:bg-slate-900/70"
+                      onClick={handleRowActivate}
+                      onKeyDown={(event) => {
+                        if (event.key === 'Enter' || event.key === ' ') {
+                          event.preventDefault();
+                          handleRowActivate();
+                        }
+                      }}
+                    >
+                      <td className="px-6 py-5 align-top" style={{ minWidth: '20rem' }}>
+                        <Link
+                          to={targetPath}
+                          className="text-base font-black text-slate-900 dark:text-white tracking-tight transition hover:text-primary"
+                        >
+                          {title}
+                        </Link>
+                        <p className="mt-2 text-sm text-slate-600 dark:text-slate-400 leading-relaxed font-medium">
+                          {summary}
+                        </p>
+                      </td>
+                      <td className="px-6 py-5 align-top">
+                        <span className="inline-flex items-center rounded-full bg-slate-100 px-3 py-1 text-xs font-black uppercase tracking-[0.4em] text-slate-600 dark:bg-slate-800 dark:text-slate-200">
+                          {localizedTag}
+                        </span>
+                      </td>
+                      <td className="px-6 py-5 align-top text-right">
+                        <ButtonLink
+                          href={targetPath}
+                          tone="dark"
+                          size="sm"
+                          className="px-4 py-2"
+                          onClick={(event) => event.stopPropagation()}
+                        >
+                          {t('insights.table.read')}
+                        </ButtonLink>
+                      </td>
+                    </tr>
+                  );
+                })}
+                </tbody>
+              </table>
+            </div>
+            <div className="flex flex-col gap-4 p-6 md:hidden">
+              {filteredTopics.map((topic) => {
                 const title = t(`insights.topics.${topic.slug}.title`);
                 const summary = t(`insights.topics.${topic.slug}.summary`);
                 const localizedTag = t(`insights.topics.${topic.slug}.tag`);
+                const targetPath = buildPath(topic.slug);
+                const handleCardActivate = () => {
+                  router.push(targetPath);
+                };
                 return (
-                  <motion.li key={topic.slug} variants={currentFadeInUp}>
-                    <Link
-                      to={`/insights/${topic.slug}`}
-                      className="group block px-6 py-6 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/60 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-slate-900"
-                    >
-                      <div className="flex items-center gap-4 text-xs uppercase tracking-[0.3em] text-slate-400">
-                        <span>{localizedTag}</span>
+                  <article
+                    key={topic.slug}
+                    className="rounded-3xl border border-slate-200 bg-white/70 p-5 shadow-sm transition hover:border-primary dark:border-slate-800 dark:bg-slate-900/70 cursor-pointer"
+                    role="link"
+                    tabIndex={0}
+                    onClick={handleCardActivate}
+                    onKeyDown={(event) => {
+                      if (event.key === 'Enter' || event.key === ' ') {
+                        event.preventDefault();
+                        handleCardActivate();
+                      }
+                    }}
+                  >
+                    <div className="flex flex-col gap-2">
+                      <div className="flex items-center justify-between gap-3">
+                        <h3 className="text-lg font-black text-slate-900 dark:text-white tracking-tight transition hover:text-primary">
+                          {title}
+                        </h3>
+                        <span className="inline-flex items-center rounded-full bg-slate-100 px-3 py-1 text-[0.625rem] font-black uppercase tracking-[0.4em] text-slate-600 dark:bg-slate-800 dark:text-slate-200">
+                          {localizedTag}
+                        </span>
                       </div>
-                      <div className="mt-3 flex items-center gap-3">
-                        <h2 className="text-2xl font-black text-slate-900 dark:text-white leading-tight uppercase tracking-tight">{title}</h2>
-                        <Icon name="east" className="size-4 text-slate-400 transition group-hover:text-primary" />
+                      <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed font-medium">
+                        {summary}
+                      </p>
+                      <div className="flex justify-end">
+                        <ButtonLink
+                          href={targetPath}
+                          tone="dark"
+                          size="sm"
+                          className="whitespace-nowrap px-4 py-2"
+                        >
+                          {t('insights.table.read')}
+                        </ButtonLink>
                       </div>
-                      <p className="mt-2 text-sm text-slate-600 dark:text-slate-300 leading-relaxed font-medium">{summary}</p>
-                      <span className="mt-4 inline-flex items-center gap-1 text-xs font-black uppercase tracking-[0.3em] text-slate-900 dark:text-primary-light">
-                        {t('insights.cta.linkText')}
-                        <Icon name="east" className="size-4" />
-                      </span>
-                    </Link>
-                  </motion.li>
+                    </div>
+                  </article>
                 );
               })}
-            </motion.ol>
+            </div>
           </div>
         </motion.div>
       </SectionWithStars>

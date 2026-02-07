@@ -48,6 +48,21 @@
       "button": "Contact the team",
       "linkText": "Read insight"
     },
+    "table": {
+      "title": "Insight directory",
+      "description": "Filter and scan the briefs that matter, then jump straight into the full note.",
+      "filterLabel": "Filter by type",
+      "filterAll": "All",
+      "headers": {
+        "insight": "Insight",
+        "type": "Type",
+        "status": "Status"
+      },
+      "status": {
+        "live": "Live"
+      },
+      "read": "Read"
+    },
     "common": {
       "backToInsides": "Back to Insights",
       "actionItems": "Action items",
