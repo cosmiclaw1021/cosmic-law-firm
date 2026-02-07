@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Services from '../../pages/Services';
 import { SITE } from '../../lib/site';
 import { getInitialIsMobileFromHeaders } from '../../lib/get-initial-is-mobile';
+import { getAlternates } from '../../lib/seo';
 
 export async function generateMetadata({ params }: { params: Promise<{ lng: string }> }): Promise<Metadata> {
   const { lng } = await params;
@@ -24,13 +25,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lng: stri
       description: descriptions[lng] || descriptions.en,
       url: `${SITE.url}/${lng}/services`,
     },
-    alternates: {
-      canonical: `/${lng}/services`,
-      languages: {
-        'en': '/en/services',
-        'ko': '/ko/services',
-      },
-    },
+    alternates: getAlternates(lng, '/services'),
   };
 }
 

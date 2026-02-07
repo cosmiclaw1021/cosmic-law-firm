@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Accessibility from '../../pages/Accessibility';
 import { SITE } from '../../lib/site';
+import { getAlternates } from '../../lib/seo';
 
 export async function generateMetadata({ params }: { params: Promise<{ lng: string }> }): Promise<Metadata> {
   const { lng } = await params;
@@ -16,13 +17,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lng: stri
       title: titles[lng] || titles.en,
       url: `${SITE.url}/${lng}/accessibility`,
     },
-    alternates: {
-      canonical: `/${lng}/accessibility`,
-      languages: {
-        'en': '/en/accessibility',
-        'ko': '/ko/accessibility',
-      },
-    },
+    alternates: getAlternates(lng, '/accessibility'),
   };
 }
 

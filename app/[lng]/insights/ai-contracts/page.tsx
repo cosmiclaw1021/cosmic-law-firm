@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { SITE } from '@/lib/site';
-import InsightClientPage from '@/components/InsightClientPage';
+import InsightPage from '@/components/InsightPage';
+import { getAlternates } from '@/lib/seo';
 
 const titles: Record<string, string> = {
   en: 'AI Contracts | Insides',
@@ -25,13 +26,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lng: stri
       description,
       url: `${SITE.url}/${lng}/insights/ai-contracts`,
     },
-    alternates: {
-      canonical: `/${lng}/insights/ai-contracts`,
-      languages: {
-        'en': '/en/insights/ai-contracts',
-        'ko': '/ko/insights/ai-contracts',
-      },
-    },
+    alternates: getAlternates(lng, '/insights/ai-contracts'),
   };
 }
 
@@ -43,7 +38,7 @@ const references = [
 export default async function Page({ params }: { params: Promise<{ lng: string }> }) {
   const { lng } = await params;
   return (
-    <InsightClientPage
+    <InsightPage
       lng={lng}
       pageKey="aiContracts"
       references={references}

@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import OurPhilosophy from '../../pages/OurPhilosophy';
 import { SITE } from '../../lib/site';
+import { getAlternates } from '../../lib/seo';
 
 export async function generateMetadata({ params }: { params: Promise<{ lng: string }> }): Promise<Metadata> {
   const { lng } = await params;
@@ -23,13 +24,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lng: stri
       description: descriptions[lng] || descriptions.en,
       url: `${SITE.url}/${lng}/message`,
     },
-    alternates: {
-      canonical: `/${lng}/message`,
-      languages: {
-        'en': '/en/message',
-        'ko': '/ko/message',
-      },
-    },
+    alternates: getAlternates(lng, '/message'),
   };
 }
 

@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import PracticeAreaPage from '../../../pages/PracticeArea';
 import { getPracticeAreaBySlug, practiceAreas } from '../../../lib/practice-areas';
 import { SITE } from '../../../lib/site';
+import { getAlternates } from '../../../lib/seo';
 
 export async function generateStaticParams() {
   return practiceAreas.map((area) => ({ practiceArea: area.slug }));
@@ -33,13 +34,7 @@ export async function generateMetadata({
       description: localizedDescription || area.summary,
       url: `${SITE.url}/${lng}/services/${area.slug}`,
     },
-    alternates: {
-      canonical: `/${lng}/services/${area.slug}`,
-      languages: {
-        'en': `/en/services/${area.slug}`,
-        'ko': `/ko/services/${area.slug}`,
-      },
-    },
+    alternates: getAlternates(lng, `/services/${area.slug}`),
   };
 }
 

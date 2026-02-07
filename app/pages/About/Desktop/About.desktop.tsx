@@ -20,13 +20,13 @@ const AboutDesktop: React.FC = () => {
     <>
       <SEO title={t('about.hero.title')} description={t('about.hero.description')} />
 
-      <SectionWithStars className="w-full px-10 py-20 max-w-[1280px] mx-auto overflow-hidden" aria-labelledby="about-hero-title" settings={{ density: 0.5 }}>
+      <SectionWithStars className="w-full px-10 pt-28 pb-20 max-w-[1280px] mx-auto overflow-hidden" aria-labelledby="about-hero-title" settings={{ density: 0.5 }}>
         <div className="relative z-10 flex flex-col gap-16 lg:flex-row lg:items-center">
           <motion.div 
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="flex flex-col gap-6 lg:w-1/2"
+            className="flex flex-col gap-6 lg:w-1/2 pt-4 lg:pt-0"
           >
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-slate-900 dark:text-primary-light text-xs font-black uppercase tracking-widest w-fit">
               <Icon name="verified" className="size-4" />
@@ -59,9 +59,9 @@ const AboutDesktop: React.FC = () => {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.7, delay: 0.1 }}
-            className="lg:w-1/2 flex justify-center"
+            className="lg:w-1/2 flex justify-center items-start pt-6 lg:pt-0"
           >
-            <div className="relative w-full max-w-md aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl border border-slate-200 dark:border-slate-800">
+            <div className="relative w-full max-w-md aspect-[4/5] max-h-[520px] rounded-2xl overflow-hidden shadow-2xl border border-slate-200 dark:border-slate-800">
               <div
                 className="w-full h-full bg-center bg-cover bg-no-repeat bg-slate-200 dark:bg-slate-800"
                 style={{ backgroundImage: "url('/NanoBanana/Background_screens_4.png')" }}

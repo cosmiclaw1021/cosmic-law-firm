@@ -64,27 +64,27 @@
         "items": [
           {
             "title": "Data sourcing & training rights",
-            "body": "Given recent settlements over training data, it is essential to require vendors to warrant that no unauthorized proprietary or personal data is in the models and that they will document every dataset used for your deliverables. citeturn4search5turn4search4"
+            "body": "Given recent settlements over training data, it is essential to require vendors to warrant that no unauthorized proprietary or personal data is in the models and that they will document every dataset used for your deliverables. "
           },
           {
             "title": "Indemnity & liability",
-            "body": "Insist on indemnities that cover IP infringement, regulatory fines, and misuse of likeness; cap liabilities only when the counterparty can prove a robust risk transfer strategy. citeturn4search0"
+            "body": "Insist on indemnities that cover IP infringement, regulatory fines, and misuse of likeness; cap liabilities only when the counterparty can prove a robust risk transfer strategy. "
           },
           {
             "title": "Transparency & audit",
-            "body": "Ask for audit rights over training data, red-teaming outputs, and the logs showing when human review kicked in—without this you can never prove compliance or fulfill disclosure obligations to talent unions. citeturn4search4"
+            "body": "Ask for audit rights over training data, red-teaming outputs, and the logs showing when human review kicked in—without this you can never prove compliance or fulfill disclosure obligations to talent unions. "
           },
           {
             "title": "Operational guardrails",
-            "body": "Include a mitigation plan that flags misuses (e.g., recreated likenesses, biased outputs) and anchors the vendor’s obligation to pause deployment until humans clear the content. citeturn4news48"
+            "body": "Include a mitigation plan that flags misuses (e.g., recreated likenesses, biased outputs) and anchors the vendor’s obligation to pause deployment until humans clear the content. "
           }
         ],
         "actionItems": [
-          "Publish a vendor questionnaire that tracks datasets, red-team findings, and usage history for each piece of work. citeturn4search0",
-          "Document human-in-the-loop checkpoints in the contract so the developer cannot claim the model is fully autonomous during audits. citeturn4search4",
-          "Include a procedural review section that requires the vendor to document datasets, human oversight, and mitigation plans. citeturn5news48",
-          "Draft a fallback clause requiring the vendor to pull down any unauthorized synthetic likeness upon notice. citeturn3news49",
-          "Build a takedown remedy tied to the general AI policy so you can quickly remove unauthorized synthetic likeness. citeturn3news49"
+          "Publish a vendor questionnaire that tracks datasets, red-team findings, and usage history for each piece of work. ",
+          "Document human-in-the-loop checkpoints in the contract so the developer cannot claim the model is fully autonomous during audits. ",
+          "Include a procedural review section that requires the vendor to document datasets, human oversight, and mitigation plans. ",
+          "Draft a fallback clause requiring the vendor to pull down any unauthorized synthetic likeness upon notice. ",
+          "Build a takedown remedy tied to the general AI policy so you can quickly remove unauthorized synthetic likeness. "
         ]
       },
       "aiInEntertainment": {
@@ -94,31 +94,31 @@
         "snapshots": [
           {
             "title": "Digital replica consent is now non-negotiable",
-            "body": "Most new SAG-AFTRA agreements require companies to get clear consent and compensation for digital replicas, commercials, and interactive characters before using AI avatars or likenesses, so talent teams lock in the scope of use up front. citeturn5search0turn5search2"
+            "body": "Most new SAG-AFTRA agreements require companies to get clear consent and compensation for digital replicas, commercials, and interactive characters before using AI avatars or likenesses, so talent teams lock in the scope of use up front. "
           },
           {
             "title": "Interactive media and games have AI guardrails",
-            "body": "The 2023 interactive media addendum projects into episodic series and games, requiring disclosure when synthetic voices or faces replace an actor and ensuring performers can audit how the material is generated. citeturn5search1"
+            "body": "The 2023 interactive media addendum projects into episodic series and games, requiring disclosure when synthetic voices or faces replace an actor and ensuring performers can audit how the material is generated. "
           },
           {
             "title": "Studios are investing heavily in AI tooling",
-            "body": "Deals show studios are adopting generative systems for everything from storyboarding to casting data, which increases the appetite for clear data rights and compliance. citeturn5news43"
+            "body": "Deals show studios are adopting generative systems for everything from storyboarding to casting data, which increases the appetite for clear data rights and compliance. "
           }
         ],
         "riskPoints": [
           {
             "title": "Deepfakes are crossing national lines",
-            "body": "Courts and new bills are reacting to unauthorized deepfakes of public figures, so entertainment teams should create a robust takedown and litigation strategy before AI usage spikes. citeturn3news46turn3news49"
+            "body": "Courts and new bills are reacting to unauthorized deepfakes of public figures, so entertainment teams should create a robust takedown and litigation strategy before AI usage spikes. "
           },
           {
             "title": "Politicians keep updating publicity laws",
-            "body": "As states pass new publicity legislation and Congress debates national guardrails, brands must treat name/image/likeness as a moving target, especially when AI can reproduce famous voices or avatars without permission. citeturn3news48turn3news51"
+            "body": "As states pass new publicity legislation and Congress debates national guardrails, brands must treat name/image/likeness as a moving target, especially when AI can reproduce famous voices or avatars without permission. "
           }
         ],
         "actionItems": [
-          "Label every deliverable that uses AI-generated visuals or audio so the creative team can track inputs and rights holders. citeturn5news48",
-          "Include a procedural review section that requires the vendor to document datasets, human oversight, and mitigation plans. citeturn5news48",
-          "Draft a fallback clause requiring the vendor to pull down any unauthorized synthetic likeness upon notice. citeturn3news49"
+          "Label every deliverable that uses AI-generated visuals or audio so the creative team can track inputs and rights holders. ",
+          "Include a procedural review section that requires the vendor to document datasets, human oversight, and mitigation plans. ",
+          "Draft a fallback clause requiring the vendor to pull down any unauthorized synthetic likeness upon notice. "
         ]
       },
       "aiLaw": {
@@ -128,27 +128,27 @@
         "timeline": [
           {
             "title": "Federal AI blueprint",
-            "body": "The White House issued a new executive order aligning AI oversight across agencies, tied to the national AI R&D roadmap and giving NIST more weight for risk-based standards while urging agencies to curb conflicting state laws. citeturn2search0turn2news52turn3search2"
+            "body": "The White House issued a new executive order aligning AI oversight across agencies, tied to the national AI R&D roadmap and giving NIST more weight for risk-based standards while urging agencies to curb conflicting state laws. "
           },
           {
             "title": "EU AI Act enforcement",
-            "body": "The EU AI Act will begin supervision in 2026 with fines up to 7% of worldwide turnover for prohibited systems, and it forces providers to document training data, maintain technical documentation, and run post-launch monitoring. citeturn2search1turn2search4"
+            "body": "The EU AI Act will begin supervision in 2026 with fines up to 7% of worldwide turnover for prohibited systems, and it forces providers to document training data, maintain technical documentation, and run post-launch monitoring. "
           },
           {
             "title": "State and publicity laws",
-            "body": "California’s SB-53 and Texas’ SB-20 join proposed federal NO FAKES bills that all require prompt notice and takedowns when likeness or deepfakes stray outside the licensed use. citeturn3search58turn3search57turn3search47turn3news49"
+            "body": "California’s SB-53 and Texas’ SB-20 join proposed federal NO FAKES bills that all require prompt notice and takedowns when likeness or deepfakes stray outside the licensed use. "
           },
           {
             "title": "Congressional disclosure pushes",
-            "body": "The Generative AI Copyright Disclosure Act would require creators to label AI-assisted works and detail the datasets used, while similar proposals add transparency requirements for training data provenance. citeturn5search58"
+            "body": "The Generative AI Copyright Disclosure Act would require creators to label AI-assisted works and detail the datasets used, while similar proposals add transparency requirements for training data provenance. "
           }
         ],
         "actionItems": [
-          "Create an AI policy map that documents which federal/state laws apply to each deliverable, so you can coordinate compliance and reduce contradictory notice obligations. citeturn2search0turn3search58",
-          "Update talent releases to anticipate wider jurisdictional requirements (e.g., California biometrics law, Texas protection for children). citeturn3search58turn3search57",
-          "Include a procedural review section that requires the vendor to document datasets, human oversight, and mitigation plans. citeturn5news48",
-          "Draft a fallback clause requiring the vendor to pull down any unauthorized synthetic likeness upon notice. citeturn3news49",
-          "Track EU and federal reporting duties so you can file systematic risk assessments before deployment. citeturn2search1turn2search4"
+          "Create an AI policy map that documents which federal/state laws apply to each deliverable, so you can coordinate compliance and reduce contradictory notice obligations. ",
+          "Update talent releases to anticipate wider jurisdictional requirements (e.g., California biometrics law, Texas protection for children). ",
+          "Include a procedural review section that requires the vendor to document datasets, human oversight, and mitigation plans. ",
+          "Draft a fallback clause requiring the vendor to pull down any unauthorized synthetic likeness upon notice. ",
+          "Track EU and federal reporting duties so you can file systematic risk assessments before deployment. "
         ]
       },
       "chainOfTitle": {
@@ -158,24 +158,24 @@
         "highlights": [
           {
             "title": "Why chain of title matters",
-            "body": "Distributors, financiers, and insurers look for an unbroken trail from the underlying writer, creator, or rights holder through every option, assignment, and release before funding a project. citeturn1search14"
+            "body": "Distributors, financiers, and insurers look for an unbroken trail from the underlying writer, creator, or rights holder through every option, assignment, and release before funding a project. "
           },
           {
             "title": "Option and assignment clarity",
-            "body": "A stack of option letters or assignments that lack release language or are not properly dated can derail the chain; during diligence you need to confirm each has been properly exercised and expressly assigned. citeturn1search16"
+            "body": "A stack of option letters or assignments that lack release language or are not properly dated can derail the chain; during diligence you need to confirm each has been properly exercised and expressly assigned. "
           }
         ],
         "docs": [
-          "Original writer and director agreements with express ownership and deliverable descriptions. citeturn1search14",
-          "Option or first-look letters attached with evidence of exercise, notice, and payment. citeturn1search16",
-          "Any joint-venture or co-production agreements that allocate IP ownership. citeturn1search14",
-          "Releases from third parties whose contributions touch the final product (e.g., stock footage, likenesses). citeturn1search12"
+          "Original writer and director agreements with express ownership and deliverable descriptions. ",
+          "Option or first-look letters attached with evidence of exercise, notice, and payment. ",
+          "Any joint-venture or co-production agreements that allocate IP ownership. ",
+          "Releases from third parties whose contributions touch the final product (e.g., stock footage, likenesses). "
         ],
         "diligenceSteps": [
-          "Map all prior rights holders, even if the agreement has not yet closed, and confirm releases before calling the project “cleared.” citeturn1search12",
-          "Match every payment or notice in the stack with the paperwork; missing invoices or unsigned releases are red flags. citeturn1search12",
-          "Track the territory and media rights on each document; lenders will only finance the media they can insure or distribute. citeturn1search14",
-          "Document each transfer in a title memorandum so future deals can be closed without re-walking the same chain. citeturn1search16"
+          "Map all prior rights holders, even if the agreement has not yet closed, and confirm releases before calling the project “cleared.” ",
+          "Match every payment or notice in the stack with the paperwork; missing invoices or unsigned releases are red flags. ",
+          "Track the territory and media rights on each document; lenders will only finance the media they can insure or distribute. ",
+          "Document each transfer in a title memorandum so future deals can be closed without re-walking the same chain. "
         ]
       },
       "contractRedFlags": {
@@ -185,30 +185,30 @@
         "redFlags": [
           {
             "title": "Perpetual, worldwide grants",
-            "body": "Clauses that assign or license rights “in perpetuity,” “worldwide,” or “in all media now known or hereafter devised” leave creators without room to re-license or renegotiate future formats, so push for narrowing the term and territory. citeturn0search5"
+            "body": "Clauses that assign or license rights “in perpetuity,” “worldwide,” or “in all media now known or hereafter devised” leave creators without room to re-license or renegotiate future formats, so push for narrowing the term and territory. "
           },
           {
             "title": "Work-for-hire without clarity",
-            "body": "When the contract recites a work-for-hire or assignment but the project elements are undefined, confirm the expressed consideration, whether residuals are owed, and the treatment of future derivatives. citeturn0search5"
+            "body": "When the contract recites a work-for-hire or assignment but the project elements are undefined, confirm the expressed consideration, whether residuals are owed, and the treatment of future derivatives. "
           },
           {
             "title": "Undefined deliverables and payment",
-            "body": "Vague statements about “content” or deliverables that omit payment timing invite scope creep; insist on concrete milestones, payment dates, and a revision budget. citeturn0search4"
+            "body": "Vague statements about “content” or deliverables that omit payment timing invite scope creep; insist on concrete milestones, payment dates, and a revision budget. "
           },
           {
             "title": "No audit or termination protections",
-            "body": "Agreements that deny audit or terminate only “for cause” trap creators even when the company sits on inaccurate accounting; ask for audit access and a defined cure period. citeturn0search4"
+            "body": "Agreements that deny audit or terminate only “for cause” trap creators even when the company sits on inaccurate accounting; ask for audit access and a defined cure period. "
           },
           {
             "title": "Blanket exclusivity or warranty promises",
-            "body": "Broad warranties about infringement or exclusivity should be scoped to the creator’s actual control and limited to the agreed deliverables so the artist is not on the hook for unknown third-party rights. citeturn0search5"
+            "body": "Broad warranties about infringement or exclusivity should be scoped to the creator’s actual control and limited to the agreed deliverables so the artist is not on the hook for unknown third-party rights. "
           }
         ],
         "checklist": [
-          "Get all underlying assignments or licenses in writing so the lead contract can cite clean chain-of-title pages. citeturn0search6",
-          "Demand a defined audit clause with a reasonable notice period and caps on audit burdens. citeturn0search6",
-          "Clarify exit rights: at a minimum, negotiate a short cure period and a termination-for-convenience fall-back. citeturn0search6",
-          "Make sure all territories, media, and timeframes are enumerated; if not, treat them as limited to the initial campaign. citeturn0search6"
+          "Get all underlying assignments or licenses in writing so the lead contract can cite clean chain-of-title pages. ",
+          "Demand a defined audit clause with a reasonable notice period and caps on audit burdens. ",
+          "Clarify exit rights: at a minimum, negotiate a short cure period and a termination-for-convenience fall-back. ",
+          "Make sure all territories, media, and timeframes are enumerated; if not, treat them as limited to the initial campaign. "
         ]
       },
       "nilBasics": {
@@ -218,21 +218,21 @@
         "updates": [
           {
             "title": "House settlement clears the clouds",
-            "body": "The House settlement with NIL companies and athletes over $20.5 million of deferred compensation requires a neutral clearinghouse and clearer disclosures before deals over $600 can be booked, making NIL deals easier to audit. citeturn1news50"
+            "body": "The House settlement with NIL companies and athletes over $20.5 million of deferred compensation requires a neutral clearinghouse and clearer disclosures before deals over $600 can be booked, making NIL deals easier to audit. "
           },
           {
             "title": "NCAA pairs back recruiting limits",
-            "body": "NCAA policy now lets schools encourage recruits to pursue NIL deals earlier, while still requiring schools to monitor the deals for academic impacts and conflicts. citeturn1news49"
+            "body": "NCAA policy now lets schools encourage recruits to pursue NIL deals earlier, while still requiring schools to monitor the deals for academic impacts and conflicts. "
           }
         ],
         "processItems": [
-          "Register every deal, endorsement, or appearance with NIL Go so the clearinghouse can confirm compliance and the 1099 thresholds. citeturn1search2",
-          "Keep a central file on each athlete’s adviser and contracts so that schools can prove compliance and allow quick pause if a misstep is flagged. citeturn1search0",
-          "Watch the high school and junior college rules that now require disclosure of prominent NIL deals before a player transfers. citeturn1search1"
+          "Register every deal, endorsement, or appearance with NIL Go so the clearinghouse can confirm compliance and the 1099 thresholds. ",
+          "Keep a central file on each athlete’s adviser and contracts so that schools can prove compliance and allow quick pause if a misstep is flagged. ",
+          "Watch the high school and junior college rules that now require disclosure of prominent NIL deals before a player transfers. "
         ],
         "actionItems": [
-          "Have marketing and compliance teams coordinate documents to keep the deal, payment schedule, and deliverables aligned with NCAA guidance. citeturn1search3",
-          "Stipulate financial reporting requirements (e.g., $600 threshold) for every athlete so the school can file accurate 1099s. citeturn1search2"
+          "Have marketing and compliance teams coordinate documents to keep the deal, payment schedule, and deliverables aligned with NCAA guidance. ",
+          "Stipulate financial reporting requirements (e.g., $600 threshold) for every athlete so the school can file accurate 1099s. "
         ]
       },
       "publicityBasics": {
@@ -242,35 +242,35 @@
         "definitions": [
           {
             "title": "Rights of publicity 101",
-            "body": "The right of publicity lets individuals control commercial use of their name, image, voice, or likeness, and the doctrine is state-based so obligations, damages, and permissible uses vary significantly. citeturn0search3"
+            "body": "The right of publicity lets individuals control commercial use of their name, image, voice, or likeness, and the doctrine is state-based so obligations, damages, and permissible uses vary significantly. "
           },
           {
             "title": "NIL and publicity overlap",
-            "body": "NIL programs and publicity rights intersect because athletes are selling their name, image, or likeness; a clean release must outline the level of control the school or brand retains, and the school must keep the disclosures ready for NCAA review. citeturn1news49"
+            "body": "NIL programs and publicity rights intersect because athletes are selling their name, image, or likeness; a clean release must outline the level of control the school or brand retains, and the school must keep the disclosures ready for NCAA review. "
           }
         ],
         "aiRisks": [
           {
             "title": "Deepfake litigation is global",
-            "body": "Courts in other jurisdictions are already ordering takedowns of unauthorized AI films, while various nations are crafting laws that explicitly shield individuals from synthetic likenesses. citeturn3news46turn3news51"
+            "body": "Courts in other jurisdictions are already ordering takedowns of unauthorized AI films, while various nations are crafting laws that explicitly shield individuals from synthetic likenesses. "
           },
           {
             "title": "Federal bills raise the stakes",
-            "body": "The NO FAKES Act and Take It Down Act would force platforms to accept takedown notices for synthetic content that violates publicity rights, and content owners can use the same takedown language in their commercial agreements. citeturn3search47turn3news49"
+            "body": "The NO FAKES Act and Take It Down Act would force platforms to accept takedown notices for synthetic content that violates publicity rights, and content owners can use the same takedown language in their commercial agreements. "
           }
         ],
         "reminders": [
           {
             "title": "Accurate Documentation",
-            "body": "Document exactly which rights are licensed (name, voice, live performances, avatar, AI replicas) and the permitted use cases. citeturn0search3"
+            "body": "Document exactly which rights are licensed (name, voice, live performances, avatar, AI replicas) and the permitted use cases. "
           },
           {
             "title": "Audit NIL Terms",
-            "body": "Link NIL deal terms to the publicity release so you can audit for NCAA headlines and avoid unauthorized derivative content. citeturn1news49"
+            "body": "Link NIL deal terms to the publicity release so you can audit for NCAA headlines and avoid unauthorized derivative content. "
           },
           {
             "title": "Takedown Promise",
-            "body": "Add a takedown promise that mirrors state/federal law, covering AI-generated content and deepfakes beyond the contract term. citeturn3news49turn3search47"
+            "body": "Add a takedown promise that mirrors state/federal law, covering AI-generated content and deepfakes beyond the contract term. "
           }
         ]
       }

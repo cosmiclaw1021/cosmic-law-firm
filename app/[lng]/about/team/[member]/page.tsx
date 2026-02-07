@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 import TeamMemberDetail from '../../../../pages/Team/TeamMemberDetail';
 import { teamMembers } from '../../../../pages/Team/team.constants';
 import { SITE } from '../../../../lib/site';
+import { getAlternates } from '../../../../lib/seo';
 
 export async function generateStaticParams() {
   return teamMembers.map((member) => ({
@@ -28,13 +29,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lng: stri
       title,
       url: `${SITE.url}/${lng}/about/team/${member.slug}`,
     },
-    alternates: {
-      canonical: `/${lng}/about/team/${member.slug}`,
-      languages: {
-        'en': `/en/about/team/${member.slug}`,
-        'ko': `/ko/about/team/${member.slug}`,
-      },
-    },
+    alternates: getAlternates(lng, `/about/team/${member.slug}`),
   };
 }
 

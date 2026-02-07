@@ -29,30 +29,30 @@ const TeamDesktop: React.FC = () => {
     <>
       <SEO title={t('team.hero.title')} description={t('team.hero.description')} />
 
-      <SectionWithStars className="w-full bg-background-light dark:bg-background-dark overflow-hidden" settings={{ density: 0.47 }}>
+      <SectionWithStars className="hero-header-gap-tight w-full bg-background-light dark:bg-background-dark overflow-hidden" settings={{ density: 0.47 }}>
         <div className="relative z-10 max-w-[1280px] mx-auto px-6 py-10 md:px-10 md:py-16">
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="flex flex-col gap-5 max-w-3xl"
+            className="flex flex-col gap-6 max-w-3xl"
           >
-            <div className="md:grid md:grid-cols-[minmax(0,1fr)_auto] md:items-start md:gap-8">
-              <div className="space-y-3 md:space-y-4">
-                <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-slate-900 dark:text-primary-light text-[11px] font-black uppercase tracking-[0.3em] w-fit">
-                  {t('team.hero.badge')}
-                </span>
-                <h1 className="text-5xl font-black text-slate-900 dark:text-white leading-tight uppercase tracking-tight">
-                  {t('team.hero.title')}
-                </h1>
-                <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed font-medium">
-                  {t('team.hero.description')}
-                </p>
-              </div>
+            <div className="space-y-3 md:space-y-4">
+              <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-slate-900 dark:text-primary-light text-[11px] font-black uppercase tracking-[0.3em] w-fit">
+                {t('team.hero.badge')}
+              </span>
+              <h1 className="text-5xl font-black text-slate-900 dark:text-white leading-tight uppercase tracking-tight">
+                {t('team.hero.title')}
+              </h1>
+              <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed font-medium">
+                {t('team.hero.description')}
+              </p>
+            </div>
+            <div className="flex w-full">
               <ButtonLink
                 href="/contact"
                 tone="dark"
-                className="self-start w-fit inline-flex items-center gap-2 rounded-xl uppercase tracking-widest text-xs px-6 py-3 shadow-lg focus:ring-2 focus:ring-secondary/40 focus:ring-offset-2 focus:ring-offset-background-light dark:focus:ring-offset-background-dark font-black"
+                className="w-full max-w-xs inline-flex items-center justify-center gap-2 rounded-xl uppercase tracking-widest text-xs px-6 py-3 shadow-lg focus:ring-2 focus:ring-secondary/40 focus:ring-offset-2 focus:ring-offset-background-light dark:focus:ring-offset-background-dark font-black"
               >
                 {t('team.hero.cta')}
                 <Icon name="mail" className="size-4" />

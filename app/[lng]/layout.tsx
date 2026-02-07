@@ -1,11 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import "../index.css";
 import React from 'react';
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
-import SkipToContent from '../components/SkipToContent';
 import ClientLayout from '../client-layout';
-import PageTransition from '../components/PageTransition';
 import I18nProvider from '../components/I18nProvider';
 import { EmailProvider } from '../components/EmailClientProvider';
 import { SITE } from '../lib/site';
@@ -14,6 +10,7 @@ import { CookieConsentProvider } from '@src/context/cookieConsent';
 import CookieConsentBanner from '../components/CookieConsentBanner';
 import { geistSans, geistMono } from '../fonts';
 import { getInitialIsMobileFromHeaders } from '../lib/get-initial-is-mobile';
+import PageShell from '../components/PageShell';
 
 export const viewport: Viewport = {
   width: 'device-width',
@@ -40,14 +37,6 @@ export async function generateMetadata({ params }: { params: Promise<{ lng: stri
     },
     description: "Entertainment law for creators, studios, and media companies—contracts, IP, talent deals, distribution, and disputes.",
     metadataBase: new URL(baseUrl),
-    alternates: {
-      canonical: `/${lng}`,
-      languages: {
-        'en': '/en',
-        'ko': '/ko',
-        'x-default': '/en',
-      },
-    },
     openGraph: {
       type: "website",
       url: `${baseUrl}/${lng}`,
@@ -95,6 +84,22 @@ export default async function RootLayout({
         : "Entertainment law for creators, studios, and media companies—contracts, IP, talent deals, distribution, and disputes.",
     "telephone": SITE.phoneTel ? `+1-${SITE.phoneTel}` : undefined,
     "email": SITE.email,
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": SITE.address.street,
+      "addressLocality": SITE.address.city,
+      "addressRegion": SITE.address.state,
+      "postalCode": SITE.address.zip,
+      "addressCountry": SITE.address.country
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": SITE.geo.latitude,
+      "longitude": SITE.geo.longitude
+    },
+    "openingHours": SITE.openingHours,
+    "priceRange": SITE.priceRange,
+    "areaServed": ["Los Angeles", "California", "United States"]
   };
 
   return (
@@ -133,18 +138,9 @@ export default async function RootLayout({
               <EmailProvider>
                 <div className="relative flex flex-col min-h-screen overflow-x-hidden">
                   <ClientLayout initialIsMobile={initialIsMobile}>
-                    <SkipToContent />
-                    <Navbar key={`nav-${lng}`} initialIsMobile={initialIsMobile} />
-                    <main 
-                      id="main-content" 
-                      tabIndex={-1} 
-                      className="flex-grow w-full flex flex-col outline-none"
-                    >
-                      <PageTransition initialIsMobile={initialIsMobile}>
-                        {children}
-                      </PageTransition>
-                    </main>
-                    <Footer key={`footer-${lng}`} />
+                    <PageShell lng={lng} initialIsMobile={initialIsMobile}>
+                      {children}
+                    </PageShell>
                   </ClientLayout>
                 </div>
               </EmailProvider>
