@@ -32,7 +32,7 @@ const HomeDesktop: React.FC = () => {
       />
 
       <SectionWithStars
-        className="hero-header-gap relative overflow-hidden bg-slate-950 text-white"
+        className="relative overflow-hidden bg-slate-950 text-white"
         aria-label={t('accessibility.aria.heroIntro')}
         settings={{ density: 0.52, scrollRange: 920 }}
       >
@@ -45,47 +45,50 @@ const HomeDesktop: React.FC = () => {
             className="object-cover"
             sizes="100vw"
           />
-          <div className="absolute inset-0 bg-gradient-to-br from-slate-950/90 via-slate-950/70 to-black/90" />
+          <div className="absolute inset-0 bg-gradient-to-br from-slate-950/95 via-slate-950/75 to-black/95" />
           <div className="absolute -left-32 top-8 h-[420px] w-[420px] rounded-full bg-primary/30 blur-[180px]" aria-hidden="true" />
           <div className="absolute right-0 bottom-0 h-[360px] w-[360px] translate-y-10 translate-x-1/4 rounded-full bg-white/5 blur-[160px]" aria-hidden="true" />
         </div>
 
-        <div className="relative z-20 grid max-w-[1280px] mx-auto gap-10 px-6 py-10 sm:px-8 lg:px-10 lg:py-16 min-h-[55svh] sm:min-h-[60svh] lg:min-h-[65svh]">
-          <motion.div
-            initial={{ opacity: 0, y: 18 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7 }}
-            className="grid h-full gap-6 max-w-2xl"
-          >
-            <div className="space-y-4">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 text-white/90 text-[11px] font-black uppercase tracking-[0.3em] w-fit">
-                <Icon name="gavel" className="size-4" />
-                {t('home.hero.badge')}
+        <div className="relative z-20 max-w-[1140px] mx-auto px-6 py-12 sm:px-8 lg:px-10 lg:py-16">
+          <div className="rounded-[36px] border border-white/10 bg-slate-900/70 backdrop-blur-2xl shadow-[0_40px_120px_rgba(15,23,42,0.9)] px-8 py-10 lg:px-12 lg:py-12">
+            <motion.div
+              initial={{ opacity: 0, y: 18 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7 }}
+              className="grid gap-6 max-w-3xl"
+            >
+              <div className="space-y-4">
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/15 text-white/90 text-[11px] font-black uppercase tracking-[0.3em] w-fit">
+                  <Icon name="gavel" className="size-4" />
+                  {t('home.hero.badge')}
+                </div>
+                <h1 className="text-5xl leading-[1.05] font-black tracking-tight uppercase lg:text-6xl">
+                  {t('home.hero.title')}
+                </h1>
+                <p className="text-lg text-white/90 leading-relaxed font-medium">
+                  {t('home.hero.description')}
+                </p>
               </div>
-              <h1 className="text-5xl lg:text-6xl font-black tracking-tighter leading-[0.95] uppercase">
-                {t('home.hero.title')}
-              </h1>
-              <p className="text-xl text-white/90 leading-relaxed font-medium">
-                {t('home.hero.description')}
-              </p>
-            </div>
-            <div className="grid gap-4 sm:grid-cols-[repeat(2,minmax(0,1fr))] mt-auto">
-              <ButtonLink
-                href="/services"
-                tone="dark"
-                className="h-14 px-10 uppercase tracking-widest text-sm focus:ring-offset-2 focus:ring-offset-slate-950 w-full sm:w-auto justify-center"
-              >
-                {t('home.hero.ctaPrimary')}
-              </ButtonLink>
-              <ButtonLink
-                href="/contact"
-                tone="light"
-                className="h-14 px-10 uppercase tracking-widest text-sm border border-white/40 focus:ring-offset-2 focus:ring-offset-slate-950 w-full sm:w-auto justify-center"
-              >
-                {t('home.hero.ctaSecondary')}
-              </ButtonLink>
-            </div>
-          </motion.div>
+              <div className="flex flex-wrap gap-4 sm:flex-nowrap">
+                <ButtonLink
+                  href="/services"
+                  tone="dark"
+                  className="h-12 px-8 uppercase tracking-[0.3em] text-xs focus:ring-offset-2 focus:ring-offset-slate-950 w-full sm:w-auto justify-center"
+                >
+                  {t('home.hero.ctaPrimary')}
+                </ButtonLink>
+                <ButtonLink
+                  href="/contact"
+                  tone="light"
+                  className="h-12 px-8 uppercase tracking-[0.3em] text-xs border border-white/40 focus:ring-offset-2 focus:ring-offset-slate-950 w-full sm:w-auto justify-center"
+                >
+                  {t('home.hero.ctaSecondary')}
+                </ButtonLink>
+              </div>
+              <p className="text-sm text-white/60">{t('home.hero.subtext')}</p>
+            </motion.div>
+          </div>
         </div>
       </SectionWithStars>
 
