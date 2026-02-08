@@ -13,7 +13,7 @@ import SectionWithStars from '@src/components/layout/SectionWithStars';
 import { useViewport } from '../hooks/useViewport';
 
 const fadeInUp = {
-  initial: { opacity: 0, y: 16 },
+  initial: { opacity: 1, y: 12 },
   whileInView: { opacity: 1, y: 0 },
   viewport: { once: true, amount: 0.05 },
   transition: { duration: 0.5 },

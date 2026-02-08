@@ -10,7 +10,7 @@ import { CookieConsentProvider } from '@src/context/cookieConsent';
 import CookieConsentBanner from '../components/CookieConsentBanner';
 import { geistSans, geistMono } from '../fonts';
 import { getInitialIsMobileFromHeaders } from '../lib/get-initial-is-mobile';
-import PageShell from '../components/PageShell';
+import AppLayout from '../components/AppLayout';
 
 export const viewport: Viewport = {
   width: 'device-width',
@@ -138,9 +138,9 @@ export default async function RootLayout({
               <EmailProvider>
                 <div className="relative flex flex-col min-h-screen overflow-x-hidden">
                   <ClientLayout initialIsMobile={initialIsMobile}>
-                    <PageShell lng={lng} initialIsMobile={initialIsMobile}>
+                    <AppLayout lng={lng} initialIsMobile={initialIsMobile}>
                       {children}
-                    </PageShell>
+                    </AppLayout>
                   </ClientLayout>
                 </div>
               </EmailProvider>

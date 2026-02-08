@@ -6,13 +6,13 @@ import Footer from './Footer';
 import SkipToContent from './SkipToContent';
 import PageTransition from './PageTransition';
 
-interface PageShellProps {
+interface AppLayoutProps {
   children: React.ReactNode;
   initialIsMobile?: boolean;
   lng?: string;
 }
 
-export default function PageShell({ children, initialIsMobile, lng }: PageShellProps) {
+export default function AppLayout({ children, initialIsMobile, lng }: AppLayoutProps) {
   const localeKey = lng ?? 'default';
 
   return (

@@ -12,7 +12,7 @@ import { useViewport } from '../hooks/useViewport';
 import { useRouter, useParams } from 'next/navigation';
 
 const fadeInUp = {
-  initial: { opacity: 0, y: 24 },
+  initial: { opacity: 1, y: 12 },
   whileInView: { opacity: 1, y: 0 },
   viewport: { once: true },
   transition: { duration: 0.6 },
