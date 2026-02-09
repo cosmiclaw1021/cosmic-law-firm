@@ -19,11 +19,11 @@ const Terms: React.FC = () => {
   const { isMobile } = useViewport();
   const currentFadeInUp = isMobile
     ? {
-        initial: { opacity: 1, y: 0 },
-        whileInView: { opacity: 1, y: 0 },
-        viewport: { once: true },
-        transition: { duration: 0 },
-      }
+      initial: { opacity: 1, y: 0 },
+      whileInView: { opacity: 1, y: 0 },
+      viewport: { once: true },
+      transition: { duration: 0 },
+    }
     : fadeInUp;
 
   return (
@@ -48,37 +48,20 @@ const Terms: React.FC = () => {
           </p>
         </div>
 
-        <article className="space-y-6 border-t border-slate-200 dark:border-slate-800 pt-8 text-sm font-medium text-slate-700 dark:text-slate-200">
-          <section>
-            <h2 className="text-2xl font-bold text-slate-900 dark:text-white uppercase tracking-tight">
-              {t('termsPage.scopeHeading')}
-            </h2>
-            <p className="mt-3">{t('termsPage.scopeBody')}</p>
-          </section>
-
-          <section>
-            <h2 className="text-2xl font-bold text-slate-900 dark:text-white uppercase tracking-tight">
-              {t('termsPage.contentHeading')}
-            </h2>
-            <p className="mt-3">{t('termsPage.contentBody')}</p>
-          </section>
-
-          <section>
-            <h2 className="text-2xl font-bold text-slate-900 dark:text-white uppercase tracking-tight">
-              {t('termsPage.disclaimerHeading')}
-            </h2>
-            <p className="mt-3">{t('termsPage.disclaimerBody')}</p>
-          </section>
-
-          <section>
-            <h2 className="text-2xl font-bold text-slate-900 dark:text-white uppercase tracking-tight">
-              {t('termsPage.cookiesHeading')}
-            </h2>
-            <p className="mt-3">{t('termsPage.cookiesBody')}</p>
-          </section>
+        <article className="space-y-12 border-t border-slate-200 dark:border-slate-800 pt-10 text-sm font-medium text-slate-700 dark:text-slate-200">
+          {(['acceptance', 'scope', 'eligibility', 'accounts', 'ownership', 'payments', 'disclaimer', 'indemnification', 'thirdParty', 'intellectualProperty', 'aiFeatures', 'modifications', 'disputeResolution', 'privacyConsistency', 'futureRisk'] as const).map((key) => (
+            <section key={key} className="space-y-4">
+              <h2 className="text-xl font-bold text-slate-900 dark:text-white uppercase tracking-tight">
+                {t(`termsPage.${key}.heading`)}
+              </h2>
+              <p className="leading-relaxed text-slate-600 dark:text-slate-400">
+                {t(`termsPage.${key}.body`)}
+              </p>
+            </section>
+          ))}
         </article>
 
-        <p className="text-xs uppercase tracking-[0.3em] text-slate-500 dark:text-slate-400">
+        <p className="text-[10px] uppercase tracking-[0.4em] text-slate-400 dark:text-slate-500 pt-8 border-t border-slate-100 dark:border-slate-800/50">
           {t('termsPage.update')}
         </p>
       </motion.div>

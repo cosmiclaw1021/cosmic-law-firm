@@ -24,7 +24,7 @@ const ContactDesktop: React.FC = () => {
     <SectionWithStars className="flex-grow w-full flex justify-center" settings={{ density: 0.5 }}>
       <div className="relative z-10 w-full max-w-[1280px] mx-auto px-8 py-12 overflow-hidden">
         {/* Page Heading */}
-        <motion.div 
+        <motion.div
           variants={fadeInUp}
           initial="initial"
           whileInView="whileInView"
@@ -42,7 +42,7 @@ const ContactDesktop: React.FC = () => {
         {/* Main Content Grid */}
         <div className="grid grid-cols-12 gap-12">
           {/* Left Column: Details */}
-          <motion.div 
+          <motion.div
             variants={fadeInUp}
             initial="initial"
             whileInView="whileInView"
@@ -55,7 +55,7 @@ const ContactDesktop: React.FC = () => {
                 <h2 className="text-text-main dark:text-white text-[22px] font-black leading-tight tracking-tight uppercase">{t('contactPage.details.title')}</h2>
               </div>
               {/* Address Item */}
-              <Link 
+              <Link
                 href={mapHref}
                 external
                 className="flex gap-4 px-6 py-5 border-b border-slate-100 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors group"
@@ -68,7 +68,7 @@ const ContactDesktop: React.FC = () => {
                 </div>
               </Link>
               {/* Phone Item */}
-              <Link 
+              <Link
                 href={`tel:${SITE.phoneTel}`}
                 className="flex gap-4 px-6 py-5 border-b border-slate-100 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors group"
               >
@@ -83,25 +83,25 @@ const ContactDesktop: React.FC = () => {
                 </div>
               </Link>
               {/* Email Item */}
-              <EmailLink 
+              <EmailLink
                 email={SITE.email}
                 className="flex gap-4 px-6 py-5 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors group"
               >
                 <div className="text-text-main dark:text-slate-300 flex items-center justify-center rounded-lg bg-slate-100 dark:bg-slate-700 shrink-0 size-12 group-hover:bg-primary group-hover:text-white transition-colors">
                   <Icon name="mail" className="size-6" />
                 </div>
-              <div className="flex flex-1 flex-col justify-center overflow-hidden">
-                <p className="text-text-main dark:text-white text-base font-bold leading-normal group-hover:text-primary transition-colors truncate">
-                  {SITE.email}
-                </p>
-                <p className="text-text-secondary dark:text-slate-400 text-sm font-medium leading-normal">{t('contactPage.details.email.label')}</p>
-                <p className="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-normal font-medium">{t('contactPage.details.email.responseTime')}</p>
-              </div>
-            </EmailLink>
+                <div className="flex flex-1 flex-col justify-center overflow-hidden">
+                  <p className="text-text-main dark:text-white text-base font-bold leading-normal group-hover:text-primary transition-colors truncate">
+                    {SITE.email}
+                  </p>
+                  <p className="text-text-secondary dark:text-slate-400 text-sm font-medium leading-normal">{t('contactPage.details.email.label')}</p>
+                  <p className="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-normal font-medium">{t('contactPage.details.email.responseTime')}</p>
+                </div>
+              </EmailLink>
             </div>
 
             {/* Hours */}
-            <section 
+            <section
               className="flex flex-col bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800 overflow-hidden"
               aria-labelledby="hours-title"
             >
@@ -127,7 +127,7 @@ const ContactDesktop: React.FC = () => {
           </motion.div>
 
           {/* Right Column: Map & Form */}
-          <motion.div 
+          <motion.div
             variants={fadeInUp}
             initial="initial"
             whileInView="whileInView"
@@ -144,7 +144,7 @@ const ContactDesktop: React.FC = () => {
             </div>
 
             {/* Email CTA */}
-            <section 
+            <section
               className="flex flex-col bg-white/70 dark:bg-white/5 rounded-xl shadow-sm border border-secondary/40 dark:border-white/10 overflow-hidden flex-1 backdrop-blur"
               aria-labelledby="email-cta-title"
             >
@@ -175,6 +175,15 @@ const ContactDesktop: React.FC = () => {
                 <p className="text-xs text-slate-500 dark:text-slate-400 uppercase tracking-[0.3em]">
                   {t('contactPage.details.email.responseTime')}
                 </p>
+
+                <div className="mt-6 pt-6 border-t border-slate-100 dark:border-slate-800">
+                  <p className="text-[10px] text-slate-500 dark:text-slate-400 leading-relaxed font-medium">
+                    {t('contactPage.form.disclaimer')}
+                  </p>
+                  <Link to="/disclaimer" className="mt-2 inline-block text-[9px] uppercase tracking-[0.2em] font-bold text-primary/70 hover:text-secondary transition-colors">
+                    Professional Relationship Disclaimer
+                  </Link>
+                </div>
               </div>
             </section>
           </motion.div>

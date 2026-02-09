@@ -8,9 +8,9 @@ const COOKIE_CONSENT_KEY = 'cosmicCookieConsent'
 
 export function getDefaultConsent(): CookieConsent {
     return {
-        analytics: true,
+        analytics: false,
         marketing: false,
-        location: true,
+        location: false,
     }
 }
 

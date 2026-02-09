@@ -1,20 +1,21 @@
 'use client';
 
 import React, { createContext, useContext, useState, useEffect, useMemo, useCallback } from 'react';
+import { 
+  getStoredConsent, 
+  setConsent, 
+  getDefaultConsent, 
+  type CookieConsent,
+  shouldShowBanner as checkShouldShowBanner
+} from '@/utils/cookie-consent';
 
-type ConsentCategory = 'analytics' | 'marketing' | 'essential';
-
-const COOKIE_CONSENT_KEY = 'cosmicCookieConsent';
-
-type ConsentPreferences = {
-  analytics: boolean;
-  marketing: boolean;
-};
+type ConsentCategory = 'analytics' | 'marketing' | 'location' | 'essential';
 
 type ContextValue = {
-  preferences: ConsentPreferences | null;
+  preferences: CookieConsent | null;
   acceptAll: () => void;
   rejectNonEssential: () => void;
+  updatePreferences: (update: Partial<CookieConsent>) => void;
   hasConsented: (category: ConsentCategory) => boolean;
   showBanner: boolean;
   openBanner: () => void;
@@ -23,69 +24,65 @@ type ContextValue = {
 
 const CookieConsentContext = createContext<ContextValue | undefined>(undefined);
 
-const defaultPreferences: ConsentPreferences = {
-  analytics: false,
-  marketing: false,
-};
-
 export const CookieConsentProvider = ({ children }: { children: React.ReactNode }) => {
-  const [preferences, setPreferences] = useState<ConsentPreferences | null>(null);
+  const [preferences, setPreferences] = useState<CookieConsent | null>(null);
   const [isBannerVisible, setIsBannerVisible] = useState(false);
 
-  useEffect(() => {
-    if (typeof window === 'undefined') return;
-    try {
-      const stored = window.localStorage.getItem(COOKIE_CONSENT_KEY);
-      if (stored) {
-        const parsed = JSON.parse(stored) as ConsentPreferences;
-        setPreferences({ ...defaultPreferences, ...parsed });
-        return;
-      }
-    } catch (error) {
-      // eslint-disable-next-line no-console
-      console.warn('Unable to read cookie consent', error);
-    }
-    setPreferences(null);
-  }, []);
-
-  useEffect(() => {
-    if (preferences === null) {
+  // Sync state with storage on mount and when external changes occur
+  const syncConsent = useCallback(() => {
+    const stored = getStoredConsent();
+    setPreferences(stored);
+    if (stored === null) {
       setIsBannerVisible(true);
     }
-  }, [preferences]);
-
-  const persist = useCallback((next: ConsentPreferences) => {
-    setPreferences(next);
-    if (typeof window !== 'undefined') {
-      try {
-        window.localStorage.setItem(COOKIE_CONSENT_KEY, JSON.stringify(next));
-      } catch (error) {
-        // eslint-disable-next-line no-console
-        console.warn('Unable to persist cookie consent', error);
-      }
-    }
   }, []);
 
+  useEffect(() => {
+    syncConsent();
+
+    const handleConsentChange = (event: Event) => {
+      const detail = (event as CustomEvent).detail;
+      setPreferences(detail);
+      if (detail === null) {
+        setIsBannerVisible(true);
+      }
+    };
+
+    window.addEventListener('cookie-consent-changed', handleConsentChange);
+    return () => {
+      window.removeEventListener('cookie-consent-changed', handleConsentChange);
+    };
+  }, [syncConsent]);
+
   const acceptAll = useCallback(() => {
-    persist({ analytics: true, marketing: true });
+    const next = setConsent({ analytics: true, marketing: true, location: true });
+    setPreferences(next);
     setIsBannerVisible(false);
-  }, [persist]);
+  }, []);
 
   const rejectNonEssential = useCallback(() => {
-    persist({ analytics: false, marketing: false });
+    const next = setConsent({ analytics: false, marketing: false, location: false });
+    setPreferences(next);
     setIsBannerVisible(false);
-  }, [persist]);
+  }, []);
+
+  const updatePreferences = useCallback((update: Partial<CookieConsent>) => {
+    const next = setConsent(update);
+    setPreferences(next);
+  }, []);
 
   const hasConsented = useCallback(
     (category: ConsentCategory) => {
       if (category === 'essential') return true;
-      return preferences ? preferences[category] : false;
+      if (!preferences) return false;
+      return preferences[category as keyof CookieConsent] ?? false;
     },
     [preferences]
   );
 
   const openBanner = useCallback(() => {
     setIsBannerVisible(true);
+    window.dispatchEvent(new CustomEvent('cookie-consent-open-expanded'));
   }, []);
 
   const closeBanner = useCallback(() => {
@@ -97,12 +94,13 @@ export const CookieConsentProvider = ({ children }: { children: React.ReactNode 
       preferences,
       acceptAll,
       rejectNonEssential,
+      updatePreferences,
       hasConsented,
       showBanner: isBannerVisible,
       openBanner,
       closeBanner,
     }),
-    [preferences, acceptAll, rejectNonEssential, hasConsented, isBannerVisible, openBanner, closeBanner]
+    [preferences, acceptAll, rejectNonEssential, updatePreferences, hasConsented, isBannerVisible, openBanner, closeBanner]
   );
 
   return <CookieConsentContext.Provider value={value}>{children}</CookieConsentContext.Provider>;

@@ -2,17 +2,15 @@
 
 import { useEffect, useState, useCallback } from 'react'
 import { createPortal } from 'react-dom'
+import { useTranslation } from 'react-i18next'
 import Link from '@/components/ui/Link'
 import Button from '@/components/ui/Button'
 import EnhancedAlertDialog from '@/components/ui/enhanced-alert-dialog'
 import {
-    shouldShowBanner,
-    setConsent,
-    getStoredConsent,
-    getDefaultConsent,
     clearAllCookies,
     type CookieConsent
 } from '@/utils/cookie-consent'
+import { useCookieConsent } from '@src/context/cookieConsent'
 import { cn } from '@/lib/utils'
 import { Shield, CheckCircle, BarChart3, Eye, Trash2, MapPin, FileText } from 'lucide-react'
 
@@ -32,20 +30,37 @@ const MaterialSymbol = ({ name, className }: MaterialSymbolProps) => (
 )
 
 export function CookieConsentBanner({ className }: CookieConsentBannerProps) {
-    const [open, setOpen] = useState(false)
+    const { t } = useTranslation()
+    const {
+        showBanner,
+        preferences,
+        acceptAll,
+        rejectNonEssential,
+        updatePreferences,
+        closeBanner
+    } = useCookieConsent()
+
     const [mounted, setMounted] = useState(false)
     const [expanded, setExpanded] = useState(false)
     const [confirmDelete, setConfirmDelete] = useState(false)
-    const [consent, setLocalConsent] = useState<CookieConsent | null>(null)
     const [isMobile, setIsMobile] = useState(false)
     const [deviceType, setDeviceType] = useState<string>('Detecting...')
 
+    // Automatically expand if preferences already exist (means user clicked "Cookie Preferences" in footer)
+    useEffect(() => {
+        if (showBanner && preferences !== null) {
+            setExpanded(true)
+        }
+    }, [showBanner, preferences])
+
+    useEffect(() => {
+        const handleOpenExpanded = () => setExpanded(true)
+        window.addEventListener('cookie-consent-open-expanded', handleOpenExpanded)
+        return () => window.removeEventListener('cookie-consent-open-expanded', handleOpenExpanded)
+    }, [])
+
     useEffect(() => {
         setMounted(true)
-        const shouldShow = shouldShowBanner()
-        const stored = getStoredConsent()
-        setLocalConsent(stored || getDefaultConsent())
-        setOpen(shouldShow)
 
         const checkMobileAndViewport = () => {
             const ua = navigator.userAgent
@@ -80,35 +95,37 @@ export function CookieConsentBanner({ className }: CookieConsentBannerProps) {
     }, [])
 
     const onAccept = useCallback(() => {
-        setConsent({
-            analytics: consent?.analytics ?? true,
-            marketing: consent?.marketing ?? false,
-            location: consent?.location ?? true
-        })
-        setOpen(false)
-    }, [consent])
-
-    const onReject = useCallback(() => {
-        const next = setConsent({
-            analytics: false,
-            marketing: false,
-            location: false
-        })
-        setLocalConsent(next)
-        setOpen(false)
-    }, [])
+        // If they just click "Got it" without expanding/toggling, 
+        // they are accepting the current state (which defaults to false for non-essential).
+        // If they want to accept ALL, they should probably have an "Accept All" button,
+        // but here "Got it" seems to mean "I accept my current choices".
+        // To be safe and compliant, "Got it" should just close the banner if they've made choices,
+        // or accept defaults if they haven't.
+        if (preferences === null) {
+            rejectNonEssential() // Default to strict privacy if they just dismiss
+        } else {
+            closeBanner()
+        }
+    }, [preferences, rejectNonEssential, closeBanner])
 
     const onToggleAnalytics = useCallback(() => {
-        const next = setConsent({ analytics: !(consent?.analytics ?? true) })
-        setLocalConsent(next)
-    }, [consent])
+        updatePreferences({ analytics: !(preferences?.analytics ?? false) })
+    }, [preferences, updatePreferences])
+
+    const onToggleMarketing = useCallback(() => {
+        updatePreferences({ marketing: !(preferences?.marketing ?? false) })
+    }, [preferences, updatePreferences])
+
+    const onToggleLocation = useCallback(() => {
+        updatePreferences({ location: !(preferences?.location ?? false) })
+    }, [preferences, updatePreferences])
 
     const onDeleteAll = useCallback(() => {
         clearAllCookies()
         window.location.reload()
     }, [])
 
-    if (!open || !mounted) return null
+    if (!showBanner || !mounted) return null
 
     const banner = (
         <>
@@ -152,30 +169,48 @@ export function CookieConsentBanner({ className }: CookieConsentBannerProps) {
                             >
                                 <Shield className="h-5 w-5 text-green-600 flex-shrink-0" />
                                 <div className="min-w-0">
-                                    <h3 className="font-semibold text-foreground text-sm">Privacy Protected</h3>
+                                    <h3 className="font-semibold text-foreground text-sm">{t('footer.privacyProtected')}</h3>
                                     <p className="text-xs text-muted-foreground">
-                                        Essential cookies + anonymous analytics & general location.
+                                        {t('footer.privacyBannerDesc')}
                                     </p>
                                 </div>
                             </div>
 
                             <div className="flex items-center gap-1 flex-shrink-0 justify-end min-w-[150px]">
-                                <div className="flex gap-1 items-center">
+                                <div className="flex gap-2 items-center">
+                                    {!expanded && (
+                                        <Button
+                                            onClick={() => setExpanded(true)}
+                                            variant="ghost"
+                                            size="sm"
+                                            className="text-primary hover:bg-primary/5 px-2 py-2 text-[11px] font-bold uppercase tracking-wider"
+                                        >
+                                            {t('footer.managePreferences')}
+                                        </Button>
+                                    )}
                                     <Button
-                                        onClick={onAccept}
+                                        onClick={acceptAll}
                                         size="sm"
-                                        className="bg-green-600 hover:bg-green-700 text-white px-3 py-2"
+                                        className="bg-primary hover:bg-primary/90 text-white px-3 py-2"
                                     >
-                                        <CheckCircle className="h-4 w-4 mr-1 text-white" />
-                                        Got it
+                                        {t('footer.acceptAll')}
                                     </Button>
                                     <Button
-                                        onClick={onReject}
+                                        onClick={onAccept}
+                                        variant="outline"
+                                        size="sm"
+                                        className="bg-green-600/10 border-green-600 text-green-700 hover:bg-green-600/20 px-3 py-2"
+                                    >
+                                        <CheckCircle className="h-4 w-4 mr-1" />
+                                        {t('footer.confirm')}
+                                    </Button>
+                                    <Button
+                                        onClick={rejectNonEssential}
                                         variant="outline"
                                         size="sm"
                                         className="text-red-500 border-red-500/60 hover:bg-red-50 px-3 py-2"
                                     >
-                                        Reject all
+                                        {t('footer.reject')}
                                     </Button>
                                 </div>
                                 {(!isMobile || !expanded) && (
@@ -201,57 +236,57 @@ export function CookieConsentBanner({ className }: CookieConsentBannerProps) {
                                     <div className="text-sm">
                                         <h4 className="font-medium mb-3 flex items-center gap-2 text-foreground">
                                             <BarChart3 className="h-4 w-4 text-blue-400" />
-                                            What We Track Anonymously
+                                            {t('footer.whatWeTrack')}
                                         </h4>
 
                                         <div className="grid grid-cols-2 gap-2">
                                             <div className="p-1.5 bg-blue-500/10 border border-blue-500/20 rounded-lg text-[11px] leading-tight">
                                                 <div className="flex items-center gap-2 mb-1">
                                                     <Eye className="h-4 w-4 text-blue-400" />
-                                                    <span className="font-medium text-sm text-foreground">Page Views</span>
+                                                    <span className="font-medium text-sm text-foreground">{t('footer.pageViews')}</span>
                                                 </div>
                                                 <p className="text-xs text-muted-foreground">
-                                                    Which pages are visited (no personal info)
+                                                    {t('footer.pageViewsDesc')}
                                                 </p>
                                             </div>
 
                                             <div className="p-1.5 bg-purple-500/10 border border-purple-500/20 rounded-lg text-[11px] leading-tight">
                                                 <div className="flex items-center gap-2 mb-1">
                                                     <MapPin className="h-4 w-4 text-purple-400" />
-                                                    <span className="font-medium text-sm text-foreground">General Location</span>
+                                                    <span className="font-medium text-sm text-foreground">{t('footer.generalLocation')}</span>
                                                 </div>
                                                 <p className="text-xs text-muted-foreground">
-                                                    Anonymous City/Region for site optimization
+                                                    {t('footer.generalLocationDesc')}
                                                 </p>
                                             </div>
 
                                             <div className="p-1.5 bg-blue-500/10 border border-blue-500/20 rounded-lg text-[11px] leading-tight">
                                                 <div className="flex items-center gap-2 mb-1">
                                                     <BarChart3 className="h-4 w-4 text-blue-400" />
-                                                    <span className="font-medium text-sm text-foreground">Device Type</span>
+                                                    <span className="font-medium text-sm text-foreground">{t('footer.deviceType')}</span>
                                                 </div>
                                                 <p className="text-xs text-muted-foreground">
-                                                    Current: <span className="text-blue-500 font-semibold">{deviceType}</span> (anonymized)
+                                                    {t('footer.deviceTypeDesc', { type: deviceType })}
                                                 </p>
                                             </div>
 
                                             <div className="p-1.5 bg-green-500/10 border border-green-500/20 rounded-lg text-[11px] leading-tight">
                                                 <div className="flex items-center gap-2 mb-1">
                                                     <Shield className="h-4 w-4 text-green-400" />
-                                                    <span className="font-medium text-sm text-foreground">Essential Cookies</span>
+                                                    <span className="font-medium text-sm text-foreground">{t('footer.essentialCookies')}</span>
                                                 </div>
                                                 <p className="text-xs text-muted-foreground">
-                                                    Keep you signed in (required)
+                                                    {t('footer.essentialCookiesDesc')}
                                                 </p>
                                             </div>
 
                                             <div className="p-1.5 bg-red-500/10 border border-red-500/20 rounded-lg sm:col-span-2 text-[11px] leading-tight">
                                                 <div className="flex items-center gap-2 mb-1">
-                                            <MaterialSymbol name="close" className="text-red-500 text-[14px]" />
-                                                    <span className="font-medium text-sm text-red-600 dark:text-red-400">Personal Data</span>
+                                                    <MaterialSymbol name="close" className="text-red-500 text-[14px]" />
+                                                    <span className="font-medium text-sm text-red-600 dark:text-red-400">{t('footer.personalData')}</span>
                                                 </div>
                                                 <p className="text-xs text-red-600/80 dark:text-red-400/80">
-                                                    Never collected or stored without your explicit permission. We never see your exact address or identity.
+                                                    {t('footer.personalDataDesc')}
                                                 </p>
                                             </div>
                                         </div>
@@ -261,9 +296,9 @@ export function CookieConsentBanner({ className }: CookieConsentBannerProps) {
                                         <div className="flex items-center gap-3">
                                             <BarChart3 className="h-4 w-4 text-blue-400" />
                                             <div>
-                                                <p className="font-medium text-sm text-foreground">Anonymous Analytics</p>
+                                                <p className="font-medium text-sm text-foreground">{t('footer.anonymousAnalytics')}</p>
                                                 <p className="text-xs text-muted-foreground">
-                                                    Help us improve the site (completely anonymous)
+                                                    {t('footer.anonymousAnalyticsDesc')}
                                                 </p>
                                             </div>
                                         </div>
@@ -271,10 +306,10 @@ export function CookieConsentBanner({ className }: CookieConsentBannerProps) {
                                             <button
                                                 onClick={onToggleAnalytics}
                                                 role="switch"
-                                                aria-checked={consent?.analytics ? 'true' : 'false'}
+                                                aria-checked={preferences?.analytics ? 'true' : 'false'}
                                                 className={cn(
                                                     'relative inline-flex h-7 w-14 items-center rounded-full transition-colors border shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500',
-                                                    consent?.analytics
+                                                    preferences?.analytics
                                                         ? 'bg-blue-500 border-blue-500'
                                                         : 'bg-slate-200 border-slate-300 dark:bg-slate-800 dark:border-slate-600'
                                                 )}
@@ -282,52 +317,137 @@ export function CookieConsentBanner({ className }: CookieConsentBannerProps) {
                                                 <span
                                                     className={cn(
                                                         'inline-block h-5 w-5 transform rounded-full bg-white transition-transform shadow',
-                                                        consent?.analytics ? 'translate-x-6' : 'translate-x-1'
+                                                        preferences?.analytics ? 'translate-x-6' : 'translate-x-1'
                                                     )}
                                                 />
                                             </button>
-                                            <span className="text-xs text-muted-foreground">
-                                                {consent?.analytics ? 'On' : 'Off'}
+                                            <span className="text-xs text-muted-foreground w-6">
+                                                {preferences?.analytics ? 'On' : 'Off'}
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                    <div className="flex items-center justify-between p-2 bg-muted/80 rounded-lg">
+                                        <div className="flex items-center gap-3">
+                                            <MapPin className="h-4 w-4 text-purple-400" />
+                                            <div>
+                                                <p className="font-medium text-sm text-foreground">{t('footer.interactiveMaps')}</p>
+                                                <p className="text-xs text-muted-foreground">
+                                                    {t('footer.interactiveMapsDesc')}
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div className="flex items-center gap-2">
+                                            <button
+                                                onClick={onToggleMarketing}
+                                                role="switch"
+                                                aria-checked={preferences?.marketing ? 'true' : 'false'}
+                                                className={cn(
+                                                    'relative inline-flex h-7 w-14 items-center rounded-full transition-colors border shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500',
+                                                    preferences?.marketing
+                                                        ? 'bg-purple-500 border-purple-500'
+                                                        : 'bg-slate-200 border-slate-300 dark:bg-slate-800 dark:border-slate-600'
+                                                )}
+                                            >
+                                                <span
+                                                    className={cn(
+                                                        'inline-block h-5 w-5 transform rounded-full bg-white transition-transform shadow',
+                                                        preferences?.marketing ? 'translate-x-6' : 'translate-x-1'
+                                                    )}
+                                                />
+                                            </button>
+                                            <span className="text-xs text-muted-foreground w-6">
+                                                {preferences?.marketing ? 'On' : 'Off'}
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                    <div className="flex items-center justify-between p-2 bg-muted/80 rounded-lg">
+                                        <div className="flex items-center gap-3">
+                                            <Shield className="h-4 w-4 text-green-400" />
+                                            <div>
+                                                <p className="font-medium text-sm text-foreground">{t('footer.generalLocation')}</p>
+                                                <p className="text-xs text-muted-foreground">
+                                                    {t('footer.regionalOptimization')}
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div className="flex items-center gap-2">
+                                            <button
+                                                onClick={onToggleLocation}
+                                                role="switch"
+                                                aria-checked={preferences?.location ? 'true' : 'false'}
+                                                className={cn(
+                                                    'relative inline-flex h-7 w-14 items-center rounded-full transition-colors border shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500',
+                                                    preferences?.location
+                                                        ? 'bg-green-500 border-green-500'
+                                                        : 'bg-slate-200 border-slate-300 dark:bg-slate-800 dark:border-slate-600'
+                                                )}
+                                            >
+                                                <span
+                                                    className={cn(
+                                                        'inline-block h-5 w-5 transform rounded-full bg-white transition-transform shadow',
+                                                        preferences?.location ? 'translate-x-6' : 'translate-x-1'
+                                                    )}
+                                                />
+                                            </button>
+                                            <span className="text-xs text-muted-foreground w-6">
+                                                {preferences?.location ? 'On' : 'Off'}
                                             </span>
                                         </div>
                                     </div>
 
                                     <div className="text-[11px] text-muted-foreground flex flex-col gap-2">
                                         <p>
-                                            <strong>Privacy Promise:</strong> We only collect anonymous usage data to improve our service.
-                                            No personal information, no tracking across other sites, no selling data to third parties.
+                                            <strong>{t('footer.privacyPromise')}:</strong> {t('footer.privacyPromiseDesc')}
                                         </p>
 
-                                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2">
                                             <Link
-                                                to="/privacy-policy"
+                                                to="/privacy"
                                                 className="group block p-2 bg-primary/5 border border-primary/20 rounded-lg transition-all duration-200"
                                             >
                                                 <div className="flex items-center justify-between">
                                                     <div className="flex items-center gap-2">
                                                         <Shield className="h-4 w-4 text-primary" />
-                                                        <span className="font-medium text-foreground">Privacy Policy</span>
+                                                        <span className="font-medium text-foreground">{t('footer.privacyPolicy')}</span>
                                                     </div>
                                                     <div className="text-primary group-hover:translate-x-1 transition-transform">→</div>
                                                 </div>
-                                        <p className="text-[10px] mt-1 text-muted-foreground leading-tight">
+                                                <p className="text-[10px] mt-1 text-muted-foreground leading-tight">
                                                     How we protect your data.
                                                 </p>
                                             </Link>
 
                                             <Link
-                                                to="/terms-and-conditions"
+                                                to="/terms"
                                                 className="group block p-2 bg-primary/5 border border-primary/20 rounded-lg transition-all duration-200"
                                             >
                                                 <div className="flex items-center justify-between">
                                                     <div className="flex items-center gap-2">
                                                         <FileText className="h-4 w-4 text-primary" />
-                                                        <span className="font-medium text-foreground">Terms of Service</span>
+                                                        <span className="font-medium text-foreground">{t('footer.termsOfService')}</span>
                                                     </div>
                                                     <div className="text-primary group-hover:translate-x-1 transition-transform">→</div>
                                                 </div>
-                                        <p className="text-[10px] mt-1 text-muted-foreground leading-tight">
+                                                <p className="text-[10px] mt-1 text-muted-foreground leading-tight">
                                                     Our rules and agreement.
+                                                </p>
+                                            </Link>
+
+                                            <Link
+                                                to="/cookie-policy"
+                                                className="group block p-2 bg-primary/5 border border-primary/20 rounded-lg transition-all duration-200"
+                                            >
+                                                <div className="flex items-center justify-between">
+                                                    <div className="flex items-center gap-2">
+                                                        <BarChart3 className="h-4 w-4 text-primary" />
+                                                        <span className="font-medium text-foreground">{t('footer.cookiePolicy')}</span>
+                                                    </div>
+                                                    <div className="text-primary group-hover:translate-x-1 transition-transform">→</div>
+                                                </div>
+                                                <p className="text-[10px] mt-1 text-muted-foreground leading-tight">
+                                                    Detailed cookie usage.
                                                 </p>
                                             </Link>
                                         </div>
@@ -340,16 +460,16 @@ export function CookieConsentBanner({ className }: CookieConsentBannerProps) {
                                                 className="w-full border-red-500/50 text-red-500 hover:bg-red-500/10"
                                             >
                                                 <Trash2 className="h-3 w-3 mr-2" />
-                                                Delete All Cookies & Reset Consent
+                                                {t('footer.deleteAll')}
                                             </Button>
 
                                             <EnhancedAlertDialog
                                                 open={confirmDelete}
                                                 onOpenChange={setConfirmDelete}
-                                                title="Reset All Privacy Settings?"
-                                                description="This will sign you out, clear all site preferences, and delete all cookies. The privacy banner will reappear on your next visit."
-                                                confirmText="Yes, Delete Everything"
-                                                cancelText="Cancel"
+                                                title={t('footer.resetTitle')}
+                                                description={t('footer.resetDesc')}
+                                                confirmText={t('footer.confirmDelete')}
+                                                cancelText={t('footer.cancel')}
                                                 onConfirm={onDeleteAll}
                                                 variant="destructive"
                                             />

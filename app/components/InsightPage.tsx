@@ -125,6 +125,17 @@ export default function InsightPage({
               ))}
             </div>
           </section>
+
+          <section className="mt-12 pt-8 border-t border-slate-200 dark:border-slate-800">
+            <div className="p-6 rounded-2xl bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10">
+              <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed font-medium italic">
+                <strong>Disclaimer:</strong> {t('disclaimerPage.notAdviceBody')}
+              </p>
+              <Link to="/disclaimer" className="mt-3 inline-block text-[10px] uppercase tracking-[0.2em] font-black text-primary hover:text-secondary transition-colors">
+                View Full Professional Services Disclaimer
+              </Link>
+            </div>
+          </section>
         </div>
       </section>
     </div>

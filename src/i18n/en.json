@@ -374,8 +374,39 @@
     "termsOfService": "Terms of Service",
     "cookiePolicy": "Cookie Policy",
     "cookiePreferences": "Cookie preferences",
+    "doNotSell": "Do Not Sell or Share My Personal Information",
+    "managePreferences": "Manage preferences",
     "accessibility": "Accessibility",
-    "emailLabel": "Email"
+    "disclaimer": "Disclaimer",
+    "emailLabel": "Email",
+    "privacyProtected": "Privacy Protected",
+    "privacyBannerDesc": "Essential cookies active. Analytics & location are disabled by default.",
+    "whatWeTrack": "What We Track Anonymously",
+    "pageViews": "Page Views",
+    "pageViewsDesc": "Which pages are visited (no personal info)",
+    "generalLocation": "General Location",
+    "generalLocationDesc": "Anonymous City/Region for site optimization",
+    "deviceType": "Device Type",
+    "deviceTypeDesc": "Current: {{type}} (anonymized)",
+    "essentialCookies": "Essential Cookies",
+    "essentialCookiesDesc": "Required for site stability and basic functionality.",
+    "personalData": "Personal Data",
+    "personalDataDesc": "Never collected or stored without your explicit permission. We never see your exact address or identity.",
+    "anonymousAnalytics": "Anonymous Analytics",
+    "anonymousAnalyticsDesc": "Help us improve the site (completely anonymous)",
+    "interactiveMaps": "Interactive Maps",
+    "interactiveMapsDesc": "Load Google Maps and location features",
+    "regionalOptimization": "Regional performance optimization",
+    "privacyPromise": "Privacy Promise",
+    "privacyPromiseDesc": "We only collect anonymous usage data to improve our service. No personal information, no tracking across other sites, no selling data to third parties.",
+    "deleteAll": "Delete All Cookies & Reset Consent",
+    "resetTitle": "Reset All Privacy Settings?",
+    "resetDesc": "This will sign you out, clear all site preferences, and delete all cookies. The privacy banner will reappear on your next visit.",
+    "confirmDelete": "Yes, Delete Everything",
+    "cancel": "Cancel",
+    "acceptAll": "Accept All",
+    "confirm": "Confirm",
+    "reject": "Reject"
   },
   "legal": {
     "contact": {
@@ -387,16 +418,105 @@
   },
   "termsPage": {
     "title": "Terms of Service",
-    "intro": "These terms govern your use of cosmiclawfirm.com and do not create an attorney-client relationship.",
-    "scopeHeading": "Scope",
-    "scopeBody": "The site provides general information about our services, practice areas, and insights. Nothing here should be construed as tailored legal advice.",
-    "contentHeading": "Permitted use",
-    "contentBody": "You may read, download, and print material for personal use. Unauthorized commercial redistribution, publication, or reproduction is prohibited.",
-    "disclaimerHeading": "Disclaimer & liability",
-    "disclaimerBody": "We make no warranties about the accuracy or completeness of content and are not responsible for any loss arising from your reliance on the site.",
-    "cookiesHeading": "Cookies and privacy",
-    "cookiesBody": "We use cookies only as described in the Cookie Policy and block analytics/marketing tools until you provide consent.",
-    "update": "Last updated February 5, 2026."
+    "intro": "These Terms of Service (\"Terms\") govern your access to and use of cosmiclawfirm.com (the \"Site\"). By accessing or using the Site, you agree to be bound by these Terms.",
+    "acceptance": {
+      "heading": "1. Acceptance and Enforceability",
+      "body": "By accessing, browsing, or using the Site, you acknowledge that you have read, understood, and agree to be bound by these Terms. If you do not agree, you must immediately cease use of the Site. Use of the Site constitutes a binding agreement between you and Cosmic Law Firm. We reserve the right to update these terms at any time without notice; your continued use after an update constitutes acceptance of the revised Terms."
+    },
+    "scope": {
+      "heading": "2. Scope of Services",
+      "body": "The Site provides general information about Cosmic Law Firm, its practice areas, and legal 'insights.' The Site is an informational platform and does not provide legal advice, professional services, or a platform for attorney engagement. Use of the Site does not create an attorney-client relationship. Official engagement requires a separate, written agreement signed by both parties."
+    },
+    "eligibility": {
+      "heading": "3. User Eligibility and Responsibilities",
+      "body": "You must be at least 18 years old to use this Site. You agree to use the Site only for lawful purposes. Prohibited behaviors include: (a) automated data collection or scraping; (b) attempting to interfere with site security or performance; (c) submitting false or misleading information; and (d) using Site content for commercial redistribution without express written consent."
+    },
+    "accounts": {
+      "heading": "4. Account Lifecycle",
+      "body": "Access to most features of the Site does not require an account. If account creation features are provided, we reserve the right to suspend or terminate access at our sole discretion, without notice, for any violation of these terms or for system maintenance."
+    },
+    "ownership": {
+      "heading": "5. Content Ownership and License",
+      "body": "All content on the Site—including 'Insights,' articles, text, and design—is owned by Cosmic Law Firm or its licensors and is protected by copyright law. We grant you a limited, non-exclusive, revocable license to view and print individual pages for personal, non-commercial use only. You do not acquire any ownership rights by using the Site."
+    },
+    "payments": {
+      "heading": "6. Payments and Fees",
+      "body": "The Site does not currently process payments, subscriptions, or financial transactions. Any financial engagement with the Firm occurs outside of this Site through formal billing and payment systems. We are not responsible for any fees incurred via third-party links or services."
+    },
+    "disclaimer": {
+      "heading": "7. Disclaimers and Limitation of Liability",
+      "body": "THE SITE IS PROVIDED 'AS IS' AND 'AS AVAILABLE' WITHOUT WARRANTIES OF ANY KIND. TO THE MAXIMUM EXTENT PERMITTED BY LAW, COSMIC LAW FIRM DISCLAIMS ALL LIABILITY FOR ANY DIRECT, INDIRECT, INCIDENTAL, OR CONSEQUENTIAL DAMAGES ARISING FROM YOUR USE OF THE SITE, CONTENT ACCURACY, OR ANY UNAUTHORIZED ACCESS TO DATA."
+    },
+    "indemnification": {
+      "heading": "8. Indemnification",
+      "body": "You agree to indemnify, defend, and hold harmless Cosmic Law Firm and its employees from and against any claims, liabilities, or expenses (including legal fees) arising from your misuse of the Site, your violation of these Terms, or your infringement of third-party rights."
+    },
+    "thirdParty": {
+      "heading": "9. Third-Party Services and Links",
+      "body": "The Site integrates third-party services like Google Maps and Google Analytics and may link to external websites. We do not control and are not responsible for the content, privacy policies, or practices of any third-party services. Your use of such services is at your own risk."
+    },
+    "intellectualProperty": {
+      "heading": "10. Intellectual Property",
+      "body": "The 'Cosmic Law Firm' name, logo, and branding are trademarks of the Firm. Unauthorized use of these marks is strictly prohibited. All software and code powering the Site are the exclusive property of the Firm or its technology partners."
+    },
+    "aiFeatures": {
+      "heading": "11. AI and Automated Features",
+      "body": "Site content, including AI insights, may be generated with the assistance of automated tools. Such content is for informational purposes only and may contain errors or be outdated. We do not guarantee the completeness or accuracy of any AI-assisted information."
+    },
+    "modifications": {
+      "heading": "12. Service Changes and Modifications",
+      "body": "We reserve the right to modify, suspend, or discontinue the Site or any of its features at any time without notice. We are not liable to you or any third party for such modifications or discontinuations."
+    },
+    "disputeResolution": {
+      "heading": "13. Dispute Resolution and Governing Law",
+      "body": "These Terms are governed by the laws of the State of California, without regard to conflict of laws principles. Any disputes arising from these Terms or the Site shall be resolved exclusively in the state or federal courts located in Los Angeles, California."
+    },
+    "privacyConsistency": {
+      "heading": "14. Privacy and Data Use",
+      "body": "Your use of the Site is also governed by our Privacy Policy and Cookie Policy, which are incorporated into these Terms by reference. Please review them to understand how we handle your data."
+    },
+    "futureRisk": {
+      "heading": "15. Severability",
+      "body": "If any provision of these Terms is found to be unenforceable or invalid, that provision will be limited or eliminated to the minimum extent necessary so that these Terms will otherwise remain in full force and effect."
+    },
+    "update": "Last updated February 9, 2026."
+  },
+  "auth": {
+    "signup": {
+      "title": "Create Account",
+      "description": "Join Cosmic Law Firm's portal for secure document sharing and status updates.",
+      "emailLabel": "Email Address",
+      "tosAccept": "I have read and agree to the Terms of Service and Privacy Policy. I understand that creating an account does not itself create an attorney-client relationship.",
+      "submit": "Create Account"
+    }
+  },
+  "payments": {
+    "checkout": {
+      "title": "Invoice Payment",
+      "serviceLabel": "Service Description",
+      "amountLabel": "Amount Due",
+      "termsTitle": "Payment Terms",
+      "term1": "Payments are governed by your signed engagement agreement.",
+      "term2": "Refunds are subject to the Firm's written refund policy.",
+      "term3": "Secure processing via LawPay/Stripe.",
+      "tosAccept": "I agree to the Terms of Service and recognize that this payment is for services already rendered or as a retainer as defined in my signed engagement letter.",
+      "submit": "Pay Now"
+    }
+  },
+  "disclaimerPage": {
+    "title": "Professional Services Disclaimer",
+    "intro": "The information on this website is provided for general informational purposes only and does not constitute legal or medical advice.",
+    "noRelationshipHeading": "No Professional Relationship",
+    "noRelationshipBody": "Visiting this website or submitting information via contact forms, email, or chat does not create an attorney-client or other professional relationship. Such a relationship is only formed through a written and signed engagement agreement.",
+    "notAdviceHeading": "Not Legal Advice",
+    "notAdviceBody": "Content on this site, including blog posts and insights, should not be relied upon as legal advice. Laws change frequently and vary by jurisdiction; you should consult with a qualified professional regarding your specific situation.",
+    "noGuaranteesHeading": "No Guarantees",
+    "noGuaranteesBody": "Prior results or testimonials do not guarantee a similar outcome. Every case is unique and outcomes depend on a variety of factors.",
+    "confidentialityHeading": "Confidentiality",
+    "confidentialityBody": "Do not send confidential or sensitive information through this website. Submissions are not protected by attorney-client privilege until a formal relationship is established.",
+    "jurisdictionHeading": "Jurisdictional Limits",
+    "jurisdictionBody": "Cosmic Law Firm attorneys are licensed to practice in specific jurisdictions. This website is not intended to solicit clients outside those areas.",
+    "update": "Last updated February 9, 2026."
   },
   "cookiePolicyPage": {
     "title": "Cookie Policy",
@@ -436,28 +556,31 @@
   },
   "privacyPage": {
     "title": "Privacy Policy",
-    "intro": "Cosmic Law Firm collects and uses only the data needed to deliver the website, respond to inquiries, and meet legal requirements.",
-    "collectionHeading": "Information we collect",
-    "collectionBody": "Essential data always loads so the site works. Analytics and marketing cookies stay disabled until you explicitly allow them.",
+    "intro": "Cosmic Law Firm operates with a privacy-first, opt-in data model. This policy truthfully reflects how we collect, use, and protect your data across our website and supporting infrastructure.",
+    "collectionHeading": "1. Data Collection Inventory",
+    "collectionBody": "We only collect data that is technically necessary to deliver the site or which you explicitly authorize. All non-essential tracking is disabled by default.",
     "collectionList": [
-      "Google Analytics records anonymized usage metrics (pageviews, interactions) once you opt into analytics cookies; those cookies expire after two years.",
-      "Google Maps loads from maps.google.com when you opt into marketing cookies; the map may capture your IP address and interaction with the iframe.",
-      "The i18next detector sets an 'i18next' cookie so your selected language persists across visits.",
-      "The theme toggle stores your preferred mode (light/dark/system) in localStorage to avoid layout flashes."
+      "Technical Metadata: We parse your User-Agent locally to optimize layout for your platform (e.g., macOS/Windows). This data is not stored or shared.",
+      "Analytics (Opt-In Only): If you explicitly allow analytics cookies, Google Analytics captures anonymized metrics like pageviews and interactions.",
+      "Marketing & Maps (Opt-In Only): Google Maps loads only after marketing consent. This may involve Google seeing your IP address and engagement with the map frame.",
+      "Language & Settings: Small files (cookies and localStorage) store your language (i18next) and theme (light/dark) preferences for a consistent experience."
     ],
-    "useHeading": "How we use this data",
-    "useBody": "Analytics helps us understand traffic, page performance, and menu usage so we can keep the site fast. Marketing cookies power the Google Maps embed; no other advertising networks are active. Contact form submissions (name, email, message) stay on our serverless API so we can reply.",
-    "thirdPartyHeading": "Third-party partners",
+    "useHeading": "2. Purpose and Use Limitation",
+    "useBody": "We use collected data solely for: (a) Site performance and stability; (b) Understanding general traffic patterns to improve our legal insights; (c) Powering interactive features like location maps; and (d) Responding to your inquiries. We do not sell your data or use it for profile-building across multiple sites.",
+    "aiHeading": "3. AI and Automated Processing",
+    "aiBody": "Our 'Insights' may be assisted by AI tools for drafting and research, but we do not currently use AI to process, analyze, or train on your personal data submitted through this site.",
+    "thirdPartyHeading": "4. Third-Party Sharing and Vendors",
     "thirdPartyList": [
-      "Google Analytics (gtag.js) – Google LLC receives anonymized identifiers and event data.",
-      "Google Maps – the iframe loads from maps.google.com so Google may see your IP and movement while the map is active.",
-      "Email links open your default mail app or Gmail. No tracking data leaves the browser unless you accepted analytics cookies."
+      "Google LLC: Processing of analytics and map data (subject to your consent).",
+      "Email Service Providers: When you click an email link or submit a form, your data is transmitted directly via SMTP or your local client. It is never stored on our serverless web infrastructure."
     ],
-    "rightsHeading": "Your choices",
-    "rightsBody": "Accept only essential cookies or accept everything right from the banner. Use the footer’s cookie preferences link to revisit your selection anytime. Clearing browser storage resets the banner.",
-    "contactHeading": "Contact",
-    "contactBody": "Need more detail? Email us or call the number in the footer.",
-    "update": "Last updated February 5, 2026."
+    "retentionHeading": "5. Data Retention",
+    "retentionBody": "We do not maintain a user database on this website. Analytics data is retained for 2 years. Preferences in your browser (cookies/localStorage) remain until you clear them.",
+    "rightsHeading": "6. User Rights and Controls",
+    "rightsBody": "You have the right to access, correct, or delete your data choice at any time. Use the 'Cookie Preferences' link in our footer to reset or modify your consent. For other requests, please contact us directly.",
+    "contactHeading": "7. Contact",
+    "contactBody": "For privacy-specific inquiries, email ask@cosmiclawfirm.com or call (213) 480-0348.",
+    "update": "Last updated February 9, 2026."
   },
   "practiceArea": {
     "emailSubject": "{{title}} inquiry"
@@ -617,6 +740,8 @@
         "phone": "(555) 000-0000",
         "message": "Tell us what you’re building or what dispute you’re facing (no confidential details)."
       },
+      "disclaimer": "Submitting this form does not create an attorney-client relationship. Information provided is not confidential or privileged until we are formally engaged.",
+      "tosAccept": "By submitting this form, I agree to the Terms of Service and acknowledge that this inquiry does not create an attorney-client relationship. Information provided is not confidential or privileged until we are formally engaged.",
       "submit": "Send Request",
       "success": {
         "title": "Request Sent!",
@@ -847,8 +972,7 @@
       "title": "Formal Approval of this Accessibility Statement",
       "body": "This Accessibility Statement is approved by: Cosmic Law Firm",
       "date": "Date: February 3, 2026"
-    }
-    ,
+    },
     "contact": {
       "heading": "Contact Cosmic Law Firm",
       "description": "Need help with the site or have an accessibility concern? Reach us through any of the channels below.",

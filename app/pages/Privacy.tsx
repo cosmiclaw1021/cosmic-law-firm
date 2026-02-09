@@ -24,11 +24,11 @@ const Privacy: React.FC = () => {
 
   const currentFadeInUp = isMobile
     ? {
-        initial: { opacity: 1, y: 0 },
-        whileInView: { opacity: 1, y: 0 },
-        viewport: { once: true },
-        transition: { duration: 0 },
-      }
+      initial: { opacity: 1, y: 0 },
+      whileInView: { opacity: 1, y: 0 },
+      viewport: { once: true },
+      transition: { duration: 0 },
+    }
     : fadeInUp;
 
   return (
@@ -79,6 +79,15 @@ const Privacy: React.FC = () => {
 
           <div>
             <h2 className="text-2xl font-bold text-slate-900 dark:text-white uppercase tracking-tight">
+              {t('privacyPage.aiHeading')}
+            </h2>
+            <p className="mt-3 text-slate-600 dark:text-slate-300 text-sm font-medium">
+              {t('privacyPage.aiBody')}
+            </p>
+          </div>
+
+          <div>
+            <h2 className="text-2xl font-bold text-slate-900 dark:text-white uppercase tracking-tight">
               {t('privacyPage.thirdPartyHeading')}
             </h2>
             <ul className="mt-3 space-y-2 text-slate-700 dark:text-slate-200 text-sm list-disc list-inside">
@@ -86,6 +95,15 @@ const Privacy: React.FC = () => {
                 <li key={item}>{item}</li>
               ))}
             </ul>
+          </div>
+
+          <div>
+            <h2 className="text-2xl font-bold text-slate-900 dark:text-white uppercase tracking-tight">
+              {t('privacyPage.retentionHeading')}
+            </h2>
+            <p className="mt-3 text-slate-600 dark:text-slate-300 text-sm font-medium">
+              {t('privacyPage.retentionBody')}
+            </p>
           </div>
 
           <div>

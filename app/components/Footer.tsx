@@ -15,6 +15,7 @@ import Icon, { type IconName } from '@src/components/Icon';
 import { FEATURES } from '@src/config/features';
 import { useViewport } from '../hooks/useViewport';
 import { useCookieConsent } from '@src/context/cookieConsent';
+import LegalLinks from './Footer/LegalLinks';
 
 const fadeInUp = {
   initial: { opacity: 1, y: 12 },
@@ -28,7 +29,7 @@ const Footer: React.FC = () => {
   const { isMobile } = useViewport();
   const isKo = i18n.language?.startsWith('ko');
   const { openBanner } = useCookieConsent();
-  
+
   const currentFadeInUp = isMobile ? {
     initial: { opacity: 1, y: 0 },
     whileInView: { opacity: 1, y: 0 },
@@ -66,7 +67,7 @@ const Footer: React.FC = () => {
       aria-label={t('accessibility.aria.siteFooter')}
       settings={{ density: 0.55, scrollRange: 520 }}
     >
-      <motion.footer 
+      <motion.footer
         variants={currentFadeInUp}
         initial="initial"
         whileInView="whileInView"
@@ -209,33 +210,18 @@ const Footer: React.FC = () => {
             </div>
           </div>
 
-          <div className="border-t border-white/10 mt-16 pt-8 flex flex-col items-center gap-8 text-[11px] font-medium text-white/80 tracking-wider uppercase md:flex-row md:items-end md:justify-between">
+          <div className="border-t border-white/10 mt-16 pt-8 flex flex-col items-center gap-8 text-[11px] font-medium text-white/80 tracking-wider md:flex-row md:items-end md:justify-between">
             <div className="flex flex-col items-center md:items-start space-y-6">
-              <nav
-                className="flex flex-wrap items-center justify-center md:justify-start gap-x-8 gap-y-4"
-                aria-label={t('accessibility.aria.footerLegalNav')}
-              >
-                <Link to="/accessibility" className="text-white/90 hover:text-secondary">{t('footer.accessibility')}</Link>
-                <Link to="/privacy" className="text-white/90 hover:text-secondary">{t('footer.privacyPolicy')}</Link>
-                <Link to="/terms" className="text-white/90 hover:text-secondary">{t('footer.termsOfService')}</Link>
-                <Link to="/cookie-policy" className="text-white/90 hover:text-secondary">{t('footer.cookiePolicy')}</Link>
-                <button
-                  type="button"
-                  onClick={openBanner}
-                  className="text-white/90 hover:text-secondary uppercase tracking-[0.3em] text-[11px] font-semibold focus:outline-none focus:ring-2 focus:ring-white/30"
-                >
-                  {t('footer.cookiePreferences')}
-                </button>
-             </nav>
+              <LegalLinks />
               <div className="flex flex-col items-center md:items-start space-y-2">
                 <p className="text-center md:text-left">
                   © 2026 {t('common.companyName')}. {t('footer.rights')}
                 </p>
                 <p className="text-center md:text-left text-[10px] opacity-60 normal-case tracking-normal">
                   web services by{' '}
-                  <Link 
-                    href="https://studio.filmclusive.com" 
-                    external 
+                  <Link
+                    href="https://studio.filmclusive.com"
+                    external
                     className="hover:text-secondary underline underline-offset-4"
                   >
                     Filmclusive Studio
