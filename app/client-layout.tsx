@@ -34,7 +34,7 @@ export default function ClientLayout({
   return (
     <div className={isMobile ? 'disable-animations' : ''}>
       <ViewportProvider value={{ isMobile }}>
-        <MotionConfig reducedMotion={isMobile ? 'always' : 'user'} initial={false}>
+        <MotionConfig reducedMotion={isMobile ? 'always' : 'user'}>
           {/* Route Announcement Region */}
           <div 
             className="sr-only" 
