@@ -41,7 +41,7 @@ const TeamDesktop: React.FC = () => {
               <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-slate-900 dark:text-primary-light text-[11px] font-black uppercase tracking-[0.3em] w-fit">
                 {t('team.hero.badge')}
               </span>
-              <h1 className="text-5xl font-black text-slate-900 dark:text-white leading-tight uppercase tracking-tight">
+              <h1 className="text-5xl font-black text-slate-900 dark:text-white leading-tight uppercase tracking-tight md:whitespace-nowrap">
                 {t('team.hero.title')}
               </h1>
               <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed font-medium">
