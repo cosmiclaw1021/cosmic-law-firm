@@ -40,6 +40,11 @@
         "title": "Rights & publicity",
         "summary": "Managing name, image, and likeness in the trades and the courtroom.",
         "tag": "Rights"
+      },
+      "global-legal-architecture": {
+        "title": "Global legal architecture",
+        "summary": "Updates for boards planning around sanctions, data traps, export controls, and currency rules.",
+        "tag": "Strategy"
       }
     },
     "cta": {
@@ -294,6 +299,40 @@
             "title": "Takedown Promise",
             "body": "Add a takedown promise that mirrors state/federal law, covering AI-generated content and deepfakes beyond the contract term. "
           }
+        ]
+      },
+      "globalLegalArchitecture": {
+        "badge": "Insights · Geopolitical Strategy",
+        "title": "Global legal architecture",
+        "description": "How boards should coordinate sanctions, data localization, export controls, and currency rules into a single playbook.",
+        "date": "February 13, 2026",
+        "items": [
+          {
+            "title": "Jurisdictional risk is board-level now",
+            "body": "Boards now ask whether a country could be sanctioned in five years, if data laws will trap information locally, whether export controls can block a product, and whether currency controls will stop profit repatriation. These questions were once edge cases; today they set strategy."
+          },
+          {
+            "title": "Legal interoperability is the hidden nightmare",
+            "body": "Mutually incompatible laws—in the EU, the U.S., and China—make it impossible to satisfy every obligation with one system, so companies split clouds, entities, and compliance regimes. This is the beginning of a multi-legal global economy."
+          },
+          {
+            "title": "Political signaling through incorporation",
+            "body": "Where you incorporate signals regulatory alignment, security trust, and market allegiance. U.S. incorporation comforts Western investors, Singapore offers neutrality and stability, and EU bases signal privacy compliance. Incorporation is geopolitical positioning, not just paperwork."
+          },
+          {
+            "title": "Countries hedge without replacing the U.S.",
+            "body": "Many regions are building local payment rails, regional trade agreements, independent tech standards, and alternative finance institutions to reduce reliance on the U.S. dollar and U.S. law. That is rational risk management, but incomplete: the U.S. still dominates capital markets, the reserve currency, venture financing, advanced tech ecosystems, and security guarantees. The world is hedging while still needing the U.S., and that tension will define the next decade."
+          },
+          {
+            "title": "Globalization is stratifying",
+            "body": "Globalization is not ending; it is stratifying. We are moving from one integrated global market to overlapping legal-economic zones that are connected but not unified. Survival depends on legal architecture, jurisdiction design, compliance engineering, and political foresight, not just product quality."
+          }
+        ],
+        "actionItems": [
+          "Design your structure for geopolitical change, assuming rules will tighten, not loosen. ",
+          "Separate risk across jurisdictions early; entity structure is now strategy. ",
+          "Treat compliance as infrastructure, because regulation shapes markets. ",
+          "Watch alliances, not just laws; politics predicts regulation before lawyers do. "
         ]
       }
     },

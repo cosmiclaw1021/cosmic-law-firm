@@ -28,6 +28,7 @@ const topics = [
   { slug: 'ai-law', tag: 'Policy', status: 'Live' },
   { slug: 'nil-basics', tag: 'Sports', status: 'Live' },
   { slug: 'publicity-basics', tag: 'Rights', status: 'Live' },
+  { slug: 'global-legal-architecture', tag: 'Strategy', status: 'Live' },
 ];
 
 const Insights: React.FC<{ lng: string }> = ({ lng }) => {
