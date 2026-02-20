@@ -121,10 +121,11 @@ const ContactMobile: React.FC = () => {
               <div className="px-5 py-2">
                 <div className="flex flex-col">
                   {[
-                    { label: t('contact.hours.weekdays'), value: '9:00 AM - 6:00 PM' },
-                    { label: t('contact.hours.thursday'), value: '2:00 PM - 6:00 PM' },
-                    { label: t('contact.hours.saturday'), value: '9:00 AM - 1:00 PM' },
-                    { label: t('contact.hours.sunday'), value: t('contact.hours.closed'), highlight: true },
+                    { label: t('contact.hours.monday'), value: '8:30 AM - 5:00 PM' },
+                    { label: t('contact.hours.tuesday'), value: '8:30 AM - 5:00 PM' },
+                    { label: t('contact.hours.wednesday'), value: '8:30 AM - 5:00 PM' },
+                    { label: t('contact.hours.thursday'), value: '8:30 AM - 5:00 PM' },
+                    { label: t('contact.hours.friday'), value: '8:30 AM - 5:00 PM' },
                   ].map((item, idx) => (
                     <div key={idx} className="flex justify-between border-b border-slate-100 dark:border-slate-800 py-4 last:border-0">
                       <p className="text-text-secondary dark:text-slate-400 text-xs font-medium leading-normal">{item.label}</p>

@@ -843,10 +843,13 @@
       "phone": "전화"
     },
     "hours": {
-      "weekdays": "월·화·수·금:",
-      "thursday": "목:",
-      "saturday": "토:",
-      "sunday": "일:",
+      "monday": "월요일:",
+      "tuesday": "화요일:",
+      "wednesday": "수요일:",
+      "thursday": "목요일:",
+      "friday": "금요일:",
+      "saturday": "토요일:",
+      "sunday": "일요일:",
       "closed": "휴무"
     }
   },
