@@ -17,7 +17,8 @@ const fadeInUp = {
   transition: { duration: 0.6 },
 };
 
-const HERO_BACKGROUND = '/NanoBanana/Background_screens_2.png';
+const HERO_VIDEO = '/media/hero-clip.mp4';
+const HERO_POSTER = '/NanoBanana/Background_screens_2.png';
 const SERVICES_IMAGE = '/NanoBanana/Background_screens_3.png';
 
 const HomeDesktop: React.FC = () => {
@@ -32,61 +33,31 @@ const HomeDesktop: React.FC = () => {
       />
 
       <SectionWithStars
-        className="hero-header-gap hero-header-gap-tight relative overflow-hidden bg-slate-950 text-white"
+        className="hero-header-gap hero-header-gap-tight relative overflow-hidden bg-transparent text-black"
         aria-label={t('accessibility.aria.heroIntro')}
         settings={{ density: 0.52, scrollRange: 920 }}
       >
         <div className="absolute inset-0 z-10">
-          <Image
-            src={HERO_BACKGROUND}
-            alt={t('accessibility.aria.homeHeroBackground')}
-            fill
-            priority
-            className="object-cover"
-            sizes="100vw"
-          />
-          <div className="absolute inset-0 bg-gradient-to-br from-slate-950/95 via-slate-950/75 to-black/95" />
+          <video
+            src={HERO_VIDEO}
+            poster={HERO_POSTER}
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="metadata"
+            role="img"
+            aria-label={t('accessibility.aria.homeHeroBackground')}
+            className="absolute inset-0 h-full w-full object-cover"
+          >
+            {t('accessibility.aria.homeHeroBackground')}
+          </video>
           <div className="absolute -left-32 top-8 h-[420px] w-[420px] rounded-full bg-primary/30 blur-[180px]" aria-hidden="true" />
           <div className="absolute right-0 bottom-0 h-[360px] w-[360px] translate-y-10 translate-x-1/4 rounded-full bg-white/5 blur-[160px]" aria-hidden="true" />
         </div>
 
-        <div className="relative z-20 max-w-[1140px] mx-auto px-6 py-10 sm:px-8 sm:py-12 lg:px-10 lg:py-14">
-          <motion.div
-            initial={{ opacity: 1, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="grid gap-6 max-w-3xl lg:max-w-[960px]"
-          >
-            <div className="space-y-4">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/15 text-white/90 text-[11px] font-black uppercase tracking-[0.3em] w-fit">
-                <Icon name="gavel" className="size-4" />
-                {t('home.hero.badge')}
-              </div>
-              <h1 className="text-5xl leading-[1.05] font-black tracking-tight uppercase lg:text-6xl">
-                {t('home.hero.title')}
-              </h1>
-              <p className="text-lg text-white/90 leading-relaxed font-medium">
-                {t('home.hero.description')}
-              </p>
-            </div>
-            <div className="flex flex-wrap gap-4 sm:flex-nowrap">
-              <ButtonLink
-                href="/services"
-                tone="dark"
-                className="h-12 px-8 uppercase tracking-[0.3em] text-xs focus:ring-offset-2 focus:ring-offset-slate-950 w-full sm:w-auto justify-center"
-              >
-                {t('home.hero.ctaPrimary')}
-              </ButtonLink>
-              <ButtonLink
-                href="/contact"
-                tone="light"
-                className="h-12 px-8 uppercase tracking-[0.3em] text-xs border border-white/40 focus:ring-offset-2 focus:ring-offset-slate-950 w-full sm:w-auto justify-center"
-              >
-                {t('home.hero.ctaSecondary')}
-              </ButtonLink>
-            </div>
-            <p className="text-sm text-white/60">{t('home.hero.subtext')}</p>
-          </motion.div>
+        <div className="relative z-20 flex h-[520px] sm:h-[560px] items-center justify-center px-6 py-10 sm:px-8 sm:py-12 lg:px-10 lg:py-14">
+          {/* Hero copy removed; keep spacing for the gradient-only experience. */}
         </div>
       </SectionWithStars>
 

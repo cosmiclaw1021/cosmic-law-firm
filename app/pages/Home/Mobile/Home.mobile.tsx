@@ -1,6 +1,5 @@
 import React from 'react';
 import Link from '@/components/ui/Link';
-import Image from 'next/image';
 import SEO from '@/components/SEO';
 import { SITE } from '@/lib/site';
 import { practiceAreas } from '@/lib/practice-areas';
@@ -9,7 +8,8 @@ import ButtonLink from '@/components/ui/ButtonLink';
 import SectionWithStars from '@src/components/layout/SectionWithStars';
 import Icon from '@src/components/Icon';
 
-const HERO_BACKGROUND = '/NanoBanana/Background_screens_2.png';
+const HERO_VIDEO = '/media/hero-clip.mp4';
+const HERO_POSTER = '/NanoBanana/Background_screens_2.png';
 
 const HomeMobile: React.FC = () => {
   const { t, i18n } = useTranslation();
@@ -23,53 +23,31 @@ const HomeMobile: React.FC = () => {
       />
 
       <SectionWithStars
-        className="hero-header-gap hero-header-gap-tight relative bg-slate-950 text-white min-h-0 flex flex-col justify-start"
+        className="hero-header-gap hero-header-gap-tight relative bg-transparent text-black min-h-0 flex flex-col justify-start"
         aria-label={t('accessibility.aria.heroIntro')}
         settings={{ density: 0.5, scrollRange: 720 }}
       >
         <div className="absolute inset-0 z-10">
-          <Image
-            src={HERO_BACKGROUND}
-            alt={t('accessibility.aria.homeHeroBackground')}
-            fill
-            priority
-            className="object-cover"
-            sizes="100vw"
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-slate-950/60 via-slate-950/40 to-black/70" />
+          <video
+            src={HERO_VIDEO}
+            poster={HERO_POSTER}
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="metadata"
+            role="img"
+            aria-label={t('accessibility.aria.homeHeroBackground')}
+            className="absolute inset-0 h-full w-full object-cover"
+          >
+            {t('accessibility.aria.homeHeroBackground')}
+          </video>
           <div className="absolute left-[10%] top-4 h-[180px] w-[180px] rounded-full bg-primary/25 blur-[90px]" aria-hidden="true" />
           <div className="absolute right-4 bottom-[-40px] h-[160px] w-[160px] rounded-full bg-white/5 blur-[80px]" aria-hidden="true" />
         </div>
 
-        <div className="relative z-20 flex flex-col gap-6 px-6 pb-4 pt-12 max-w-[1280px] mx-auto sm:px-8 sm:pt-16 md:pt-20">
-          <div className="inline-flex flex-wrap items-center gap-2 uppercase tracking-[0.35em] text-[10px] text-white/90 mb-4">
-            <span className="inline-flex flex-wrap justify-center px-3 py-1 rounded-full bg-black/60 text-white font-black tracking-[0.35em] whitespace-normal max-w-[85vw]">
-              {t('home.hero.badge')}
-            </span>
-          </div>
-          <h1 className="text-4xl font-black tracking-tight text-white leading-[1.05] mb-5 uppercase">
-            {t('home.hero.title')}
-          </h1>
-          <p className="text-lg text-white/90 mb-8 leading-relaxed font-medium">
-            {t('home.hero.description')}
-          </p>
-
-          <div className="flex flex-col gap-4">
-            <ButtonLink
-              href="/services"
-              tone="dark"
-              className="min-h-[3.5rem] py-4 px-6 uppercase tracking-widest text-sm text-center focus:ring-offset-2 focus:ring-offset-slate-950"
-            >
-              {t('home.hero.ctaPrimary')}
-            </ButtonLink>
-            <ButtonLink
-              href="/contact"
-              tone="light"
-              className="min-h-[3.5rem] py-4 px-6 uppercase tracking-widest text-sm text-center border border-white/70 focus:ring-offset-2 focus:ring-offset-slate-950"
-            >
-              {t('home.hero.ctaSecondary')}
-            </ButtonLink>
-          </div>
+        <div className="relative z-20 flex h-[460px] items-center justify-center px-6 pb-4 pt-12 max-w-[1280px] mx-auto sm:px-8 sm:pt-16 md:pt-20">
+          {/* Hero copy and video removed per request; this spacing keeps the gradient-only hero height. */}
         </div>
       </SectionWithStars>
 
