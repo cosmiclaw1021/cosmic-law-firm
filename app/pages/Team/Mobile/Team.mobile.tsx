@@ -50,7 +50,7 @@ const TeamMobile: React.FC = () => {
                     </p>
                     <h3 className="text-xl font-black text-slate-900 dark:text-white uppercase tracking-tight">{member.name}</h3>
                     <p className="text-xs font-black text-primary dark:text-primary-light uppercase tracking-[0.45em]">
-                      {t(member.titleKey)}
+                      {member.id === 'jean' ? 'Chairman · Founding Partner' : t(member.titleKey)}
                     </p>
                     <p className="text-sm text-slate-500 dark:text-slate-400 leading-relaxed font-medium">
                       {t(member.specialtyKey)}
