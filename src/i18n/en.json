@@ -756,6 +756,10 @@
       "title": "Get in Touch",
       "description": "Tell us what you’re working on—deal, dispute, or registration. We’ll respond with next steps and a clear scope."
     },
+    "emailCta": {
+      "title": "Contact Page",
+      "description": "Contact Page"
+    },
     "details": {
       "title": "Location & Contact",
       "phone": {
