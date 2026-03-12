@@ -68,7 +68,7 @@ const HomeDesktop: React.FC = () => {
             initial="initial"
             whileInView="whileInView"
             viewport={{ once: true }}
-            className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_360px] items-start"
+            className="grid gap-10 items-start"
           >
             <div className="relative z-10">
               <span className="text-xs font-black tracking-[0.4em] uppercase text-slate-500 dark:text-slate-400">
@@ -107,18 +107,6 @@ const HomeDesktop: React.FC = () => {
                   {t('nav.viewAllPracticeAreas')}
                   <Icon name="arrow_forward" className="size-4" />
                 </Link>
-              </div>
-            </div>
-
-            <div className="relative z-10 hidden w-full max-w-[360px] rounded-[32px] border border-secondary/40 bg-secondary/30 dark:border-white/10 dark:bg-white/5 shadow-lg overflow-hidden lg:block">
-              <div className="relative h-full w-full">
-                <Image
-                  src={SERVICES_IMAGE}
-                  alt={t('accessibility.alt.contractNotesDesk')}
-                  width={360}
-                  height={540}
-                  className="h-full w-full object-cover"
-                />
               </div>
             </div>
           </motion.div>
