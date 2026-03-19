@@ -846,6 +846,14 @@
           "University of California, Berkeley, B.A. in Political Science (high honors)"
         ],
         "imageAlt": "Portrait of David Kim"
+      },
+      "scott": {
+        "location": "Los Angeles, CA",
+        "title": "Attorney",
+        "specialty": "Legal Counsel",
+        "description": "Scott Houtz, Esq.",
+        "education": [],
+        "imageAlt": "Portrait of Scott Houtz"
       }
     },
     "details": {
@@ -923,6 +931,13 @@
           "Regulatory, compliance, and licensing guidance for technology start-ups",
           "Immigration and asylum advocacy informed by Human Rights Clinic work"
         ],
+        "creative": ""
+      },
+      "scott": {
+        "tagline": "",
+        "biography": [],
+        "memberships": [],
+        "practiceAreas": [],
         "creative": ""
       }
     },

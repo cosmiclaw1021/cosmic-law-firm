@@ -598,6 +598,14 @@
           "캘리포니아대학교 버클리, 정치학 학사(우등)"
         ],
         "imageAlt": "David Kim의 초상"
+      },
+      "scott": {
+        "location": "로스앤젤레스, CA",
+        "title": "변호사",
+        "specialty": "법률 자문",
+        "description": "Scott Houtz, Esq.",
+        "education": [],
+        "imageAlt": "Scott Houtz의 초상"
       }
     },
     "details": {
@@ -675,6 +683,13 @@
           "기술 스타트업을 위한 규제·준수·라이선스 자문",
           "인권 클리닉 경험이 바탕이 된 이민·망명 변론"
         ],
+        "creative": ""
+      },
+      "scott": {
+        "tagline": "",
+        "biography": [],
+        "memberships": [],
+        "practiceAreas": [],
         "creative": ""
       }
     },
